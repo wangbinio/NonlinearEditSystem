@@ -93,16 +93,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="窗体\ProjectSetForm.cs">
+    <Compile Include="Forms\CaptureForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\ProjectSetForm.Designer.cs">
+    <Compile Include="Forms\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProjectSetForm.Designer.cs">
       <DependentUpon>ProjectSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="窗体\Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -113,22 +119,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="VlcPlayer.cs" />
-    <Compile Include="窗体\MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="窗体\PreferenceSetForm.cs">
+    <Compile Include="Forms\PreferenceSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\PreferenceSetForm.Designer.cs">
+    <Compile Include="Forms\PreferenceSetForm.Designer.cs">
       <DependentUpon>PreferenceSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="窗体\CreateProjectSetForm.cs">
+    <Compile Include="Forms\CreateProjectSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\CreateProjectSetForm.Designer.cs">
+    <Compile Include="Forms\CreateProjectSetForm.Designer.cs">
       <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -136,16 +142,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="窗体\ProjectSetForm.resx">
+    <EmbeddedResource Include="Forms\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProjectSetForm.resx">
       <DependentUpon>ProjectSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="窗体\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="窗体\PreferenceSetForm.resx">
+    <EmbeddedResource Include="Forms\PreferenceSetForm.resx">
       <DependentUpon>PreferenceSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="窗体\CreateProjectSetForm.resx">
+    <EmbeddedResource Include="Forms\CreateProjectSetForm.resx">
       <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -196,7 +196,7 @@
             this.tabControl_Project.Padding = new System.Windows.Forms.Padding(3);
             this.tabControl_Project.SelectedTabFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.tabControl_Project.SelectedTabIndex = 0;
-            this.tabControl_Project.Size = new System.Drawing.Size(773, 403);
+            this.tabControl_Project.Size = new System.Drawing.Size(662, 403);
             this.tabControl_Project.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
             this.tabControl_Project.TabIndex = 1;
             this.tabControl_Project.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -215,7 +215,7 @@
             this.tabControlPanel_Project.Location = new System.Drawing.Point(0, 28);
             this.tabControlPanel_Project.Name = "tabControlPanel_Project";
             this.tabControlPanel_Project.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Project.Size = new System.Drawing.Size(773, 375);
+            this.tabControlPanel_Project.Size = new System.Drawing.Size(662, 375);
             this.tabControlPanel_Project.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Project.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_Project.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -247,7 +247,7 @@
             this.listView_Files.FullRowSelect = true;
             this.listView_Files.Location = new System.Drawing.Point(1, 65);
             this.listView_Files.Name = "listView_Files";
-            this.listView_Files.Size = new System.Drawing.Size(771, 309);
+            this.listView_Files.Size = new System.Drawing.Size(660, 309);
             this.listView_Files.SmallImageList = this.imageList_Files;
             this.listView_Files.TabIndex = 1;
             this.listView_Files.UseCompatibleStateImageBehavior = false;
@@ -308,7 +308,7 @@
             this.label_FileInfo.Location = new System.Drawing.Point(1, 1);
             this.label_FileInfo.Name = "label_FileInfo";
             this.label_FileInfo.SingleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.label_FileInfo.Size = new System.Drawing.Size(771, 64);
+            this.label_FileInfo.Size = new System.Drawing.Size(660, 64);
             this.label_FileInfo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.label_FileInfo.Symbol = "";
             this.label_FileInfo.TabIndex = 0;
@@ -327,7 +327,7 @@
             this.tabControlPanel2.Location = new System.Drawing.Point(0, 28);
             this.tabControlPanel2.Name = "tabControlPanel2";
             this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(773, 375);
+            this.tabControlPanel2.Size = new System.Drawing.Size(662, 375);
             this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -350,7 +350,7 @@
             this.tabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(773, 375);
+            this.tabControlPanel1.Size = new System.Drawing.Size(662, 375);
             this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -374,12 +374,12 @@
             this.tabControl_Sequence.Controls.Add(this.tabControlPanel_Segment);
             this.tabControl_Sequence.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_Sequence.ForeColor = System.Drawing.Color.Black;
-            this.tabControl_Sequence.Location = new System.Drawing.Point(773, 25);
+            this.tabControl_Sequence.Location = new System.Drawing.Point(662, 25);
             this.tabControl_Sequence.Name = "tabControl_Sequence";
             this.tabControl_Sequence.Padding = new System.Windows.Forms.Padding(3);
             this.tabControl_Sequence.SelectedTabFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.tabControl_Sequence.SelectedTabIndex = 0;
-            this.tabControl_Sequence.Size = new System.Drawing.Size(563, 403);
+            this.tabControl_Sequence.Size = new System.Drawing.Size(674, 403);
             this.tabControl_Sequence.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
             this.tabControl_Sequence.TabIndex = 1;
             this.tabControl_Sequence.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -397,7 +397,7 @@
             this.tabControlPanel_Seq.Location = new System.Drawing.Point(0, 28);
             this.tabControlPanel_Seq.Name = "tabControlPanel_Seq";
             this.tabControlPanel_Seq.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Seq.Size = new System.Drawing.Size(563, 375);
+            this.tabControlPanel_Seq.Size = new System.Drawing.Size(674, 375);
             this.tabControlPanel_Seq.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Seq.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_Seq.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -415,7 +415,7 @@
             this.PanelEx_Sequence.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelEx_Sequence.Location = new System.Drawing.Point(1, 1);
             this.PanelEx_Sequence.Name = "PanelEx_Sequence";
-            this.PanelEx_Sequence.Size = new System.Drawing.Size(561, 343);
+            this.PanelEx_Sequence.Size = new System.Drawing.Size(672, 343);
             this.PanelEx_Sequence.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.PanelEx_Sequence.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.PanelEx_Sequence.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -438,7 +438,7 @@
             this.timeLineControl_Sequence.NDistanceOfTicks = 10;
             this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
             this.timeLineControl_Sequence.NNumOfBigTicks = 7;
-            this.timeLineControl_Sequence.Size = new System.Drawing.Size(561, 30);
+            this.timeLineControl_Sequence.Size = new System.Drawing.Size(672, 30);
             this.timeLineControl_Sequence.TabIndex = 6;
             this.timeLineControl_Sequence.ThumbHPos = 333;
             this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
@@ -458,7 +458,7 @@
             this.tabControlPanel_Segment.Location = new System.Drawing.Point(0, 28);
             this.tabControlPanel_Segment.Name = "tabControlPanel_Segment";
             this.tabControlPanel_Segment.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Segment.Size = new System.Drawing.Size(563, 375);
+            this.tabControlPanel_Segment.Size = new System.Drawing.Size(674, 375);
             this.tabControlPanel_Segment.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Segment.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_Segment.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -476,7 +476,7 @@
             this.panelEx_Segment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx_Segment.Location = new System.Drawing.Point(1, 1);
             this.panelEx_Segment.Name = "panelEx_Segment";
-            this.panelEx_Segment.Size = new System.Drawing.Size(561, 343);
+            this.panelEx_Segment.Size = new System.Drawing.Size(672, 343);
             this.panelEx_Segment.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx_Segment.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx_Segment.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -499,7 +499,7 @@
             this.timeLineControl_Segment.NDistanceOfTicks = 15;
             this.timeLineControl_Segment.NNeedShowSeconds = 3600;
             this.timeLineControl_Segment.NNumOfBigTicks = 6;
-            this.timeLineControl_Segment.Size = new System.Drawing.Size(561, 30);
+            this.timeLineControl_Segment.Size = new System.Drawing.Size(672, 30);
             this.timeLineControl_Segment.TabIndex = 10;
             this.timeLineControl_Segment.ThumbHPos = 333;
             this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
