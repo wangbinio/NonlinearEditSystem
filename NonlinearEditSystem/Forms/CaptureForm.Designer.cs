@@ -55,25 +55,30 @@
             this.labelX_采集素材存放 = new DevComponents.DotNetBar.LabelX();
             this.labelX_输入格式 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_IPCapSet = new System.Windows.Forms.GroupBox();
+            this.integerInput_Port = new DevComponents.Editors.IntegerInput();
+            this.ipAddressInput_IP = new DevComponents.Editors.IpAddressInput();
             this.buttonX_Connect = new DevComponents.DotNetBar.ButtonX();
             this.labelX_Port = new DevComponents.DotNetBar.LabelX();
             this.labelX_IP = new DevComponents.DotNetBar.LabelX();
-            this.ipAddressInput_IP = new DevComponents.Editors.IpAddressInput();
-            this.integerInput_Port = new DevComponents.Editors.IntegerInput();
             this.groupBox_CapControl = new System.Windows.Forms.GroupBox();
-            this.labelX_DiskVolumn = new DevComponents.DotNetBar.LabelX();
             this.progressBarX_CapProgress = new DevComponents.DotNetBar.Controls.ProgressBarX();
-            this.labelX_CapTime = new DevComponents.DotNetBar.LabelX();
-            this.buttonX_CapDel = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX_CapStop = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX_CapPause = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX_CapBegin = new DevComponents.DotNetBar.ButtonX();
+            this.labelX_DiskVolumn = new DevComponents.DotNetBar.LabelX();
             this.buttonX_AddAllCaps = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CapBegin = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CapPause = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CapStop = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CapDel = new DevComponents.DotNetBar.ButtonX();
+            this.labelX_CapTime = new DevComponents.DotNetBar.LabelX();
+            this.groupBox_Preview = new System.Windows.Forms.GroupBox();
+            this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
+            this.slider_PreviewTime = new DevComponents.DotNetBar.Controls.Slider();
+            this.labelX_PreviewTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_SDI采集设置.SuspendLayout();
             this.groupBox_IPCapSet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput_IP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_Port)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput_IP)).BeginInit();
             this.groupBox_CapControl.SuspendLayout();
+            this.groupBox_Preview.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_SDI采集设置
@@ -465,18 +470,58 @@
             // 
             // groupBox_IPCapSet
             // 
+            this.groupBox_IPCapSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_IPCapSet.Controls.Add(this.integerInput_Port);
             this.groupBox_IPCapSet.Controls.Add(this.ipAddressInput_IP);
             this.groupBox_IPCapSet.Controls.Add(this.buttonX_Connect);
             this.groupBox_IPCapSet.Controls.Add(this.labelX_Port);
             this.groupBox_IPCapSet.Controls.Add(this.labelX_IP);
             this.groupBox_IPCapSet.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox_IPCapSet.ForeColor = System.Drawing.Color.Black;
             this.groupBox_IPCapSet.Location = new System.Drawing.Point(12, 600);
             this.groupBox_IPCapSet.Name = "groupBox_IPCapSet";
             this.groupBox_IPCapSet.Size = new System.Drawing.Size(403, 90);
             this.groupBox_IPCapSet.TabIndex = 1;
             this.groupBox_IPCapSet.TabStop = false;
             this.groupBox_IPCapSet.Text = "IP采集设置";
+            // 
+            // integerInput_Port
+            // 
+            this.integerInput_Port.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.integerInput_Port.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput_Port.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput_Port.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_Port.ForeColor = System.Drawing.Color.Black;
+            this.integerInput_Port.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.integerInput_Port.Location = new System.Drawing.Point(78, 54);
+            this.integerInput_Port.MinValue = 0;
+            this.integerInput_Port.Name = "integerInput_Port";
+            this.integerInput_Port.ShowUpDown = true;
+            this.integerInput_Port.Size = new System.Drawing.Size(238, 23);
+            this.integerInput_Port.TabIndex = 12;
+            this.integerInput_Port.Value = 4502;
+            // 
+            // ipAddressInput_IP
+            // 
+            this.ipAddressInput_IP.AutoOverwrite = true;
+            this.ipAddressInput_IP.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.ipAddressInput_IP.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.ipAddressInput_IP.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ipAddressInput_IP.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.ipAddressInput_IP.ButtonFreeText.Visible = true;
+            this.ipAddressInput_IP.ForeColor = System.Drawing.Color.Black;
+            this.ipAddressInput_IP.Location = new System.Drawing.Point(78, 25);
+            this.ipAddressInput_IP.Name = "ipAddressInput_IP";
+            this.ipAddressInput_IP.Size = new System.Drawing.Size(318, 23);
+            this.ipAddressInput_IP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ipAddressInput_IP.TabIndex = 11;
+            this.ipAddressInput_IP.Value = "127.0.0.1";
             // 
             // buttonX_Connect
             // 
@@ -520,42 +565,9 @@
             this.labelX_IP.TabIndex = 13;
             this.labelX_IP.Text = "IP";
             // 
-            // ipAddressInput_IP
-            // 
-            this.ipAddressInput_IP.AutoOverwrite = true;
-            // 
-            // 
-            // 
-            this.ipAddressInput_IP.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.ipAddressInput_IP.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ipAddressInput_IP.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.ipAddressInput_IP.ButtonFreeText.Visible = true;
-            this.ipAddressInput_IP.Location = new System.Drawing.Point(78, 25);
-            this.ipAddressInput_IP.Name = "ipAddressInput_IP";
-            this.ipAddressInput_IP.Size = new System.Drawing.Size(318, 23);
-            this.ipAddressInput_IP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ipAddressInput_IP.TabIndex = 11;
-            this.ipAddressInput_IP.Value = "127.0.0.1";
-            // 
-            // integerInput_Port
-            // 
-            // 
-            // 
-            // 
-            this.integerInput_Port.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput_Port.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput_Port.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput_Port.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.integerInput_Port.Location = new System.Drawing.Point(78, 54);
-            this.integerInput_Port.MinValue = 0;
-            this.integerInput_Port.Name = "integerInput_Port";
-            this.integerInput_Port.ShowUpDown = true;
-            this.integerInput_Port.Size = new System.Drawing.Size(238, 23);
-            this.integerInput_Port.TabIndex = 12;
-            this.integerInput_Port.Value = 4502;
-            // 
             // groupBox_CapControl
             // 
+            this.groupBox_CapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_CapControl.Controls.Add(this.progressBarX_CapProgress);
             this.groupBox_CapControl.Controls.Add(this.labelX_DiskVolumn);
             this.groupBox_CapControl.Controls.Add(this.buttonX_AddAllCaps);
@@ -565,12 +577,31 @@
             this.groupBox_CapControl.Controls.Add(this.buttonX_CapDel);
             this.groupBox_CapControl.Controls.Add(this.labelX_CapTime);
             this.groupBox_CapControl.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.groupBox_CapControl.ForeColor = System.Drawing.Color.Black;
             this.groupBox_CapControl.Location = new System.Drawing.Point(12, 710);
             this.groupBox_CapControl.Name = "groupBox_CapControl";
             this.groupBox_CapControl.Size = new System.Drawing.Size(403, 90);
             this.groupBox_CapControl.TabIndex = 2;
             this.groupBox_CapControl.TabStop = false;
             this.groupBox_CapControl.Text = "采集控制";
+            // 
+            // progressBarX_CapProgress
+            // 
+            this.progressBarX_CapProgress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.progressBarX_CapProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.progressBarX_CapProgress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
+            this.progressBarX_CapProgress.ForeColor = System.Drawing.Color.Black;
+            this.progressBarX_CapProgress.Location = new System.Drawing.Point(78, 23);
+            this.progressBarX_CapProgress.Name = "progressBarX_CapProgress";
+            this.progressBarX_CapProgress.Size = new System.Drawing.Size(232, 23);
+            this.progressBarX_CapProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.progressBarX_CapProgress.TabIndex = 14;
+            this.progressBarX_CapProgress.Text = "50%";
+            this.progressBarX_CapProgress.TextVisible = true;
+            this.progressBarX_CapProgress.Value = 50;
             // 
             // labelX_DiskVolumn
             // 
@@ -587,25 +618,69 @@
             this.labelX_DiskVolumn.TabIndex = 13;
             this.labelX_DiskVolumn.Text = "硬盘空间";
             // 
-            // progressBarX_CapProgress
+            // buttonX_AddAllCaps
             // 
+            this.buttonX_AddAllCaps.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_AddAllCaps.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_AddAllCaps.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX_AddAllCaps.Location = new System.Drawing.Point(6, 53);
+            this.buttonX_AddAllCaps.Name = "buttonX_AddAllCaps";
+            this.buttonX_AddAllCaps.Size = new System.Drawing.Size(78, 23);
+            this.buttonX_AddAllCaps.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_AddAllCaps.TabIndex = 14;
+            this.buttonX_AddAllCaps.Text = "加入批采集";
             // 
+            // buttonX_CapBegin
             // 
+            this.buttonX_CapBegin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CapBegin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CapBegin.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX_CapBegin.Location = new System.Drawing.Point(90, 53);
+            this.buttonX_CapBegin.Name = "buttonX_CapBegin";
+            this.buttonX_CapBegin.Size = new System.Drawing.Size(72, 23);
+            this.buttonX_CapBegin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CapBegin.TabIndex = 15;
+            this.buttonX_CapBegin.Text = "采集";
             // 
-            this.progressBarX_CapProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.progressBarX_CapProgress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.progressBarX_CapProgress.Location = new System.Drawing.Point(78, 23);
-            this.progressBarX_CapProgress.Name = "progressBarX_CapProgress";
-            this.progressBarX_CapProgress.Size = new System.Drawing.Size(232, 23);
-            this.progressBarX_CapProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.progressBarX_CapProgress.TabIndex = 14;
-            this.progressBarX_CapProgress.Text = "50%";
-            this.progressBarX_CapProgress.TextVisible = true;
-            this.progressBarX_CapProgress.Value = 50;
+            // buttonX_CapPause
+            // 
+            this.buttonX_CapPause.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CapPause.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CapPause.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX_CapPause.Location = new System.Drawing.Point(168, 53);
+            this.buttonX_CapPause.Name = "buttonX_CapPause";
+            this.buttonX_CapPause.Size = new System.Drawing.Size(72, 23);
+            this.buttonX_CapPause.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CapPause.TabIndex = 16;
+            this.buttonX_CapPause.Text = "暂停";
+            // 
+            // buttonX_CapStop
+            // 
+            this.buttonX_CapStop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CapStop.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CapStop.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX_CapStop.Location = new System.Drawing.Point(246, 53);
+            this.buttonX_CapStop.Name = "buttonX_CapStop";
+            this.buttonX_CapStop.Size = new System.Drawing.Size(72, 23);
+            this.buttonX_CapStop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CapStop.TabIndex = 17;
+            this.buttonX_CapStop.Text = "停止";
+            // 
+            // buttonX_CapDel
+            // 
+            this.buttonX_CapDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CapDel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CapDel.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX_CapDel.Location = new System.Drawing.Point(324, 53);
+            this.buttonX_CapDel.Name = "buttonX_CapDel";
+            this.buttonX_CapDel.Size = new System.Drawing.Size(72, 23);
+            this.buttonX_CapDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CapDel.TabIndex = 18;
+            this.buttonX_CapDel.Text = "丢弃";
             // 
             // labelX_CapTime
             // 
-            this.labelX_CapTime.BackColor = System.Drawing.Color.DodgerBlue;
+            this.labelX_CapTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -621,71 +696,75 @@
             this.labelX_CapTime.TabIndex = 7;
             this.labelX_CapTime.Text = "00:00:00:00";
             // 
-            // buttonX_CapDel
+            // groupBox_Preview
             // 
-            this.buttonX_CapDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_CapDel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_CapDel.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.buttonX_CapDel.Location = new System.Drawing.Point(324, 53);
-            this.buttonX_CapDel.Name = "buttonX_CapDel";
-            this.buttonX_CapDel.Size = new System.Drawing.Size(72, 23);
-            this.buttonX_CapDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CapDel.TabIndex = 18;
-            this.buttonX_CapDel.Text = "丢弃";
+            this.groupBox_Preview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_Preview.Controls.Add(this.slider_PreviewTime);
+            this.groupBox_Preview.Controls.Add(this.panelEx_Preview);
+            this.groupBox_Preview.Controls.Add(this.labelX_PreviewTime);
+            this.groupBox_Preview.ForeColor = System.Drawing.Color.Black;
+            this.groupBox_Preview.Location = new System.Drawing.Point(431, 2);
+            this.groupBox_Preview.Name = "groupBox_Preview";
+            this.groupBox_Preview.Size = new System.Drawing.Size(403, 502);
+            this.groupBox_Preview.TabIndex = 3;
+            this.groupBox_Preview.TabStop = false;
+            this.groupBox_Preview.Text = "预览";
             // 
-            // buttonX_CapStop
+            // panelEx_Preview
             // 
-            this.buttonX_CapStop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_CapStop.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_CapStop.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.buttonX_CapStop.Location = new System.Drawing.Point(246, 53);
-            this.buttonX_CapStop.Name = "buttonX_CapStop";
-            this.buttonX_CapStop.Size = new System.Drawing.Size(72, 23);
-            this.buttonX_CapStop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CapStop.TabIndex = 17;
-            this.buttonX_CapStop.Text = "停止";
+            this.panelEx_Preview.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx_Preview.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx_Preview.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx_Preview.Location = new System.Drawing.Point(6, 22);
+            this.panelEx_Preview.Name = "panelEx_Preview";
+            this.panelEx_Preview.Size = new System.Drawing.Size(391, 354);
+            this.panelEx_Preview.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx_Preview.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx_Preview.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx_Preview.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx_Preview.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx_Preview.Style.GradientAngle = 90;
+            this.panelEx_Preview.TabIndex = 0;
+            this.panelEx_Preview.Text = "视频预览";
             // 
-            // buttonX_CapPause
+            // slider_PreviewTime
             // 
-            this.buttonX_CapPause.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_CapPause.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_CapPause.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.buttonX_CapPause.Location = new System.Drawing.Point(168, 53);
-            this.buttonX_CapPause.Name = "buttonX_CapPause";
-            this.buttonX_CapPause.Size = new System.Drawing.Size(72, 23);
-            this.buttonX_CapPause.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CapPause.TabIndex = 16;
-            this.buttonX_CapPause.Text = "暂停";
             // 
-            // buttonX_CapBegin
             // 
-            this.buttonX_CapBegin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_CapBegin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_CapBegin.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.buttonX_CapBegin.Location = new System.Drawing.Point(90, 53);
-            this.buttonX_CapBegin.Name = "buttonX_CapBegin";
-            this.buttonX_CapBegin.Size = new System.Drawing.Size(72, 23);
-            this.buttonX_CapBegin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CapBegin.TabIndex = 15;
-            this.buttonX_CapBegin.Text = "采集";
             // 
-            // buttonX_AddAllCaps
+            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.slider_PreviewTime.LabelVisible = false;
+            this.slider_PreviewTime.Location = new System.Drawing.Point(6, 382);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
+            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.slider_PreviewTime.TabIndex = 2;
+            this.slider_PreviewTime.Value = 50;
             // 
-            this.buttonX_AddAllCaps.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_AddAllCaps.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_AddAllCaps.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.buttonX_AddAllCaps.Location = new System.Drawing.Point(6, 53);
-            this.buttonX_AddAllCaps.Name = "buttonX_AddAllCaps";
-            this.buttonX_AddAllCaps.Size = new System.Drawing.Size(78, 23);
-            this.buttonX_AddAllCaps.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_AddAllCaps.TabIndex = 14;
-            this.buttonX_AddAllCaps.Text = "加入批采集";
+            // labelX_PreviewTime
+            // 
+            this.labelX_PreviewTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_PreviewTime.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelX_PreviewTime.FontBold = true;
+            this.labelX_PreviewTime.ForeColor = System.Drawing.Color.Black;
+            this.labelX_PreviewTime.Location = new System.Drawing.Point(304, 382);
+            this.labelX_PreviewTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_PreviewTime.Name = "labelX_PreviewTime";
+            this.labelX_PreviewTime.Size = new System.Drawing.Size(92, 23);
+            this.labelX_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX_PreviewTime.TabIndex = 7;
+            this.labelX_PreviewTime.Text = "00:00:00:00";
             // 
             // CaptureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 814);
+            this.ClientSize = new System.Drawing.Size(847, 814);
+            this.Controls.Add(this.groupBox_Preview);
             this.Controls.Add(this.groupBox_CapControl);
             this.Controls.Add(this.groupBox_IPCapSet);
             this.Controls.Add(this.groupBox_SDI采集设置);
@@ -699,12 +778,12 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "采集";
-            this.TopMost = true;
             this.groupBox_SDI采集设置.ResumeLayout(false);
             this.groupBox_IPCapSet.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput_IP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_Port)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipAddressInput_IP)).EndInit();
             this.groupBox_CapControl.ResumeLayout(false);
+            this.groupBox_Preview.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -752,5 +831,9 @@
         private DevComponents.DotNetBar.ButtonX buttonX_CapPause;
         private DevComponents.DotNetBar.ButtonX buttonX_CapStop;
         private DevComponents.DotNetBar.ButtonX buttonX_CapDel;
+        private System.Windows.Forms.GroupBox groupBox_Preview;
+        private DevComponents.DotNetBar.PanelEx panelEx_Preview;
+        private DevComponents.DotNetBar.Controls.Slider slider_PreviewTime;
+        private DevComponents.DotNetBar.LabelX labelX_PreviewTime;
     }
 }

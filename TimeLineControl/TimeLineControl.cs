@@ -18,10 +18,13 @@ namespace TimeLineControl
         // 画笔
         public Pen drawPen = new Pen(Color.Black, 1f);
 
-        private Pen drawThumbPen = new Pen(Color.Black, 1f);
+        private Pen drawThumbPen = new Pen(SystemColors.HotTrack, 1f);
 
-        // 画刷
-        private SolidBrush pointBrush = new SolidBrush(Color.Black);
+        // 字符画刷
+        private SolidBrush stringBrush = new SolidBrush(Color.Black);
+
+        // 游标画刷
+        private SolidBrush thumbBrush = new SolidBrush(SystemColors.HotTrack);
 
         // 透明画刷
         private TextureBrush transparentBrush = new TextureBrush(Resource.透明图片4);
@@ -175,7 +178,7 @@ namespace TimeLineControl
                 float nHPos = i * 10 * NDistanceOfTicks - sizeOfString.Width/2;
                 float nVPos = Height - /*2 * */ NBotmPadding - NBigTicksLength - Font.Height;
 
-                g.DrawString(sTimeString, Font, pointBrush, nHPos, nVPos);
+                g.DrawString(sTimeString, Font, stringBrush, nHPos, nVPos);
             }
 
         }
@@ -201,7 +204,7 @@ namespace TimeLineControl
             // 确定游标所在的rectangle
             ThumbRectangle = new Rectangle(ThumbHPos - NDistanceOfTicks / 2, 0, NDistanceOfTicks, 3 * NBigTicksLength / 2);
 
-            g.FillPolygon(/*transparentBrush*/pointBrush, thumbPoints);
+            g.FillPolygon(/*transparentBrush*/thumbBrush, thumbPoints);
 
             g.DrawLine(drawThumbPen, thumbPoints[2], endPoint);
         }
