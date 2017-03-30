@@ -5,6 +5,7 @@ using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using vlc.net;
 using 主界面.Properties;
+using 主界面.窗体;
 
 namespace 主界面
 {
@@ -19,7 +20,7 @@ namespace 主界面
             InitializeComponent();
 
             // 1.初始化vlc
-            InitializeVlc();
+            //InitializeVlc();
 
             // 2.自绘游标
 
@@ -184,6 +185,16 @@ namespace 主界面
             var mouseEventArgs = (MouseEventArgs) e;
             label_FileInfo.Text = $@"X:{mouseEventArgs.X}, Y:{mouseEventArgs.Y}";
             labelItem_CurrentTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
+        }
+
+        private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new PreferenceSetForm()).Show();
+        }
+
+        private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new ProjectSetForm()).Show();
         }
     }
 }

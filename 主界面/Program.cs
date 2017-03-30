@@ -14,7 +14,7 @@ namespace 主界面
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PreferenceSetForm());
+            Application.Run(new MainForm());
         }
     }
 }
