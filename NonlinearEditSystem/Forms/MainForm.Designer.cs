@@ -820,6 +820,7 @@
             this.采集ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.采集ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.采集ToolStripMenuItem.Text = "采集(&C)";
+            this.采集ToolStripMenuItem.Click += new System.EventHandler(this.采集ToolStripMenuItem_Click);
             // 
             // 打包输出ToolStripMenuItem
             // 

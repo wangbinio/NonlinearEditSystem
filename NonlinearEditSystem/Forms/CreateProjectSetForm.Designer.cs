@@ -64,7 +64,7 @@
             // 
             // groupBox_视频设置
             // 
-            this.groupBox_视频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_视频设置.BackColor = System.Drawing.Color.White;
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_解交织);
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_上场优先);
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_帧率);
@@ -97,6 +97,7 @@
             this.comboBoxEx_解交织.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_解交织.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_解交织.TabIndex = 6;
+            this.comboBoxEx_解交织.TabStop = false;
             this.comboBoxEx_解交织.Text = "解交织";
             // 
             // comboItem_解交织
@@ -118,6 +119,7 @@
             this.comboBoxEx_上场优先.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_上场优先.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_上场优先.TabIndex = 6;
+            this.comboBoxEx_上场优先.TabStop = false;
             this.comboBoxEx_上场优先.Text = "上场优先";
             // 
             // comboItem_上场优先
@@ -139,6 +141,7 @@
             this.comboBoxEx_帧率.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_帧率.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_帧率.TabIndex = 6;
+            this.comboBoxEx_帧率.TabStop = false;
             this.comboBoxEx_帧率.Text = "25.00 fps";
             // 
             // comboItem_25fps
@@ -147,7 +150,7 @@
             // 
             // labelX_解交织
             // 
-            this.labelX_解交织.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_解交织.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -162,7 +165,7 @@
             // 
             // labelX_扫描模式
             // 
-            this.labelX_扫描模式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_扫描模式.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -177,7 +180,7 @@
             // 
             // labelX_帧率
             // 
-            this.labelX_帧率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_帧率.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -199,8 +202,7 @@
             this.buttonX_CreateProjCancel.Name = "buttonX_CreateProjCancel";
             this.buttonX_CreateProjCancel.Size = new System.Drawing.Size(82, 28);
             this.buttonX_CreateProjCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CreateProjCancel.TabIndex = 6;
-            this.buttonX_CreateProjCancel.TabStop = false;
+            this.buttonX_CreateProjCancel.TabIndex = 3;
             this.buttonX_CreateProjCancel.Text = "取消";
             this.buttonX_CreateProjCancel.Click += new System.EventHandler(this.buttonX_PreferSetCancel_Click);
             // 
@@ -213,13 +215,12 @@
             this.buttonX_CreateProjOK.Name = "buttonX_CreateProjOK";
             this.buttonX_CreateProjOK.Size = new System.Drawing.Size(82, 28);
             this.buttonX_CreateProjOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CreateProjOK.TabIndex = 7;
-            this.buttonX_CreateProjOK.TabStop = false;
+            this.buttonX_CreateProjOK.TabIndex = 2;
             this.buttonX_CreateProjOK.Text = "确认";
             // 
             // groupBox_音频设置
             // 
-            this.groupBox_音频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_音频设置.BackColor = System.Drawing.Color.White;
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_输出音频流);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_采样位);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_声道);
@@ -254,6 +255,7 @@
             this.comboBoxEx_输出音频流.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_输出音频流.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_输出音频流.TabIndex = 6;
+            this.comboBoxEx_输出音频流.TabStop = false;
             this.comboBoxEx_输出音频流.Text = "输出音频流";
             // 
             // comboItem_输出音频流
@@ -275,6 +277,7 @@
             this.comboBoxEx_采样位.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_采样位.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样位.TabIndex = 6;
+            this.comboBoxEx_采样位.TabStop = false;
             this.comboBoxEx_采样位.Text = "采样位";
             // 
             // comboItem_采样位
@@ -296,6 +299,7 @@
             this.comboBoxEx_声道.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_声道.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_声道.TabIndex = 6;
+            this.comboBoxEx_声道.TabStop = false;
             this.comboBoxEx_声道.Text = "立体声";
             // 
             // comboItem_立体声
@@ -317,6 +321,7 @@
             this.comboBoxEx_采样频率.Size = new System.Drawing.Size(140, 24);
             this.comboBoxEx_采样频率.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样频率.TabIndex = 6;
+            this.comboBoxEx_采样频率.TabStop = false;
             this.comboBoxEx_采样频率.Text = "采样频率";
             // 
             // comboItem_采样频率
@@ -325,7 +330,7 @@
             // 
             // labelX_输出音频流
             // 
-            this.labelX_输出音频流.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_输出音频流.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -340,7 +345,7 @@
             // 
             // labelX_声道
             // 
-            this.labelX_声道.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_声道.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -355,7 +360,7 @@
             // 
             // labelX_采样位
             // 
-            this.labelX_采样位.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_采样位.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -370,7 +375,7 @@
             // 
             // labelX_采样频率
             // 
-            this.labelX_采样频率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_采样频率.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -385,7 +390,7 @@
             // 
             // labelX_工程文件路径
             // 
-            this.labelX_工程文件路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_工程文件路径.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -400,7 +405,7 @@
             // 
             // labelX_工程文件名
             // 
-            this.labelX_工程文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_工程文件名.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -428,7 +433,8 @@
             this.textBoxX_ProjFilePath.Name = "textBoxX_ProjFilePath";
             this.textBoxX_ProjFilePath.PreventEnterBeep = true;
             this.textBoxX_ProjFilePath.Size = new System.Drawing.Size(405, 23);
-            this.textBoxX_ProjFilePath.TabIndex = 8;
+            this.textBoxX_ProjFilePath.TabIndex = 0;
+            this.textBoxX_ProjFilePath.TabStop = false;
             this.textBoxX_ProjFilePath.Text = "C:\\Users\\Administrator";
             // 
             // buttonX_CreateProjScan
@@ -440,8 +446,7 @@
             this.buttonX_CreateProjScan.Name = "buttonX_CreateProjScan";
             this.buttonX_CreateProjScan.Size = new System.Drawing.Size(75, 23);
             this.buttonX_CreateProjScan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_CreateProjScan.TabIndex = 6;
-            this.buttonX_CreateProjScan.TabStop = false;
+            this.buttonX_CreateProjScan.TabIndex = 0;
             this.buttonX_CreateProjScan.Text = "浏览";
             this.buttonX_CreateProjScan.Click += new System.EventHandler(this.buttonX1_Click);
             // 
@@ -459,7 +464,7 @@
             this.textBoxX_ProjFileName.Name = "textBoxX_ProjFileName";
             this.textBoxX_ProjFileName.PreventEnterBeep = true;
             this.textBoxX_ProjFileName.Size = new System.Drawing.Size(486, 23);
-            this.textBoxX_ProjFileName.TabIndex = 8;
+            this.textBoxX_ProjFileName.TabIndex = 1;
             this.textBoxX_ProjFileName.Text = "Untitled Project";
             // 
             // CreateProjectSetForm
