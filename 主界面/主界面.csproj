@@ -93,6 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="窗体\ProjectSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="窗体\ProjectSetForm.Designer.cs">
+      <DependentUpon>ProjectSetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="窗体\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,16 +125,19 @@
     <Compile Include="窗体\PreferenceSetForm.Designer.cs">
       <DependentUpon>PreferenceSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="窗体\ProjectSetForm.cs">
+    <Compile Include="窗体\CreateProjectSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="窗体\ProjectSetForm.Designer.cs">
-      <DependentUpon>ProjectSetForm.cs</DependentUpon>
+    <Compile Include="窗体\CreateProjectSetForm.Designer.cs">
+      <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="窗体\ProjectSetForm.resx">
+      <DependentUpon>ProjectSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="窗体\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -136,8 +145,8 @@
     <EmbeddedResource Include="窗体\PreferenceSetForm.resx">
       <DependentUpon>PreferenceSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="窗体\ProjectSetForm.resx">
-      <DependentUpon>ProjectSetForm.cs</DependentUpon>
+    <EmbeddedResource Include="窗体\CreateProjectSetForm.resx">
+      <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
