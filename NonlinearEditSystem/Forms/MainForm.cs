@@ -201,7 +201,14 @@ namespace 主界面
 
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm(); createProjectSetForm.ShowDialog();
+            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm();
+            createProjectSetForm.ShowDialog();
+        }
+
+        private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CaptureForm captureForm = new CaptureForm();
+            captureForm.ShowDialog();
         }
     }
 }

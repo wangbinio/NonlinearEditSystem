@@ -120,9 +120,9 @@
             this.tabControlPanel_ProjDefaultSet.Name = "tabControlPanel_ProjDefaultSet";
             this.tabControlPanel_ProjDefaultSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_ProjDefaultSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_ProjDefaultSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_ProjDefaultSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_ProjDefaultSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_ProjDefaultSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_ProjDefaultSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_ProjDefaultSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_ProjDefaultSet.Style.GradientAngle = 90;
@@ -145,7 +145,7 @@
             this.comboBoxEx_自动保存时间间隔.Name = "comboBoxEx_自动保存时间间隔";
             this.comboBoxEx_自动保存时间间隔.Size = new System.Drawing.Size(165, 24);
             this.comboBoxEx_自动保存时间间隔.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_自动保存时间间隔.TabIndex = 5;
+            this.comboBoxEx_自动保存时间间隔.TabIndex = 11;
             this.comboBoxEx_自动保存时间间隔.Text = "10分钟";
             // 
             // comboItem_10分钟
@@ -174,7 +174,7 @@
             this.comboBoxEx_上下变换模式.Name = "comboBoxEx_上下变换模式";
             this.comboBoxEx_上下变换模式.Size = new System.Drawing.Size(165, 24);
             this.comboBoxEx_上下变换模式.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_上下变换模式.TabIndex = 5;
+            this.comboBoxEx_上下变换模式.TabIndex = 10;
             this.comboBoxEx_上下变换模式.Text = "信封模式";
             // 
             // comboItem_信封模式
@@ -195,7 +195,7 @@
             this.comboBoxEx_默认音频转场.Name = "comboBoxEx_默认音频转场";
             this.comboBoxEx_默认音频转场.Size = new System.Drawing.Size(165, 24);
             this.comboBoxEx_默认音频转场.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_默认音频转场.TabIndex = 5;
+            this.comboBoxEx_默认音频转场.TabIndex = 8;
             this.comboBoxEx_默认音频转场.Text = "线性交叉式淡入淡出";
             // 
             // comboItem_线性交叉式淡入淡出
@@ -216,7 +216,7 @@
             this.comboBoxEx_默认视频转场.Name = "comboBoxEx_默认视频转场";
             this.comboBoxEx_默认视频转场.Size = new System.Drawing.Size(107, 24);
             this.comboBoxEx_默认视频转场.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_默认视频转场.TabIndex = 5;
+            this.comboBoxEx_默认视频转场.TabIndex = 6;
             this.comboBoxEx_默认视频转场.Text = "淡入淡出";
             // 
             // comboItem_淡入淡出
@@ -261,7 +261,7 @@
             this.intInput_默认转场长度.Name = "intInput_默认转场长度";
             this.intInput_默认转场长度.ShowUpDown = true;
             this.intInput_默认转场长度.Size = new System.Drawing.Size(166, 23);
-            this.intInput_默认转场长度.TabIndex = 3;
+            this.intInput_默认转场长度.TabIndex = 9;
             this.intInput_默认转场长度.Value = 1;
             // 
             // intInput_最大撤销步数
@@ -281,7 +281,7 @@
             this.intInput_最大撤销步数.Name = "intInput_最大撤销步数";
             this.intInput_最大撤销步数.ShowUpDown = true;
             this.intInput_最大撤销步数.Size = new System.Drawing.Size(166, 23);
-            this.intInput_最大撤销步数.TabIndex = 3;
+            this.intInput_最大撤销步数.TabIndex = 5;
             this.intInput_最大撤销步数.Value = 10;
             // 
             // intInput_单帧图像默认长度
@@ -319,7 +319,7 @@
             this.intInput_流程图默认长度.Name = "intInput_流程图默认长度";
             this.intInput_流程图默认长度.ShowUpDown = true;
             this.intInput_流程图默认长度.Size = new System.Drawing.Size(166, 23);
-            this.intInput_流程图默认长度.TabIndex = 3;
+            this.intInput_流程图默认长度.TabIndex = 2;
             this.intInput_流程图默认长度.Value = 4;
             // 
             // intInput_初始音频轨道数
@@ -339,7 +339,7 @@
             this.intInput_初始音频轨道数.Name = "intInput_初始音频轨道数";
             this.intInput_初始音频轨道数.ShowUpDown = true;
             this.intInput_初始音频轨道数.Size = new System.Drawing.Size(166, 23);
-            this.intInput_初始音频轨道数.TabIndex = 3;
+            this.intInput_初始音频轨道数.TabIndex = 1;
             this.intInput_初始音频轨道数.Value = 2;
             // 
             // intInput_初始视频轨道数
@@ -359,7 +359,7 @@
             this.intInput_初始视频轨道数.Name = "intInput_初始视频轨道数";
             this.intInput_初始视频轨道数.ShowUpDown = true;
             this.intInput_初始视频轨道数.Size = new System.Drawing.Size(166, 23);
-            this.intInput_初始视频轨道数.TabIndex = 3;
+            this.intInput_初始视频轨道数.TabIndex = 0;
             this.intInput_初始视频轨道数.Value = 2;
             // 
             // buttonX_StyleSet
@@ -371,12 +371,12 @@
             this.buttonX_StyleSet.Name = "buttonX_StyleSet";
             this.buttonX_StyleSet.Size = new System.Drawing.Size(51, 26);
             this.buttonX_StyleSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_StyleSet.TabIndex = 2;
+            this.buttonX_StyleSet.TabIndex = 7;
             this.buttonX_StyleSet.Text = "样式";
             // 
             // labelX_自动保存时间间隔
             // 
-            this.labelX_自动保存时间间隔.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_自动保存时间间隔.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -391,7 +391,7 @@
             // 
             // labelX_上下变换模式
             // 
-            this.labelX_上下变换模式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_上下变换模式.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -406,7 +406,7 @@
             // 
             // labelX_默认滚屏速度
             // 
-            this.labelX_默认滚屏速度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_默认滚屏速度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -421,7 +421,7 @@
             // 
             // labelX_默认转场长度
             // 
-            this.labelX_默认转场长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_默认转场长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -436,7 +436,7 @@
             // 
             // labelX_单帧图像默认长度
             // 
-            this.labelX_单帧图像默认长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_单帧图像默认长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -451,7 +451,7 @@
             // 
             // labelX_默认音频转场
             // 
-            this.labelX_默认音频转场.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_默认音频转场.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -466,7 +466,7 @@
             // 
             // labelX_流程图默认长度
             // 
-            this.labelX_流程图默认长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_流程图默认长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -481,7 +481,7 @@
             // 
             // labelX_默认视频转场
             // 
-            this.labelX_默认视频转场.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_默认视频转场.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -496,7 +496,7 @@
             // 
             // labelX_初始音频轨道数
             // 
-            this.labelX_初始音频轨道数.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_初始音频轨道数.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -511,7 +511,7 @@
             // 
             // labelX_撤销步数
             // 
-            this.labelX_撤销步数.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_撤销步数.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -526,7 +526,7 @@
             // 
             // labelX_初始视频轨道数
             // 
-            this.labelX_初始视频轨道数.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_初始视频轨道数.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -547,7 +547,7 @@
             // 
             // tabControl_PreferSet
             // 
-            this.tabControl_PreferSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControl_PreferSet.BackColor = System.Drawing.Color.White;
             this.tabControl_PreferSet.CanReorderTabs = false;
             this.tabControl_PreferSet.Controls.Add(this.tabControlPanel_ProjDefaultSet);
             this.tabControl_PreferSet.Controls.Add(this.tabControlPanel_TemplateLibSet);
@@ -586,9 +586,9 @@
             this.tabControlPanel_TemplateLibSet.Name = "tabControlPanel_TemplateLibSet";
             this.tabControlPanel_TemplateLibSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_TemplateLibSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_TemplateLibSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_TemplateLibSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_TemplateLibSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_TemplateLibSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_TemplateLibSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_TemplateLibSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_TemplateLibSet.Style.GradientAngle = 90;
@@ -610,9 +610,9 @@
             this.tabControlPanel_VideoDefalutSet.Name = "tabControlPanel_VideoDefalutSet";
             this.tabControlPanel_VideoDefalutSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_VideoDefalutSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_VideoDefalutSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_VideoDefalutSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_VideoDefalutSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_VideoDefalutSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_VideoDefalutSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_VideoDefalutSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_VideoDefalutSet.Style.GradientAngle = 90;
@@ -634,9 +634,9 @@
             this.tabControlPanel_AudioDefalutSet.Name = "tabControlPanel_AudioDefalutSet";
             this.tabControlPanel_AudioDefalutSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_AudioDefalutSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_AudioDefalutSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_AudioDefalutSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_AudioDefalutSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_AudioDefalutSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_AudioDefalutSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_AudioDefalutSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_AudioDefalutSet.Style.GradientAngle = 90;
@@ -658,9 +658,9 @@
             this.tabControlPanel_CancelSet.Name = "tabControlPanel_CancelSet";
             this.tabControlPanel_CancelSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_CancelSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_CancelSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_CancelSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_CancelSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_CancelSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_CancelSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_CancelSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_CancelSet.Style.GradientAngle = 90;
@@ -682,9 +682,9 @@
             this.tabControlPanel_GridSet.Name = "tabControlPanel_GridSet";
             this.tabControlPanel_GridSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_GridSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_GridSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_GridSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_GridSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_GridSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_GridSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_GridSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_GridSet.Style.GradientAngle = 90;
@@ -706,9 +706,9 @@
             this.tabControlPanel_LUTSet.Name = "tabControlPanel_LUTSet";
             this.tabControlPanel_LUTSet.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_LUTSet.Size = new System.Drawing.Size(784, 404);
-            this.tabControlPanel_LUTSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_LUTSet.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel_LUTSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_LUTSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_LUTSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.tabControlPanel_LUTSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_LUTSet.Style.GradientAngle = 90;
