@@ -49,9 +49,11 @@
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
             this.PanelEx_Sequence = new DevComponents.DotNetBar.PanelEx();
+            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
             this.tabItem_Sequence = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Segment = new DevComponents.DotNetBar.TabControlPanel();
             this.panelEx_Segment = new DevComponents.DotNetBar.PanelEx();
+            this.timeLineControl_Segment = new TimeLineControl.TimeLineControl();
             this.tabItem_Segment = new DevComponents.DotNetBar.TabItem(this.components);
             this.工程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +111,7 @@
             this.panelEx_TrackContent = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment1 = new DevComponents.DotNetBar.PanelEx();
+            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
             this.panelEx_VideoTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.VideoFile1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment1 = new DevComponents.DotNetBar.PanelEx();
@@ -152,9 +155,6 @@
             this.AudioTrackB1BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
             this.tabItem_TimeLine = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer_Segment = new System.Windows.Forms.Timer(this.components);
-            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
-            this.timeLineControl_Segment = new TimeLineControl.TimeLineControl();
-            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).BeginInit();
             this.tabControl_Project.SuspendLayout();
             this.tabControlPanel_Project.SuspendLayout();
@@ -425,6 +425,24 @@
             this.PanelEx_Sequence.TabIndex = 2;
             this.PanelEx_Sequence.Text = "序列监视器面板";
             // 
+            // timeLineControl_Sequence
+            // 
+            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 344);
+            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
+            this.timeLineControl_Sequence.NBigTicksLength = 10;
+            this.timeLineControl_Sequence.NBotmPadding = 3;
+            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
+            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
+            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
+            this.timeLineControl_Sequence.Size = new System.Drawing.Size(561, 30);
+            this.timeLineControl_Sequence.TabIndex = 6;
+            this.timeLineControl_Sequence.ThumbHPos = 333;
+            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
+            // 
             // tabItem_Sequence
             // 
             this.tabItem_Sequence.AttachedControl = this.tabControlPanel_Seq;
@@ -468,6 +486,24 @@
             this.panelEx_Segment.TabIndex = 6;
             this.panelEx_Segment.Text = "片段监视器面板";
             // 
+            // timeLineControl_Segment
+            // 
+            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Segment.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.timeLineControl_Segment.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Segment.Location = new System.Drawing.Point(1, 344);
+            this.timeLineControl_Segment.Name = "timeLineControl_Segment";
+            this.timeLineControl_Segment.NBigTicksLength = 10;
+            this.timeLineControl_Segment.NBotmPadding = 3;
+            this.timeLineControl_Segment.NDistanceOfTicks = 15;
+            this.timeLineControl_Segment.NNeedShowSeconds = 3600;
+            this.timeLineControl_Segment.NNumOfBigTicks = 6;
+            this.timeLineControl_Segment.Size = new System.Drawing.Size(561, 30);
+            this.timeLineControl_Segment.TabIndex = 10;
+            this.timeLineControl_Segment.ThumbHPos = 333;
+            this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
+            // 
             // tabItem_Segment
             // 
             this.tabItem_Segment.AttachedControl = this.tabControlPanel_Segment;
@@ -509,6 +545,7 @@
             this.新建ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.新建ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.新建ToolStripMenuItem.Text = "新建(&N)";
+            this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 打开ToolStripMenuItem
             // 
@@ -950,6 +987,25 @@
             this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
             this.panelEx_AudioTrackConment1.TabIndex = 0;
             this.panelEx_AudioTrackConment1.Text = "音频轨道内容1";
+            // 
+            // timeLineControl_MainTL
+            // 
+            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_MainTL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
+            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
+            this.timeLineControl_MainTL.NBigTicksLength = 10;
+            this.timeLineControl_MainTL.NBotmPadding = 3;
+            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
+            this.timeLineControl_MainTL.NNeedShowSeconds = 5400;
+            this.timeLineControl_MainTL.NNumOfBigTicks = 9;
+            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1086, 34);
+            this.timeLineControl_MainTL.TabIndex = 11;
+            this.timeLineControl_MainTL.ThumbHPos = 222;
+            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
+            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl1_Click);
             // 
             // panelEx_VideoTrackConment2
             // 
@@ -1484,61 +1540,6 @@
             this.timer_Segment.Interval = 1000;
             this.timer_Segment.Tick += new System.EventHandler(this.timer_Segment_Tick);
             // 
-            // timeLineControl_Sequence
-            // 
-            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 344);
-            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
-            this.timeLineControl_Sequence.NBigTicksLength = 10;
-            this.timeLineControl_Sequence.NBotmPadding = 3;
-            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
-            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
-            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
-            this.timeLineControl_Sequence.Size = new System.Drawing.Size(561, 30);
-            this.timeLineControl_Sequence.TabIndex = 6;
-            this.timeLineControl_Sequence.ThumbHPos = 333;
-            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
-            // 
-            // timeLineControl_Segment
-            // 
-            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_Segment.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.timeLineControl_Segment.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_Segment.Location = new System.Drawing.Point(1, 344);
-            this.timeLineControl_Segment.Name = "timeLineControl_Segment";
-            this.timeLineControl_Segment.NBigTicksLength = 10;
-            this.timeLineControl_Segment.NBotmPadding = 3;
-            this.timeLineControl_Segment.NDistanceOfTicks = 15;
-            this.timeLineControl_Segment.NNeedShowSeconds = 3600;
-            this.timeLineControl_Segment.NNumOfBigTicks = 6;
-            this.timeLineControl_Segment.Size = new System.Drawing.Size(561, 30);
-            this.timeLineControl_Segment.TabIndex = 10;
-            this.timeLineControl_Segment.ThumbHPos = 333;
-            this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
-            // 
-            // timeLineControl_MainTL
-            // 
-            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_MainTL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
-            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
-            this.timeLineControl_MainTL.NBigTicksLength = 10;
-            this.timeLineControl_MainTL.NBotmPadding = 3;
-            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
-            this.timeLineControl_MainTL.NNeedShowSeconds = 5400;
-            this.timeLineControl_MainTL.NNumOfBigTicks = 9;
-            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1086, 34);
-            this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 222;
-            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
-            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1555,6 +1556,7 @@
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "时间线桌面";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).EndInit();
             this.tabControl_Project.ResumeLayout(false);

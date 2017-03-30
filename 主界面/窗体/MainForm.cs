@@ -34,7 +34,7 @@ namespace 主界面
             var pluginPath = Environment.CurrentDirectory + "\\vlc\\plugins\\";
             _vlcPlayer = new VlcPlayer(pluginPath);
             var renderWnd = panelEx_Segment.Handle;
-            _vlcPlayer.SetRenderWindow((int) renderWnd);
+            _vlcPlayer.SetRenderWindow((int)renderWnd);
 
 
         }
@@ -131,7 +131,7 @@ namespace 主界面
 
             _vlcPlayer.PlayFile(sFilePath);
 
-            timeLineControl_Segment.NNeedShowSeconds = (int) _vlcPlayer.Duration();
+            timeLineControl_Segment.NNeedShowSeconds = (int)_vlcPlayer.Duration();
 
             //Segment_TrackBar.SetRange(0, (int)vlc_player.Duration());
 
@@ -172,29 +172,36 @@ namespace 主界面
 
         private void TrackName_BtnMouseHover(object sender, EventArgs e)
         {
-            ((ButtonItem) sender).Icon = Resources.lock_closed_16px;
+            ((ButtonItem)sender).Icon = Resources.lock_closed_16px;
         }
 
         private void TrackName_BtnMouseLeave(object sender, EventArgs e)
         {
-            ((ButtonItem) sender).Icon = Resources.lock_open_16px;
+            ((ButtonItem)sender).Icon = Resources.lock_open_16px;
         }
 
         private void timeLineControl1_Click(object sender, EventArgs e)
         {
-            var mouseEventArgs = (MouseEventArgs) e;
+            var mouseEventArgs = (MouseEventArgs)e;
             label_FileInfo.Text = $@"X:{mouseEventArgs.X}, Y:{mouseEventArgs.Y}";
             labelItem_CurrentTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
         }
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new PreferenceSetForm()).Show();
+            PreferenceSetForm preferenceSetForm = new PreferenceSetForm();
+            preferenceSetForm.ShowDialog();
         }
 
         private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new ProjectSetForm()).Show();
+            ProjectSetForm projectSetForm = new ProjectSetForm();
+            projectSetForm.ShowDialog();
+        }
+
+        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm(); createProjectSetForm.ShowDialog();
         }
     }
 }

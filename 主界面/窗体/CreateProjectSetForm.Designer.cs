@@ -1,6 +1,6 @@
 ﻿namespace 主界面.窗体
 {
-    partial class ProjectSetForm
+    partial class CreateProjectSetForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,8 +38,8 @@
             this.labelX_解交织 = new DevComponents.DotNetBar.LabelX();
             this.labelX_扫描模式 = new DevComponents.DotNetBar.LabelX();
             this.labelX_帧率 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX_PreferSetCancel = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX_PreferSetOK = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CreateProjCancel = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX_CreateProjOK = new DevComponents.DotNetBar.ButtonX();
             this.groupBox_音频设置 = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_输出音频流 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem_输出音频流 = new DevComponents.Editors.ComboItem();
@@ -53,6 +53,11 @@
             this.labelX_声道 = new DevComponents.DotNetBar.LabelX();
             this.labelX_采样位 = new DevComponents.DotNetBar.LabelX();
             this.labelX_采样频率 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_工程文件路径 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_工程文件名 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX_ProjFilePath = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.buttonX_CreateProjScan = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX_ProjFileName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupBox_视频设置.SuspendLayout();
             this.groupBox_音频设置.SuspendLayout();
             this.SuspendLayout();
@@ -185,31 +190,32 @@
             this.labelX_帧率.TabIndex = 0;
             this.labelX_帧率.Text = "帧率";
             // 
-            // buttonX_PreferSetCancel
+            // buttonX_CreateProjCancel
             // 
-            this.buttonX_PreferSetCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_PreferSetCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_PreferSetCancel.Location = new System.Drawing.Point(498, 257);
-            this.buttonX_PreferSetCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX_PreferSetCancel.Name = "buttonX_PreferSetCancel";
-            this.buttonX_PreferSetCancel.Size = new System.Drawing.Size(82, 28);
-            this.buttonX_PreferSetCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_PreferSetCancel.TabIndex = 6;
-            this.buttonX_PreferSetCancel.TabStop = false;
-            this.buttonX_PreferSetCancel.Text = "取消";
+            this.buttonX_CreateProjCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CreateProjCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CreateProjCancel.Location = new System.Drawing.Point(498, 317);
+            this.buttonX_CreateProjCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonX_CreateProjCancel.Name = "buttonX_CreateProjCancel";
+            this.buttonX_CreateProjCancel.Size = new System.Drawing.Size(82, 28);
+            this.buttonX_CreateProjCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CreateProjCancel.TabIndex = 6;
+            this.buttonX_CreateProjCancel.TabStop = false;
+            this.buttonX_CreateProjCancel.Text = "取消";
+            this.buttonX_CreateProjCancel.Click += new System.EventHandler(this.buttonX_PreferSetCancel_Click);
             // 
-            // buttonX_PreferSetOK
+            // buttonX_CreateProjOK
             // 
-            this.buttonX_PreferSetOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX_PreferSetOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_PreferSetOK.Location = new System.Drawing.Point(410, 257);
-            this.buttonX_PreferSetOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX_PreferSetOK.Name = "buttonX_PreferSetOK";
-            this.buttonX_PreferSetOK.Size = new System.Drawing.Size(82, 28);
-            this.buttonX_PreferSetOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX_PreferSetOK.TabIndex = 7;
-            this.buttonX_PreferSetOK.TabStop = false;
-            this.buttonX_PreferSetOK.Text = "确认";
+            this.buttonX_CreateProjOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CreateProjOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CreateProjOK.Location = new System.Drawing.Point(410, 317);
+            this.buttonX_CreateProjOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonX_CreateProjOK.Name = "buttonX_CreateProjOK";
+            this.buttonX_CreateProjOK.Size = new System.Drawing.Size(82, 28);
+            this.buttonX_CreateProjOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CreateProjOK.TabIndex = 7;
+            this.buttonX_CreateProjOK.TabStop = false;
+            this.buttonX_CreateProjOK.Text = "确认";
             // 
             // groupBox_音频设置
             // 
@@ -377,14 +383,98 @@
             this.labelX_采样频率.TabIndex = 0;
             this.labelX_采样频率.Text = "采样频率";
             // 
-            // ProjectSetForm
+            // labelX_工程文件路径
+            // 
+            this.labelX_工程文件路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_工程文件路径.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_工程文件路径.ForeColor = System.Drawing.Color.Black;
+            this.labelX_工程文件路径.Location = new System.Drawing.Point(12, 249);
+            this.labelX_工程文件路径.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_工程文件路径.Name = "labelX_工程文件路径";
+            this.labelX_工程文件路径.Size = new System.Drawing.Size(94, 23);
+            this.labelX_工程文件路径.TabIndex = 0;
+            this.labelX_工程文件路径.Text = "工程文件路径";
+            // 
+            // labelX_工程文件名
+            // 
+            this.labelX_工程文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_工程文件名.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_工程文件名.ForeColor = System.Drawing.Color.Black;
+            this.labelX_工程文件名.Location = new System.Drawing.Point(12, 282);
+            this.labelX_工程文件名.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_工程文件名.Name = "labelX_工程文件名";
+            this.labelX_工程文件名.Size = new System.Drawing.Size(76, 15);
+            this.labelX_工程文件名.TabIndex = 0;
+            this.labelX_工程文件名.Text = "工程文件名";
+            // 
+            // textBoxX_ProjFilePath
+            // 
+            this.textBoxX_ProjFilePath.AutoSelectAll = true;
+            this.textBoxX_ProjFilePath.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.textBoxX_ProjFilePath.Border.Class = "TextBoxBorder";
+            this.textBoxX_ProjFilePath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX_ProjFilePath.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX_ProjFilePath.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_ProjFilePath.Location = new System.Drawing.Point(94, 249);
+            this.textBoxX_ProjFilePath.Name = "textBoxX_ProjFilePath";
+            this.textBoxX_ProjFilePath.PreventEnterBeep = true;
+            this.textBoxX_ProjFilePath.Size = new System.Drawing.Size(405, 23);
+            this.textBoxX_ProjFilePath.TabIndex = 8;
+            this.textBoxX_ProjFilePath.Text = "C:\\Users\\Administrator";
+            // 
+            // buttonX_CreateProjScan
+            // 
+            this.buttonX_CreateProjScan.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_CreateProjScan.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CreateProjScan.Location = new System.Drawing.Point(505, 249);
+            this.buttonX_CreateProjScan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonX_CreateProjScan.Name = "buttonX_CreateProjScan";
+            this.buttonX_CreateProjScan.Size = new System.Drawing.Size(75, 23);
+            this.buttonX_CreateProjScan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_CreateProjScan.TabIndex = 6;
+            this.buttonX_CreateProjScan.TabStop = false;
+            this.buttonX_CreateProjScan.Text = "浏览";
+            this.buttonX_CreateProjScan.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
+            // textBoxX_ProjFileName
+            // 
+            this.textBoxX_ProjFileName.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.textBoxX_ProjFileName.Border.Class = "TextBoxBorder";
+            this.textBoxX_ProjFileName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX_ProjFileName.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX_ProjFileName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_ProjFileName.Location = new System.Drawing.Point(94, 279);
+            this.textBoxX_ProjFileName.Name = "textBoxX_ProjFileName";
+            this.textBoxX_ProjFileName.PreventEnterBeep = true;
+            this.textBoxX_ProjFileName.Size = new System.Drawing.Size(486, 23);
+            this.textBoxX_ProjFileName.TabIndex = 8;
+            this.textBoxX_ProjFileName.Text = "Untitled Project";
+            // 
+            // CreateProjectSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 298);
-            this.Controls.Add(this.buttonX_PreferSetCancel);
-            this.Controls.Add(this.buttonX_PreferSetOK);
+            this.ClientSize = new System.Drawing.Size(592, 358);
+            this.Controls.Add(this.textBoxX_ProjFileName);
+            this.Controls.Add(this.textBoxX_ProjFilePath);
+            this.Controls.Add(this.buttonX_CreateProjScan);
+            this.Controls.Add(this.buttonX_CreateProjCancel);
+            this.Controls.Add(this.buttonX_CreateProjOK);
             this.Controls.Add(this.groupBox_音频设置);
+            this.Controls.Add(this.labelX_工程文件名);
+            this.Controls.Add(this.labelX_工程文件路径);
             this.Controls.Add(this.groupBox_视频设置);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -392,11 +482,11 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProjectSetForm";
+            this.Name = "CreateProjectSetForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "工程设置";
+            this.Text = "新建工程";
             this.groupBox_视频设置.ResumeLayout(false);
             this.groupBox_音频设置.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -411,8 +501,8 @@
         private DevComponents.Editors.ComboItem comboItem_上场优先;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_帧率;
         private DevComponents.Editors.ComboItem comboItem_25fps;
-        private DevComponents.DotNetBar.ButtonX buttonX_PreferSetCancel;
-        private DevComponents.DotNetBar.ButtonX buttonX_PreferSetOK;
+        private DevComponents.DotNetBar.ButtonX buttonX_CreateProjCancel;
+        private DevComponents.DotNetBar.ButtonX buttonX_CreateProjOK;
         private DevComponents.DotNetBar.LabelX labelX_采样频率;
         private DevComponents.DotNetBar.LabelX labelX_采样位;
         private System.Windows.Forms.GroupBox groupBox_音频设置;
@@ -429,5 +519,10 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_解交织;
         private DevComponents.Editors.ComboItem comboItem_解交织;
         private DevComponents.DotNetBar.LabelX labelX_解交织;
+        private DevComponents.DotNetBar.LabelX labelX_工程文件路径;
+        private DevComponents.DotNetBar.LabelX labelX_工程文件名;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX_ProjFilePath;
+        private DevComponents.DotNetBar.ButtonX buttonX_CreateProjScan;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX_ProjFileName;
     }
 }
