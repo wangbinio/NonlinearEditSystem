@@ -29,39 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl1 = new DevComponents.DotNetBar.TabControl();
+            this.tabControl_DeviceInputSet = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Property = new DevComponents.DotNetBar.TabControlPanel();
             this.groupBox_OutViewMode = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_OutModeChannel = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_OutViewDevice = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem6 = new DevComponents.Editors.ComboItem();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_视图模式1 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_AudioInput = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_AudioSignal = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem5 = new DevComponents.Editors.ComboItem();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_音频信号 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_VideoInput = new System.Windows.Forms.GroupBox();
             this.textBoxX_ConnectStatus = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_连接状态 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_视频信号 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx_VideoSignal = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.groupBox_ResolutionSet = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_PicRatio = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_ColorDepth = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_ScanMode = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_Resolution = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_上场优先 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_帧率 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem_25fps = new DevComponents.Editors.ComboItem();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_图像横纵比 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_色彩深度 = new DevComponents.DotNetBar.LabelX();
             this.labelX_扫描模式 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_分辨率 = new DevComponents.DotNetBar.LabelX();
             this.labelX_帧率 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx_InputFormat = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem_1080 = new DevComponents.Editors.ComboItem();
@@ -73,8 +65,8 @@
             this.buttonX_Cancel = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_OK = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_Default = new DevComponents.DotNetBar.ButtonX();
-            ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl_DeviceInputSet)).BeginInit();
+            this.tabControl_DeviceInputSet.SuspendLayout();
             this.tabControlPanel_Property.SuspendLayout();
             this.groupBox_OutViewMode.SuspendLayout();
             this.groupBox_AudioInput.SuspendLayout();
@@ -82,27 +74,26 @@
             this.groupBox_ResolutionSet.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControl_DeviceInputSet
             // 
-            this.tabControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControl1.CanReorderTabs = true;
-            this.tabControl1.Controls.Add(this.tabControlPanel_Property);
-            this.tabControl1.Controls.Add(this.tabControlPanel_DeviceSet);
-            this.tabControl1.Controls.Add(this.tabControlPanel_SyncLock);
-            this.tabControl1.ForeColor = System.Drawing.Color.Black;
-            this.tabControl1.Location = new System.Drawing.Point(12, 13);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedTabFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(554, 449);
-            this.tabControl1.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
-            this.tabControl1.Tabs.Add(this.tabItem_Property);
-            this.tabControl1.Tabs.Add(this.tabItem_SyncLock);
-            this.tabControl1.Tabs.Add(this.tabItem_DeviceSet);
-            this.tabControl1.Text = "tabControl1";
+            this.tabControl_DeviceInputSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControl_DeviceInputSet.CanReorderTabs = true;
+            this.tabControl_DeviceInputSet.Controls.Add(this.tabControlPanel_Property);
+            this.tabControl_DeviceInputSet.Controls.Add(this.tabControlPanel_DeviceSet);
+            this.tabControl_DeviceInputSet.Controls.Add(this.tabControlPanel_SyncLock);
+            this.tabControl_DeviceInputSet.ForeColor = System.Drawing.Color.Black;
+            this.tabControl_DeviceInputSet.Location = new System.Drawing.Point(12, 13);
+            this.tabControl_DeviceInputSet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabControl_DeviceInputSet.Name = "tabControl_DeviceInputSet";
+            this.tabControl_DeviceInputSet.SelectedTabFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.tabControl_DeviceInputSet.SelectedTabIndex = 0;
+            this.tabControl_DeviceInputSet.Size = new System.Drawing.Size(554, 449);
+            this.tabControl_DeviceInputSet.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
+            this.tabControl_DeviceInputSet.TabIndex = 0;
+            this.tabControl_DeviceInputSet.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
+            this.tabControl_DeviceInputSet.Tabs.Add(this.tabItem_Property);
+            this.tabControl_DeviceInputSet.Tabs.Add(this.tabItem_SyncLock);
+            this.tabControl_DeviceInputSet.Tabs.Add(this.tabItem_DeviceSet);
             // 
             // tabControlPanel_Property
             // 
@@ -130,7 +121,7 @@
             // 
             this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutModeChannel);
             this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutViewDevice);
-            this.groupBox_OutViewMode.Controls.Add(this.labelX7);
+            this.groupBox_OutViewMode.Controls.Add(this.labelX_视图模式1);
             this.groupBox_OutViewMode.Location = new System.Drawing.Point(277, 242);
             this.groupBox_OutViewMode.Name = "groupBox_OutViewMode";
             this.groupBox_OutViewMode.Size = new System.Drawing.Size(264, 109);
@@ -145,8 +136,6 @@
             this.comboBoxEx_OutModeChannel.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_OutModeChannel.FormattingEnabled = true;
             this.comboBoxEx_OutModeChannel.ItemHeight = 18;
-            this.comboBoxEx_OutModeChannel.Items.AddRange(new object[] {
-            this.comboItem7});
             this.comboBoxEx_OutModeChannel.Location = new System.Drawing.Point(102, 69);
             this.comboBoxEx_OutModeChannel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_OutModeChannel.Name = "comboBoxEx_OutModeChannel";
@@ -156,10 +145,6 @@
             this.comboBoxEx_OutModeChannel.TabStop = false;
             this.comboBoxEx_OutModeChannel.Text = "通道A";
             // 
-            // comboItem7
-            // 
-            this.comboItem7.Text = "25.00 fps";
-            // 
             // comboBoxEx_OutViewDevice
             // 
             this.comboBoxEx_OutViewDevice.DisplayMember = "Text";
@@ -167,8 +152,6 @@
             this.comboBoxEx_OutViewDevice.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_OutViewDevice.FormattingEnabled = true;
             this.comboBoxEx_OutViewDevice.ItemHeight = 18;
-            this.comboBoxEx_OutViewDevice.Items.AddRange(new object[] {
-            this.comboItem6});
             this.comboBoxEx_OutViewDevice.Location = new System.Drawing.Point(102, 27);
             this.comboBoxEx_OutViewDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_OutViewDevice.Name = "comboBoxEx_OutViewDevice";
@@ -178,29 +161,25 @@
             this.comboBoxEx_OutViewDevice.TabStop = false;
             this.comboBoxEx_OutViewDevice.Text = "DecLink Studio 4K";
             // 
-            // comboItem6
+            // labelX_视图模式1
             // 
-            this.comboItem6.Text = "25.00 fps";
-            // 
-            // labelX7
-            // 
-            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_视图模式1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(21, 49);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 8;
-            this.labelX7.Text = "视图1";
+            this.labelX_视图模式1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_视图模式1.ForeColor = System.Drawing.Color.Black;
+            this.labelX_视图模式1.Location = new System.Drawing.Point(21, 49);
+            this.labelX_视图模式1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_视图模式1.Name = "labelX_视图模式1";
+            this.labelX_视图模式1.Size = new System.Drawing.Size(75, 23);
+            this.labelX_视图模式1.TabIndex = 8;
+            this.labelX_视图模式1.Text = "视图1";
             // 
             // groupBox_AudioInput
             // 
             this.groupBox_AudioInput.Controls.Add(this.comboBoxEx_AudioSignal);
-            this.groupBox_AudioInput.Controls.Add(this.labelX6);
+            this.groupBox_AudioInput.Controls.Add(this.labelX_音频信号);
             this.groupBox_AudioInput.Location = new System.Drawing.Point(277, 144);
             this.groupBox_AudioInput.Name = "groupBox_AudioInput";
             this.groupBox_AudioInput.Size = new System.Drawing.Size(264, 73);
@@ -215,8 +194,6 @@
             this.comboBoxEx_AudioSignal.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_AudioSignal.FormattingEnabled = true;
             this.comboBoxEx_AudioSignal.ItemHeight = 18;
-            this.comboBoxEx_AudioSignal.Items.AddRange(new object[] {
-            this.comboItem5});
             this.comboBoxEx_AudioSignal.Location = new System.Drawing.Point(102, 27);
             this.comboBoxEx_AudioSignal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_AudioSignal.Name = "comboBoxEx_AudioSignal";
@@ -226,30 +203,26 @@
             this.comboBoxEx_AudioSignal.TabStop = false;
             this.comboBoxEx_AudioSignal.Text = "嵌入音频";
             // 
-            // comboItem5
+            // labelX_音频信号
             // 
-            this.comboItem5.Text = "25.00 fps";
-            // 
-            // labelX6
-            // 
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_音频信号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.ForeColor = System.Drawing.Color.Black;
-            this.labelX6.Location = new System.Drawing.Point(21, 28);
-            this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(75, 23);
-            this.labelX6.TabIndex = 8;
-            this.labelX6.Text = "信号";
+            this.labelX_音频信号.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_音频信号.ForeColor = System.Drawing.Color.Black;
+            this.labelX_音频信号.Location = new System.Drawing.Point(21, 28);
+            this.labelX_音频信号.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_音频信号.Name = "labelX_音频信号";
+            this.labelX_音频信号.Size = new System.Drawing.Size(75, 23);
+            this.labelX_音频信号.TabIndex = 8;
+            this.labelX_音频信号.Text = "信号";
             // 
             // groupBox_VideoInput
             // 
             this.groupBox_VideoInput.Controls.Add(this.textBoxX_ConnectStatus);
-            this.groupBox_VideoInput.Controls.Add(this.labelX5);
-            this.groupBox_VideoInput.Controls.Add(this.labelX4);
+            this.groupBox_VideoInput.Controls.Add(this.labelX_连接状态);
+            this.groupBox_VideoInput.Controls.Add(this.labelX_视频信号);
             this.groupBox_VideoInput.Controls.Add(this.comboBoxEx_VideoSignal);
             this.groupBox_VideoInput.Location = new System.Drawing.Point(277, 13);
             this.groupBox_VideoInput.Name = "groupBox_VideoInput";
@@ -276,35 +249,35 @@
             this.textBoxX_ConnectStatus.TabIndex = 11;
             this.textBoxX_ConnectStatus.Text = "无连接";
             // 
-            // labelX5
+            // labelX_连接状态
             // 
-            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.ForeColor = System.Drawing.Color.Black;
-            this.labelX5.Location = new System.Drawing.Point(21, 71);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(75, 23);
-            this.labelX5.TabIndex = 8;
-            this.labelX5.Text = "连接状态";
-            // 
-            // labelX4
-            // 
-            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_连接状态.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(21, 33);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 8;
-            this.labelX4.Text = "信号";
+            this.labelX_连接状态.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_连接状态.ForeColor = System.Drawing.Color.Black;
+            this.labelX_连接状态.Location = new System.Drawing.Point(21, 71);
+            this.labelX_连接状态.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_连接状态.Name = "labelX_连接状态";
+            this.labelX_连接状态.Size = new System.Drawing.Size(75, 23);
+            this.labelX_连接状态.TabIndex = 8;
+            this.labelX_连接状态.Text = "连接状态";
+            // 
+            // labelX_视频信号
+            // 
+            this.labelX_视频信号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_视频信号.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_视频信号.ForeColor = System.Drawing.Color.Black;
+            this.labelX_视频信号.Location = new System.Drawing.Point(21, 33);
+            this.labelX_视频信号.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_视频信号.Name = "labelX_视频信号";
+            this.labelX_视频信号.Size = new System.Drawing.Size(75, 23);
+            this.labelX_视频信号.TabIndex = 8;
+            this.labelX_视频信号.Text = "信号";
             // 
             // comboBoxEx_VideoSignal
             // 
@@ -313,8 +286,6 @@
             this.comboBoxEx_VideoSignal.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_VideoSignal.FormattingEnabled = true;
             this.comboBoxEx_VideoSignal.ItemHeight = 18;
-            this.comboBoxEx_VideoSignal.Items.AddRange(new object[] {
-            this.comboItem4});
             this.comboBoxEx_VideoSignal.Location = new System.Drawing.Point(102, 32);
             this.comboBoxEx_VideoSignal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_VideoSignal.Name = "comboBoxEx_VideoSignal";
@@ -324,10 +295,6 @@
             this.comboBoxEx_VideoSignal.TabStop = false;
             this.comboBoxEx_VideoSignal.Text = "SDI";
             // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "25.00 fps";
-            // 
             // groupBox_ResolutionSet
             // 
             this.groupBox_ResolutionSet.Controls.Add(this.comboBoxEx_PicRatio);
@@ -335,10 +302,10 @@
             this.groupBox_ResolutionSet.Controls.Add(this.comboBoxEx_ScanMode);
             this.groupBox_ResolutionSet.Controls.Add(this.comboBoxEx_Resolution);
             this.groupBox_ResolutionSet.Controls.Add(this.comboBoxEx_帧率);
-            this.groupBox_ResolutionSet.Controls.Add(this.labelX3);
-            this.groupBox_ResolutionSet.Controls.Add(this.labelX2);
-            this.groupBox_ResolutionSet.Controls.Add(this.labelX1);
+            this.groupBox_ResolutionSet.Controls.Add(this.labelX_图像横纵比);
+            this.groupBox_ResolutionSet.Controls.Add(this.labelX_色彩深度);
             this.groupBox_ResolutionSet.Controls.Add(this.labelX_扫描模式);
+            this.groupBox_ResolutionSet.Controls.Add(this.labelX_分辨率);
             this.groupBox_ResolutionSet.Controls.Add(this.labelX_帧率);
             this.groupBox_ResolutionSet.Controls.Add(this.comboBoxEx_InputFormat);
             this.groupBox_ResolutionSet.Location = new System.Drawing.Point(10, 13);
@@ -355,8 +322,6 @@
             this.comboBoxEx_PicRatio.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_PicRatio.FormattingEnabled = true;
             this.comboBoxEx_PicRatio.ItemHeight = 18;
-            this.comboBoxEx_PicRatio.Items.AddRange(new object[] {
-            this.comboItem3});
             this.comboBoxEx_PicRatio.Location = new System.Drawing.Point(95, 278);
             this.comboBoxEx_PicRatio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_PicRatio.Name = "comboBoxEx_PicRatio";
@@ -366,10 +331,6 @@
             this.comboBoxEx_PicRatio.TabStop = false;
             this.comboBoxEx_PicRatio.Text = "1:1";
             // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "上场优先";
-            // 
             // comboBoxEx_ColorDepth
             // 
             this.comboBoxEx_ColorDepth.DisplayMember = "Text";
@@ -377,8 +338,6 @@
             this.comboBoxEx_ColorDepth.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_ColorDepth.FormattingEnabled = true;
             this.comboBoxEx_ColorDepth.ItemHeight = 18;
-            this.comboBoxEx_ColorDepth.Items.AddRange(new object[] {
-            this.comboItem2});
             this.comboBoxEx_ColorDepth.Location = new System.Drawing.Point(95, 229);
             this.comboBoxEx_ColorDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_ColorDepth.Name = "comboBoxEx_ColorDepth";
@@ -388,10 +347,6 @@
             this.comboBoxEx_ColorDepth.TabStop = false;
             this.comboBoxEx_ColorDepth.Text = "8 bit";
             // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "上场优先";
-            // 
             // comboBoxEx_ScanMode
             // 
             this.comboBoxEx_ScanMode.DisplayMember = "Text";
@@ -399,8 +354,6 @@
             this.comboBoxEx_ScanMode.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_ScanMode.FormattingEnabled = true;
             this.comboBoxEx_ScanMode.ItemHeight = 18;
-            this.comboBoxEx_ScanMode.Items.AddRange(new object[] {
-            this.comboItem1});
             this.comboBoxEx_ScanMode.Location = new System.Drawing.Point(95, 180);
             this.comboBoxEx_ScanMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_ScanMode.Name = "comboBoxEx_ScanMode";
@@ -410,10 +363,6 @@
             this.comboBoxEx_ScanMode.TabStop = false;
             this.comboBoxEx_ScanMode.Text = "上场优先";
             // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "上场优先";
-            // 
             // comboBoxEx_Resolution
             // 
             this.comboBoxEx_Resolution.DisplayMember = "Text";
@@ -421,8 +370,6 @@
             this.comboBoxEx_Resolution.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_Resolution.FormattingEnabled = true;
             this.comboBoxEx_Resolution.ItemHeight = 18;
-            this.comboBoxEx_Resolution.Items.AddRange(new object[] {
-            this.comboItem_上场优先});
             this.comboBoxEx_Resolution.Location = new System.Drawing.Point(95, 131);
             this.comboBoxEx_Resolution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_Resolution.Name = "comboBoxEx_Resolution";
@@ -431,10 +378,6 @@
             this.comboBoxEx_Resolution.TabIndex = 9;
             this.comboBoxEx_Resolution.TabStop = false;
             this.comboBoxEx_Resolution.Text = "1920*1080";
-            // 
-            // comboItem_上场优先
-            // 
-            this.comboItem_上场优先.Text = "上场优先";
             // 
             // comboBoxEx_帧率
             // 
@@ -458,50 +401,35 @@
             // 
             this.comboItem_25fps.Text = "25.00 fps";
             // 
-            // labelX3
+            // labelX_图像横纵比
             // 
-            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(14, 278);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(75, 23);
-            this.labelX3.TabIndex = 7;
-            this.labelX3.Text = "图像横纵比";
-            // 
-            // labelX2
-            // 
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_图像横纵比.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(14, 229);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(75, 23);
-            this.labelX2.TabIndex = 7;
-            this.labelX2.Text = "色彩深度";
+            this.labelX_图像横纵比.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_图像横纵比.ForeColor = System.Drawing.Color.Black;
+            this.labelX_图像横纵比.Location = new System.Drawing.Point(14, 278);
+            this.labelX_图像横纵比.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_图像横纵比.Name = "labelX_图像横纵比";
+            this.labelX_图像横纵比.Size = new System.Drawing.Size(75, 23);
+            this.labelX_图像横纵比.TabIndex = 7;
+            this.labelX_图像横纵比.Text = "图像横纵比";
             // 
-            // labelX1
+            // labelX_色彩深度
             // 
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_色彩深度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(14, 180);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 7;
-            this.labelX1.Text = "扫描模式";
+            this.labelX_色彩深度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_色彩深度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_色彩深度.Location = new System.Drawing.Point(14, 229);
+            this.labelX_色彩深度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_色彩深度.Name = "labelX_色彩深度";
+            this.labelX_色彩深度.Size = new System.Drawing.Size(75, 23);
+            this.labelX_色彩深度.TabIndex = 7;
+            this.labelX_色彩深度.Text = "色彩深度";
             // 
             // labelX_扫描模式
             // 
@@ -511,12 +439,27 @@
             // 
             this.labelX_扫描模式.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_扫描模式.ForeColor = System.Drawing.Color.Black;
-            this.labelX_扫描模式.Location = new System.Drawing.Point(14, 131);
+            this.labelX_扫描模式.Location = new System.Drawing.Point(14, 180);
             this.labelX_扫描模式.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_扫描模式.Name = "labelX_扫描模式";
             this.labelX_扫描模式.Size = new System.Drawing.Size(75, 23);
             this.labelX_扫描模式.TabIndex = 7;
-            this.labelX_扫描模式.Text = "分辨率";
+            this.labelX_扫描模式.Text = "扫描模式";
+            // 
+            // labelX_分辨率
+            // 
+            this.labelX_分辨率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_扫描模式.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_分辨率.ForeColor = System.Drawing.Color.Black;
+            this.labelX_分辨率.Location = new System.Drawing.Point(14, 131);
+            this.labelX_分辨率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_分辨率.Name = "labelX_分辨率";
+            this.labelX_分辨率.Size = new System.Drawing.Size(75, 23);
+            this.labelX_分辨率.TabIndex = 7;
+            this.labelX_分辨率.Text = "分辨率";
             // 
             // labelX_帧率
             // 
@@ -649,7 +592,7 @@
             this.Controls.Add(this.buttonX_Default);
             this.Controls.Add(this.buttonX_OK);
             this.Controls.Add(this.buttonX_Cancel);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl_DeviceInputSet);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -659,8 +602,8 @@
             this.Name = "DeviceInputSetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "设备输入设置";
-            ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl_DeviceInputSet)).EndInit();
+            this.tabControl_DeviceInputSet.ResumeLayout(false);
             this.tabControlPanel_Property.ResumeLayout(false);
             this.groupBox_OutViewMode.ResumeLayout(false);
             this.groupBox_AudioInput.ResumeLayout(false);
@@ -672,7 +615,7 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.TabControl tabControl1;
+        private DevComponents.DotNetBar.TabControl tabControl_DeviceInputSet;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_Property;
         private DevComponents.DotNetBar.TabItem tabItem_Property;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_DeviceSet;
@@ -687,34 +630,26 @@
         private DevComponents.Editors.ComboItem comboItem_1080;
         private System.Windows.Forms.GroupBox groupBox_AudioInput;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_AudioSignal;
-        private DevComponents.Editors.ComboItem comboItem5;
-        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX labelX_音频信号;
         private System.Windows.Forms.GroupBox groupBox_VideoInput;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX_ConnectStatus;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX labelX_连接状态;
+        private DevComponents.DotNetBar.LabelX labelX_视频信号;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_VideoSignal;
-        private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_PicRatio;
-        private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_ColorDepth;
-        private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_ScanMode;
-        private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_Resolution;
-        private DevComponents.Editors.ComboItem comboItem_上场优先;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_帧率;
         private DevComponents.Editors.ComboItem comboItem_25fps;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.LabelX labelX_图像横纵比;
+        private DevComponents.DotNetBar.LabelX labelX_色彩深度;
         private DevComponents.DotNetBar.LabelX labelX_扫描模式;
+        private DevComponents.DotNetBar.LabelX labelX_分辨率;
         private DevComponents.DotNetBar.LabelX labelX_帧率;
         private System.Windows.Forms.GroupBox groupBox_OutViewMode;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_OutViewDevice;
-        private DevComponents.Editors.ComboItem comboItem6;
-        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX labelX_视图模式1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_OutModeChannel;
-        private DevComponents.Editors.ComboItem comboItem7;
     }
 }

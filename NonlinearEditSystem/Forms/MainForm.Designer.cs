@@ -42,9 +42,9 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
@@ -111,7 +111,7 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.styleManagerAmbient1 = new DevComponents.DotNetBar.StyleManagerAmbient(this.components);
             this.tabControl_TimeLine = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabControlPanel_TimeLine = new DevComponents.DotNetBar.TabControlPanel();
             this.panelEx_TrackContent = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment1 = new DevComponents.DotNetBar.PanelEx();
@@ -169,7 +169,7 @@
             this.MainmenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_TimeLine)).BeginInit();
             this.tabControl_TimeLine.SuspendLayout();
-            this.tabControlPanel4.SuspendLayout();
+            this.tabControlPanel_TimeLine.SuspendLayout();
             this.panelEx_TrackContent.SuspendLayout();
             this.panelEx_VideoTrackConment2.SuspendLayout();
             this.panelEx_TrackName.SuspendLayout();
@@ -190,9 +190,9 @@
             // 
             this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControl_Project.CanReorderTabs = true;
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_SpecialEffect);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
-            this.tabControl_Project.Controls.Add(this.tabControlPanel2);
-            this.tabControl_Project.Controls.Add(this.tabControlPanel1);
             this.tabControl_Project.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl_Project.ForeColor = System.Drawing.Color.Black;
             this.tabControl_Project.Location = new System.Drawing.Point(0, 25);
@@ -324,49 +324,49 @@
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
             // 
-            // tabControlPanel2
+            // tabControlPanel_Template
             // 
-            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel2.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel2.Name = "tabControlPanel2";
-            this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel2.Style.GradientAngle = 90;
-            this.tabControlPanel2.TabIndex = 9;
-            this.tabControlPanel2.TabItem = this.tabItemTemplate;
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
             // 
             // tabItemTemplate
             // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel2;
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
             this.tabItemTemplate.Name = "tabItemTemplate";
             this.tabItemTemplate.Text = "模板库";
             // 
-            // tabControlPanel1
+            // tabControlPanel_SpecialEffect
             // 
-            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel1.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel1.Name = "tabControlPanel1";
-            this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_SpecialEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_SpecialEffect.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
+            this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel1.Style.GradientAngle = 90;
-            this.tabControlPanel1.TabIndex = 5;
-            this.tabControlPanel1.TabItem = this.tabItem_SpecialEffect;
+            this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
+            this.tabControlPanel_SpecialEffect.TabIndex = 5;
+            this.tabControlPanel_SpecialEffect.TabItem = this.tabItem_SpecialEffect;
             // 
             // tabItem_SpecialEffect
             // 
-            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel1;
+            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel_SpecialEffect;
             this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
             this.tabItem_SpecialEffect.Text = "特技控制";
             // 
@@ -747,7 +747,7 @@
             // szwbprjToolStripMenuItem
             // 
             this.szwbprjToolStripMenuItem.Name = "szwbprjToolStripMenuItem";
-            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.szwbprjToolStripMenuItem.Text = "szwb.prj";
             // 
             // toolStripSeparator5
@@ -971,7 +971,7 @@
             // 
             this.tabControl_TimeLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControl_TimeLine.CanReorderTabs = true;
-            this.tabControl_TimeLine.Controls.Add(this.tabControlPanel4);
+            this.tabControl_TimeLine.Controls.Add(this.tabControlPanel_TimeLine);
             this.tabControl_TimeLine.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl_TimeLine.ForeColor = System.Drawing.Color.Black;
             this.tabControl_TimeLine.Location = new System.Drawing.Point(0, 428);
@@ -986,24 +986,24 @@
             this.tabControl_TimeLine.Tabs.Add(this.tabItem_TimeLine);
             this.tabControl_TimeLine.Text = "片段监视器面板";
             // 
-            // tabControlPanel4
+            // tabControlPanel_TimeLine
             // 
-            this.tabControlPanel4.Controls.Add(this.panelEx_TrackContent);
-            this.tabControlPanel4.Controls.Add(this.panelEx_TrackName);
-            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel4.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel4.Name = "tabControlPanel4";
-            this.tabControlPanel4.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel4.Size = new System.Drawing.Size(1336, 327);
-            this.tabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_TimeLine.Controls.Add(this.panelEx_TrackContent);
+            this.tabControlPanel_TimeLine.Controls.Add(this.panelEx_TrackName);
+            this.tabControlPanel_TimeLine.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_TimeLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_TimeLine.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_TimeLine.Name = "tabControlPanel_TimeLine";
+            this.tabControlPanel_TimeLine.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_TimeLine.Size = new System.Drawing.Size(1336, 327);
+            this.tabControlPanel_TimeLine.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_TimeLine.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_TimeLine.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_TimeLine.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel4.Style.GradientAngle = 90;
-            this.tabControlPanel4.TabIndex = 1;
-            this.tabControlPanel4.TabItem = this.tabItem_TimeLine;
+            this.tabControlPanel_TimeLine.Style.GradientAngle = 90;
+            this.tabControlPanel_TimeLine.TabIndex = 1;
+            this.tabControlPanel_TimeLine.TabItem = this.tabItem_TimeLine;
             // 
             // panelEx_TrackContent
             // 
@@ -1614,7 +1614,7 @@
             // 
             // tabItem_TimeLine
             // 
-            this.tabItem_TimeLine.AttachedControl = this.tabControlPanel4;
+            this.tabItem_TimeLine.AttachedControl = this.tabControlPanel_TimeLine;
             this.tabItem_TimeLine.Name = "tabItem_TimeLine";
             this.tabItem_TimeLine.Text = "时间线";
             // 
@@ -1652,7 +1652,7 @@
             this.MainmenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_TimeLine)).EndInit();
             this.tabControl_TimeLine.ResumeLayout(false);
-            this.tabControlPanel4.ResumeLayout(false);
+            this.tabControlPanel_TimeLine.ResumeLayout(false);
             this.panelEx_TrackContent.ResumeLayout(false);
             this.panelEx_VideoTrackConment2.ResumeLayout(false);
             this.panelEx_TrackName.ResumeLayout(false);
@@ -1695,7 +1695,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private DevComponents.DotNetBar.TabControl tabControl_TimeLine;
-        private DevComponents.DotNetBar.TabControlPanel tabControlPanel4;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel_TimeLine;
         private DevComponents.DotNetBar.TabItem tabItem_TimeLine;
         private DevComponents.DotNetBar.PanelEx PanelEx_Sequence;
         private DevComponents.DotNetBar.PanelEx panelEx_TrackContent;
@@ -1717,9 +1717,9 @@
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_Segment;
         private DevComponents.DotNetBar.PanelEx panelEx_Segment;
         private DevComponents.DotNetBar.TabItem tabItem_Segment;
-        private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel_SpecialEffect;
         private DevComponents.DotNetBar.TabItem tabItem_SpecialEffect;
-        private DevComponents.DotNetBar.TabControlPanel tabControlPanel2;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel_Template;
         private DevComponents.DotNetBar.TabItem tabItemTemplate;
         private DevComponents.DotNetBar.Bar bar_AudioTrackButtonBar1;
         private DevComponents.DotNetBar.ButtonItem AudioTrackB1BI_Listen;

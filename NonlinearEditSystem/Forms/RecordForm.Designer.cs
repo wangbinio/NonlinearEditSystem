@@ -35,27 +35,25 @@
             this.groupBox_基本设置 = new System.Windows.Forms.GroupBox();
             this.groupBox_尾部黑场 = new System.Windows.Forms.GroupBox();
             this.integerInput_尾黑长度 = new DevComponents.Editors.IntegerInput();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_尾黑长度 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_首部黑场 = new System.Windows.Forms.GroupBox();
             this.integerInput_首黑长度 = new DevComponents.Editors.IntegerInput();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_首黑长度 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_彩条设置 = new System.Windows.Forms.GroupBox();
             this.checkBoxX_Add1KHZ = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_彩条类型 = new DevComponents.DotNetBar.LabelX();
             this.integerInput_彩条长度 = new DevComponents.Editors.IntegerInput();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_彩条长度 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx_彩条类型 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_序列设置 = new System.Windows.Forms.GroupBox();
             this.labelX_范围 = new DevComponents.DotNetBar.LabelX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_序列入点 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_SegEnterTime = new DevComponents.DotNetBar.LabelX();
+            this.labelX_序列出点 = new DevComponents.DotNetBar.LabelX();
+            this.labelX_SegExitTime = new DevComponents.DotNetBar.LabelX();
+            this.labelX_SegTimeLength = new DevComponents.DotNetBar.LabelX();
+            this.labelX_序列长度 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx_范围 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_硬盘 = new DevComponents.Editors.ComboItem();
             this.groupBox_输出设置 = new System.Windows.Forms.GroupBox();
             this.radioButton_Combine = new System.Windows.Forms.RadioButton();
             this.radioButton_Insert = new System.Windows.Forms.RadioButton();
@@ -84,7 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_首黑长度)).BeginInit();
             this.groupBox_彩条设置.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_彩条长度)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_序列设置.SuspendLayout();
             this.groupBox_输出设置.SuspendLayout();
             this.groupBox_录制通道设置.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_出点等待)).BeginInit();
@@ -163,7 +161,7 @@
             this.groupBox_基本设置.Controls.Add(this.groupBox_尾部黑场);
             this.groupBox_基本设置.Controls.Add(this.groupBox_首部黑场);
             this.groupBox_基本设置.Controls.Add(this.groupBox_彩条设置);
-            this.groupBox_基本设置.Controls.Add(this.groupBox1);
+            this.groupBox_基本设置.Controls.Add(this.groupBox_序列设置);
             this.groupBox_基本设置.ForeColor = System.Drawing.Color.Black;
             this.groupBox_基本设置.Location = new System.Drawing.Point(12, 2);
             this.groupBox_基本设置.Name = "groupBox_基本设置";
@@ -175,7 +173,7 @@
             // groupBox_尾部黑场
             // 
             this.groupBox_尾部黑场.Controls.Add(this.integerInput_尾黑长度);
-            this.groupBox_尾部黑场.Controls.Add(this.labelX9);
+            this.groupBox_尾部黑场.Controls.Add(this.labelX_尾黑长度);
             this.groupBox_尾部黑场.Location = new System.Drawing.Point(7, 348);
             this.groupBox_尾部黑场.Name = "groupBox_尾部黑场";
             this.groupBox_尾部黑场.Size = new System.Drawing.Size(388, 65);
@@ -200,25 +198,25 @@
             this.integerInput_尾黑长度.TabIndex = 6;
             this.integerInput_尾黑长度.Value = 5;
             // 
-            // labelX9
+            // labelX_尾黑长度
             // 
-            this.labelX9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_尾黑长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.ForeColor = System.Drawing.Color.Black;
-            this.labelX9.Location = new System.Drawing.Point(6, 23);
-            this.labelX9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(75, 23);
-            this.labelX9.TabIndex = 7;
-            this.labelX9.Text = "长度(s)";
+            this.labelX_尾黑长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_尾黑长度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_尾黑长度.Location = new System.Drawing.Point(6, 23);
+            this.labelX_尾黑长度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_尾黑长度.Name = "labelX_尾黑长度";
+            this.labelX_尾黑长度.Size = new System.Drawing.Size(75, 23);
+            this.labelX_尾黑长度.TabIndex = 7;
+            this.labelX_尾黑长度.Text = "长度(s)";
             // 
             // groupBox_首部黑场
             // 
             this.groupBox_首部黑场.Controls.Add(this.integerInput_首黑长度);
-            this.groupBox_首部黑场.Controls.Add(this.labelX8);
+            this.groupBox_首部黑场.Controls.Add(this.labelX_首黑长度);
             this.groupBox_首部黑场.Location = new System.Drawing.Point(7, 277);
             this.groupBox_首部黑场.Name = "groupBox_首部黑场";
             this.groupBox_首部黑场.Size = new System.Drawing.Size(388, 65);
@@ -243,27 +241,27 @@
             this.integerInput_首黑长度.TabIndex = 5;
             this.integerInput_首黑长度.Value = 5;
             // 
-            // labelX8
+            // labelX_首黑长度
             // 
-            this.labelX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_首黑长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.ForeColor = System.Drawing.Color.Black;
-            this.labelX8.Location = new System.Drawing.Point(6, 23);
-            this.labelX8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(75, 23);
-            this.labelX8.TabIndex = 7;
-            this.labelX8.Text = "长度(s)";
+            this.labelX_首黑长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_首黑长度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_首黑长度.Location = new System.Drawing.Point(6, 23);
+            this.labelX_首黑长度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_首黑长度.Name = "labelX_首黑长度";
+            this.labelX_首黑长度.Size = new System.Drawing.Size(75, 23);
+            this.labelX_首黑长度.TabIndex = 7;
+            this.labelX_首黑长度.Text = "长度(s)";
             // 
             // groupBox_彩条设置
             // 
             this.groupBox_彩条设置.Controls.Add(this.checkBoxX_Add1KHZ);
-            this.groupBox_彩条设置.Controls.Add(this.labelX10);
+            this.groupBox_彩条设置.Controls.Add(this.labelX_彩条类型);
             this.groupBox_彩条设置.Controls.Add(this.integerInput_彩条长度);
-            this.groupBox_彩条设置.Controls.Add(this.labelX7);
+            this.groupBox_彩条设置.Controls.Add(this.labelX_彩条长度);
             this.groupBox_彩条设置.Controls.Add(this.comboBoxEx_彩条类型);
             this.groupBox_彩条设置.Location = new System.Drawing.Point(7, 174);
             this.groupBox_彩条设置.Name = "groupBox_彩条设置";
@@ -288,20 +286,20 @@
             this.checkBoxX_Add1KHZ.TabIndex = 4;
             this.checkBoxX_Add1KHZ.Text = "添加1KHz音频";
             // 
-            // labelX10
+            // labelX_彩条类型
             // 
-            this.labelX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_彩条类型.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.ForeColor = System.Drawing.Color.Black;
-            this.labelX10.Location = new System.Drawing.Point(5, 24);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(75, 23);
-            this.labelX10.TabIndex = 7;
-            this.labelX10.Text = "类型";
+            this.labelX_彩条类型.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_彩条类型.ForeColor = System.Drawing.Color.Black;
+            this.labelX_彩条类型.Location = new System.Drawing.Point(5, 24);
+            this.labelX_彩条类型.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_彩条类型.Name = "labelX_彩条类型";
+            this.labelX_彩条类型.Size = new System.Drawing.Size(75, 23);
+            this.labelX_彩条类型.TabIndex = 7;
+            this.labelX_彩条类型.Text = "类型";
             // 
             // integerInput_彩条长度
             // 
@@ -320,20 +318,20 @@
             this.integerInput_彩条长度.TabIndex = 3;
             this.integerInput_彩条长度.Value = 5;
             // 
-            // labelX7
+            // labelX_彩条长度
             // 
-            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_彩条长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(6, 56);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 7;
-            this.labelX7.Text = "长度(s)";
+            this.labelX_彩条长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_彩条长度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_彩条长度.Location = new System.Drawing.Point(6, 56);
+            this.labelX_彩条长度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_彩条长度.Name = "labelX_彩条长度";
+            this.labelX_彩条长度.Size = new System.Drawing.Size(75, 23);
+            this.labelX_彩条长度.TabIndex = 7;
+            this.labelX_彩条长度.Text = "长度(s)";
             // 
             // comboBoxEx_彩条类型
             // 
@@ -342,8 +340,6 @@
             this.comboBoxEx_彩条类型.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_彩条类型.FormattingEnabled = true;
             this.comboBoxEx_彩条类型.ItemHeight = 18;
-            this.comboBoxEx_彩条类型.Items.AddRange(new object[] {
-            this.comboItem1});
             this.comboBoxEx_彩条类型.Location = new System.Drawing.Point(86, 23);
             this.comboBoxEx_彩条类型.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_彩条类型.Name = "comboBoxEx_彩条类型";
@@ -352,25 +348,21 @@
             this.comboBoxEx_彩条类型.TabIndex = 2;
             this.comboBoxEx_彩条类型.Text = "100-0-100-0彩条";
             // 
-            // comboItem1
+            // groupBox_序列设置
             // 
-            this.comboItem1.Text = "硬盘";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.labelX_范围);
-            this.groupBox1.Controls.Add(this.labelX1);
-            this.groupBox1.Controls.Add(this.labelX2);
-            this.groupBox1.Controls.Add(this.labelX3);
-            this.groupBox1.Controls.Add(this.labelX4);
-            this.groupBox1.Controls.Add(this.labelX5);
-            this.groupBox1.Controls.Add(this.labelX6);
-            this.groupBox1.Controls.Add(this.comboBoxEx_范围);
-            this.groupBox1.Location = new System.Drawing.Point(6, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(389, 145);
-            this.groupBox1.TabIndex = 101;
-            this.groupBox1.TabStop = false;
+            this.groupBox_序列设置.Controls.Add(this.labelX_范围);
+            this.groupBox_序列设置.Controls.Add(this.labelX_序列入点);
+            this.groupBox_序列设置.Controls.Add(this.labelX_SegEnterTime);
+            this.groupBox_序列设置.Controls.Add(this.labelX_序列出点);
+            this.groupBox_序列设置.Controls.Add(this.labelX_SegExitTime);
+            this.groupBox_序列设置.Controls.Add(this.labelX_SegTimeLength);
+            this.groupBox_序列设置.Controls.Add(this.labelX_序列长度);
+            this.groupBox_序列设置.Controls.Add(this.comboBoxEx_范围);
+            this.groupBox_序列设置.Location = new System.Drawing.Point(6, 22);
+            this.groupBox_序列设置.Name = "groupBox_序列设置";
+            this.groupBox_序列设置.Size = new System.Drawing.Size(389, 145);
+            this.groupBox_序列设置.TabIndex = 101;
+            this.groupBox_序列设置.TabStop = false;
             // 
             // labelX_范围
             // 
@@ -387,104 +379,104 @@
             this.labelX_范围.TabIndex = 7;
             this.labelX_范围.Text = "范围";
             // 
-            // labelX1
+            // labelX_序列入点
             // 
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(6, 54);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 7;
-            this.labelX1.Text = "磁带入点";
-            // 
-            // labelX2
-            // 
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_序列入点.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelX2.FontBold = true;
-            this.labelX2.ForeColor = System.Drawing.Color.Black;
-            this.labelX2.Location = new System.Drawing.Point(87, 54);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(92, 23);
-            this.labelX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX2.TabIndex = 7;
-            this.labelX2.Text = "00:00:00:00";
+            this.labelX_序列入点.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_序列入点.ForeColor = System.Drawing.Color.Black;
+            this.labelX_序列入点.Location = new System.Drawing.Point(6, 54);
+            this.labelX_序列入点.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_序列入点.Name = "labelX_序列入点";
+            this.labelX_序列入点.Size = new System.Drawing.Size(75, 23);
+            this.labelX_序列入点.TabIndex = 7;
+            this.labelX_序列入点.Text = "序列入点";
             // 
-            // labelX3
+            // labelX_SegEnterTime
             // 
-            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_SegEnterTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.ForeColor = System.Drawing.Color.Black;
-            this.labelX3.Location = new System.Drawing.Point(6, 85);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(75, 23);
-            this.labelX3.TabIndex = 7;
-            this.labelX3.Text = "磁带出点";
+            this.labelX_SegEnterTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_SegEnterTime.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelX_SegEnterTime.FontBold = true;
+            this.labelX_SegEnterTime.ForeColor = System.Drawing.Color.Black;
+            this.labelX_SegEnterTime.Location = new System.Drawing.Point(87, 54);
+            this.labelX_SegEnterTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_SegEnterTime.Name = "labelX_SegEnterTime";
+            this.labelX_SegEnterTime.Size = new System.Drawing.Size(92, 23);
+            this.labelX_SegEnterTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX_SegEnterTime.TabIndex = 7;
+            this.labelX_SegEnterTime.Text = "00:00:00:00";
             // 
-            // labelX4
+            // labelX_序列出点
             // 
-            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelX4.FontBold = true;
-            this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(87, 85);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(92, 23);
-            this.labelX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX4.TabIndex = 7;
-            this.labelX4.Text = "00:00:00:00";
-            // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_序列出点.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelX5.FontBold = true;
-            this.labelX5.ForeColor = System.Drawing.Color.Black;
-            this.labelX5.Location = new System.Drawing.Point(87, 116);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(92, 23);
-            this.labelX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.labelX5.TabIndex = 7;
-            this.labelX5.Text = "00:00:00:00";
+            this.labelX_序列出点.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_序列出点.ForeColor = System.Drawing.Color.Black;
+            this.labelX_序列出点.Location = new System.Drawing.Point(6, 85);
+            this.labelX_序列出点.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_序列出点.Name = "labelX_序列出点";
+            this.labelX_序列出点.Size = new System.Drawing.Size(75, 23);
+            this.labelX_序列出点.TabIndex = 7;
+            this.labelX_序列出点.Text = "序列出点";
             // 
-            // labelX6
+            // labelX_SegExitTime
             // 
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_SegExitTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.ForeColor = System.Drawing.Color.Black;
-            this.labelX6.Location = new System.Drawing.Point(6, 116);
-            this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(75, 23);
-            this.labelX6.TabIndex = 7;
-            this.labelX6.Text = "时长";
+            this.labelX_SegExitTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_SegExitTime.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelX_SegExitTime.FontBold = true;
+            this.labelX_SegExitTime.ForeColor = System.Drawing.Color.Black;
+            this.labelX_SegExitTime.Location = new System.Drawing.Point(87, 85);
+            this.labelX_SegExitTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_SegExitTime.Name = "labelX_SegExitTime";
+            this.labelX_SegExitTime.Size = new System.Drawing.Size(92, 23);
+            this.labelX_SegExitTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX_SegExitTime.TabIndex = 7;
+            this.labelX_SegExitTime.Text = "00:00:00:00";
+            // 
+            // labelX_SegTimeLength
+            // 
+            this.labelX_SegTimeLength.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_SegTimeLength.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_SegTimeLength.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelX_SegTimeLength.FontBold = true;
+            this.labelX_SegTimeLength.ForeColor = System.Drawing.Color.Black;
+            this.labelX_SegTimeLength.Location = new System.Drawing.Point(87, 116);
+            this.labelX_SegTimeLength.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_SegTimeLength.Name = "labelX_SegTimeLength";
+            this.labelX_SegTimeLength.Size = new System.Drawing.Size(92, 23);
+            this.labelX_SegTimeLength.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.labelX_SegTimeLength.TabIndex = 7;
+            this.labelX_SegTimeLength.Text = "00:00:00:00";
+            // 
+            // labelX_序列长度
+            // 
+            this.labelX_序列长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX_序列长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX_序列长度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_序列长度.Location = new System.Drawing.Point(6, 116);
+            this.labelX_序列长度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX_序列长度.Name = "labelX_序列长度";
+            this.labelX_序列长度.Size = new System.Drawing.Size(75, 23);
+            this.labelX_序列长度.TabIndex = 7;
+            this.labelX_序列长度.Text = "长度";
             // 
             // comboBoxEx_范围
             // 
@@ -493,8 +485,6 @@
             this.comboBoxEx_范围.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_范围.FormattingEnabled = true;
             this.comboBoxEx_范围.ItemHeight = 18;
-            this.comboBoxEx_范围.Items.AddRange(new object[] {
-            this.comboItem_硬盘});
             this.comboBoxEx_范围.Location = new System.Drawing.Point(87, 22);
             this.comboBoxEx_范围.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_范围.Name = "comboBoxEx_范围";
@@ -502,10 +492,6 @@
             this.comboBoxEx_范围.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_范围.TabIndex = 1;
             this.comboBoxEx_范围.Text = "全部";
-            // 
-            // comboItem_硬盘
-            // 
-            this.comboItem_硬盘.Text = "硬盘";
             // 
             // groupBox_输出设置
             // 
@@ -810,7 +796,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_首黑长度)).EndInit();
             this.groupBox_彩条设置.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_彩条长度)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBox_序列设置.ResumeLayout(false);
             this.groupBox_输出设置.ResumeLayout(false);
             this.groupBox_输出设置.PerformLayout();
             this.groupBox_录制通道设置.ResumeLayout(false);
@@ -829,27 +815,25 @@
         private DevComponents.DotNetBar.LabelX labelX_PreviewTime;
         private System.Windows.Forms.GroupBox groupBox_基本设置;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_范围;
-        private DevComponents.Editors.ComboItem comboItem_硬盘;
         private DevComponents.DotNetBar.LabelX labelX_范围;
         private System.Windows.Forms.GroupBox groupBox_彩条设置;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.LabelX labelX_彩条长度;
+        private System.Windows.Forms.GroupBox groupBox_序列设置;
+        private DevComponents.DotNetBar.LabelX labelX_序列入点;
+        private DevComponents.DotNetBar.LabelX labelX_SegEnterTime;
+        private DevComponents.DotNetBar.LabelX labelX_序列出点;
+        private DevComponents.DotNetBar.LabelX labelX_SegExitTime;
+        private DevComponents.DotNetBar.LabelX labelX_SegTimeLength;
+        private DevComponents.DotNetBar.LabelX labelX_序列长度;
         private DevComponents.Editors.IntegerInput integerInput_彩条长度;
         private System.Windows.Forms.GroupBox groupBox_尾部黑场;
         private DevComponents.Editors.IntegerInput integerInput_尾黑长度;
-        private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.LabelX labelX_尾黑长度;
         private System.Windows.Forms.GroupBox groupBox_首部黑场;
         private DevComponents.Editors.IntegerInput integerInput_首黑长度;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.DotNetBar.LabelX labelX_首黑长度;
+        private DevComponents.DotNetBar.LabelX labelX_彩条类型;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_彩条类型;
-        private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX_Add1KHZ;
         private System.Windows.Forms.GroupBox groupBox_输出设置;
         private DevComponents.Editors.IntegerInput integerInput_出点等待;
