@@ -70,8 +70,8 @@
             this.buttonX_CapDel = new DevComponents.DotNetBar.ButtonX();
             this.labelX_CapTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_Preview = new System.Windows.Forms.GroupBox();
-            this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
             this.slider_PreviewTime = new DevComponents.DotNetBar.Controls.Slider();
+            this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
             this.labelX_PreviewTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_SDI采集设置.SuspendLayout();
             this.groupBox_IPCapSet.SuspendLayout();
@@ -710,6 +710,22 @@
             this.groupBox_Preview.TabStop = false;
             this.groupBox_Preview.Text = "预览";
             // 
+            // slider_PreviewTime
+            // 
+            this.slider_PreviewTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.slider_PreviewTime.ForeColor = System.Drawing.Color.Black;
+            this.slider_PreviewTime.LabelVisible = false;
+            this.slider_PreviewTime.Location = new System.Drawing.Point(6, 382);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
+            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.slider_PreviewTime.TabIndex = 2;
+            this.slider_PreviewTime.Value = 50;
+            // 
             // panelEx_Preview
             // 
             this.panelEx_Preview.CanvasColor = System.Drawing.SystemColors.Control;
@@ -726,20 +742,6 @@
             this.panelEx_Preview.Style.GradientAngle = 90;
             this.panelEx_Preview.TabIndex = 0;
             this.panelEx_Preview.Text = "视频预览";
-            // 
-            // slider_PreviewTime
-            // 
-            // 
-            // 
-            // 
-            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_PreviewTime.LabelVisible = false;
-            this.slider_PreviewTime.Location = new System.Drawing.Point(6, 382);
-            this.slider_PreviewTime.Name = "slider_PreviewTime";
-            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_PreviewTime.TabIndex = 2;
-            this.slider_PreviewTime.Value = 50;
             // 
             // labelX_PreviewTime
             // 
@@ -763,7 +765,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 814);
+            this.ClientSize = new System.Drawing.Size(846, 814);
             this.Controls.Add(this.groupBox_Preview);
             this.Controls.Add(this.groupBox_CapControl);
             this.Controls.Add(this.groupBox_IPCapSet);
@@ -774,7 +776,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CaptureForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "采集";

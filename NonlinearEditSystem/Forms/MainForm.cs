@@ -217,5 +217,11 @@ namespace 主界面
             DeviceInputSetForm deviceInputSetForm = new DeviceInputSetForm();
             deviceInputSetForm.ShowDialog();
         }
+
+        private void 录制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecordForm recordForm = new RecordForm();
+            recordForm.ShowDialog();
+        }
     }
 }

@@ -915,6 +915,7 @@
             this.录制ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
             this.录制ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.录制ToolStripMenuItem.Text = "录制(&R)";
+            this.录制ToolStripMenuItem.Click += new System.EventHandler(this.录制ToolStripMenuItem_Click);
             // 
             // 设备输出设置ToolStripMenuItem
             // 

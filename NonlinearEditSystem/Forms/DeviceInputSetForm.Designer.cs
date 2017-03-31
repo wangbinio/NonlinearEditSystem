@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Property = new DevComponents.DotNetBar.TabControlPanel();
+            this.groupBox_OutViewMode = new System.Windows.Forms.GroupBox();
+            this.comboBoxEx_OutModeChannel = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem7 = new DevComponents.Editors.ComboItem();
+            this.comboBoxEx_OutViewDevice = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.groupBox_AudioInput = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_AudioSignal = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
@@ -67,19 +73,13 @@
             this.buttonX_Cancel = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_OK = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_Default = new DevComponents.DotNetBar.ButtonX();
-            this.groupBox_OutViewMode = new System.Windows.Forms.GroupBox();
-            this.comboBoxEx_OutViewDevice = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem6 = new DevComponents.Editors.ComboItem();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx_OutModeChannel = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem7 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControlPanel_Property.SuspendLayout();
+            this.groupBox_OutViewMode.SuspendLayout();
             this.groupBox_AudioInput.SuspendLayout();
             this.groupBox_VideoInput.SuspendLayout();
             this.groupBox_ResolutionSet.SuspendLayout();
-            this.groupBox_OutViewMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -125,6 +125,77 @@
             this.tabControlPanel_Property.Style.GradientAngle = 90;
             this.tabControlPanel_Property.TabIndex = 1;
             this.tabControlPanel_Property.TabItem = this.tabItem_Property;
+            // 
+            // groupBox_OutViewMode
+            // 
+            this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutModeChannel);
+            this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutViewDevice);
+            this.groupBox_OutViewMode.Controls.Add(this.labelX7);
+            this.groupBox_OutViewMode.Location = new System.Drawing.Point(277, 242);
+            this.groupBox_OutViewMode.Name = "groupBox_OutViewMode";
+            this.groupBox_OutViewMode.Size = new System.Drawing.Size(264, 109);
+            this.groupBox_OutViewMode.TabIndex = 3;
+            this.groupBox_OutViewMode.TabStop = false;
+            this.groupBox_OutViewMode.Text = "输出视图模式";
+            // 
+            // comboBoxEx_OutModeChannel
+            // 
+            this.comboBoxEx_OutModeChannel.DisplayMember = "Text";
+            this.comboBoxEx_OutModeChannel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_OutModeChannel.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_OutModeChannel.FormattingEnabled = true;
+            this.comboBoxEx_OutModeChannel.ItemHeight = 18;
+            this.comboBoxEx_OutModeChannel.Items.AddRange(new object[] {
+            this.comboItem7});
+            this.comboBoxEx_OutModeChannel.Location = new System.Drawing.Point(102, 69);
+            this.comboBoxEx_OutModeChannel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxEx_OutModeChannel.Name = "comboBoxEx_OutModeChannel";
+            this.comboBoxEx_OutModeChannel.Size = new System.Drawing.Size(140, 24);
+            this.comboBoxEx_OutModeChannel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx_OutModeChannel.TabIndex = 10;
+            this.comboBoxEx_OutModeChannel.TabStop = false;
+            this.comboBoxEx_OutModeChannel.Text = "通道A";
+            // 
+            // comboItem7
+            // 
+            this.comboItem7.Text = "25.00 fps";
+            // 
+            // comboBoxEx_OutViewDevice
+            // 
+            this.comboBoxEx_OutViewDevice.DisplayMember = "Text";
+            this.comboBoxEx_OutViewDevice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_OutViewDevice.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_OutViewDevice.FormattingEnabled = true;
+            this.comboBoxEx_OutViewDevice.ItemHeight = 18;
+            this.comboBoxEx_OutViewDevice.Items.AddRange(new object[] {
+            this.comboItem6});
+            this.comboBoxEx_OutViewDevice.Location = new System.Drawing.Point(102, 27);
+            this.comboBoxEx_OutViewDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxEx_OutViewDevice.Name = "comboBoxEx_OutViewDevice";
+            this.comboBoxEx_OutViewDevice.Size = new System.Drawing.Size(140, 24);
+            this.comboBoxEx_OutViewDevice.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx_OutViewDevice.TabIndex = 10;
+            this.comboBoxEx_OutViewDevice.TabStop = false;
+            this.comboBoxEx_OutViewDevice.Text = "DecLink Studio 4K";
+            // 
+            // comboItem6
+            // 
+            this.comboItem6.Text = "25.00 fps";
+            // 
+            // labelX7
+            // 
+            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.ForeColor = System.Drawing.Color.Black;
+            this.labelX7.Location = new System.Drawing.Point(21, 49);
+            this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(75, 23);
+            this.labelX7.TabIndex = 8;
+            this.labelX7.Text = "视图1";
             // 
             // groupBox_AudioInput
             // 
@@ -570,77 +641,6 @@
             this.buttonX_Default.TabIndex = 1;
             this.buttonX_Default.Text = "默认";
             // 
-            // groupBox_OutViewMode
-            // 
-            this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutModeChannel);
-            this.groupBox_OutViewMode.Controls.Add(this.comboBoxEx_OutViewDevice);
-            this.groupBox_OutViewMode.Controls.Add(this.labelX7);
-            this.groupBox_OutViewMode.Location = new System.Drawing.Point(277, 242);
-            this.groupBox_OutViewMode.Name = "groupBox_OutViewMode";
-            this.groupBox_OutViewMode.Size = new System.Drawing.Size(264, 109);
-            this.groupBox_OutViewMode.TabIndex = 3;
-            this.groupBox_OutViewMode.TabStop = false;
-            this.groupBox_OutViewMode.Text = "输出视图模式";
-            // 
-            // comboBoxEx_OutViewDevice
-            // 
-            this.comboBoxEx_OutViewDevice.DisplayMember = "Text";
-            this.comboBoxEx_OutViewDevice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_OutViewDevice.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxEx_OutViewDevice.FormattingEnabled = true;
-            this.comboBoxEx_OutViewDevice.ItemHeight = 18;
-            this.comboBoxEx_OutViewDevice.Items.AddRange(new object[] {
-            this.comboItem6});
-            this.comboBoxEx_OutViewDevice.Location = new System.Drawing.Point(102, 27);
-            this.comboBoxEx_OutViewDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBoxEx_OutViewDevice.Name = "comboBoxEx_OutViewDevice";
-            this.comboBoxEx_OutViewDevice.Size = new System.Drawing.Size(140, 24);
-            this.comboBoxEx_OutViewDevice.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_OutViewDevice.TabIndex = 10;
-            this.comboBoxEx_OutViewDevice.TabStop = false;
-            this.comboBoxEx_OutViewDevice.Text = "DecLink Studio 4K";
-            // 
-            // comboItem6
-            // 
-            this.comboItem6.Text = "25.00 fps";
-            // 
-            // labelX7
-            // 
-            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(21, 49);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 8;
-            this.labelX7.Text = "视图1";
-            // 
-            // comboBoxEx_OutModeChannel
-            // 
-            this.comboBoxEx_OutModeChannel.DisplayMember = "Text";
-            this.comboBoxEx_OutModeChannel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_OutModeChannel.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxEx_OutModeChannel.FormattingEnabled = true;
-            this.comboBoxEx_OutModeChannel.ItemHeight = 18;
-            this.comboBoxEx_OutModeChannel.Items.AddRange(new object[] {
-            this.comboItem7});
-            this.comboBoxEx_OutModeChannel.Location = new System.Drawing.Point(102, 69);
-            this.comboBoxEx_OutModeChannel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBoxEx_OutModeChannel.Name = "comboBoxEx_OutModeChannel";
-            this.comboBoxEx_OutModeChannel.Size = new System.Drawing.Size(140, 24);
-            this.comboBoxEx_OutModeChannel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_OutModeChannel.TabIndex = 10;
-            this.comboBoxEx_OutModeChannel.TabStop = false;
-            this.comboBoxEx_OutModeChannel.Text = "通道A";
-            // 
-            // comboItem7
-            // 
-            this.comboItem7.Text = "25.00 fps";
-            // 
             // DeviceInputSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -657,16 +657,15 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DeviceInputSetForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "设备输入设置";
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabControlPanel_Property.ResumeLayout(false);
+            this.groupBox_OutViewMode.ResumeLayout(false);
             this.groupBox_AudioInput.ResumeLayout(false);
             this.groupBox_VideoInput.ResumeLayout(false);
             this.groupBox_ResolutionSet.ResumeLayout(false);
-            this.groupBox_OutViewMode.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

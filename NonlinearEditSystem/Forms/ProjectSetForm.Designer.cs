@@ -59,7 +59,7 @@
             // 
             // groupBox_视频设置
             // 
-            this.groupBox_视频设置.BackColor = System.Drawing.Color.White;
+            this.groupBox_视频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_解交织);
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_上场优先);
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_帧率);
@@ -145,7 +145,7 @@
             // 
             // labelX_解交织
             // 
-            this.labelX_解交织.BackColor = System.Drawing.Color.White;
+            this.labelX_解交织.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -160,7 +160,7 @@
             // 
             // labelX_扫描模式
             // 
-            this.labelX_扫描模式.BackColor = System.Drawing.Color.White;
+            this.labelX_扫描模式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -175,7 +175,7 @@
             // 
             // labelX_帧率
             // 
-            this.labelX_帧率.BackColor = System.Drawing.Color.White;
+            this.labelX_帧率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -214,7 +214,7 @@
             // 
             // groupBox_音频设置
             // 
-            this.groupBox_音频设置.BackColor = System.Drawing.Color.White;
+            this.groupBox_音频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_输出音频流);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_采样位);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_声道);
@@ -324,7 +324,7 @@
             // 
             // labelX_输出音频流
             // 
-            this.labelX_输出音频流.BackColor = System.Drawing.Color.White;
+            this.labelX_输出音频流.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -339,7 +339,7 @@
             // 
             // labelX_声道
             // 
-            this.labelX_声道.BackColor = System.Drawing.Color.White;
+            this.labelX_声道.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -354,7 +354,7 @@
             // 
             // labelX_采样位
             // 
-            this.labelX_采样位.BackColor = System.Drawing.Color.White;
+            this.labelX_采样位.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -369,7 +369,7 @@
             // 
             // labelX_采样频率
             // 
-            this.labelX_采样频率.BackColor = System.Drawing.Color.White;
+            this.labelX_采样频率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -393,13 +393,11 @@
             this.Controls.Add(this.groupBox_视频设置);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProjectSetForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "工程设置";
