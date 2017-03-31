@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using vlc.net;
+using 主界面.Forms;
 using 主界面.Properties;
 using 主界面.窗体;
 
@@ -209,6 +210,12 @@ namespace 主界面
         {
             CaptureForm captureForm = new CaptureForm();
             captureForm.ShowDialog();
+        }
+
+        private void 设备输出设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeviceInputSetForm deviceInputSetForm = new DeviceInputSetForm();
+            deviceInputSetForm.ShowDialog();
         }
     }
 }
