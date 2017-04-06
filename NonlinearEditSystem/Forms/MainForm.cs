@@ -223,5 +223,11 @@ namespace 主界面
             RecordForm recordForm = new RecordForm();
             recordForm.ShowDialog();
         }
+
+        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DubForm dubFrom = new DubForm();
+            dubFrom.ShowDialog();
+        }
     }
 }
