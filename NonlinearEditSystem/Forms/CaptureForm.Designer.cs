@@ -1,4 +1,4 @@
-﻿namespace 主界面.窗体
+﻿namespace NonLinearEditSystem.窗体
 {
     partial class CaptureForm
     {

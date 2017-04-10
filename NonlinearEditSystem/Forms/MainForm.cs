@@ -4,11 +4,11 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using vlc.net;
-using 主界面.Forms;
-using 主界面.Properties;
-using 主界面.窗体;
+using NonLinearEditSystem.Forms;
+using NonLinearEditSystem.Properties;
+using NonLinearEditSystem.窗体;
 
-namespace 主界面
+namespace NonLinearEditSystem
 {
     public partial class MainForm : MetroForm
     {

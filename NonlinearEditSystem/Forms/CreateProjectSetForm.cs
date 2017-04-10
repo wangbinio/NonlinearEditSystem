@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 
-namespace 主界面.窗体
+namespace NonLinearEditSystem.窗体
 {
     public partial class CreateProjectSetForm : DevComponents.DotNetBar.Metro.MetroForm
     {

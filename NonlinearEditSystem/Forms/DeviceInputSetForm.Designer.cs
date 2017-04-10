@@ -1,4 +1,4 @@
-﻿namespace 主界面.Forms
+﻿namespace NonLinearEditSystem.Forms
 {
     partial class DeviceInputSetForm
     {
@@ -111,7 +111,7 @@
             this.tabControlPanel_Property.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Property.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_Property.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Property.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_Property.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_Property.Style.GradientAngle = 90;
             this.tabControlPanel_Property.TabIndex = 1;
@@ -515,7 +515,7 @@
             this.tabControlPanel_DeviceSet.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_DeviceSet.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_DeviceSet.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_DeviceSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_DeviceSet.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_DeviceSet.Style.GradientAngle = 90;
             this.tabControlPanel_DeviceSet.TabIndex = 9;
@@ -539,7 +539,7 @@
             this.tabControlPanel_SyncLock.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_SyncLock.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_SyncLock.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_SyncLock.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            this.tabControlPanel_SyncLock.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_SyncLock.Style.GradientAngle = 90;
             this.tabControlPanel_SyncLock.TabIndex = 5;

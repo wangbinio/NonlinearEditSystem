@@ -1,4 +1,4 @@
-﻿namespace 主界面
+﻿namespace NonLinearEditSystem
 {
     partial class MainForm
     {
@@ -1128,9 +1128,9 @@
             this.VideoFile1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.VideoFile1.Style.GradientAngle = 90;
             this.VideoFile1.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseDown.BackgroundImage = global::主界面.Properties.Resources.透明图片6;
+            this.VideoFile1.StyleMouseDown.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片6;
             this.VideoFile1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseOver.BackgroundImage = global::主界面.Properties.Resources.透明图片7;
+            this.VideoFile1.StyleMouseOver.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片7;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
             // 
