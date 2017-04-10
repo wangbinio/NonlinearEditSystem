@@ -9,9 +9,9 @@ using DevComponents.DotNetBar;
 
 namespace NonLinearEditSystem.Forms
 {
-    public partial class RecordForm : DevComponents.DotNetBar.Metro.MetroForm
+    public partial class DubForm : DevComponents.DotNetBar.Metro.MetroForm
     {
-        public RecordForm()
+        public DubForm()
         {
             InitializeComponent();
         }

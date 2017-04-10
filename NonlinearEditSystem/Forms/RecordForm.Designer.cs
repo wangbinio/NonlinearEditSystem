@@ -1,4 +1,4 @@
-﻿namespace 主界面.Forms
+﻿namespace NonLinearEditSystem.Forms
 {
     partial class RecordForm
     {

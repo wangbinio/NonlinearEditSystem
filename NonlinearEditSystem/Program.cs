@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using 主界面.窗体;
+using NonLinearEditSystem.窗体;
 
-namespace 主界面
+namespace NonLinearEditSystem
 {
     internal static class Program
     {

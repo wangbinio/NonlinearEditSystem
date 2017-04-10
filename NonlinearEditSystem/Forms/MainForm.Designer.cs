@@ -1,4 +1,4 @@
-﻿namespace 主界面
+﻿namespace NonLinearEditSystem
 {
     partial class MainForm
     {
@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl_Project = new DevComponents.DotNetBar.TabControl();
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Project = new DevComponents.DotNetBar.TabControlPanel();
             this.listView_Files = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,10 +46,6 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
             this.slider_SeqTime = new DevComponents.DotNetBar.Controls.Slider();
@@ -190,9 +190,9 @@
             // 
             this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControl_Project.CanReorderTabs = true;
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_SpecialEffect);
-            this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
             this.tabControl_Project.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl_Project.ForeColor = System.Drawing.Color.Black;
             this.tabControl_Project.Location = new System.Drawing.Point(0, 25);
@@ -208,6 +208,52 @@
             this.tabControl_Project.Tabs.Add(this.tabItem_SpecialEffect);
             this.tabControl_Project.Tabs.Add(this.tabItemTemplate);
             this.tabControl_Project.Text = "tabControl_Project";
+            // 
+            // tabControlPanel_Template
+            // 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
+            // 
+            // tabItemTemplate
+            // 
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
+            this.tabItemTemplate.Name = "tabItemTemplate";
+            this.tabItemTemplate.Text = "模板库";
+            // 
+            // tabControlPanel_SpecialEffect
+            // 
+            this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_SpecialEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_SpecialEffect.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
+            this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
+            this.tabControlPanel_SpecialEffect.TabIndex = 5;
+            this.tabControlPanel_SpecialEffect.TabItem = this.tabItem_SpecialEffect;
+            // 
+            // tabItem_SpecialEffect
+            // 
+            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel_SpecialEffect;
+            this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
+            this.tabItem_SpecialEffect.Text = "特技控制";
             // 
             // tabControlPanel_Project
             // 
@@ -323,52 +369,6 @@
             this.tabItem_Project.AttachedControl = this.tabControlPanel_Project;
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
-            // 
-            // tabControlPanel_Template
-            // 
-            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
-            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_Template.Style.GradientAngle = 90;
-            this.tabControlPanel_Template.TabIndex = 9;
-            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
-            // 
-            // tabItemTemplate
-            // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
-            this.tabItemTemplate.Name = "tabItemTemplate";
-            this.tabItemTemplate.Text = "模板库";
-            // 
-            // tabControlPanel_SpecialEffect
-            // 
-            this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_SpecialEffect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_SpecialEffect.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
-            this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
-            this.tabControlPanel_SpecialEffect.TabIndex = 5;
-            this.tabControlPanel_SpecialEffect.TabItem = this.tabItem_SpecialEffect;
-            // 
-            // tabItem_SpecialEffect
-            // 
-            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel_SpecialEffect;
-            this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
-            this.tabItem_SpecialEffect.Text = "特技控制";
             // 
             // tabControl_Sequence
             // 
@@ -747,7 +747,7 @@
             // szwbprjToolStripMenuItem
             // 
             this.szwbprjToolStripMenuItem.Name = "szwbprjToolStripMenuItem";
-            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.szwbprjToolStripMenuItem.Text = "szwb.prj";
             // 
             // toolStripSeparator5
@@ -803,6 +803,7 @@
             this.配音DToolStripMenuItem.Name = "配音DToolStripMenuItem";
             this.配音DToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.配音DToolStripMenuItem.Text = "配音(&D)";
+            this.配音DToolStripMenuItem.Click += new System.EventHandler(this.配音DToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1127,9 +1128,9 @@
             this.VideoFile1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.VideoFile1.Style.GradientAngle = 90;
             this.VideoFile1.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseDown.BackgroundImage = global::主界面.Properties.Resources.透明图片6;
+            this.VideoFile1.StyleMouseDown.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片6;
             this.VideoFile1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseOver.BackgroundImage = global::主界面.Properties.Resources.透明图片7;
+            this.VideoFile1.StyleMouseOver.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片7;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
             // 

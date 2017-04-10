@@ -4,11 +4,11 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using vlc.net;
-using 主界面.Forms;
-using 主界面.Properties;
-using 主界面.窗体;
+using NonLinearEditSystem.Forms;
+using NonLinearEditSystem.Properties;
+using NonLinearEditSystem.窗体;
 
-namespace 主界面
+namespace NonLinearEditSystem
 {
     public partial class MainForm : MetroForm
     {
@@ -222,6 +222,12 @@ namespace 主界面
         {
             RecordForm recordForm = new RecordForm();
             recordForm.ShowDialog();
+        }
+
+        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DubForm dubFrom = new DubForm();
+            dubFrom.ShowDialog();
         }
     }
 }

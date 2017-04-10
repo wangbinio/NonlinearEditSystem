@@ -7,8 +7,8 @@
     <ProjectGuid>{48364FC4-599C-4616-BB32-248F1982DB56}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>主界面</RootNamespace>
-    <AssemblyName>主界面</AssemblyName>
+    <RootNamespace>NonLinearEditSystem</RootNamespace>
+    <AssemblyName>非编系统</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -105,6 +105,12 @@
     <Compile Include="Forms\DeviceInputSetForm.Designer.cs">
       <DependentUpon>DeviceInputSetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DubForm.Designer.cs">
+      <DependentUpon>DubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProjectSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,7 @@
       <DependentUpon>RecordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -145,6 +152,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\DeviceInputSetForm.resx">
       <DependentUpon>DeviceInputSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DubForm.resx">
+      <DependentUpon>DubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RecordForm.resx">
       <DependentUpon>RecordForm.cs</DependentUpon>

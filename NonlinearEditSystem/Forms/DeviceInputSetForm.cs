@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 
-namespace 主界面.Forms
+namespace NonLinearEditSystem.Forms
 {
     public partial class DeviceInputSetForm : DevComponents.DotNetBar.Metro.MetroForm
     {
