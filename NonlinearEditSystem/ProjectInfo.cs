@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SerializeSample
+namespace NonLinearEditSystem
 {
     /// <summary>
     /// 工程详细信息包括工程文件名、工程文件路径、长度、更新人、更新时间、
@@ -29,9 +29,10 @@ namespace SerializeSample
             
         }
 
-        public ProjectInfo(string name, string path, long len, string updater, DateTime time, 
+        public ProjectInfo(string Version, string name, string path, long len, string updater, DateTime time, 
             VideoInfoStruct videoInfo, AudioInfoStruct audioInfo, string remarks)
         {
+            ProjectVersion = Version;
             ProjectName = name;
             ProjectPath = path;
             Length = len;
@@ -42,13 +43,50 @@ namespace SerializeSample
             Remarks = remarks;
         }
 
+        /// <summary>
+        /// 工程版本
+        /// </summary>
+        public string ProjectVersion { get; set; }
+
+
+        /// <summary>
+        /// 工程文件名
+        /// </summary>
         public string ProjectName { get; set; }
+
+        /// <summary>
+        /// 工程文件路径
+        /// </summary>
         public string ProjectPath { get; set; }
+
+        /// <summary>
+        /// 长度
+        /// </summary>
         public long Length { get; set; }
+
+        /// <summary>
+        /// 更新人
+        /// </summary>
         public string UpdateUser { get; set; }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
         public DateTime UpdateTime { get; set; }
+
+        /// <summary>
+        /// 视频信息
+        /// </summary>
         public VideoInfoStruct VideoInfo;
+
+        /// <summary>
+        /// 音频信息
+        /// </summary>
         public AudioInfoStruct AudioInfo;
+
+        /// <summary>
+        /// 备注
+        /// </summary>
         public string Remarks { get; set; }
     }
 
