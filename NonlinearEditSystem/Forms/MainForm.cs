@@ -7,6 +7,7 @@ using vlc.net;
 using NonLinearEditSystem.Forms;
 using NonLinearEditSystem.Properties;
 using NonLinearEditSystem.窗体;
+using ClrInterfaceDll;
 
 namespace NonLinearEditSystem
 {
@@ -14,30 +15,23 @@ namespace NonLinearEditSystem
     {
         private string[] _choosedDirFullPath;
         private string[] _choosedFileFullPath;
-        private VlcPlayer _vlcPlayer;
+        private IClipPlayControlCSharp _iClipPlayControlCSharp;
+
 
         public MainForm()
         {
             InitializeComponent();
 
-            // 1.初始化vlc
-            //InitializeVlc();
-
-            // 2.自绘游标
+            InitPlayControl();
 
         }
 
         /// <summary>
-        ///     初始化vlc
+        /// 初始化视频播放组件
         /// </summary>
-        private void InitializeVlc()
+        private void InitPlayControl()
         {
-            var pluginPath = Environment.CurrentDirectory + "\\vlc\\plugins\\";
-            _vlcPlayer = new VlcPlayer(pluginPath);
-            var renderWnd = panelEx_Segment.Handle;
-            _vlcPlayer.SetRenderWindow((int)renderWnd);
-
-
+            _iClipPlayControlCSharp = new IClipPlayControlCSharp();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -130,13 +124,11 @@ namespace NonLinearEditSystem
             if (sFileType.ToUpper() != "MP4") return;
             timer_Segment.Start();
 
-            _vlcPlayer.PlayFile(sFilePath);
+            IntPtr rendWnd = PanelEx_Sequence.Handle;
+            int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
+            _iClipPlayControlCSharp.Play();
 
-            timeLineControl_Segment.NNeedShowSeconds = (int)_vlcPlayer.Duration();
-
-            //Segment_TrackBar.SetRange(0, (int)vlc_player.Duration());
-
-            //Segment_TrackBar.LargeChange = Segment_TrackBar.Maximum / 20;
+            timeLineControl_Sequence.NNeedShowSeconds = (int)_iClipPlayControlCSharp.GetDuration()/10000000;
         }
 
         /// <summary>
