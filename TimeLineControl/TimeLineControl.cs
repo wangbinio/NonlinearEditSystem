@@ -44,8 +44,11 @@ namespace TimeLineControl
         // 水平轴一共要显示多长时间(单位：s)，要向上取
         public int NNeedShowSeconds { get; set; } = 3600;
 
+        // 当前游标位置的时间
+        //public int CurrentTime ｛get; set;｝
+
         // 游标中心线的横坐标
-        public int ThumbHPos { get; set; }
+        public double ThumbHPos { get; set; }
 
         // 游标所在的矩形区域
         public Rectangle ThumbRectangle { get; set; }
@@ -55,10 +58,16 @@ namespace TimeLineControl
 
         private double _thumbValue;
 
+        // 游标位置时间值
         public double ThumbValue
         {
             get { return ((double)NNeedShowSeconds / NNumOfBigTicks / 10) * ((double)ThumbHPos / (double)NDistanceOfTicks); }
             private set { _thumbValue = ((double)NNeedShowSeconds / NNumOfBigTicks / 10) * ((double)ThumbHPos / (double)NDistanceOfTicks) ; }
+        }
+
+        public double IntervalEverySec
+        {
+            get { return NDistanceOfTicks / (NNeedShowSeconds / NNumOfBigTicks / 10.0); }
         }
 
 
@@ -67,13 +76,13 @@ namespace TimeLineControl
 
         #region Members
 
-        private bool _mouseInRegion;
-        private bool _mouseInThumbRegion;
-        private bool _clickedOnce;
-        private bool _clickedTwice;
-        private Point _clickedOncePoint;
-        private Point _clickedTwicePoint;
-        private bool _mouseMoved;
+        public bool _mouseInRegion;
+        public bool _mouseInThumbRegion;
+        public bool _clickedOnce;
+        public bool _clickedTwice;
+        public Point _clickedOncePoint;
+        public Point _clickedTwicePoint;
+        public bool _mouseMoved;
 
         #endregion
 
@@ -193,16 +202,16 @@ namespace TimeLineControl
             // 先确定中心点3的位置
             Point[] thumbPoints = new Point[5];
             int nVPadding = 3 * NBigTicksLength / 2;
-            thumbPoints[2] = new Point(ThumbHPos, nVPadding);
-            thumbPoints[0] = new Point(ThumbHPos - NDistanceOfTicks / 2, 0);
-            thumbPoints[1] = new Point(ThumbHPos - NDistanceOfTicks / 2, NDistanceOfTicks / 2);
-            thumbPoints[3] = new Point(ThumbHPos + NDistanceOfTicks / 2, NDistanceOfTicks / 2);
-            thumbPoints[4] = new Point(ThumbHPos + NDistanceOfTicks / 2, 0);
+            thumbPoints[2] = new Point((int)ThumbHPos, nVPadding);
+            thumbPoints[0] = new Point((int)ThumbHPos - NDistanceOfTicks / 2, 0);
+            thumbPoints[1] = new Point((int)ThumbHPos - NDistanceOfTicks / 2, NDistanceOfTicks / 2);
+            thumbPoints[3] = new Point((int)ThumbHPos + NDistanceOfTicks / 2, NDistanceOfTicks / 2);
+            thumbPoints[4] = new Point((int)ThumbHPos + NDistanceOfTicks / 2, 0);
 
-            Point endPoint = new Point(ThumbHPos, Parent.Height);
+            Point endPoint = new Point((int)ThumbHPos, Parent.Height);
 
             // 确定游标所在的rectangle
-            ThumbRectangle = new Rectangle(ThumbHPos - NDistanceOfTicks / 2, 0, NDistanceOfTicks, 3 * NBigTicksLength / 2);
+            ThumbRectangle = new Rectangle((int)ThumbHPos - NDistanceOfTicks / 2, 0, NDistanceOfTicks, 3 * NBigTicksLength / 2);
 
             g.FillPolygon(/*transparentBrush*/thumbBrush, thumbPoints);
 
@@ -290,7 +299,7 @@ namespace TimeLineControl
             base.OnMouseMove(e);
             Point mousePoint = e.Location;
 
-            _mouseInThumbRegion = IsPointInRect(mousePoint, ThumbRectangle);
+            //_mouseInThumbRegion = IsPointInRect(mousePoint, ThumbRectangle);
             if (Capture && e.Button == MouseButtons.Left)
             {
                 // 设置游标新位置

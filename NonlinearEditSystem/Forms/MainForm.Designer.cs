@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl_Project = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Project = new DevComponents.DotNetBar.TabControlPanel();
             this.listView_Files = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,17 +42,19 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
             this.slider_SeqTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX_SeqTime = new DevComponents.DotNetBar.LabelX();
-            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
             this.PanelEx_Sequence = new DevComponents.DotNetBar.PanelEx();
             this.tabItem_Sequence = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Segment = new DevComponents.DotNetBar.TabControlPanel();
             this.slider_SegmentTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX_SegmentTime = new DevComponents.DotNetBar.LabelX();
-            this.timeLineControl_Segment = new TimeLineControl.TimeLineControl();
             this.panelEx_Segment = new DevComponents.DotNetBar.PanelEx();
             this.tabItem_Segment = new DevComponents.DotNetBar.TabItem(this.components);
             this.工程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +113,6 @@
             this.panelEx_TrackContent = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment1 = new DevComponents.DotNetBar.PanelEx();
-            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
             this.panelEx_VideoTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.VideoFile1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment1 = new DevComponents.DotNetBar.PanelEx();
@@ -159,6 +156,10 @@
             this.AudioTrackB1BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
             this.tabItem_TimeLine = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer_Segment = new System.Windows.Forms.Timer(this.components);
+            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
+            this.timeLineControl_Segment = new TimeLineControl.TimeLineControl();
+            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
+            this.timer_Sequence = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).BeginInit();
             this.tabControl_Project.SuspendLayout();
             this.tabControlPanel_Project.SuspendLayout();
@@ -208,52 +209,6 @@
             this.tabControl_Project.Tabs.Add(this.tabItem_SpecialEffect);
             this.tabControl_Project.Tabs.Add(this.tabItemTemplate);
             this.tabControl_Project.Text = "tabControl_Project";
-            // 
-            // tabControlPanel_Template
-            // 
-            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
-            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_Template.Style.GradientAngle = 90;
-            this.tabControlPanel_Template.TabIndex = 9;
-            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
-            // 
-            // tabItemTemplate
-            // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
-            this.tabItemTemplate.Name = "tabItemTemplate";
-            this.tabItemTemplate.Text = "模板库";
-            // 
-            // tabControlPanel_SpecialEffect
-            // 
-            this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_SpecialEffect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_SpecialEffect.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
-            this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
-            this.tabControlPanel_SpecialEffect.TabIndex = 5;
-            this.tabControlPanel_SpecialEffect.TabItem = this.tabItem_SpecialEffect;
-            // 
-            // tabItem_SpecialEffect
-            // 
-            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel_SpecialEffect;
-            this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
-            this.tabItem_SpecialEffect.Text = "特技控制";
             // 
             // tabControlPanel_Project
             // 
@@ -370,6 +325,52 @@
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
             // 
+            // tabControlPanel_Template
+            // 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
+            // 
+            // tabItemTemplate
+            // 
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
+            this.tabItemTemplate.Name = "tabItemTemplate";
+            this.tabItemTemplate.Text = "模板库";
+            // 
+            // tabControlPanel_SpecialEffect
+            // 
+            this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_SpecialEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_SpecialEffect.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
+            this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
+            this.tabControlPanel_SpecialEffect.TabIndex = 5;
+            this.tabControlPanel_SpecialEffect.TabItem = this.tabItem_SpecialEffect;
+            // 
+            // tabItem_SpecialEffect
+            // 
+            this.tabItem_SpecialEffect.AttachedControl = this.tabControlPanel_SpecialEffect;
+            this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
+            this.tabItem_SpecialEffect.Text = "特技控制";
+            // 
             // tabControl_Sequence
             // 
             this.tabControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
@@ -396,8 +397,8 @@
             this.tabControlPanel_Seq.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.tabControlPanel_Seq.Controls.Add(this.slider_SeqTime);
             this.tabControlPanel_Seq.Controls.Add(this.labelX_SeqTime);
-            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.Controls.Add(this.PanelEx_Sequence);
+            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.DisabledBackColor = System.Drawing.Color.Empty;
             this.tabControlPanel_Seq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPanel_Seq.Location = new System.Drawing.Point(0, 28);
@@ -449,31 +450,13 @@
             this.labelX_SeqTime.TabIndex = 9;
             this.labelX_SeqTime.Text = "00:00:00:00";
             // 
-            // timeLineControl_Sequence
-            // 
-            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 313);
-            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
-            this.timeLineControl_Sequence.NBigTicksLength = 10;
-            this.timeLineControl_Sequence.NBotmPadding = 3;
-            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
-            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
-            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
-            this.timeLineControl_Sequence.Size = new System.Drawing.Size(672, 30);
-            this.timeLineControl_Sequence.TabIndex = 6;
-            this.timeLineControl_Sequence.ThumbHPos = 333;
-            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
-            // 
             // PanelEx_Sequence
             // 
             this.PanelEx_Sequence.CanvasColor = System.Drawing.SystemColors.Control;
             this.PanelEx_Sequence.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.PanelEx_Sequence.DisabledBackColor = System.Drawing.Color.Empty;
             this.PanelEx_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEx_Sequence.Location = new System.Drawing.Point(1, 1);
+            this.PanelEx_Sequence.Location = new System.Drawing.Point(1, 31);
             this.PanelEx_Sequence.Name = "PanelEx_Sequence";
             this.PanelEx_Sequence.Size = new System.Drawing.Size(672, 312);
             this.PanelEx_Sequence.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -547,24 +530,6 @@
             this.labelX_SegmentTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX_SegmentTime.TabIndex = 12;
             this.labelX_SegmentTime.Text = "00:00:00:00";
-            // 
-            // timeLineControl_Segment
-            // 
-            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_Segment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timeLineControl_Segment.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_Segment.Location = new System.Drawing.Point(1, 313);
-            this.timeLineControl_Segment.Name = "timeLineControl_Segment";
-            this.timeLineControl_Segment.NBigTicksLength = 10;
-            this.timeLineControl_Segment.NBotmPadding = 3;
-            this.timeLineControl_Segment.NDistanceOfTicks = 10;
-            this.timeLineControl_Segment.NNeedShowSeconds = 4200;
-            this.timeLineControl_Segment.NNumOfBigTicks = 7;
-            this.timeLineControl_Segment.Size = new System.Drawing.Size(672, 30);
-            this.timeLineControl_Segment.TabIndex = 10;
-            this.timeLineControl_Segment.ThumbHPos = 333;
-            this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
             // 
             // panelEx_Segment
             // 
@@ -1071,25 +1036,6 @@
             this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
             this.panelEx_AudioTrackConment1.TabIndex = 0;
             this.panelEx_AudioTrackConment1.Text = "音频轨道内容1";
-            // 
-            // timeLineControl_MainTL
-            // 
-            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_MainTL.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
-            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
-            this.timeLineControl_MainTL.NBigTicksLength = 10;
-            this.timeLineControl_MainTL.NBotmPadding = 3;
-            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
-            this.timeLineControl_MainTL.NNeedShowSeconds = 5400;
-            this.timeLineControl_MainTL.NNumOfBigTicks = 9;
-            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1086, 34);
-            this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 222;
-            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
-            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl1_Click);
             // 
             // panelEx_VideoTrackConment2
             // 
@@ -1624,6 +1570,67 @@
             this.timer_Segment.Interval = 1000;
             this.timer_Segment.Tick += new System.EventHandler(this.timer_Segment_Tick);
             // 
+            // timeLineControl_Sequence
+            // 
+            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 1);
+            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
+            this.timeLineControl_Sequence.NBigTicksLength = 10;
+            this.timeLineControl_Sequence.NBotmPadding = 3;
+            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
+            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
+            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
+            this.timeLineControl_Sequence.Size = new System.Drawing.Size(672, 30);
+            this.timeLineControl_Sequence.TabIndex = 6;
+            this.timeLineControl_Sequence.ThumbHPos = 333;
+            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
+            this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_Sequence_MouseMove);
+            // 
+            // timeLineControl_Segment
+            // 
+            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Segment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeLineControl_Segment.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Segment.Location = new System.Drawing.Point(1, 313);
+            this.timeLineControl_Segment.Name = "timeLineControl_Segment";
+            this.timeLineControl_Segment.NBigTicksLength = 10;
+            this.timeLineControl_Segment.NBotmPadding = 3;
+            this.timeLineControl_Segment.NDistanceOfTicks = 10;
+            this.timeLineControl_Segment.NNeedShowSeconds = 4200;
+            this.timeLineControl_Segment.NNumOfBigTicks = 7;
+            this.timeLineControl_Segment.Size = new System.Drawing.Size(672, 30);
+            this.timeLineControl_Segment.TabIndex = 10;
+            this.timeLineControl_Segment.ThumbHPos = 333;
+            this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
+            // 
+            // timeLineControl_MainTL
+            // 
+            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_MainTL.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
+            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
+            this.timeLineControl_MainTL.NBigTicksLength = 10;
+            this.timeLineControl_MainTL.NBotmPadding = 3;
+            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
+            this.timeLineControl_MainTL.NNeedShowSeconds = 5400;
+            this.timeLineControl_MainTL.NNumOfBigTicks = 9;
+            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1086, 34);
+            this.timeLineControl_MainTL.TabIndex = 11;
+            this.timeLineControl_MainTL.ThumbHPos = 222;
+            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
+            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl1_Click);
+            // 
+            // timer_Sequence
+            // 
+            this.timer_Sequence.Interval = 1000;
+            this.timer_Sequence.Tick += new System.EventHandler(this.timer_Sequence_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1637,6 +1644,7 @@
             this.Controls.Add(this.MainmenuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1803,5 +1811,6 @@
         private DevComponents.DotNetBar.LabelX labelX_SeqTime;
         private DevComponents.DotNetBar.Controls.Slider slider_SegmentTime;
         private DevComponents.DotNetBar.LabelX labelX_SegmentTime;
+        private System.Windows.Forms.Timer timer_Sequence;
     }
 }

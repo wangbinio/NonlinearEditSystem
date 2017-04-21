@@ -141,6 +141,7 @@
     <Compile Include="Forms\RecordForm.Designer.cs">
       <DependentUpon>RecordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeneralConversions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -127,19 +127,30 @@ namespace NonLinearEditSystem
             IntPtr rendWnd = PanelEx_Sequence.Handle;
             int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
             _iClipPlayControlCSharp.Play();
+            timer_Sequence.Start();
 
-            timeLineControl_Sequence.NNeedShowSeconds = (int)_iClipPlayControlCSharp.GetDuration()/10000000;
+            timeLineControl_Sequence.NNeedShowSeconds = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
+            timeLineControl_Sequence.ThumbHPos = 0;
+            timeLineControl_Sequence.Invalidate();
         }
 
         /// <summary>
-        ///     拖动TrackBar改变播放时间
+        /// 序列监视器计时器
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Segment_TrackBar_Scroll(object sender, EventArgs e)
+        private void timer_Sequence_Tick(object sender, EventArgs e)
         {
-            //vlc_player.SetPlayTime(Segment_TrackBar.Value);
-            //Segment_TrackBar.Value = (int)vlc_player.GetPlayTime();
+            if (timeLineControl_Sequence.ThumbValue >= timeLineControl_Sequence.NNeedShowSeconds)
+            {
+                timer_Sequence.Stop();
+                _iClipPlayControlCSharp.Stop();
+            }
+            else
+            {
+                timeLineControl_Sequence.ThumbHPos += timeLineControl_Sequence.IntervalEverySec;
+                timeLineControl_Sequence.Invalidate();
+            }
         }
 
         /// <summary>
@@ -221,5 +232,35 @@ namespace NonLinearEditSystem
             DubForm dubFrom = new DubForm();
             dubFrom.ShowDialog();
         }
+
+        /// <summary>
+        /// 序列监视器视频播放时候移动游标控制播放时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeLineControl_Sequence_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeLineControl_Sequence.Capture && e.Button == MouseButtons.Left)
+            {
+                // 等到游标位置时间，转换为100ns单位
+                long rtPos = (long)(timeLineControl_Sequence.ThumbValue * GeneralConversions.SECONDS_TO_HT_TIME);
+
+                // 如果视频处于某种状态，则播放
+                if (_iClipPlayControlCSharp.GetCurState() == 0 || _iClipPlayControlCSharp.GetCurState() == 1)
+                {
+                    if (rtPos >= _iClipPlayControlCSharp.GetDuration())
+                    {
+                        _iClipPlayControlCSharp.SetPosition(0, 0);
+                        timeLineControl_Sequence.ThumbHPos = 0;
+                        timeLineControl_Sequence.Invalidate();
+                    }
+                    else
+                    {
+                        _iClipPlayControlCSharp.SetPosition(rtPos, 0);
+                    }
+                }
+            }
+        }
+
     }
 }
