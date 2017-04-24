@@ -9,6 +9,12 @@ using namespace System;
 
 namespace ClrInterfaceDll
 {
+	/// <summary>
+	/// 类说明：视频播放控件托管类
+	/// 日期：2017-04-19
+	/// 作者：szwb
+	/// 修改：
+	/// </summary>
 	public ref class IClipPlayControlCSharp
 	{
 	public:

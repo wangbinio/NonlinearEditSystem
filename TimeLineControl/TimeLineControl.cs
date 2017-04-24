@@ -8,6 +8,13 @@ using TimeLineControl;
 
 namespace TimeLineControl
 {
+    /// <summary>
+    /// 类说明：自绘时间线控件
+    /// 日期：2017-03-17
+    /// 作者：szwb
+    /// 修改：2017-03-18 szwb
+    /// 修改：2017-04-23 szwb 随着视频的播放，游标自动移动
+    /// </summary>
     [ToolboxBitmap(typeof(TrackBar))]
     [DefaultEvent("Click"), DefaultProperty("nBotmPadding")]
     public partial class TimeLineControl : Control

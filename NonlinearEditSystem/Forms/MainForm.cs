@@ -3,11 +3,11 @@ using System.IO;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
-using vlc.net;
 using NonLinearEditSystem.Forms;
 using NonLinearEditSystem.Properties;
 using NonLinearEditSystem.窗体;
 using ClrInterfaceDll;
+using XNetUtilities;
 
 namespace NonLinearEditSystem
 {
