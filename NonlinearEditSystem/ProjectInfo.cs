@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace NonLinearEditSystem
 {
     /// <summary>
+    /// 类说明：
     /// 工程详细信息包括工程文件名、工程文件路径、长度、更新人、更新时间、
     /// 视频信息（分辨率、帧率、像素宽高比、扫描模式）、
     /// 音频信息（音频格式、音频流数、声道类型、音频采样频率、音频比特率）、备注等。
@@ -20,6 +21,10 @@ namespace NonLinearEditSystem
     /// 音频信息：包含音频采样频率、比特率及声道类型。
     /// 音频流数：原始音频素材包含的流数。
     /// 备注：双击此项为素材添加批注。
+    /// 
+    /// 日期：2017-04-10
+    /// 作者：szwb
+    /// 修改：2017-04-11 szwb 添加版本控制
     /// </summary>
     [Serializable]
     public class ProjectInfo
@@ -29,10 +34,10 @@ namespace NonLinearEditSystem
             
         }
 
-        public ProjectInfo(string Version, string name, string path, long len, string updater, DateTime time, 
+        public ProjectInfo(string version, string name, string path, long len, string updater, DateTime time, 
             VideoInfoStruct videoInfo, AudioInfoStruct audioInfo, string remarks)
         {
-            ProjectVersion = Version;
+            ProjectVersion = version;
             ProjectName = name;
             ProjectPath = path;
             Length = len;

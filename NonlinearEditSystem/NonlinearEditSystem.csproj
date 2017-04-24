@@ -141,7 +141,6 @@
     <Compile Include="Forms\RecordForm.Designer.cs">
       <DependentUpon>RecordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GeneralConversions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +273,10 @@
     <ProjectReference Include="..\TimeLineControl\TimeLineControl.csproj">
       <Project>{95bb407e-8405-44d0-b5f9-1d634d4f914f}</Project>
       <Name>TimeLineControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XNetUtilities\XNetUtilities.csproj">
+      <Project>{6da7fd42-9e07-4795-88d8-4a8909370943}</Project>
+      <Name>XNetUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
