@@ -10,7 +10,7 @@ namespace XNetUtilities
     /// 作者：szwb
     /// 修改：
     /// </summary>
-    public abstract class SqlHelper
+    public static class SqlHelper
     {
 
         // 设置连接、命令，然后执行非查询命令，返回受到影响的行数
@@ -50,19 +50,19 @@ namespace XNetUtilities
         // 设置连接、命令，然后执行返回reader的查询
         public static SqlDataReader ExecuteReader(String connectionString, String commandText, CommandType commandType, params SqlParameter[] parameters)
         {
-            using (SqlConnection conn = new SqlConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand(commandText, conn))
-                {
-                    cmd.CommandType = commandType;
-                    cmd.Parameters.AddRange(parameters);
+            SqlConnection conn = new SqlConnection(connectionString);
 
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    return reader;
-                }
+            using (SqlCommand cmd = new SqlCommand(commandText, conn))
+            {
+                cmd.CommandType = commandType;
+                cmd.Parameters.AddRange(parameters);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                return reader;
             }
         }
-    }
 
+
+    }
 }

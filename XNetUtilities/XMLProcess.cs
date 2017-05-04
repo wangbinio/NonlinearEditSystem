@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Xml;
+using Common;
 
 namespace XNetUtilities
 {
@@ -37,11 +38,13 @@ namespace XNetUtilities
             XmlDocument xmldoc = new XmlDocument();
             try
             {
-                string filename = /*AppDomain.CurrentDomain.BaseDirectory.ToString() + */XMLFile;
+                string filename = /*AppDomain.CurrentDomain.BaseDirectory.ToString() + */ XMLFile;
                 if (File.Exists(filename)) xmldoc.Load(filename);
             }
-            catch (Exception e)
-            { }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
             return xmldoc;
         }
 
@@ -57,8 +60,10 @@ namespace XNetUtilities
                 string filename = AppDomain.CurrentDomain.BaseDirectory.ToString() + strPath;
                 if (File.Exists(filename)) xmldoc.Load(filename);
             }
-            catch (Exception e)
-            { }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
             return xmldoc;
         }
 

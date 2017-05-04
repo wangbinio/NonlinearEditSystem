@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
+using Common;
 
 namespace XNetUtilities
 {
@@ -19,6 +20,7 @@ namespace XNetUtilities
     public class XmlHelper
     {
         #region 字段
+
         /// <summary>
         /// XML文件的物理路径
         /// </summary>
@@ -42,6 +44,7 @@ namespace XNetUtilities
         #endregion 字段
 
         #region 构造
+
         /// <summary>
         /// 实例化XmlHelper对象
         /// </summary>
@@ -62,28 +65,35 @@ namespace XNetUtilities
 
         #endregion 构造
 
-        #region 读取指定节点的值
         /// <summary>
         /// 创建XML的根节点
         /// </summary>
-        public void CreateXmlElement()
+        private void CreateXmlElement()
         {
-            if (!_bCreatedElememt)
+            try
             {
-                // 创建一个XML对象
-                _xmlDocument = new XmlDocument();
-
-                if (File.Exists(_filePath))
+                if (!_bCreatedElememt)
                 {
-                    // 加载XML文件
-                    _xmlDocument.Load(_filePath);
+                    // 创建一个XML对象
+                    _xmlDocument = new XmlDocument();
+
+                    if (File.Exists(_filePath))
+                    {
+                        // 加载XML文件
+                        _xmlDocument.Load(_filePath);
+
+                        // 为XML的根节点赋值
+                        _xmlElement = _xmlDocument.DocumentElement;
+
+                        _bCreatedElememt = true;
+                    }
                 }
-
-                // 为XML的根节点赋值
-                _xmlElement = _xmlDocument.DocumentElement;
-
-                _bCreatedElememt = true;
             }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+          
         }
 
         /// <summary>
@@ -96,11 +106,20 @@ namespace XNetUtilities
         /// <returns></returns>
         public XmlNode GetNode(string xPath)
         {
-            // 创建XML根节点
-            CreateXmlElement();
+            try
+            {
+                // 创建XML根节点
+                CreateXmlElement();
 
-            // 返回xPath节点
-            return _xmlElement.SelectSingleNode(xPath);
+                // 返回xPath节点
+                return _xmlElement.SelectSingleNode(xPath);
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -110,11 +129,20 @@ namespace XNetUtilities
         /// <returns></returns>
         public string GetValue(string xPath)
         {
-            // 创建XML根节点
-            CreateXmlElement();
+            try
+            {
+                // 创建XML根节点
+                CreateXmlElement();
 
-            // 返回xPath节点的值
-            return _xmlElement.SelectSingleNode(xPath).InnerText;
+                // 返回xPath节点的值
+                return _xmlElement.SelectSingleNode(xPath)?.InnerText;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -125,15 +153,21 @@ namespace XNetUtilities
         /// <returns></returns>
         public string GetAttributeValue(string xPath, string attributeName)
         {
-            // 创建XML的根节点
-            CreateXmlElement();
+            try
+            {
+                // 创建XML的根节点
+                CreateXmlElement();
 
-            // 返回xPath节点的属性值
-            return _xmlElement.SelectSingleNode(xPath).Attributes[attributeName].Value;
+                // 返回xPath节点的属性值
+                return _xmlElement.SelectSingleNode(xPath)?.Attributes?[attributeName].Value;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
-
-        #endregion
-
 
         /// <summary>
         /// 1.功能：新增节点
@@ -182,21 +216,28 @@ namespace XNetUtilities
 
         public static XmlElement CreateRootElement(string xmlFilePath)
         {
-            // 定义变量，表示XML文件的绝对路径
-            string filePath = "";
+            try
+            {
+                // 定义变量，表示XML文件的绝对路径
+                string filePath = "";
 
-            filePath = HttpContext.Current.Server.MapPath(xmlFilePath);
+                filePath = HttpContext.Current.Server.MapPath(xmlFilePath);
 
-            // 创建XmlDocument
-            XmlDocument xmlDocument = new XmlDocument();
+                // 创建XmlDocument
+                XmlDocument xmlDocument = new XmlDocument();
 
-            // 加载XML文件
-            if (filePath != null) xmlDocument.Load(filePath);
+                // 加载XML文件
+                if (filePath != null) xmlDocument.Load(filePath);
 
-            // 返回根节点
-            return xmlDocument.DocumentElement;
+                // 返回根节点
+                return xmlDocument.DocumentElement;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
 
-
+            return null;
         }
 
         /// <summary>
@@ -207,13 +248,21 @@ namespace XNetUtilities
         /// <returns></returns>
         public static string GetValue(string xmlFilePath, string xPath)
         {
-            // 创建根对象
-            XmlElement rootElement = CreateRootElement(xmlFilePath);
+            try
+            {
+                // 创建根对象
+                XmlElement rootElement = CreateRootElement(xmlFilePath);
 
-            // 返回xPath节点的值
-            return rootElement.SelectSingleNode(xPath).InnerText;
+                // 返回xPath节点的值
+                return rootElement.SelectSingleNode(xPath)?.InnerText;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
-
 
         /// <summary>
         /// 获取指定xPath表达式节点的属性值
@@ -224,11 +273,20 @@ namespace XNetUtilities
         /// <returns></returns>
         public static string GetAttributeValue(string xmlFilePath, string xPath, string attributeName)
         {
-            // 创建根对象
-            XmlElement rootElement = CreateRootElement(xmlFilePath);
+            try
+            {
+                // 创建根对象
+                XmlElement rootElement = CreateRootElement(xmlFilePath);
 
-            // 返回xPath节点的属性值
-            return rootElement.SelectSingleNode(xPath).Attributes[attributeName].Value;
+                // 返回xPath节点的属性值
+                return rootElement.SelectSingleNode(xPath)?.Attributes?[attributeName].Value;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
     }
 }
