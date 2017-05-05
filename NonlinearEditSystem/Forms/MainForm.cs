@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Metro;
-using NonLinearEditSystem.Forms;
-using NonLinearEditSystem.Properties;
-using NonLinearEditSystem.窗体;
 using ClrInterfaceDll;
 using Common;
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Metro;
+using NonLinearEditSystem.Properties;
 using XNetUtilities;
 
-namespace NonLinearEditSystem
+namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
@@ -65,7 +63,7 @@ namespace NonLinearEditSystem
 	            {
 	                var itemUp = new ListViewItem("..");
 	                itemUp.SubItems.Add("文件夹");
-	                int length = path.LastIndexOf(@"\");
+	                int length = path.LastIndexOf(@"\", StringComparison.Ordinal);
 	                string upPath = path.Remove(length);
 	                // 如果上级是磁盘根目录，后面要加上"\"
 	                if (upPath.Length < 3)

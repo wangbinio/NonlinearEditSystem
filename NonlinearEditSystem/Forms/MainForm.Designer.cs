@@ -1,4 +1,4 @@
-﻿namespace NonLinearEditSystem
+﻿namespace NonLinearEditSystem.Forms
 {
     partial class MainForm
     {
