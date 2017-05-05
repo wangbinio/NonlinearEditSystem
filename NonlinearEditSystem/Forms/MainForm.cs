@@ -7,6 +7,7 @@ using NonLinearEditSystem.Forms;
 using NonLinearEditSystem.Properties;
 using NonLinearEditSystem.窗体;
 using ClrInterfaceDll;
+using Common;
 using XNetUtilities;
 
 namespace NonLinearEditSystem
@@ -44,34 +45,64 @@ namespace NonLinearEditSystem
         /// </summary>
         private void ShowDirInFileBox(string path)
         {
-            // 1.获得目录下的文件夹和文件(完整路径)
-            _choosedDirFullPath = Directory.GetDirectories(path);
-            _choosedFileFullPath = Directory.GetFiles(path);
-            var fileEntries = Directory.GetFileSystemEntries(path);
-
-            // 2.去除完整路径,只留下文件名
-            var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
-            var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
-
-            // 3.将文件夹显示到文件列表中
-            for (var i = 0; i < dirsNames.Length; i++)
+            try
             {
-                var item = new ListViewItem(dirsNames[i]);
-                item.ImageIndex = 0;
-                item.SubItems.Add("文件夹");
-                listView_Files.Items.Add(item);
+	            // 1.获得目录下的文件夹和文件(完整路径)
+	            _choosedDirFullPath = Directory.GetDirectories(path);
+	            _choosedFileFullPath = Directory.GetFiles(path);
+	            var fileEntries = Directory.GetFileSystemEntries(path);
+	
+	            // 2.去除完整路径,只留下文件名
+	            var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
+	            var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
+
+                // 3.0.清空列表
+                listView_Files.Items.Clear();
+
+                // 3.1.第一行显示“..”,双击表示回到上一级
+                // 3.2.如果是磁盘根目录，则不需要显示
+                if (path.Length > 3)
+	            {
+	                var itemUp = new ListViewItem("..");
+	                itemUp.SubItems.Add("文件夹");
+	                int length = path.LastIndexOf(@"\");
+	                string upPath = path.Remove(length);
+	                // 如果上级是磁盘根目录，后面要加上"\"
+	                if (upPath.Length < 3)
+	                {
+	                    upPath += @"\";
+	                }
+	                itemUp.SubItems.Add(upPath);
+	                listView_Files.Items.Add(itemUp);
+	            }
+	
+	
+	            // 3.将文件夹显示到文件列表中
+	            for (var i = 0; i < dirsNames.Length; i++)
+	            {
+	                var item = new ListViewItem(dirsNames[i]);
+	                item.ImageIndex = 0;
+	                item.SubItems.Add("文件夹");
+	                item.SubItems.Add(_choosedDirFullPath[i]);
+	                listView_Files.Items.Add(item);
+	            }
+	
+	            // 4.将文件显示到文件列表中
+	            for (var i = 0; i < filesNames.Length; i++)
+	            {
+	                var item = new ListViewItem(filesNames[i]);
+	                item.ImageIndex = 1;
+	                var sSepStrs = filesNames[i].Split('.');
+	                var sFileType = sSepStrs[sSepStrs.Length - 1];
+	                item.SubItems.Add(sFileType);
+	                item.SubItems.Add(_choosedFileFullPath[i]);
+	               listView_Files.Items.Add(item);
+	            }
             }
-
-            // 4.将文件显示到文件列表中
-            for (var i = 0; i < filesNames.Length; i++)
+            catch (System.Exception ex)
             {
-                var item = new ListViewItem(filesNames[i]);
-                item.ImageIndex = 1;
-                var sSepStrs = filesNames[i].Split('.');
-                var sFileType = sSepStrs[sSepStrs.Length - 1];
-                item.SubItems.Add(sFileType);
-                item.SubItems.Add(_choosedFileFullPath[i]);
-                listView_Files.Items.Add(item);
+                MessageBox.Show(ex.Message);
+            	ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -116,9 +147,16 @@ namespace NonLinearEditSystem
         {
             if (listView_Files.SelectedItems.Count <= 0) return;
             if (listView_Files.SelectedItems[0].SubItems.Count <= 2) return;
+
             // 得到文件类型和路径
             var sFileType = listView_Files.SelectedItems[0].SubItems[1].Text;
             var sFilePath = listView_Files.SelectedItems[0].SubItems[2].Text;
+
+            // 双击打开文件夹
+            if (sFileType == "文件夹")
+            {
+                ShowDirInFileBox(sFilePath);
+            }
 
             // 现在只播放MP4类型文件
             if (sFileType.ToUpper() != "MP4") return;
@@ -262,5 +300,15 @@ namespace NonLinearEditSystem
             }
         }
 
+        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择工程文件夹";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                ShowDirInFileBox(dialog.SelectedPath);
+            }
+        }
     }
 }
