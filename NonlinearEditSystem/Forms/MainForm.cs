@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 using ClrInterfaceDll;
@@ -12,10 +15,14 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
-        private string[] _choosedDirFullPath;
-        private string[] _choosedFileFullPath;
+        // 数据库连接字符串
+        private String connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
+
+        // 视频播放接口类
         private IClipPlayControlCSharp _iClipPlayControlCSharp;
 
+        private string[] _choosedDirFullPath;
+        private string[] _choosedFileFullPath;
 
         public MainForm()
         {
@@ -33,9 +40,48 @@ namespace NonLinearEditSystem.Forms
             _iClipPlayControlCSharp = new IClipPlayControlCSharp();
         }
 
+
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ShowDirInFileBox(@"D:\szwb");
+            ShowClipsInFileBox();
+            //ShowDirInFileBox(@"D:\");
+        }
+
+        // 将数据库的素材都显示到列表中
+        private void ShowClipsInFileBox()
+        {
+            try
+            {
+                List<string> clipsNameList = new List<string>(10);
+                List<string> clipsPathList = new List<string>(10);
+
+                string commandText = "SELECT Name, FileAllName FROM ClipsTable";
+                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
+                using (SqlDataReader reader= SqlHelper.ExecuteReader(connectionString, commandText, CommandType.Text, parameter))
+                {
+                    while (reader.Read())
+                    {
+                        clipsNameList.Add(reader["Name"].ToString());
+                        clipsPathList.Add(reader["FileAllName"].ToString());
+                    }
+                }
+
+                for (int i = 0; i < clipsNameList.Count; i++)
+                {
+                    ListViewItem item = new ListViewItem(clipsNameList[i]);
+                    item.ImageIndex = 1;
+                    var sSepStrs = clipsNameList[i].Split('.');
+                    var sFileType = sSepStrs[sSepStrs.Length - 1];
+                    item.SubItems.Add(sFileType);
+                    item.SubItems.Add(clipsPathList[i]);
+                    listView_Files.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
         /// <summary>
@@ -45,14 +91,14 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-	            // 1.获得目录下的文件夹和文件(完整路径)
-	            _choosedDirFullPath = Directory.GetDirectories(path);
-	            _choosedFileFullPath = Directory.GetFiles(path);
-	            var fileEntries = Directory.GetFileSystemEntries(path);
-	
-	            // 2.去除完整路径,只留下文件名
-	            var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
-	            var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
+                // 1.获得目录下的文件夹和文件(完整路径)
+                _choosedDirFullPath = Directory.GetDirectories(path);
+                _choosedFileFullPath = Directory.GetFiles(path);
+                var fileEntries = Directory.GetFileSystemEntries(path);
+
+                // 2.去除完整路径,只留下文件名
+                var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
+                var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
 
                 // 3.0.清空列表
                 listView_Files.Items.Clear();
@@ -60,47 +106,47 @@ namespace NonLinearEditSystem.Forms
                 // 3.1.第一行显示“..”,双击表示回到上一级
                 // 3.2.如果是磁盘根目录，则不需要显示
                 if (path.Length > 3)
-	            {
-	                var itemUp = new ListViewItem("..");
-	                itemUp.SubItems.Add("文件夹");
-	                int length = path.LastIndexOf(@"\", StringComparison.Ordinal);
-	                string upPath = path.Remove(length);
-	                // 如果上级是磁盘根目录，后面要加上"\"
-	                if (upPath.Length < 3)
-	                {
-	                    upPath += @"\";
-	                }
-	                itemUp.SubItems.Add(upPath);
-	                listView_Files.Items.Add(itemUp);
-	            }
-	
-	
-	            // 3.将文件夹显示到文件列表中
-	            for (var i = 0; i < dirsNames.Length; i++)
-	            {
-	                var item = new ListViewItem(dirsNames[i]);
-	                item.ImageIndex = 0;
-	                item.SubItems.Add("文件夹");
-	                item.SubItems.Add(_choosedDirFullPath[i]);
-	                listView_Files.Items.Add(item);
-	            }
-	
-	            // 4.将文件显示到文件列表中
-	            for (var i = 0; i < filesNames.Length; i++)
-	            {
-	                var item = new ListViewItem(filesNames[i]);
-	                item.ImageIndex = 1;
-	                var sSepStrs = filesNames[i].Split('.');
-	                var sFileType = sSepStrs[sSepStrs.Length - 1];
-	                item.SubItems.Add(sFileType);
-	                item.SubItems.Add(_choosedFileFullPath[i]);
-	               listView_Files.Items.Add(item);
-	            }
+                {
+                    var itemUp = new ListViewItem("..");
+                    itemUp.SubItems.Add("文件夹");
+                    int length = path.LastIndexOf(@"\", StringComparison.Ordinal);
+                    string upPath = path.Remove(length);
+                    // 如果上级是磁盘根目录，后面要加上"\"
+                    if (upPath.Length < 3)
+                    {
+                        upPath += @"\";
+                    }
+                    itemUp.SubItems.Add(upPath);
+                    listView_Files.Items.Add(itemUp);
+                }
+
+
+                // 3.将文件夹显示到文件列表中
+                for (var i = 0; i < dirsNames.Length; i++)
+                {
+                    var item = new ListViewItem(dirsNames[i]);
+                    item.ImageIndex = 0;
+                    item.SubItems.Add("文件夹");
+                    item.SubItems.Add(_choosedDirFullPath[i]);
+                    listView_Files.Items.Add(item);
+                }
+
+                // 4.将文件显示到文件列表中
+                for (var i = 0; i < filesNames.Length; i++)
+                {
+                    var item = new ListViewItem(filesNames[i]);
+                    item.ImageIndex = 1;
+                    var sSepStrs = filesNames[i].Split('.');
+                    var sFileType = sSepStrs[sSepStrs.Length - 1];
+                    item.SubItems.Add(sFileType);
+                    item.SubItems.Add(_choosedFileFullPath[i]);
+                    listView_Files.Items.Add(item);
+                }
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -165,7 +211,8 @@ namespace NonLinearEditSystem.Forms
             _iClipPlayControlCSharp.Play();
             timer_Sequence.Start();
 
-            timeLineControl_Sequence.NNeedShowSeconds = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
+            timeLineControl_Sequence.NNeedShowSeconds =
+                (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
             timeLineControl_Sequence.ThumbHPos = 0;
             timeLineControl_Sequence.Invalidate();
         }
@@ -224,8 +271,41 @@ namespace NonLinearEditSystem.Forms
         {
             var mouseEventArgs = (MouseEventArgs)e;
             label_FileInfo.Text = $@"X:{mouseEventArgs.X}, Y:{mouseEventArgs.Y}";
-            labelItem_CurrentTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
+            labelItem_CurrentTime.Text =
+                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
         }
+
+        /// <summary>
+        /// 序列监视器视频播放时候移动游标控制播放时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeLineControl_Sequence_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeLineControl_Sequence.Capture && e.Button == MouseButtons.Left)
+            {
+                // 等到游标位置时间，转换为100ns单位
+                long rtPos = (long)(timeLineControl_Sequence.ThumbValue * GeneralConversions.SECONDS_TO_HT_TIME);
+
+                // 如果视频处于某种状态，则播放
+                if (_iClipPlayControlCSharp.GetCurState() == 0 || _iClipPlayControlCSharp.GetCurState() == 1)
+                {
+                    if (rtPos >= _iClipPlayControlCSharp.GetDuration())
+                    {
+                        _iClipPlayControlCSharp.SetPosition(0, 0);
+                        timeLineControl_Sequence.ThumbHPos = 0;
+                        timeLineControl_Sequence.Invalidate();
+                    }
+                    else
+                    {
+                        _iClipPlayControlCSharp.SetPosition(rtPos, 0);
+                    }
+                }
+            }
+        }
+
+
+        #region 菜单
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -269,44 +349,61 @@ namespace NonLinearEditSystem.Forms
             dubFrom.ShowDialog();
         }
 
-        /// <summary>
-        /// 序列监视器视频播放时候移动游标控制播放时间
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timeLineControl_Sequence_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeLineControl_Sequence.Capture && e.Button == MouseButtons.Left)
-            {
-                // 等到游标位置时间，转换为100ns单位
-                long rtPos = (long)(timeLineControl_Sequence.ThumbValue * GeneralConversions.SECONDS_TO_HT_TIME);
-
-                // 如果视频处于某种状态，则播放
-                if (_iClipPlayControlCSharp.GetCurState() == 0 || _iClipPlayControlCSharp.GetCurState() == 1)
-                {
-                    if (rtPos >= _iClipPlayControlCSharp.GetDuration())
-                    {
-                        _iClipPlayControlCSharp.SetPosition(0, 0);
-                        timeLineControl_Sequence.ThumbHPos = 0;
-                        timeLineControl_Sequence.Invalidate();
-                    }
-                    else
-                    {
-                        _iClipPlayControlCSharp.SetPosition(rtPos, 0);
-                    }
-                }
-            }
-        }
-
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择工程文件夹";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                ShowDirInFileBox(dialog.SelectedPath);
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "请选择工程文件夹";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ShowDirInFileBox(dialog.SelectedPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
+        private void 更新素材库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1.暂时将素材库目录设置为E:\\Clips
+                // 2.获取目录底下的文件都存到数据库中
+                // 3.先清空素材表
+                string DeleteText = @"DELETE FROM ClipsTable";
+                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
+                int iRes = SqlHelper.ExecuteNonQuery(connectionString, DeleteText, CommandType.Text, parameter);
+                iRes = 0;
+
+                string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
+                                    VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
+
+                string[] ClipsPath = Directory.GetFiles("E:\\Clips", "*", SearchOption.AllDirectories);
+                string[] filesName = ClearDirAndFilePath(ClipsPath);
+
+                for (int i = 0; i < ClipsPath.Length; i++)
+                {
+                    SqlParameter[] paras = new SqlParameter[3];
+                    paras[0] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = filesName[i] };
+                    paras[1] = new SqlParameter("@StartDate", SqlDbType.DateTime) { Value = DateTime.Now };
+                    paras[2] = new SqlParameter("@FileAllName", SqlDbType.NVarChar) { Value = ClipsPath[i] };
+
+                    iRes += SqlHelper.ExecuteNonQuery(connectionString, commandText, CommandType.Text, paras);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        #endregion 菜单
+
+
     }
 }
