@@ -1,4 +1,4 @@
-﻿namespace NonLinearEditSystem.窗体
+﻿namespace NonLinearEditSystem.Forms
 {
     partial class ProjectSetForm
     {

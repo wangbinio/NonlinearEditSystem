@@ -1,4 +1,4 @@
-﻿namespace NonLinearEditSystem
+﻿namespace NonLinearEditSystem.Forms
 {
     partial class MainForm
     {
@@ -48,10 +48,10 @@
             this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
+            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
             this.slider_SeqTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX_SeqTime = new DevComponents.DotNetBar.LabelX();
             this.PanelEx_Sequence = new DevComponents.DotNetBar.PanelEx();
-            this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
             this.tabItem_Sequence = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Segment = new DevComponents.DotNetBar.TabControlPanel();
             this.slider_SegmentTime = new DevComponents.DotNetBar.Controls.Slider();
@@ -160,6 +160,7 @@
             this.tabItem_TimeLine = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer_Segment = new System.Windows.Forms.Timer(this.components);
             this.timer_Sequence = new System.Windows.Forms.Timer(this.components);
+            this.更新素材库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).BeginInit();
             this.tabControl_Project.SuspendLayout();
             this.tabControlPanel_Project.SuspendLayout();
@@ -191,8 +192,8 @@
             // 
             this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControl_Project.CanReorderTabs = true;
-            this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_SpecialEffect);
             this.tabControl_Project.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl_Project.ForeColor = System.Drawing.Color.Black;
@@ -395,10 +396,10 @@
             // tabControlPanel_Seq
             // 
             this.tabControlPanel_Seq.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.Controls.Add(this.slider_SeqTime);
             this.tabControlPanel_Seq.Controls.Add(this.labelX_SeqTime);
             this.tabControlPanel_Seq.Controls.Add(this.PanelEx_Sequence);
-            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.DisabledBackColor = System.Drawing.Color.Empty;
             this.tabControlPanel_Seq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPanel_Seq.Location = new System.Drawing.Point(0, 28);
@@ -413,6 +414,25 @@
             this.tabControlPanel_Seq.Style.GradientAngle = 90;
             this.tabControlPanel_Seq.TabIndex = 1;
             this.tabControlPanel_Seq.TabItem = this.tabItem_Sequence;
+            // 
+            // timeLineControl_Sequence
+            // 
+            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 313);
+            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
+            this.timeLineControl_Sequence.NBigTicksLength = 10;
+            this.timeLineControl_Sequence.NBotmPadding = 3;
+            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
+            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
+            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
+            this.timeLineControl_Sequence.Size = new System.Drawing.Size(672, 30);
+            this.timeLineControl_Sequence.TabIndex = 6;
+            this.timeLineControl_Sequence.ThumbHPos = 333D;
+            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
+            this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_Sequence_MouseMove);
             // 
             // slider_SeqTime
             // 
@@ -456,7 +476,7 @@
             this.PanelEx_Sequence.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.PanelEx_Sequence.DisabledBackColor = System.Drawing.Color.Empty;
             this.PanelEx_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelEx_Sequence.Location = new System.Drawing.Point(1, 31);
+            this.PanelEx_Sequence.Location = new System.Drawing.Point(1, 1);
             this.PanelEx_Sequence.Name = "PanelEx_Sequence";
             this.PanelEx_Sequence.Size = new System.Drawing.Size(672, 312);
             this.PanelEx_Sequence.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -467,25 +487,6 @@
             this.PanelEx_Sequence.Style.GradientAngle = 90;
             this.PanelEx_Sequence.TabIndex = 2;
             this.PanelEx_Sequence.Text = "序列监视器面板";
-            // 
-            // timeLineControl_Sequence
-            // 
-            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
-            this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
-            this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 1);
-            this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
-            this.timeLineControl_Sequence.NBigTicksLength = 10;
-            this.timeLineControl_Sequence.NBotmPadding = 3;
-            this.timeLineControl_Sequence.NDistanceOfTicks = 10;
-            this.timeLineControl_Sequence.NNeedShowSeconds = 4200;
-            this.timeLineControl_Sequence.NNumOfBigTicks = 7;
-            this.timeLineControl_Sequence.Size = new System.Drawing.Size(672, 30);
-            this.timeLineControl_Sequence.TabIndex = 6;
-            this.timeLineControl_Sequence.ThumbHPos = 333D;
-            this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
-            this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_Sequence_MouseMove);
             // 
             // tabItem_Sequence
             // 
@@ -635,6 +636,7 @@
             this.打开ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.打开ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.打开ToolStripMenuItem.Text = "打开(&O)";
+            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
             // 
             // 保存ToolStripMenuItem
             // 
@@ -844,7 +846,8 @@
             this.打包输出ToolStripMenuItem,
             this.录制ToolStripMenuItem,
             this.设备输出设置ToolStripMenuItem,
-            this.光盘刻录ToolStripMenuItem});
+            this.光盘刻录ToolStripMenuItem,
+            this.更新素材库ToolStripMenuItem});
             this.输入ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.输入ToolStripMenuItem.Name = "输入ToolStripMenuItem";
             this.输入ToolStripMenuItem.Size = new System.Drawing.Size(73, 21);
@@ -946,7 +949,7 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // MainmenuStrip
@@ -1631,6 +1634,13 @@
             this.timer_Sequence.Interval = 1000;
             this.timer_Sequence.Tick += new System.EventHandler(this.timer_Sequence_Tick);
             // 
+            // 更新素材库ToolStripMenuItem
+            // 
+            this.更新素材库ToolStripMenuItem.Name = "更新素材库ToolStripMenuItem";
+            this.更新素材库ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.更新素材库ToolStripMenuItem.Text = "更新素材库";
+            this.更新素材库ToolStripMenuItem.Click += new System.EventHandler(this.更新素材库ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1811,5 +1821,6 @@
         private DevComponents.DotNetBar.Controls.Slider slider_SegmentTime;
         private DevComponents.DotNetBar.LabelX labelX_SegmentTime;
         private System.Windows.Forms.Timer timer_Sequence;
+        private System.Windows.Forms.ToolStripMenuItem 更新素材库ToolStripMenuItem;
     }
 }

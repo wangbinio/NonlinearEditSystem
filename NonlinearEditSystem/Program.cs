@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using NonLinearEditSystem.窗体;
+using NonLinearEditSystem.Forms;
 
 namespace NonLinearEditSystem
 {
