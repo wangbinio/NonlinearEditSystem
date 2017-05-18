@@ -15,14 +15,21 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
+        #region 成员变量
+
         // 数据库连接字符串
         private String connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
 
         // 视频播放接口类
         private IClipPlayControlCSharp _iClipPlayControlCSharp;
 
+        // 文件列表中选择的目录
         private string[] _choosedDirFullPath;
+
+        // 文件列表中选择的文件
         private string[] _choosedFileFullPath;
+
+        #endregion 成员变量
 
         public MainForm()
         {
@@ -30,6 +37,11 @@ namespace NonLinearEditSystem.Forms
 
             InitPlayControl();
 
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ShowClipsInFileBox();
         }
 
         /// <summary>
@@ -40,15 +52,9 @@ namespace NonLinearEditSystem.Forms
             _iClipPlayControlCSharp = new IClipPlayControlCSharp();
         }
 
-
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ShowClipsInFileBox();
-            //ShowDirInFileBox(@"D:\");
-        }
-
-        // 将数据库的素材都显示到列表中
+        /// <summary>
+        /// 将数据库的素材都显示到列表中
+        /// </summary>
         private void ShowClipsInFileBox()
         {
             try
@@ -58,7 +64,7 @@ namespace NonLinearEditSystem.Forms
 
                 string commandText = "SELECT Name, FileAllName FROM ClipsTable";
                 SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                using (SqlDataReader reader= SqlHelper.ExecuteReader(connectionString, commandText, CommandType.Text, parameter))
+                using (SqlDataReader reader = SqlHelper.ExecuteReader(connectionString, commandText, CommandType.Text, parameter))
                 {
                     while (reader.Read())
                     {
@@ -66,6 +72,9 @@ namespace NonLinearEditSystem.Forms
                         clipsPathList.Add(reader["FileAllName"].ToString());
                     }
                 }
+
+                // 清空列表
+                listView_Files.Items.Clear();
 
                 for (int i = 0; i < clipsNameList.Count; i++)
                 {
@@ -305,7 +314,7 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #region 菜单
+        #region 菜单操作
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -349,6 +358,11 @@ namespace NonLinearEditSystem.Forms
             dubFrom.ShowDialog();
         }
 
+        /// <summary>
+        /// 打开工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -367,13 +381,45 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 更新素材库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 更新素材库ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1.暂时将素材库目录设置为E:\\Clips
-                // 2.获取目录底下的文件都存到数据库中
-                // 3.先清空素材表
+                // 1.选择一个文件夹，将次文件夹里面的素材更新到素材库
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "请选择需要上传素材文件夹";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                   
+                    UploadClipsInFolder(dialog.SelectedPath);
+
+                    // 2.刷新文件列表
+                    ShowClipsInFileBox();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 选择文件夹，上传素材到数据库
+        /// </summary>
+        /// <param name="selectedPath"></param>
+        private void UploadClipsInFolder(string selectedPath)
+        {
+            try
+            {
+                // TODO：
+                // 0.先清空素材表
+                // 1.获取目录底下的文件都存到数据库中
                 string DeleteText = @"DELETE FROM ClipsTable";
                 SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
                 int iRes = SqlHelper.ExecuteNonQuery(connectionString, DeleteText, CommandType.Text, parameter);
@@ -382,7 +428,7 @@ namespace NonLinearEditSystem.Forms
                 string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
                                     VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
 
-                string[] ClipsPath = Directory.GetFiles("E:\\Clips", "*", SearchOption.AllDirectories);
+                string[] ClipsPath = Directory.GetFiles(selectedPath, "*", SearchOption.AllDirectories);
                 string[] filesName = ClearDirAndFilePath(ClipsPath);
 
                 for (int i = 0; i < ClipsPath.Length; i++)
@@ -402,8 +448,7 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #endregion 菜单
-
+        #endregion 菜单操作
 
     }
 }

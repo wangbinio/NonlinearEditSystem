@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl_Project = new DevComponents.DotNetBar.TabControl();
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Project = new DevComponents.DotNetBar.TabControlPanel();
             this.listView_Files = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,8 +44,6 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
@@ -105,6 +105,7 @@
             this.录制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设备输出设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.光盘刻录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.更新素材库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.输出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainmenuStrip = new System.Windows.Forms.MenuStrip();
@@ -160,7 +161,6 @@
             this.tabItem_TimeLine = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer_Segment = new System.Windows.Forms.Timer(this.components);
             this.timer_Sequence = new System.Windows.Forms.Timer(this.components);
-            this.更新素材库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).BeginInit();
             this.tabControl_Project.SuspendLayout();
             this.tabControlPanel_Project.SuspendLayout();
@@ -192,8 +192,8 @@
             // 
             this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControl_Project.CanReorderTabs = true;
-            this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_SpecialEffect);
             this.tabControl_Project.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl_Project.ForeColor = System.Drawing.Color.Black;
@@ -210,6 +210,29 @@
             this.tabControl_Project.Tabs.Add(this.tabItem_SpecialEffect);
             this.tabControl_Project.Tabs.Add(this.tabItemTemplate);
             this.tabControl_Project.Text = "tabControl_Project";
+            // 
+            // tabControlPanel_Template
+            // 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
+            // 
+            // tabItemTemplate
+            // 
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
+            this.tabItemTemplate.Name = "tabItemTemplate";
+            this.tabItemTemplate.Text = "模板库";
             // 
             // tabControlPanel_Project
             // 
@@ -233,6 +256,7 @@
             // 
             // listView_Files
             // 
+            this.listView_Files.AllowDrop = true;
             this.listView_Files.BackColor = System.Drawing.Color.White;
             // 
             // 
@@ -325,29 +349,6 @@
             this.tabItem_Project.AttachedControl = this.tabControlPanel_Project;
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
-            // 
-            // tabControlPanel_Template
-            // 
-            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
-            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_Template.Style.GradientAngle = 90;
-            this.tabControlPanel_Template.TabIndex = 9;
-            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
-            // 
-            // tabItemTemplate
-            // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
-            this.tabItemTemplate.Name = "tabItemTemplate";
-            this.tabItemTemplate.Text = "模板库";
             // 
             // tabControlPanel_SpecialEffect
             // 
@@ -937,6 +938,13 @@
             this.光盘刻录ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.光盘刻录ToolStripMenuItem.Text = "光盘刻录";
             // 
+            // 更新素材库ToolStripMenuItem
+            // 
+            this.更新素材库ToolStripMenuItem.Name = "更新素材库ToolStripMenuItem";
+            this.更新素材库ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.更新素材库ToolStripMenuItem.Text = "更新素材库";
+            this.更新素材库ToolStripMenuItem.Click += new System.EventHandler(this.更新素材库ToolStripMenuItem_Click);
+            // 
             // 输出ToolStripMenuItem
             // 
             this.输出ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -949,7 +957,7 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // MainmenuStrip
@@ -1634,13 +1642,6 @@
             this.timer_Sequence.Interval = 1000;
             this.timer_Sequence.Tick += new System.EventHandler(this.timer_Sequence_Tick);
             // 
-            // 更新素材库ToolStripMenuItem
-            // 
-            this.更新素材库ToolStripMenuItem.Name = "更新素材库ToolStripMenuItem";
-            this.更新素材库ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.更新素材库ToolStripMenuItem.Text = "更新素材库";
-            this.更新素材库ToolStripMenuItem.Click += new System.EventHandler(this.更新素材库ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1654,6 +1655,7 @@
             this.Controls.Add(this.MainmenuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
