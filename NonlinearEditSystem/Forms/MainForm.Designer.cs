@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl_Project = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Project = new DevComponents.DotNetBar.TabControlPanel();
             this.listView_Files = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,6 +42,8 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
@@ -211,29 +211,6 @@
             this.tabControl_Project.Tabs.Add(this.tabItemTemplate);
             this.tabControl_Project.Text = "tabControl_Project";
             // 
-            // tabControlPanel_Template
-            // 
-            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
-            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
-            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_Template.Style.GradientAngle = 90;
-            this.tabControlPanel_Template.TabIndex = 9;
-            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
-            // 
-            // tabItemTemplate
-            // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
-            this.tabItemTemplate.Name = "tabItemTemplate";
-            this.tabItemTemplate.Text = "模板库";
-            // 
             // tabControlPanel_Project
             // 
             this.tabControlPanel_Project.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -283,6 +260,7 @@
             this.listView_Files.UseCompatibleStateImageBehavior = false;
             this.listView_Files.View = System.Windows.Forms.View.Details;
             this.listView_Files.VirtualListSize = 20;
+            this.listView_Files.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView_Files_ItemDrag);
             this.listView_Files.SelectedIndexChanged += new System.EventHandler(this.listView_Files_SelectedIndexChanged);
             this.listView_Files.DoubleClick += new System.EventHandler(this.listView_Files_DoubleClick);
             // 
@@ -349,6 +327,29 @@
             this.tabItem_Project.AttachedControl = this.tabControlPanel_Project;
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
+            // 
+            // tabControlPanel_Template
+            // 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(662, 375);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
+            // 
+            // tabItemTemplate
+            // 
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
+            this.tabItemTemplate.Name = "tabItemTemplate";
+            this.tabItemTemplate.Text = "模板库";
             // 
             // tabControlPanel_SpecialEffect
             // 
@@ -1045,6 +1046,7 @@
             // 
             // panelEx_AudioTrackConment2
             // 
+            this.panelEx_AudioTrackConment2.AllowDrop = true;
             this.panelEx_AudioTrackConment2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx_AudioTrackConment2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -1060,12 +1062,13 @@
             this.panelEx_AudioTrackConment2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_AudioTrackConment2.Style.GradientAngle = 90;
             this.panelEx_AudioTrackConment2.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
+            this.panelEx_AudioTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
             this.panelEx_AudioTrackConment2.TabIndex = 0;
             this.panelEx_AudioTrackConment2.Text = "音频轨道内容2";
             // 
             // panelEx_AudioTrackConment1
             // 
+            this.panelEx_AudioTrackConment1.AllowDrop = true;
             this.panelEx_AudioTrackConment1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx_AudioTrackConment1.CanvasColor = System.Drawing.SystemColors.Control;
@@ -1081,9 +1084,11 @@
             this.panelEx_AudioTrackConment1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_AudioTrackConment1.Style.GradientAngle = 90;
             this.panelEx_AudioTrackConment1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
+            this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
             this.panelEx_AudioTrackConment1.TabIndex = 0;
             this.panelEx_AudioTrackConment1.Text = "音频轨道内容1";
+            this.panelEx_AudioTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragAudioDrop);
+            this.panelEx_AudioTrackConment1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragAudioEnter);
             // 
             // timeLineControl_MainTL
             // 
@@ -1106,6 +1111,7 @@
             // 
             // panelEx_VideoTrackConment2
             // 
+            this.panelEx_VideoTrackConment2.AllowDrop = true;
             this.panelEx_VideoTrackConment2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx_VideoTrackConment2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -1122,7 +1128,7 @@
             this.panelEx_VideoTrackConment2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment2.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment2.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
+            this.panelEx_VideoTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
             this.panelEx_VideoTrackConment2.TabIndex = 8;
             this.panelEx_VideoTrackConment2.Text = "视频轨道内容2";
             // 
@@ -1133,22 +1139,27 @@
             this.VideoFile1.DisabledBackColor = System.Drawing.Color.Empty;
             this.VideoFile1.Location = new System.Drawing.Point(196, 0);
             this.VideoFile1.Name = "VideoFile1";
-            this.VideoFile1.Size = new System.Drawing.Size(233, 48);
+            this.VideoFile1.Size = new System.Drawing.Size(233, 34);
             this.VideoFile1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveCaption;
+            this.VideoFile1.Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
             this.VideoFile1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.VideoFile1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.VideoFile1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.VideoFile1.Style.GradientAngle = 90;
             this.VideoFile1.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseDown.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片6;
+            this.VideoFile1.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+            this.VideoFile1.StyleMouseDown.BackColor1.Color = System.Drawing.Color.DodgerBlue;
             this.VideoFile1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.VideoFile1.StyleMouseOver.BackgroundImage = global::NonLinearEditSystem.Properties.Resources.透明图片7;
+            this.VideoFile1.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+            this.VideoFile1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
+            this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+            this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
             // 
             // panelEx_VideoTrackConment1
             // 
+            this.panelEx_VideoTrackConment1.AllowDrop = true;
             this.panelEx_VideoTrackConment1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEx_VideoTrackConment1.CanvasColor = System.Drawing.SystemColors.Control;
@@ -1164,9 +1175,11 @@
             this.panelEx_VideoTrackConment1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment1.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.Highlight;
+            this.panelEx_VideoTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
             this.panelEx_VideoTrackConment1.TabIndex = 4;
             this.panelEx_VideoTrackConment1.Text = "视频轨道内容1";
+            this.panelEx_VideoTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
+            this.panelEx_VideoTrackConment1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragVideoEnter);
             // 
             // panelEx_TrackName
             // 
@@ -1655,7 +1668,6 @@
             this.Controls.Add(this.MainmenuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
