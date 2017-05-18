@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ClrInterfaceDll;
@@ -15,21 +16,109 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
+        #region 成员变量
+
         // 数据库连接字符串
-        private String connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
+        private String _connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
 
         // 视频播放接口类
         private IClipPlayControlCSharp _iClipPlayControlCSharp;
 
+        // 文件列表中选择的目录
         private string[] _choosedDirFullPath;
+
+        // 文件列表中选择的文件
         private string[] _choosedFileFullPath;
+
+        // 视频轨道上的视频文件
+        private PanelEx[] _vedioFilesPanel;
+
+        // 音频轨道上的音频文件
+        private PanelEx[] _audioFilesPanel;
+
+        // 轨道上文件个数
+        private int _maxFilesPannel = 10;
+
+        // 鼠标拖动音/视频文件panel时保存位置差
+        private int _mousePosDelta = 0;
+
+        #endregion 成员变量
 
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            InitVedioAndAudioFilesPanel();
 
             InitPlayControl();
 
+            ShowClipsInFileBox();
+        }
+
+        /// <summary>
+        /// 初始化音视频轨道文件panel
+        /// </summary>
+        private void InitVedioAndAudioFilesPanel()
+        {
+            _vedioFilesPanel = new PanelEx[_maxFilesPannel];
+            _audioFilesPanel = new PanelEx[_maxFilesPannel];
+
+            for (int i = 0; i < _maxFilesPannel; i++)
+            {
+                _vedioFilesPanel[i] = new PanelEx();
+                _audioFilesPanel[i] = new PanelEx();
+
+                _vedioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
+                _vedioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                _vedioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
+                _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
+                _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
+                _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
+                _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                _vedioFilesPanel[i].Style.GradientAngle = 90;
+                _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                _vedioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                _vedioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                _vedioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                _vedioFilesPanel[i].TabIndex = 0;
+                _vedioFilesPanel[i].Name = "VideoFile" + i;
+                _vedioFilesPanel[i].Text = "VideoFile" + i;
+                _vedioFilesPanel[i].Tag = 0;
+                _vedioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+
+                _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
+                _audioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                _audioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
+                _audioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
+                _audioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
+                _audioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
+                _audioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                _audioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                _audioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                _audioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                _audioFilesPanel[i].Style.GradientAngle = 90;
+                _audioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                _audioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                _audioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                _audioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                _audioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                _audioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                _audioFilesPanel[i].TabIndex = 0;
+                _audioFilesPanel[i].Name = "AudioFile" + i;
+                _audioFilesPanel[i].Text = "AudioFile" + i;
+                _audioFilesPanel[i].Tag = 0;
+                _audioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                _audioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+            }
         }
 
         /// <summary>
@@ -40,15 +129,9 @@ namespace NonLinearEditSystem.Forms
             _iClipPlayControlCSharp = new IClipPlayControlCSharp();
         }
 
-
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ShowClipsInFileBox();
-            //ShowDirInFileBox(@"D:\");
-        }
-
-        // 将数据库的素材都显示到列表中
+        /// <summary>
+        /// 将数据库的素材都显示到列表中
+        /// </summary>
         private void ShowClipsInFileBox()
         {
             try
@@ -58,7 +141,7 @@ namespace NonLinearEditSystem.Forms
 
                 string commandText = "SELECT Name, FileAllName FROM ClipsTable";
                 SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                using (SqlDataReader reader= SqlHelper.ExecuteReader(connectionString, commandText, CommandType.Text, parameter))
+                using (SqlDataReader reader = SqlHelper.ExecuteReader(_connectionString, commandText, CommandType.Text, parameter))
                 {
                     while (reader.Read())
                     {
@@ -66,6 +149,9 @@ namespace NonLinearEditSystem.Forms
                         clipsPathList.Add(reader["FileAllName"].ToString());
                     }
                 }
+
+                // 清空列表
+                listView_Files.Items.Clear();
 
                 for (int i = 0; i < clipsNameList.Count; i++)
                 {
@@ -305,7 +391,7 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #region 菜单
+        #region 菜单操作
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -349,6 +435,11 @@ namespace NonLinearEditSystem.Forms
             dubFrom.ShowDialog();
         }
 
+        /// <summary>
+        /// 打开工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -367,32 +458,64 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 更新素材库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 更新素材库ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1.暂时将素材库目录设置为E:\\Clips
-                // 2.获取目录底下的文件都存到数据库中
-                // 3.先清空素材表
-                string DeleteText = @"DELETE FROM ClipsTable";
+                // 1.选择一个文件夹，将次文件夹里面的素材更新到素材库
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "请选择需要上传素材文件夹";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    UploadClipsInFolder(dialog.SelectedPath);
+
+                    // 2.刷新文件列表
+                    ShowClipsInFileBox();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 选择文件夹，上传素材到数据库
+        /// </summary>
+        /// <param name="selectedPath"></param>
+        private void UploadClipsInFolder(string selectedPath)
+        {
+            try
+            {
+                // TODO：
+                // 0.先清空素材表
+                // 1.获取目录底下的文件都存到数据库中
+                string deleteText = @"DELETE FROM ClipsTable";
                 SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                int iRes = SqlHelper.ExecuteNonQuery(connectionString, DeleteText, CommandType.Text, parameter);
+                int iRes = SqlHelper.ExecuteNonQuery(_connectionString, deleteText, CommandType.Text, parameter);
                 iRes = 0;
 
                 string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
                                     VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
 
-                string[] ClipsPath = Directory.GetFiles("E:\\Clips", "*", SearchOption.AllDirectories);
-                string[] filesName = ClearDirAndFilePath(ClipsPath);
+                string[] clipsPath = Directory.GetFiles(selectedPath, "*", SearchOption.AllDirectories);
+                string[] filesName = ClearDirAndFilePath(clipsPath);
 
-                for (int i = 0; i < ClipsPath.Length; i++)
+                for (int i = 0; i < clipsPath.Length; i++)
                 {
                     SqlParameter[] paras = new SqlParameter[3];
                     paras[0] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = filesName[i] };
                     paras[1] = new SqlParameter("@StartDate", SqlDbType.DateTime) { Value = DateTime.Now };
-                    paras[2] = new SqlParameter("@FileAllName", SqlDbType.NVarChar) { Value = ClipsPath[i] };
+                    paras[2] = new SqlParameter("@FileAllName", SqlDbType.NVarChar) { Value = clipsPath[i] };
 
-                    iRes += SqlHelper.ExecuteNonQuery(connectionString, commandText, CommandType.Text, paras);
+                    iRes += SqlHelper.ExecuteNonQuery(_connectionString, commandText, CommandType.Text, paras);
                 }
             }
             catch (Exception ex)
@@ -402,7 +525,233 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #endregion 菜单
+        #endregion 菜单操作
+
+
+        #region 文件拖动功能
+
+        /// <summary>
+        /// 从文件列表中将素材拖动出来
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_Files_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            ListView listViewFile = (ListView)sender;
+            if (e.Button != MouseButtons.Left || listViewFile.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            // put selected files into a string array
+            // 每次只处理第一个
+            //string[] files = new string[listViewFile.SelectedItems.Count];
+            //int i = 0;
+            //foreach (ListViewItem item in listViewFile.SelectedItems)
+            //{
+            //    files[i++] = item.Text;
+            //}
+
+            string selectedFile = listViewFile.SelectedItems[0].SubItems[2].Text;
+
+            // create a dataobject holding this array as a filedrop
+            DataObject data = new DataObject(DataFormats.FileDrop, selectedFile);
+
+            // also add the selection as textdata
+            data.SetData(DataFormats.StringFormat, selectedFile);
+
+            // Do DragDrop
+            DoDragDrop(data, DragDropEffects.Copy);
+        }
+
+        /// <summary>
+        /// 将视频文件拖到视频轨道上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragVideoEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        /// <summary>
+        /// 将视频文件拖到视频轨道上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragVideoDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                // 1.得到拖拽文件的文件名（全路径）
+                string fileName = e.Data.GetData(DataFormats.FileDrop, true) as string;
+
+                // 2.读取此文件的信息TODO:
+                int length = 200;
+
+                // 3.0.计算位置信息
+                Point mousePoint = ((PanelEx)sender).PointToClient(new Point(e.X, e.Y));
+
+                // 3.根据文件信息初始化一个panel
+                int vedioFilePanelIndex = CreateVedioOrAudioFilePanel(fileName, length, mousePoint.X);
+                if (vedioFilePanelIndex == -1) return;
+
+                // 4.将此panel添加到sender上
+                ((PanelEx)sender).Controls.Add(_vedioFilesPanel[vedioFilePanelIndex]);
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 创建一个还未使用的视频或者音频文件panel
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="length"></param>
+        /// <param name="pos"></param>
+        /// <param name="bVedio"></param>
+        /// <returns></returns>
+        private int CreateVedioOrAudioFilePanel(string fileName, int length, int pos, bool bVedio = true)
+        {
+            try
+            {
+                if (bVedio)
+                {
+                    // 找到_VediPFilesPanel中尚未初始化的一个panel
+                    for (int i = 0; i < _vedioFilesPanel.Length; i++)
+                    {
+                        if ((int)_vedioFilesPanel[i].Tag == 0)
+                        {
+                            _vedioFilesPanel[i].Tag = 1;
+                            _vedioFilesPanel[i].Name = fileName;
+                            _vedioFilesPanel[i].Text = fileName;
+                            _vedioFilesPanel[i].Width = length;
+                            _vedioFilesPanel[i].Location = new System.Drawing.Point(pos, 0);
+
+                            return i;
+                        }
+                    }
+                }
+                else
+                {
+                    // 找到_AudioFilesPanel中尚未初始化的一个panel
+                    for (int i = 0; i < _audioFilesPanel.Length; i++)
+                    {
+                        if ((int)_audioFilesPanel[i].Tag == 0)
+                        {
+                            _audioFilesPanel[i].Tag = 1;
+                            _audioFilesPanel[i].Name = fileName;
+                            _audioFilesPanel[i].Text = fileName;
+                            _audioFilesPanel[i].Width = length;
+                            _audioFilesPanel[i].Location = new System.Drawing.Point(pos, 0);
+
+                            return i;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return -1;
+        }
+
+        /// <summary>
+        /// 将音频文件拖到视频轨道上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragAudioEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        /// <summary>
+        /// 将音频文件拖到视频轨道上
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragAudioDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                // 1.得到拖拽文件的文件名（全路径）
+                string fileName = e.Data.GetData(DataFormats.FileDrop, true) as string;
+
+                // 2.读取此文件的信息TODO:
+                int length = 200;
+
+                // 3.0.计算位置信息
+                Point mousePoint = ((PanelEx)sender).PointToClient(new Point(e.X, e.Y));
+
+                // 3.根据文件信息初始化一个panel
+                int audioFilePanelIndex = CreateVedioOrAudioFilePanel(fileName, length, mousePoint.X, false);
+                if (audioFilePanelIndex == -1) return;
+
+                // 4.将此panel添加到sender上
+                ((PanelEx)sender).Controls.Add(_audioFilesPanel[audioFilePanelIndex]);
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 在音视频轨道上拖动文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoFile_MouseDown(object sender, MouseEventArgs e)
+        {
+            PanelEx panelExSelected = (PanelEx)sender;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                panelExSelected.Capture = true;
+                _mousePosDelta = e.X - panelExSelected.Location.X;
+            }
+        }
+
+        /// <summary>
+        /// 在音视频轨道上拖动文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoFile_MouseMove(object sender, MouseEventArgs e)
+        {
+            PanelEx panelExSelected = (PanelEx)sender;
+
+            if (panelExSelected.Capture && e.Button == MouseButtons.Left)
+            {
+                panelExSelected.Location = new Point(e.X - _mousePosDelta, 0);
+                panelExSelected.Invalidate();
+            }
+        }
+
+
+        #endregion 文件拖动功能
+
 
 
     }
