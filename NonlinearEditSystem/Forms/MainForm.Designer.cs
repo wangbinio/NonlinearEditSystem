@@ -49,12 +49,10 @@
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
             this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
-            this.slider_SeqTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX_SeqTime = new DevComponents.DotNetBar.LabelX();
             this.PanelEx_Sequence = new DevComponents.DotNetBar.PanelEx();
             this.tabItem_Sequence = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Segment = new DevComponents.DotNetBar.TabControlPanel();
-            this.slider_SegmentTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX_SegmentTime = new DevComponents.DotNetBar.LabelX();
             this.timeLineControl_Segment = new TimeLineControl.TimeLineControl();
             this.panelEx_Segment = new DevComponents.DotNetBar.PanelEx();
@@ -161,6 +159,8 @@
             this.tabItem_TimeLine = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer_Segment = new System.Windows.Forms.Timer(this.components);
             this.timer_Sequence = new System.Windows.Forms.Timer(this.components);
+            this.slider_SeqTime = new MB.Controls.ColorSlider();
+            this.slider_SegmentTime = new MB.Controls.ColorSlider();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Project)).BeginInit();
             this.tabControl_Project.SuspendLayout();
             this.tabControlPanel_Project.SuspendLayout();
@@ -398,8 +398,8 @@
             // tabControlPanel_Seq
             // 
             this.tabControlPanel_Seq.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.Controls.Add(this.slider_SeqTime);
+            this.tabControlPanel_Seq.Controls.Add(this.timeLineControl_Sequence);
             this.tabControlPanel_Seq.Controls.Add(this.labelX_SeqTime);
             this.tabControlPanel_Seq.Controls.Add(this.PanelEx_Sequence);
             this.tabControlPanel_Seq.DisabledBackColor = System.Drawing.Color.Empty;
@@ -434,24 +434,6 @@
             this.timeLineControl_Sequence.TabIndex = 6;
             this.timeLineControl_Sequence.ThumbHPos = 333D;
             this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
-            this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_Sequence_MouseMove);
-            // 
-            // slider_SeqTime
-            // 
-            this.slider_SeqTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.slider_SeqTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.slider_SeqTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_SeqTime.ForeColor = System.Drawing.Color.Black;
-            this.slider_SeqTime.LabelVisible = false;
-            this.slider_SeqTime.Location = new System.Drawing.Point(89, 350);
-            this.slider_SeqTime.Name = "slider_SeqTime";
-            this.slider_SeqTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_SeqTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_SeqTime.TabIndex = 8;
-            this.slider_SeqTime.Value = 50;
             // 
             // labelX_SeqTime
             // 
@@ -516,23 +498,6 @@
             this.tabControlPanel_Segment.Style.GradientAngle = 90;
             this.tabControlPanel_Segment.TabIndex = 5;
             this.tabControlPanel_Segment.TabItem = this.tabItem_Segment;
-            // 
-            // slider_SegmentTime
-            // 
-            this.slider_SegmentTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.slider_SegmentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.slider_SegmentTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_SegmentTime.ForeColor = System.Drawing.Color.Black;
-            this.slider_SegmentTime.LabelVisible = false;
-            this.slider_SegmentTime.Location = new System.Drawing.Point(89, 350);
-            this.slider_SegmentTime.Name = "slider_SegmentTime";
-            this.slider_SegmentTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_SegmentTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_SegmentTime.TabIndex = 11;
-            this.slider_SegmentTime.Value = 50;
             // 
             // labelX_SegmentTime
             // 
@@ -1107,7 +1072,6 @@
             this.timeLineControl_MainTL.TabIndex = 11;
             this.timeLineControl_MainTL.ThumbHPos = 222D;
             this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
-            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl1_Click);
             // 
             // panelEx_VideoTrackConment2
             // 
@@ -1655,6 +1619,51 @@
             this.timer_Sequence.Interval = 1000;
             this.timer_Sequence.Tick += new System.EventHandler(this.timer_Sequence_Tick);
             // 
+            // slider_SeqTime
+            // 
+            this.slider_SeqTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_SeqTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SeqTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SeqTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SeqTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_SeqTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SeqTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SeqTime.LargeChange = ((uint)(5u));
+            this.slider_SeqTime.Location = new System.Drawing.Point(89, 346);
+            this.slider_SeqTime.Name = "slider_SeqTime";
+            this.slider_SeqTime.Size = new System.Drawing.Size(238, 25);
+            this.slider_SeqTime.SmallChange = ((uint)(1u));
+            this.slider_SeqTime.TabIndex = 13;
+            this.slider_SeqTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SeqTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SeqTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SeqTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_SeqTime.ThumbSize = 5;
+            this.slider_SeqTime.Value = 0;
+            this.slider_SeqTime.Scroll += new System.Windows.Forms.ScrollEventHandler(this.slider_SeqTime_Scroll);
+            // 
+            // slider_SegmentTime
+            // 
+            this.slider_SegmentTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_SegmentTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SegmentTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SegmentTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_SegmentTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_SegmentTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SegmentTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SegmentTime.LargeChange = ((uint)(5u));
+            this.slider_SegmentTime.Location = new System.Drawing.Point(89, 346);
+            this.slider_SegmentTime.Name = "slider_SegmentTime";
+            this.slider_SegmentTime.Size = new System.Drawing.Size(238, 25);
+            this.slider_SegmentTime.SmallChange = ((uint)(1u));
+            this.slider_SegmentTime.TabIndex = 16;
+            this.slider_SegmentTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SegmentTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SegmentTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_SegmentTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_SegmentTime.ThumbSize = 5;
+            this.slider_SegmentTime.Value = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1830,11 +1839,11 @@
         private System.Windows.Forms.ToolStripMenuItem 导入PPTtoolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem 光盘刻录ToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.Slider slider_SeqTime;
         private DevComponents.DotNetBar.LabelX labelX_SeqTime;
-        private DevComponents.DotNetBar.Controls.Slider slider_SegmentTime;
         private DevComponents.DotNetBar.LabelX labelX_SegmentTime;
         private System.Windows.Forms.Timer timer_Sequence;
         private System.Windows.Forms.ToolStripMenuItem 更新素材库ToolStripMenuItem;
+        private MB.Controls.ColorSlider slider_SeqTime;
+        private MB.Controls.ColorSlider slider_SegmentTime;
     }
 }

@@ -270,6 +270,10 @@
       <Project>{ca6dc3d1-5c8a-498d-9362-146a30257a62}</Project>
       <Name>ClrInterface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ColorSlider\ColorSlider.csproj">
+      <Project>{16e224dc-7ff0-4908-8318-d6a3ac2e797a}</Project>
+      <Name>ColorSlider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimeLineControl\TimeLineControl.csproj">
       <Project>{95bb407e-8405-44d0-b5f9-1d634d4f914f}</Project>
       <Name>TimeLineControl</Name>
