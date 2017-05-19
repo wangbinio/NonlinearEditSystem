@@ -16,6 +16,7 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
+
         #region 成员变量
 
         // 数据库连接字符串
@@ -44,6 +45,9 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 成员变量
 
+
+        #region 初始化工作
+
         public MainForm()
         {
             InitializeComponent();
@@ -63,61 +67,68 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void InitVedioAndAudioFilesPanel()
         {
-            _vedioFilesPanel = new PanelEx[_maxFilesPannel];
-            _audioFilesPanel = new PanelEx[_maxFilesPannel];
-
-            for (int i = 0; i < _maxFilesPannel; i++)
+            try
             {
-                _vedioFilesPanel[i] = new PanelEx();
-                _audioFilesPanel[i] = new PanelEx();
+                _vedioFilesPanel = new PanelEx[_maxFilesPannel];
+                _audioFilesPanel = new PanelEx[_maxFilesPannel];
 
-                _vedioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                _vedioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-                _vedioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
-                _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
-                _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
-                _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
-                _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
-                _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-                _vedioFilesPanel[i].Style.GradientAngle = 90;
-                _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.DodgerBlue;
-                _vedioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                _vedioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                _vedioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
-                _vedioFilesPanel[i].TabIndex = 0;
-                _vedioFilesPanel[i].Name = "VideoFile" + i;
-                _vedioFilesPanel[i].Text = "VideoFile" + i;
-                _vedioFilesPanel[i].Tag = 0;
-                _vedioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
-                _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                for (int i = 0; i < _maxFilesPannel; i++)
+                {
+                    _vedioFilesPanel[i] = new PanelEx();
+                    _audioFilesPanel[i] = new PanelEx();
 
-                _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                _audioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-                _audioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
-                _audioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
-                _audioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
-                _audioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
-                _audioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                _audioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                _audioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                _audioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-                _audioFilesPanel[i].Style.GradientAngle = 90;
-                _audioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                _audioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                _audioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                _audioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                _audioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                _audioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                _audioFilesPanel[i].TabIndex = 0;
-                _audioFilesPanel[i].Name = "AudioFile" + i;
-                _audioFilesPanel[i].Text = "AudioFile" + i;
-                _audioFilesPanel[i].Tag = 0;
-                _audioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
-                _audioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                    _vedioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
+                    _vedioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                    _vedioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
+                    _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
+                    _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
+                    _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
+                    _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                    _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                    _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                    _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                    _vedioFilesPanel[i].Style.GradientAngle = 90;
+                    _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                    _vedioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    _vedioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    _vedioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                    _vedioFilesPanel[i].TabIndex = 0;
+                    _vedioFilesPanel[i].Name = "VideoFile" + i;
+                    _vedioFilesPanel[i].Text = "VideoFile" + i;
+                    _vedioFilesPanel[i].Tag = 0;
+                    _vedioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                    _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+
+                    _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
+                    _audioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                    _audioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
+                    _audioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
+                    _audioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
+                    _audioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
+                    _audioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    _audioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                    _audioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                    _audioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                    _audioFilesPanel[i].Style.GradientAngle = 90;
+                    _audioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    _audioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    _audioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    _audioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    _audioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    _audioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    _audioFilesPanel[i].TabIndex = 0;
+                    _audioFilesPanel[i].Name = "AudioFile" + i;
+                    _audioFilesPanel[i].Text = "AudioFile" + i;
+                    _audioFilesPanel[i].Tag = 0;
+                    _audioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                    _audioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -126,43 +137,9 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void InitPlayControl()
         {
-            _iClipPlayControlCSharp = new IClipPlayControlCSharp();
-        }
-
-        /// <summary>
-        /// 将数据库的素材都显示到列表中
-        /// </summary>
-        private void ShowClipsInFileBox()
-        {
             try
             {
-                List<string> clipsNameList = new List<string>(10);
-                List<string> clipsPathList = new List<string>(10);
-
-                string commandText = "SELECT Name, FileAllName FROM ClipsTable";
-                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                using (SqlDataReader reader = SqlHelper.ExecuteReader(_connectionString, commandText, CommandType.Text, parameter))
-                {
-                    while (reader.Read())
-                    {
-                        clipsNameList.Add(reader["Name"].ToString());
-                        clipsPathList.Add(reader["FileAllName"].ToString());
-                    }
-                }
-
-                // 清空列表
-                listView_Files.Items.Clear();
-
-                for (int i = 0; i < clipsNameList.Count; i++)
-                {
-                    ListViewItem item = new ListViewItem(clipsNameList[i]);
-                    item.ImageIndex = 1;
-                    var sSepStrs = clipsNameList[i].Split('.');
-                    var sFileType = sSepStrs[sSepStrs.Length - 1];
-                    item.SubItems.Add(sFileType);
-                    item.SubItems.Add(clipsPathList[i]);
-                    listView_Files.Items.Add(item);
-                }
+                _iClipPlayControlCSharp = new IClipPlayControlCSharp();
             }
             catch (Exception ex)
             {
@@ -170,71 +147,11 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-        /// <summary>
-        ///     在文件面板中显示某个文件夹中的文件
-        /// </summary>
-        private void ShowDirInFileBox(string path)
-        {
-            try
-            {
-                // 1.获得目录下的文件夹和文件(完整路径)
-                _choosedDirFullPath = Directory.GetDirectories(path);
-                _choosedFileFullPath = Directory.GetFiles(path);
-                var fileEntries = Directory.GetFileSystemEntries(path);
 
-                // 2.去除完整路径,只留下文件名
-                var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
-                var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
-
-                // 3.0.清空列表
-                listView_Files.Items.Clear();
-
-                // 3.1.第一行显示“..”,双击表示回到上一级
-                // 3.2.如果是磁盘根目录，则不需要显示
-                if (path.Length > 3)
-                {
-                    var itemUp = new ListViewItem("..");
-                    itemUp.SubItems.Add("文件夹");
-                    int length = path.LastIndexOf(@"\", StringComparison.Ordinal);
-                    string upPath = path.Remove(length);
-                    // 如果上级是磁盘根目录，后面要加上"\"
-                    if (upPath.Length < 3)
-                    {
-                        upPath += @"\";
-                    }
-                    itemUp.SubItems.Add(upPath);
-                    listView_Files.Items.Add(itemUp);
-                }
+        #endregion 初始化工作
 
 
-                // 3.将文件夹显示到文件列表中
-                for (var i = 0; i < dirsNames.Length; i++)
-                {
-                    var item = new ListViewItem(dirsNames[i]);
-                    item.ImageIndex = 0;
-                    item.SubItems.Add("文件夹");
-                    item.SubItems.Add(_choosedDirFullPath[i]);
-                    listView_Files.Items.Add(item);
-                }
-
-                // 4.将文件显示到文件列表中
-                for (var i = 0; i < filesNames.Length; i++)
-                {
-                    var item = new ListViewItem(filesNames[i]);
-                    item.ImageIndex = 1;
-                    var sSepStrs = filesNames[i].Split('.');
-                    var sFileType = sSepStrs[sSepStrs.Length - 1];
-                    item.SubItems.Add(sFileType);
-                    item.SubItems.Add(_choosedFileFullPath[i]);
-                    listView_Files.Items.Add(item);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                ExceptionHandle.ExceptionHdl(ex);
-            }
-        }
+        #region 辅助函数
 
         /// <summary>
         ///     去除完整路径,只留下文件名
@@ -242,290 +159,28 @@ namespace NonLinearEditSystem.Forms
         /// <param name="dirsAndFilePath"></param>
         private static string[] ClearDirAndFilePath(string[] dirsAndFilePath)
         {
-            var tempStrs = new string[dirsAndFilePath.Length];
-            dirsAndFilePath.CopyTo(tempStrs, 0);
-
-            for (var i = 0; i < tempStrs.Length; i++)
-            {
-                var pos = tempStrs[i].LastIndexOf(@"\", StringComparison.Ordinal);
-                tempStrs[i] = tempStrs[i].Substring(pos + 1);
-            }
-
-            return tempStrs;
-        }
-
-        /// <summary>
-        ///     文件列表中选中项改变的时候,在上面label中同时更改描述
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listView_Files_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listView_Files.SelectedItems.Count > 0)
-            {
-                var sItemString = listView_Files.SelectedItems[0].Text;
-                label_FileInfo.Text = sItemString;
-            }
-        }
-
-        /// <summary>
-        ///     双击播放视频
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listView_Files_DoubleClick(object sender, EventArgs e)
-        {
-            if (listView_Files.SelectedItems.Count <= 0) return;
-            if (listView_Files.SelectedItems[0].SubItems.Count <= 2) return;
-
-            // 得到文件类型和路径
-            var sFileType = listView_Files.SelectedItems[0].SubItems[1].Text;
-            var sFilePath = listView_Files.SelectedItems[0].SubItems[2].Text;
-
-            // 双击打开文件夹
-            if (sFileType == "文件夹")
-            {
-                ShowDirInFileBox(sFilePath);
-            }
-
-            // 现在只播放MP4类型文件
-            if (sFileType.ToUpper() != "MP4") return;
-            timer_Segment.Start();
-
-            IntPtr rendWnd = PanelEx_Sequence.Handle;
-            int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
-            _iClipPlayControlCSharp.Play();
-            timer_Sequence.Start();
-
-            timeLineControl_Sequence.NNeedShowSeconds =
-                (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
-            timeLineControl_Sequence.ThumbHPos = 0;
-            timeLineControl_Sequence.Invalidate();
-        }
-
-        /// <summary>
-        /// 序列监视器计时器
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer_Sequence_Tick(object sender, EventArgs e)
-        {
-            if (timeLineControl_Sequence.ThumbValue >= timeLineControl_Sequence.NNeedShowSeconds)
-            {
-                timer_Sequence.Stop();
-                _iClipPlayControlCSharp.Stop();
-            }
-            else
-            {
-                timeLineControl_Sequence.ThumbHPos += timeLineControl_Sequence.IntervalEverySec;
-                timeLineControl_Sequence.Invalidate();
-            }
-        }
-
-        /// <summary>
-        ///     片段监视器计时器
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer_Segment_Tick(object sender, EventArgs e)
-        {
-            //if (Segment_TrackBar.Value == Segment_TrackBar.Maximum)
-            //{
-            //    vlc_player.Stop();
-            //    timer_Segment.Stop();
-            //}
-            //else
-            //{
-            //    ++Segment_TrackBar.Value;
-            //}
-
-            // LabelItem_CurrentTime显示当前时间
-            // labelItem_CurrentTime.Text = DateTime.Now.ToString("HH:mm:ss:ff");
-        }
-
-        private void TrackName_BtnMouseHover(object sender, EventArgs e)
-        {
-            ((ButtonItem)sender).Icon = Resources.lock_closed_16px;
-        }
-
-        private void TrackName_BtnMouseLeave(object sender, EventArgs e)
-        {
-            ((ButtonItem)sender).Icon = Resources.lock_open_16px;
-        }
-
-        private void timeLineControl1_Click(object sender, EventArgs e)
-        {
-            var mouseEventArgs = (MouseEventArgs)e;
-            label_FileInfo.Text = $@"X:{mouseEventArgs.X}, Y:{mouseEventArgs.Y}";
-            labelItem_CurrentTime.Text =
-                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
-        }
-
-        /// <summary>
-        /// 序列监视器视频播放时候移动游标控制播放时间
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timeLineControl_Sequence_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeLineControl_Sequence.Capture && e.Button == MouseButtons.Left)
-            {
-                // 等到游标位置时间，转换为100ns单位
-                long rtPos = (long)(timeLineControl_Sequence.ThumbValue * GeneralConversions.SECONDS_TO_HT_TIME);
-
-                // 如果视频处于某种状态，则播放
-                if (_iClipPlayControlCSharp.GetCurState() == 0 || _iClipPlayControlCSharp.GetCurState() == 1)
-                {
-                    if (rtPos >= _iClipPlayControlCSharp.GetDuration())
-                    {
-                        _iClipPlayControlCSharp.SetPosition(0, 0);
-                        timeLineControl_Sequence.ThumbHPos = 0;
-                        timeLineControl_Sequence.Invalidate();
-                    }
-                    else
-                    {
-                        _iClipPlayControlCSharp.SetPosition(rtPos, 0);
-                    }
-                }
-            }
-        }
-
-
-        #region 菜单操作
-
-        private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PreferenceSetForm preferenceSetForm = new PreferenceSetForm();
-            preferenceSetForm.ShowDialog();
-        }
-
-        private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProjectSetForm projectSetForm = new ProjectSetForm();
-            projectSetForm.ShowDialog();
-        }
-
-        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm();
-            createProjectSetForm.ShowDialog();
-        }
-
-        private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CaptureForm captureForm = new CaptureForm();
-            captureForm.ShowDialog();
-        }
-
-        private void 设备输出设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DeviceInputSetForm deviceInputSetForm = new DeviceInputSetForm();
-            deviceInputSetForm.ShowDialog();
-        }
-
-        private void 录制ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RecordForm recordForm = new RecordForm();
-            recordForm.ShowDialog();
-        }
-
-        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DubForm dubFrom = new DubForm();
-            dubFrom.ShowDialog();
-        }
-
-        /// <summary>
-        /// 打开工程
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             try
             {
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                dialog.Description = "请选择工程文件夹";
+                var tempStrs = new string[dirsAndFilePath.Length];
+                dirsAndFilePath.CopyTo(tempStrs, 0);
 
-                if (dialog.ShowDialog() == DialogResult.OK)
+                for (var i = 0; i < tempStrs.Length; i++)
                 {
-                    ShowDirInFileBox(dialog.SelectedPath);
+                    var pos = tempStrs[i].LastIndexOf(@"\", StringComparison.Ordinal);
+                    tempStrs[i] = tempStrs[i].Substring(pos + 1);
                 }
+
+                return tempStrs;
             }
             catch (Exception ex)
             {
                 ExceptionHandle.ExceptionHdl(ex);
-            }
-        }
-
-        /// <summary>
-        /// 更新素材库
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void 更新素材库ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // 1.选择一个文件夹，将次文件夹里面的素材更新到素材库
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                dialog.Description = "请选择需要上传素材文件夹";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    UploadClipsInFolder(dialog.SelectedPath);
-
-                    // 2.刷新文件列表
-                    ShowClipsInFileBox();
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
-        }
-
-        /// <summary>
-        /// 选择文件夹，上传素材到数据库
-        /// </summary>
-        /// <param name="selectedPath"></param>
-        private void UploadClipsInFolder(string selectedPath)
-        {
-            try
-            {
-                // TODO：
-                // 0.先清空素材表
-                // 1.获取目录底下的文件都存到数据库中
-                string deleteText = @"DELETE FROM ClipsTable";
-                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                int iRes = SqlHelper.ExecuteNonQuery(_connectionString, deleteText, CommandType.Text, parameter);
-                iRes = 0;
-
-                string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
-                                    VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
-
-                string[] clipsPath = Directory.GetFiles(selectedPath, "*", SearchOption.AllDirectories);
-                string[] filesName = ClearDirAndFilePath(clipsPath);
-
-                for (int i = 0; i < clipsPath.Length; i++)
-                {
-                    SqlParameter[] paras = new SqlParameter[3];
-                    paras[0] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = filesName[i] };
-                    paras[1] = new SqlParameter("@StartDate", SqlDbType.DateTime) { Value = DateTime.Now };
-                    paras[2] = new SqlParameter("@FileAllName", SqlDbType.NVarChar) { Value = clipsPath[i] };
-
-                    iRes += SqlHelper.ExecuteNonQuery(_connectionString, commandText, CommandType.Text, paras);
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
+                return null;
             }
         }
 
 
-        #endregion 菜单操作
+        #endregion 辅助函数
 
 
         #region 文件拖动功能
@@ -537,31 +192,38 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void listView_Files_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            ListView listViewFile = (ListView)sender;
-            if (e.Button != MouseButtons.Left || listViewFile.SelectedItems.Count <= 0)
+            try
             {
-                return;
+                ListView listViewFile = (ListView)sender;
+                if (e.Button != MouseButtons.Left || listViewFile.SelectedItems.Count <= 0)
+                {
+                    return;
+                }
+
+                // put selected files into a string array
+                // 每次只处理第一个
+                //string[] files = new string[listViewFile.SelectedItems.Count];
+                //int i = 0;
+                //foreach (ListViewItem item in listViewFile.SelectedItems)
+                //{
+                //    files[i++] = item.Text;
+                //}
+
+                string selectedFile = listViewFile.SelectedItems[0].SubItems[2].Text;
+
+                // create a dataobject holding this array as a filedrop
+                DataObject data = new DataObject(DataFormats.FileDrop, selectedFile);
+
+                // also add the selection as textdata
+                data.SetData(DataFormats.StringFormat, selectedFile);
+
+                // Do DragDrop
+                DoDragDrop(data, DragDropEffects.Copy);
             }
-
-            // put selected files into a string array
-            // 每次只处理第一个
-            //string[] files = new string[listViewFile.SelectedItems.Count];
-            //int i = 0;
-            //foreach (ListViewItem item in listViewFile.SelectedItems)
-            //{
-            //    files[i++] = item.Text;
-            //}
-
-            string selectedFile = listViewFile.SelectedItems[0].SubItems[2].Text;
-
-            // create a dataobject holding this array as a filedrop
-            DataObject data = new DataObject(DataFormats.FileDrop, selectedFile);
-
-            // also add the selection as textdata
-            data.SetData(DataFormats.StringFormat, selectedFile);
-
-            // Do DragDrop
-            DoDragDrop(data, DragDropEffects.Copy);
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
         /// <summary>
@@ -717,6 +379,156 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
+        #endregion 文件拖动功能
+
+
+        #region 菜单操作
+
+        private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PreferenceSetForm preferenceSetForm = new PreferenceSetForm();
+            preferenceSetForm.ShowDialog();
+        }
+
+        private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProjectSetForm projectSetForm = new ProjectSetForm();
+            projectSetForm.ShowDialog();
+        }
+
+        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm();
+            createProjectSetForm.ShowDialog();
+        }
+
+        private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CaptureForm captureForm = new CaptureForm();
+            captureForm.ShowDialog();
+        }
+
+        private void 设备输出设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeviceInputSetForm deviceInputSetForm = new DeviceInputSetForm();
+            deviceInputSetForm.ShowDialog();
+        }
+
+        private void 录制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecordForm recordForm = new RecordForm();
+            recordForm.ShowDialog();
+        }
+
+        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DubForm dubFrom = new DubForm();
+            dubFrom.ShowDialog();
+        }
+
+        /// <summary>
+        /// 打开工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "请选择工程文件夹";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ShowDirInFileBox(dialog.SelectedPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 更新素材库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 更新素材库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1.选择一个文件夹，将次文件夹里面的素材更新到素材库
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "请选择需要上传素材文件夹";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    UploadClipsInFolder(dialog.SelectedPath);
+
+                    // 2.刷新文件列表
+                    ShowClipsInFileBox();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 选择文件夹，上传素材到数据库
+        /// </summary>
+        /// <param name="selectedPath"></param>
+        private void UploadClipsInFolder(string selectedPath)
+        {
+            try
+            {
+                // TODO：
+                // 0.先清空素材表
+                // 1.获取目录底下的文件都存到数据库中
+                string deleteText = @"DELETE FROM ClipsTable";
+                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
+                int iRes = SqlHelper.ExecuteNonQuery(_connectionString, deleteText, CommandType.Text, parameter);
+                iRes = 0;
+
+                string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
+                                    VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
+
+                string[] clipsPath = Directory.GetFiles(selectedPath, "*", SearchOption.AllDirectories);
+                string[] filesName = ClearDirAndFilePath(clipsPath);
+
+                for (int i = 0; i < clipsPath.Length; i++)
+                {
+                    SqlParameter[] paras = new SqlParameter[3];
+                    paras[0] = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = filesName[i] };
+                    paras[1] = new SqlParameter("@StartDate", SqlDbType.DateTime) { Value = DateTime.Now };
+                    paras[2] = new SqlParameter("@FileAllName", SqlDbType.NVarChar) { Value = clipsPath[i] };
+
+                    iRes += SqlHelper.ExecuteNonQuery(_connectionString, commandText, CommandType.Text, paras);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        #endregion 菜单操作
+
+
+        #region 主时间线操作
+
+
+
+        #endregion 主时间线操作
+
+
+        #region 视频轨道操作
+
         /// <summary>
         /// 在音视频轨道上拖动文件
         /// </summary>
@@ -732,6 +544,12 @@ namespace NonLinearEditSystem.Forms
                 _mousePosDelta = e.X - panelExSelected.Location.X;
             }
         }
+
+
+        #endregion 视频轨道操作
+
+
+        #region 音频轨道操作
 
         /// <summary>
         /// 在音视频轨道上拖动文件
@@ -750,8 +568,282 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #endregion 文件拖动功能
+        #endregion 音频轨道操作
 
+
+        #region 文件列表操作
+
+        /// <summary>
+        /// 将数据库的素材都显示到列表中
+        /// </summary>
+        private void ShowClipsInFileBox()
+        {
+            try
+            {
+                List<string> clipsNameList = new List<string>(10);
+                List<string> clipsPathList = new List<string>(10);
+
+                string commandText = "SELECT Name, FileAllName FROM ClipsTable";
+                SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
+                using (SqlDataReader reader = SqlHelper.ExecuteReader(_connectionString, commandText, CommandType.Text, parameter))
+                {
+                    while (reader.Read())
+                    {
+                        clipsNameList.Add(reader["Name"].ToString());
+                        clipsPathList.Add(reader["FileAllName"].ToString());
+                    }
+                }
+
+                // 清空列表
+                listView_Files.Items.Clear();
+
+                for (int i = 0; i < clipsNameList.Count; i++)
+                {
+                    ListViewItem item = new ListViewItem(clipsNameList[i]);
+                    item.ImageIndex = 1;
+                    var sSepStrs = clipsNameList[i].Split('.');
+                    var sFileType = sSepStrs[sSepStrs.Length - 1];
+                    item.SubItems.Add(sFileType);
+                    item.SubItems.Add(clipsPathList[i]);
+                    listView_Files.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        ///     在文件面板中显示某个文件夹中的文件
+        /// </summary>
+        private void ShowDirInFileBox(string path)
+        {
+            try
+            {
+                // 1.获得目录下的文件夹和文件(完整路径)
+                _choosedDirFullPath = Directory.GetDirectories(path);
+                _choosedFileFullPath = Directory.GetFiles(path);
+                var fileEntries = Directory.GetFileSystemEntries(path);
+
+                // 2.去除完整路径,只留下文件名
+                var dirsNames = ClearDirAndFilePath(_choosedDirFullPath);
+                var filesNames = ClearDirAndFilePath(_choosedFileFullPath);
+
+                // 3.0.清空列表
+                listView_Files.Items.Clear();
+
+                // 3.1.第一行显示“..”,双击表示回到上一级
+                // 3.2.如果是磁盘根目录，则不需要显示
+                if (path.Length > 3)
+                {
+                    var itemUp = new ListViewItem("..");
+                    itemUp.SubItems.Add("文件夹");
+                    int length = path.LastIndexOf(@"\", StringComparison.Ordinal);
+                    string upPath = path.Remove(length);
+                    // 如果上级是磁盘根目录，后面要加上"\"
+                    if (upPath.Length < 3)
+                    {
+                        upPath += @"\";
+                    }
+                    itemUp.SubItems.Add(upPath);
+                    listView_Files.Items.Add(itemUp);
+                }
+
+
+                // 3.将文件夹显示到文件列表中
+                for (var i = 0; i < dirsNames.Length; i++)
+                {
+                    var item = new ListViewItem(dirsNames[i]);
+                    item.ImageIndex = 0;
+                    item.SubItems.Add("文件夹");
+                    item.SubItems.Add(_choosedDirFullPath[i]);
+                    listView_Files.Items.Add(item);
+                }
+
+                // 4.将文件显示到文件列表中
+                for (var i = 0; i < filesNames.Length; i++)
+                {
+                    var item = new ListViewItem(filesNames[i]);
+                    item.ImageIndex = 1;
+                    var sSepStrs = filesNames[i].Split('.');
+                    var sFileType = sSepStrs[sSepStrs.Length - 1];
+                    item.SubItems.Add(sFileType);
+                    item.SubItems.Add(_choosedFileFullPath[i]);
+                    listView_Files.Items.Add(item);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        ///     文件列表中选中项改变的时候,在上面label中同时更改描述
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_Files_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listView_Files.SelectedItems.Count > 0)
+                {
+                    var sItemString = listView_Files.SelectedItems[0].Text;
+                    label_FileInfo.Text = sItemString;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 双击文件列表文件播放视频
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_Files_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listView_Files.SelectedItems.Count <= 0) return;
+                if (listView_Files.SelectedItems[0].SubItems.Count <= 2) return;
+
+                // 得到文件类型和路径
+                var sFileType = listView_Files.SelectedItems[0].SubItems[1].Text;
+                var sFilePath = listView_Files.SelectedItems[0].SubItems[2].Text;
+
+                // 双击打开文件夹
+                if (sFileType == "文件夹")
+                {
+                    ShowDirInFileBox(sFilePath);
+                }
+
+                // 现在只播放MP4类型文件
+                if (sFileType.ToUpper() != "MP4") return;
+
+                IntPtr rendWnd = PanelEx_Sequence.Handle;
+                int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
+                _iClipPlayControlCSharp.Play();
+                timer_Sequence.Stop();
+                timer_Sequence.Start();
+
+                // 获取视频时间长度（秒），并将其显示到labelX_SeqTime上
+                int clipDuration = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
+                //labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(clipDuration);
+                labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(0);
+
+                // slider_SeqTime用来控制视频播放时间
+                slider_SeqTime.Maximum = clipDuration + 1;
+                slider_SeqTime.Value = 0;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        #endregion 文件列表操作
+
+
+        #region 序列监视器操作
+
+        /// <summary>
+        /// 序列监视器计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_Sequence_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                // 如果播放到最后一秒，则停止播放
+                if (slider_SeqTime.Value == slider_SeqTime.Maximum)
+                {
+                    slider_SeqTime.Value = 0;
+                    timer_Sequence.Stop();
+                    _iClipPlayControlCSharp.Stop();
+                }
+                else
+                {
+                    slider_SeqTime.Value++;
+                }
+
+                // 更新labelX_SeqTime显示时间
+                labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(slider_SeqTime.Value);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 移动序列监视器计时器slider游标的时候控制播放时间点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void slider_SeqTime_Scroll(object sender, ScrollEventArgs e)
+        {
+            try
+            {
+                if (_iClipPlayControlCSharp.GetCurState() == 0)
+                {
+                    _iClipPlayControlCSharp.SetPosition((long)(slider_SeqTime.Value * GeneralConversions.SECONDS_TO_HT_TIME), 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        #endregion 序列监视器操作
+
+
+        #region 片段监视器操作
+
+        /// <summary>
+        /// 片段监视器计时器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_Segment_Tick(object sender, EventArgs e)
+        {
+            // 暂时不要实现
+        }
+
+
+        #endregion 片段监视器操作
+
+
+        #region 视频轨道名称面板操作
+
+        private void TrackName_BtnMouseHover(object sender, EventArgs e)
+        {
+            ((ButtonItem)sender).Icon = Resources.lock_closed_16px;
+        }
+
+        private void TrackName_BtnMouseLeave(object sender, EventArgs e)
+        {
+            ((ButtonItem)sender).Icon = Resources.lock_open_16px;
+        }
+
+
+        #endregion 视频轨道名称面板操作
+
+
+        #region 音频轨道名称面板操作
+
+
+
+        #endregion 音频轨道名称面板操作
 
 
     }
