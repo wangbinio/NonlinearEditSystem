@@ -22,60 +22,60 @@ namespace TimeLineControl
 
         #region Properties
 
-        // 画笔
+        /// 画笔
         public Pen drawPen = new Pen(Color.Black, 1f);
 
         private Pen drawThumbPen = new Pen(SystemColors.HotTrack, 1f);
 
-        // 字符画刷
+        /// 字符画刷
         private SolidBrush stringBrush = new SolidBrush(Color.Black);
 
-        // 游标画刷
+        /// 游标画刷
         private SolidBrush thumbBrush = new SolidBrush(SystemColors.HotTrack);
 
-        // 透明画刷
+        /// 透明画刷
         private TextureBrush transparentBrush = new TextureBrush(Resource.透明图片4);
 
-        // 间隔
+        /// 间隔
         public int NBotmPadding { get; set; } = 3;
 
-        // 每2个刻度之间的间隔距离
+        /// 每2个刻度之间的间隔距离
         public int NDistanceOfTicks { get; set; } = 15;
 
-        // 大刻度的长度，小刻度为大刻度的一半
+        /// 大刻度的长度，小刻度为大刻度的一半
         public int NBigTicksLength { get; set; } = 10;
 
-        // 水平轴的大刻度个数
+        /// 水平轴的大刻度个数
         public int NNumOfBigTicks { get; set; } = 6;
 
-        // 水平轴一共要显示多长时间(单位：s)，要向上取
+        /// 水平轴一共要显示多长时间(单位：s)，要向上取
         public int NNeedShowSeconds { get; set; } = 3600;
 
-        // 当前游标位置的时间
-        //public int CurrentTime ｛get; set;｝
+        /// 每一小格的时间间隔（秒），对应的大格为10s,20s,30s,1min,2min,5min,10min,20min,30min,1h
+        private readonly int[] _secondsEveryTicks = new []{1, 2, 3, 6, 12, 30, 60, 120, 180, 360};
 
-        // 游标中心线的横坐标
+        /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
+        public int IndexOfSecEveryTicks { get; set; } = 6;
+
+        /// 游标中心线的横坐标
         public double ThumbHPos { get; set; }
 
-        // 游标所在的矩形区域
+        /// 游标所在的矩形区域
         public Rectangle ThumbRectangle { get; set; }
 
-        // 用户鼠标点击两次选择区域
+        /// 用户鼠标点击两次选择区域
         public List<Rectangle> _userSelectedRectangles  = new List<Rectangle>(10);
 
-        private double _thumbValue;
+        /// 游标位置时间值
+        public double ThumbValue => (_secondsEveryTicks[IndexOfSecEveryTicks] * (double)ThumbHPos / (double)NDistanceOfTicks);
 
-        // 游标位置时间值
-        public double ThumbValue
-        {
-            get { return ((double)NNeedShowSeconds / NNumOfBigTicks / 10) * ((double)ThumbHPos / (double)NDistanceOfTicks); }
-            private set { _thumbValue = ((double)NNeedShowSeconds / NNumOfBigTicks / 10) * ((double)ThumbHPos / (double)NDistanceOfTicks) ; }
-        }
-
-        public double IntervalEverySec
-        {
-            get { return NDistanceOfTicks / (NNeedShowSeconds / NNumOfBigTicks / 10.0); }
-        }
+        /// <summary>
+        /// 每一秒的距离间隔
+        /// </summary>
+        //public double IntervalEverySec
+        //{
+        //    get { return NDistanceOfTicks / (NNeedShowSeconds / NNumOfBigTicks / 10.0); }
+        //}
 
 
         #endregion
@@ -83,13 +83,13 @@ namespace TimeLineControl
 
         #region Members
 
-        public bool _mouseInRegion;
-        public bool _mouseInThumbRegion;
-        public bool _clickedOnce;
-        public bool _clickedTwice;
-        public Point _clickedOncePoint;
-        public Point _clickedTwicePoint;
-        public bool _mouseMoved;
+        private bool _mouseInRegion;
+        private bool _mouseInThumbRegion;
+        private bool _clickedOnce;
+        private bool _clickedTwice;
+        private Point _clickedOncePoint;
+        private Point _clickedTwicePoint;
+        private bool _mouseMoved;
 
         #endregion
 
@@ -183,7 +183,8 @@ namespace TimeLineControl
             // 两个时间刻度之间的间隔为 nNeedShowSeconds/nNumOfBigTicks
             for (int i = 0; i <= NNumOfBigTicks; i++)
             {
-                int iTimeValue = i * NNeedShowSeconds / NNumOfBigTicks;
+                //int iTimeValue = i * NNeedShowSeconds / NNumOfBigTicks;
+                int iTimeValue = i * _secondsEveryTicks[IndexOfSecEveryTicks] * 10;
                 string sTimeString = ChangeTimeValueToString(iTimeValue);
 
                 // 得到字符串的尺寸
@@ -266,11 +267,20 @@ namespace TimeLineControl
 
             if (e.Delta > 0)
             {
-                NNeedShowSeconds += 300 * NNumOfBigTicks;
+                //NNeedShowSeconds += 300 * NNumOfBigTicks;
+
+                if (IndexOfSecEveryTicks < _secondsEveryTicks.Length - 1)
+                {
+                    IndexOfSecEveryTicks++;
+                }
             }
             else if (e.Delta < 0)
             {
-                NNeedShowSeconds -= 300 * NNumOfBigTicks;
+                //NNeedShowSeconds -= 300 * NNumOfBigTicks;
+                if (IndexOfSecEveryTicks > 0)
+                {
+                    IndexOfSecEveryTicks--;
+                }
             }
 
             Invalidate();
@@ -370,7 +380,7 @@ namespace TimeLineControl
             {
                 int nDeltaTicks = nDeltaWidth/(NDistanceOfTicks*10) + nDeltaWidth%(NDistanceOfTicks*10) > 0 ? 1 : 0;
                 NNumOfBigTicks += nDeltaTicks;
-                NNeedShowSeconds += nDeltaTicks * 600;
+                //NNeedShowSeconds += nDeltaTicks * 600;
 
                 Invalidate();
             }
