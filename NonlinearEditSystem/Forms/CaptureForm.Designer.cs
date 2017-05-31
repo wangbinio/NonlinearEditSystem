@@ -70,9 +70,9 @@
             this.buttonX_CapDel = new DevComponents.DotNetBar.ButtonX();
             this.labelX_CapTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_Preview = new System.Windows.Forms.GroupBox();
-            this.slider_PreviewTime = new DevComponents.DotNetBar.Controls.Slider();
             this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
             this.labelX_PreviewTime = new DevComponents.DotNetBar.LabelX();
+            this.slider_PreviewTime = new MB.Controls.ColorSlider();
             this.groupBox_SDI采集设置.SuspendLayout();
             this.groupBox_IPCapSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput_Port)).BeginInit();
@@ -710,22 +710,6 @@
             this.groupBox_Preview.TabStop = false;
             this.groupBox_Preview.Text = "预览";
             // 
-            // slider_PreviewTime
-            // 
-            this.slider_PreviewTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_PreviewTime.ForeColor = System.Drawing.Color.Black;
-            this.slider_PreviewTime.LabelVisible = false;
-            this.slider_PreviewTime.Location = new System.Drawing.Point(0, 473);
-            this.slider_PreviewTime.Name = "slider_PreviewTime";
-            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_PreviewTime.TabIndex = 2;
-            this.slider_PreviewTime.Value = 50;
-            // 
             // panelEx_Preview
             // 
             this.panelEx_Preview.CanvasColor = System.Drawing.SystemColors.Control;
@@ -760,6 +744,28 @@
             this.labelX_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.labelX_PreviewTime.TabIndex = 7;
             this.labelX_PreviewTime.Text = "00:00:00:00";
+            // 
+            // slider_PreviewTime
+            // 
+            this.slider_PreviewTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_PreviewTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_PreviewTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.LargeChange = ((uint)(5u));
+            this.slider_PreviewTime.Location = new System.Drawing.Point(6, 470);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 25);
+            this.slider_PreviewTime.SmallChange = ((uint)(1u));
+            this.slider_PreviewTime.TabIndex = 14;
+            this.slider_PreviewTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_PreviewTime.ThumbSize = 5;
+            this.slider_PreviewTime.Value = 0;
             // 
             // CaptureForm
             // 
@@ -834,7 +840,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX_CapDel;
         private System.Windows.Forms.GroupBox groupBox_Preview;
         private DevComponents.DotNetBar.PanelEx panelEx_Preview;
-        private DevComponents.DotNetBar.Controls.Slider slider_PreviewTime;
         private DevComponents.DotNetBar.LabelX labelX_PreviewTime;
+        private MB.Controls.ColorSlider slider_PreviewTime;
     }
 }

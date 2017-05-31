@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox_VTR设置 = new System.Windows.Forms.GroupBox();
-            this.slider_PreviewTime = new DevComponents.DotNetBar.Controls.Slider();
             this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
             this.labelX_PreviewTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_基本设置 = new System.Windows.Forms.GroupBox();
@@ -74,6 +73,7 @@
             this.progressBarX_RecordProgress = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.buttonX_CordEnd = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_CordBegin = new DevComponents.DotNetBar.ButtonX();
+            this.slider_PreviewTime = new MB.Controls.ColorSlider();
             this.groupBox_VTR设置.SuspendLayout();
             this.groupBox_基本设置.SuspendLayout();
             this.groupBox_尾部黑场.SuspendLayout();
@@ -103,22 +103,6 @@
             this.groupBox_VTR设置.TabIndex = 107;
             this.groupBox_VTR设置.TabStop = false;
             this.groupBox_VTR设置.Text = "VTR设置";
-            // 
-            // slider_PreviewTime
-            // 
-            this.slider_PreviewTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_PreviewTime.ForeColor = System.Drawing.Color.Black;
-            this.slider_PreviewTime.LabelVisible = false;
-            this.slider_PreviewTime.Location = new System.Drawing.Point(7, 424);
-            this.slider_PreviewTime.Name = "slider_PreviewTime";
-            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_PreviewTime.TabIndex = 18;
-            this.slider_PreviewTime.Value = 50;
             // 
             // panelEx_Preview
             // 
@@ -770,6 +754,28 @@
             this.buttonX_CordBegin.TabIndex = 19;
             this.buttonX_CordBegin.Text = "开始";
             // 
+            // slider_PreviewTime
+            // 
+            this.slider_PreviewTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_PreviewTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_PreviewTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.LargeChange = ((uint)(5u));
+            this.slider_PreviewTime.Location = new System.Drawing.Point(17, 424);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(281, 25);
+            this.slider_PreviewTime.SmallChange = ((uint)(1u));
+            this.slider_PreviewTime.TabIndex = 28;
+            this.slider_PreviewTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_PreviewTime.ThumbSize = 5;
+            this.slider_PreviewTime.Value = 0;
+            // 
             // RecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -810,7 +816,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_VTR设置;
-        private DevComponents.DotNetBar.Controls.Slider slider_PreviewTime;
         private DevComponents.DotNetBar.PanelEx panelEx_Preview;
         private DevComponents.DotNetBar.LabelX labelX_PreviewTime;
         private System.Windows.Forms.GroupBox groupBox_基本设置;
@@ -855,5 +860,6 @@
         private DevComponents.DotNetBar.ButtonX buttonX_Reset;
         private DevComponents.DotNetBar.ButtonX buttonX_CordBegin;
         private DevComponents.DotNetBar.ButtonX buttonX_DeviceSet;
+        private MB.Controls.ColorSlider slider_PreviewTime;
     }
 }

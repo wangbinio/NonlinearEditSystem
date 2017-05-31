@@ -74,13 +74,13 @@
             this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
-            this.slider_PreviewTime = new DevComponents.DotNetBar.Controls.Slider();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.tabControl_Preview = new DevComponents.DotNetBar.TabControl();
-            this.tabItem_Preview = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_Preview = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem_ScrollWnd = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItem_Preview = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_ScrollWnd = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem_ScrollWnd = new DevComponents.DotNetBar.TabItem(this.components);
+            this.slider_PreviewTime = new MB.Controls.ColorSlider();
             this.groupBox_当前状态.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -124,7 +124,7 @@
             // 
             // labelX_配音长度
             // 
-            this.labelX_配音长度.BackColor = System.Drawing.Color.White;
+            this.labelX_配音长度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -139,7 +139,7 @@
             // 
             // labelX_准备配音
             // 
-            this.labelX_准备配音.BackColor = System.Drawing.Color.White;
+            this.labelX_准备配音.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -154,7 +154,7 @@
             // 
             // labelX_配音进度
             // 
-            this.labelX_配音进度.BackColor = System.Drawing.Color.White;
+            this.labelX_配音进度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -169,7 +169,7 @@
             // 
             // labelX_CapTime
             // 
-            this.labelX_CapTime.BackColor = System.Drawing.Color.White;
+            this.labelX_CapTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -198,6 +198,7 @@
             // 
             // timeLineControl1
             // 
+            this.timeLineControl1.IndexOfSecEveryTicks = 6;
             this.timeLineControl1.Location = new System.Drawing.Point(6, 53);
             this.timeLineControl1.Name = "timeLineControl1";
             this.timeLineControl1.NBigTicksLength = 10;
@@ -208,12 +209,12 @@
             this.timeLineControl1.Size = new System.Drawing.Size(367, 35);
             this.timeLineControl1.TabIndex = 0;
             this.timeLineControl1.Text = "timeLineControl1";
-            this.timeLineControl1.ThumbHPos = 200;
+            this.timeLineControl1.ThumbHPos = 200D;
             this.timeLineControl1.ThumbRectangle = new System.Drawing.Rectangle(193, 0, 15, 15);
             // 
             // labelX1
             // 
-            this.labelX1.BackColor = System.Drawing.Color.White;
+            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -231,6 +232,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox2.Controls.Add(this.comboBoxEx_采样位数);
             this.groupBox2.Controls.Add(this.buttonX_AddTrack);
             this.groupBox2.Controls.Add(this.comboBoxEx_指定轨道);
@@ -315,7 +317,7 @@
             // 
             // labelX_采样位数
             // 
-            this.labelX_采样位数.BackColor = System.Drawing.Color.White;
+            this.labelX_采样位数.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -352,7 +354,7 @@
             // 
             // labelX_指定轨道
             // 
-            this.labelX_指定轨道.BackColor = System.Drawing.Color.White;
+            this.labelX_指定轨道.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -367,7 +369,7 @@
             // 
             // labelX_采样频率
             // 
-            this.labelX_采样频率.BackColor = System.Drawing.Color.White;
+            this.labelX_采样频率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -441,7 +443,7 @@
             // 
             // labelX_预卷时间
             // 
-            this.labelX_预卷时间.BackColor = System.Drawing.Color.White;
+            this.labelX_预卷时间.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -456,7 +458,7 @@
             // 
             // labelX_文件名称
             // 
-            this.labelX_文件名称.BackColor = System.Drawing.Color.White;
+            this.labelX_文件名称.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -471,7 +473,7 @@
             // 
             // labelX_文件路径
             // 
-            this.labelX_文件路径.BackColor = System.Drawing.Color.White;
+            this.labelX_文件路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -512,7 +514,7 @@
             // 
             // labelX_出点
             // 
-            this.labelX_出点.BackColor = System.Drawing.Color.White;
+            this.labelX_出点.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -527,7 +529,7 @@
             // 
             // labelX_入点时间
             // 
-            this.labelX_入点时间.BackColor = System.Drawing.Color.White;
+            this.labelX_入点时间.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -542,7 +544,7 @@
             // 
             // labelX_出点时间
             // 
-            this.labelX_出点时间.BackColor = System.Drawing.Color.White;
+            this.labelX_出点时间.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -560,7 +562,7 @@
             // 
             // labelX2
             // 
-            this.labelX2.BackColor = System.Drawing.Color.White;
+            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -708,25 +710,9 @@
             this.buttonX9.TabIndex = 101;
             this.buttonX9.Text = "清除";
             // 
-            // slider_PreviewTime
-            // 
-            this.slider_PreviewTime.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.slider_PreviewTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider_PreviewTime.ForeColor = System.Drawing.Color.Black;
-            this.slider_PreviewTime.LabelVisible = false;
-            this.slider_PreviewTime.Location = new System.Drawing.Point(479, 111);
-            this.slider_PreviewTime.Name = "slider_PreviewTime";
-            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 23);
-            this.slider_PreviewTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider_PreviewTime.TabIndex = 102;
-            this.slider_PreviewTime.Value = 50;
-            // 
             // labelX3
             // 
-            this.labelX3.BackColor = System.Drawing.Color.White;
+            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -758,12 +744,6 @@
             this.tabControl_Preview.Tabs.Add(this.tabItem_ScrollWnd);
             this.tabControl_Preview.Text = "tabControl1";
             // 
-            // tabItem_Preview
-            // 
-            this.tabItem_Preview.AttachedControl = this.tabControlPanel_Preview;
-            this.tabItem_Preview.Name = "tabItem_Preview";
-            this.tabItem_Preview.Text = "预览";
-            // 
             // tabControlPanel_Preview
             // 
             this.tabControlPanel_Preview.DisabledBackColor = System.Drawing.Color.Empty;
@@ -772,20 +752,20 @@
             this.tabControlPanel_Preview.Name = "tabControlPanel_Preview";
             this.tabControlPanel_Preview.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_Preview.Size = new System.Drawing.Size(363, 387);
-            this.tabControlPanel_Preview.Style.BackColor1.Color = System.Drawing.Color.White;
+            this.tabControlPanel_Preview.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Preview.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Preview.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.tabControlPanel_Preview.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
             this.tabControlPanel_Preview.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_Preview.Style.GradientAngle = 90;
             this.tabControlPanel_Preview.TabIndex = 1;
             this.tabControlPanel_Preview.TabItem = this.tabItem_Preview;
             // 
-            // tabItem_ScrollWnd
+            // tabItem_Preview
             // 
-            this.tabItem_ScrollWnd.AttachedControl = this.tabControlPanel_ScrollWnd;
-            this.tabItem_ScrollWnd.Name = "tabItem_ScrollWnd";
-            this.tabItem_ScrollWnd.Text = "滚屏窗口";
+            this.tabItem_Preview.AttachedControl = this.tabControlPanel_Preview;
+            this.tabItem_Preview.Name = "tabItem_Preview";
+            this.tabItem_Preview.Text = "预览";
             // 
             // tabControlPanel_ScrollWnd
             // 
@@ -795,22 +775,50 @@
             this.tabControlPanel_ScrollWnd.Name = "tabControlPanel_ScrollWnd";
             this.tabControlPanel_ScrollWnd.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_ScrollWnd.Size = new System.Drawing.Size(363, 387);
-            this.tabControlPanel_ScrollWnd.Style.BackColor1.Color = System.Drawing.Color.White;
+            this.tabControlPanel_ScrollWnd.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_ScrollWnd.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_ScrollWnd.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.tabControlPanel_ScrollWnd.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
             this.tabControlPanel_ScrollWnd.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_ScrollWnd.Style.GradientAngle = 90;
             this.tabControlPanel_ScrollWnd.TabIndex = 5;
             this.tabControlPanel_ScrollWnd.TabItem = this.tabItem_ScrollWnd;
             // 
+            // tabItem_ScrollWnd
+            // 
+            this.tabItem_ScrollWnd.AttachedControl = this.tabControlPanel_ScrollWnd;
+            this.tabItem_ScrollWnd.Name = "tabItem_ScrollWnd";
+            this.tabItem_ScrollWnd.Text = "滚屏窗口";
+            // 
+            // slider_PreviewTime
+            // 
+            this.slider_PreviewTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_PreviewTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_PreviewTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.LargeChange = ((uint)(5u));
+            this.slider_PreviewTime.Location = new System.Drawing.Point(475, 111);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(292, 25);
+            this.slider_PreviewTime.SmallChange = ((uint)(1u));
+            this.slider_PreviewTime.TabIndex = 104;
+            this.slider_PreviewTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_PreviewTime.ThumbSize = 5;
+            this.slider_PreviewTime.Value = 0;
+            // 
             // DubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 598);
-            this.Controls.Add(this.tabControl_Preview);
             this.Controls.Add(this.slider_PreviewTime);
+            this.Controls.Add(this.tabControl_Preview);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonX9);
             this.Controls.Add(this.buttonX6);
@@ -827,7 +835,6 @@
             this.Controls.Add(this.labelX3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -893,12 +900,12 @@
         private DevComponents.DotNetBar.ButtonX buttonX7;
         private DevComponents.DotNetBar.ButtonX buttonX8;
         private DevComponents.DotNetBar.ButtonX buttonX9;
-        private DevComponents.DotNetBar.Controls.Slider slider_PreviewTime;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.TabControl tabControl_Preview;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_Preview;
         private DevComponents.DotNetBar.TabItem tabItem_Preview;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_ScrollWnd;
         private DevComponents.DotNetBar.TabItem tabItem_ScrollWnd;
+        private MB.Controls.ColorSlider slider_PreviewTime;
     }
 }
