@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include <msclr\marshal.h>
 #include <string>
-#include "IClipPlayControlCSharp.h"
+#include "ClipPlayControlCSharp.h"
 
 using namespace msclr::interop;
 using namespace System::Runtime::InteropServices;
 using namespace ClrInterfaceDll;
 
 
-IClipPlayControlCSharp::IClipPlayControlCSharp()
+ClipPlayControlCSharp::ClipPlayControlCSharp()
 {
 	m_IClipPlayControl = new CClipPlayControlIO();
 }
@@ -18,7 +18,7 @@ IClipPlayControlCSharp::IClipPlayControlCSharp()
 //	return m_IClipPlayControl->Release();
 //}
 
-int IClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
+int ClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 {
 	//void * phWnd = hWnd->ToPointer();
 
@@ -31,42 +31,50 @@ int IClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 	return m_IClipPlayControl->SetClip(szFileName, iHwnd);
 }
 
-int IClipPlayControlCSharp::Play()
+
+int ClipPlayControlCSharp::Play()
 {
 	return m_IClipPlayControl->Play();
 }
 
-int IClipPlayControlCSharp::Pause()
+
+int ClipPlayControlCSharp::Pause()
 {
 	return m_IClipPlayControl->Pause();
 }
 
-int IClipPlayControlCSharp::Continue()
+
+int ClipPlayControlCSharp::Continue()
 {
 	return m_IClipPlayControl->Continue();
 }
 
-int IClipPlayControlCSharp::Stop()
+
+int ClipPlayControlCSharp::Stop()
 {
 	return m_IClipPlayControl->Stop();
 }
 
-int IClipPlayControlCSharp::GetCurState()
+
+int ClipPlayControlCSharp::GetCurState()
 {
 	return m_IClipPlayControl->GetCurState();
 }
 
-long long IClipPlayControlCSharp::GetDuration()
+
+long long ClipPlayControlCSharp::GetDuration()
 {
 	return m_IClipPlayControl->GetDuration();
 }
 
-long long IClipPlayControlCSharp::GetPosition()
+
+long long ClipPlayControlCSharp::GetPosition()
 {
 	return m_IClipPlayControl->GetPosition();
 }
 
-int IClipPlayControlCSharp::SetPosition(long long rtPos, long long rtEndPos)
+
+int ClipPlayControlCSharp::SetPosition(long long rtPos, long long rtEndPos)
 {
 	return m_IClipPlayControl->SetPosition(rtPos, rtEndPos);
 }

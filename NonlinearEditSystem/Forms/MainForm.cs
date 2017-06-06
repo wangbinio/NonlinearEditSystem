@@ -23,7 +23,7 @@ namespace NonLinearEditSystem.Forms
         private String _connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
 
         // 视频播放接口类
-        private IClipPlayControlCSharp _iClipPlayControlCSharp;
+        private ClipPlayControlCSharp _iClipPlayControlCSharp;
 
         // 文件列表中选择的目录
         private string[] _choosedDirFullPath;
@@ -55,6 +55,13 @@ namespace NonLinearEditSystem.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //panelEx_TrackContent.AutoScroll = true;
+            //panelEx_TrackContent.HorizontalScroll.Visible = true;
+            //panelEx_TrackContent.VerticalScroll.Visible = true;
+            panelEx_TrackContent.HScrollBar.Visible = true;
+            panelEx_TrackContent.HScrollBar.Enabled = true;
+
+
             InitVedioAndAudioFilesPanel();
 
             InitPlayControl();
@@ -139,7 +146,7 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                _iClipPlayControlCSharp = new IClipPlayControlCSharp();
+                _iClipPlayControlCSharp = new ClipPlayControlCSharp();
             }
             catch (Exception ex)
             {
@@ -256,7 +263,13 @@ namespace NonLinearEditSystem.Forms
                 string fileName = e.Data.GetData(DataFormats.FileDrop, true) as string;
 
                 // 2.读取此文件的信息TODO:
-                int length = 200;
+                _iClipPlayControlCSharp.SetClip(fileName, PanelEx_Sequence.Handle);
+                double duirationTime = _iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec;
+
+                int length =
+                    (int)duirationTime/timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks]*
+                    timeLineControl_MainTL.NDistanceOfTicks;
+
 
                 // 3.0.计算位置信息
                 Point mousePoint = ((PanelEx)sender).PointToClient(new Point(e.X, e.Y));
@@ -733,7 +746,7 @@ namespace NonLinearEditSystem.Forms
                 timer_Sequence.Start();
 
                 // 获取视频时间长度（秒），并将其显示到labelX_SeqTime上
-                int clipDuration = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.HT_TIME_TO_SECONDS);
+                int clipDuration = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec);
                 //labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(clipDuration);
                 labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(0);
 
@@ -794,7 +807,7 @@ namespace NonLinearEditSystem.Forms
             {
                 if (_iClipPlayControlCSharp.GetCurState() == 0)
                 {
-                    _iClipPlayControlCSharp.SetPosition((long)(slider_SeqTime.Value * GeneralConversions.SECONDS_TO_HT_TIME), 0);
+                    _iClipPlayControlCSharp.SetPosition((long)(slider_SeqTime.Value * GeneralConversions.SecToNanoSec), 0);
                 }
             }
             catch (Exception ex)
@@ -836,8 +849,9 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        #endregion 视频轨道名称面板操作
 
+
+        #endregion 视频轨道名称面板操作
 
         #region 音频轨道名称面板操作
 
@@ -845,6 +859,12 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 音频轨道名称面板操作
 
+        private void panelEx_TrackContent_Scroll(object sender, ScrollEventArgs e)
+        {
+            //MessageBox.Show("Test");
+            Rectangle rect = panelEx_TrackContent.ClientTextRectangle;
 
+            Rectangle rect2 = rect;
+        }
     }
 }

@@ -106,8 +106,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../Bin/x64/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ClipPlayControlDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ClipPlayControlDLL.lib;H264CodecDLL.lib;MP4DemuxDLL.lib;MP4FilesMuxDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,12 +147,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClipPlayControlIO.h" />
-    <ClInclude Include="IClipPlayControlCSharp.h" />
+	<ClInclude Include="ClipPlayControlCSharp.h" />
+    <ClInclude Include="H264CodecIO.h" />
+    <ClInclude Include="H264CodecIOCSharp.h" />
+    <ClInclude Include="Mp4DemuxIO.h" />
+    <ClInclude Include="Mp4DemuxIOCSharp.h" />
+    <ClInclude Include="Mp4FilesMuxIO.h" />
+    <ClInclude Include="Mp4FilesMuxIOCSharp.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="IClipPlayControlCSharp.cpp" />
+    <ClCompile Include="ClipPlayControlCSharp.cpp" />
+    <ClCompile Include="H264CodecIOCSharp.cpp" />
+    <ClCompile Include="Mp4DemuxIOCSharp.cpp" />
+    <ClCompile Include="Mp4FilesMuxIOCSharp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -14,10 +14,10 @@ namespace XNetUtilities
     /// </summary>
     public abstract class GeneralConversions
     {
-        // HT_Time is 100 nanoseconds resolution
-        public const double HT_TIME_TO_SECONDS = 0.0000001;
-        public const double SECONDS_TO_HT_TIME = 10000000.0;
-        public const double HT_TIME_TO_MSEC = 0.0001;
-        public const double MSEC_TO_HT_TIME = 10000.0;
+        //  100nanoseconds resolution
+        public const double NanoSecToSec = 0.0000001;
+        public const double SecToNanoSec = 10000000.0;
+        public const double NanoSecToMicSec = 0.0001;
+        public const double MicSecToNanoSec = 10000.0;
     }
 }

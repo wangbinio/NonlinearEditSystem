@@ -24,10 +24,28 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="IClipPlayControlCSharp.h">
+    <ClInclude Include="ClipPlayControlIO.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ClipPlayControlIO.h">
+    <ClInclude Include="H264CodecIO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp4DemuxIO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp4FilesMuxIO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp4FilesMuxIOCSharp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mp4DemuxIOCSharp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="H264CodecIOCSharp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipPlayControlCSharp.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +53,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="IClipPlayControlCSharp.cpp">
+    <ClCompile Include="H264CodecIOCSharp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mp4DemuxIOCSharp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mp4FilesMuxIOCSharp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClipPlayControlCSharp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

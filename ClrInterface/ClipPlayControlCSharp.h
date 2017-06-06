@@ -5,7 +5,7 @@
 
 using namespace System;
 
-#define _MAGICODE_CLIPPLAYCONTROL_
+//#define _MAGICODE_CLIPPLAYCONTROL_
 
 namespace ClrInterfaceDll
 {
@@ -15,10 +15,10 @@ namespace ClrInterfaceDll
 	/// 作者：szwb
 	/// 修改：2017-05-19		添加注释
 	/// </summary>
-	public ref class IClipPlayControlCSharp
+	public ref class ClipPlayControlCSharp
 	{
 	public:
-		IClipPlayControlCSharp();
+		ClipPlayControlCSharp();
 
 		//void Release();
 
@@ -73,7 +73,7 @@ namespace ClrInterfaceDll
 		//返回值：S_OK = 成功；否则 失败
 		int SetPosition(long long rtPos, long long rtEndPos);
 
-	public:
+	private:
 		CClipPlayControlIO* m_IClipPlayControl;
 	};
 }

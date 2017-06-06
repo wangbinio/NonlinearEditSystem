@@ -52,7 +52,7 @@ namespace TimeLineControl
         public int NNeedShowSeconds { get; set; } = 3600;
 
         /// 每一小格的时间间隔（秒），对应的大格为10s,20s,30s,1min,2min,5min,10min,20min,30min,1h
-        private readonly int[] _secondsEveryTicks = new []{1, 2, 3, 6, 12, 30, 60, 120, 180, 360};
+        public readonly int[] SecondsEveryTicks = new []{1, 2, 3, 6, 12, 30, 60, 120, 180, 360};
 
         /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
         public int IndexOfSecEveryTicks { get; set; } = 6;
@@ -67,7 +67,7 @@ namespace TimeLineControl
         public List<Rectangle> _userSelectedRectangles  = new List<Rectangle>(10);
 
         /// 游标位置时间值
-        public double ThumbValue => (_secondsEveryTicks[IndexOfSecEveryTicks] * (double)ThumbHPos / (double)NDistanceOfTicks);
+        public double ThumbValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)ThumbHPos / (double)NDistanceOfTicks);
 
         /// <summary>
         /// 每一秒的距离间隔
@@ -184,7 +184,7 @@ namespace TimeLineControl
             for (int i = 0; i <= NNumOfBigTicks; i++)
             {
                 //int iTimeValue = i * NNeedShowSeconds / NNumOfBigTicks;
-                int iTimeValue = i * _secondsEveryTicks[IndexOfSecEveryTicks] * 10;
+                int iTimeValue = i * SecondsEveryTicks[IndexOfSecEveryTicks] * 10;
                 string sTimeString = ChangeTimeValueToString(iTimeValue);
 
                 // 得到字符串的尺寸
@@ -269,7 +269,7 @@ namespace TimeLineControl
             {
                 //NNeedShowSeconds += 300 * NNumOfBigTicks;
 
-                if (IndexOfSecEveryTicks < _secondsEveryTicks.Length - 1)
+                if (IndexOfSecEveryTicks < SecondsEveryTicks.Length - 1)
                 {
                     IndexOfSecEveryTicks++;
                 }

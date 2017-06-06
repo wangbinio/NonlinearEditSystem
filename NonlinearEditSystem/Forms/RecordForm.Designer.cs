@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox_VTR设置 = new System.Windows.Forms.GroupBox();
+            this.slider_PreviewTime = new MB.Controls.ColorSlider();
             this.panelEx_Preview = new DevComponents.DotNetBar.PanelEx();
             this.labelX_PreviewTime = new DevComponents.DotNetBar.LabelX();
             this.groupBox_基本设置 = new System.Windows.Forms.GroupBox();
@@ -73,7 +74,6 @@
             this.progressBarX_RecordProgress = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.buttonX_CordEnd = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_CordBegin = new DevComponents.DotNetBar.ButtonX();
-            this.slider_PreviewTime = new MB.Controls.ColorSlider();
             this.groupBox_VTR设置.SuspendLayout();
             this.groupBox_基本设置.SuspendLayout();
             this.groupBox_尾部黑场.SuspendLayout();
@@ -103,6 +103,28 @@
             this.groupBox_VTR设置.TabIndex = 107;
             this.groupBox_VTR设置.TabStop = false;
             this.groupBox_VTR设置.Text = "VTR设置";
+            // 
+            // slider_PreviewTime
+            // 
+            this.slider_PreviewTime.BackColor = System.Drawing.Color.Transparent;
+            this.slider_PreviewTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
+            this.slider_PreviewTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
+            this.slider_PreviewTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.LargeChange = ((uint)(5u));
+            this.slider_PreviewTime.Location = new System.Drawing.Point(17, 424);
+            this.slider_PreviewTime.Name = "slider_PreviewTime";
+            this.slider_PreviewTime.Size = new System.Drawing.Size(281, 25);
+            this.slider_PreviewTime.SmallChange = ((uint)(1u));
+            this.slider_PreviewTime.TabIndex = 28;
+            this.slider_PreviewTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
+            this.slider_PreviewTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
+            this.slider_PreviewTime.ThumbSize = 5;
+            this.slider_PreviewTime.Value = 0;
             // 
             // panelEx_Preview
             // 
@@ -141,7 +163,7 @@
             // 
             // groupBox_基本设置
             // 
-            this.groupBox_基本设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_基本设置.BackColor = System.Drawing.Color.White;
             this.groupBox_基本设置.Controls.Add(this.groupBox_尾部黑场);
             this.groupBox_基本设置.Controls.Add(this.groupBox_首部黑场);
             this.groupBox_基本设置.Controls.Add(this.groupBox_彩条设置);
@@ -167,12 +189,14 @@
             // 
             // integerInput_尾黑长度
             // 
+            this.integerInput_尾黑长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.integerInput_尾黑长度.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput_尾黑长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput_尾黑长度.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_尾黑长度.ForeColor = System.Drawing.Color.Black;
             this.integerInput_尾黑长度.Location = new System.Drawing.Point(86, 24);
             this.integerInput_尾黑长度.MaxValue = 100;
             this.integerInput_尾黑长度.MinValue = 0;
@@ -210,12 +234,14 @@
             // 
             // integerInput_首黑长度
             // 
+            this.integerInput_首黑长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.integerInput_首黑长度.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput_首黑长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput_首黑长度.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_首黑长度.ForeColor = System.Drawing.Color.Black;
             this.integerInput_首黑长度.Location = new System.Drawing.Point(86, 24);
             this.integerInput_首黑长度.MaxValue = 100;
             this.integerInput_首黑长度.MinValue = 0;
@@ -256,6 +282,7 @@
             // 
             // checkBoxX_Add1KHZ
             // 
+            this.checkBoxX_Add1KHZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -263,6 +290,7 @@
             this.checkBoxX_Add1KHZ.Checked = true;
             this.checkBoxX_Add1KHZ.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxX_Add1KHZ.CheckValue = "Y";
+            this.checkBoxX_Add1KHZ.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_Add1KHZ.Location = new System.Drawing.Point(274, 57);
             this.checkBoxX_Add1KHZ.Name = "checkBoxX_Add1KHZ";
             this.checkBoxX_Add1KHZ.Size = new System.Drawing.Size(108, 23);
@@ -287,12 +315,14 @@
             // 
             // integerInput_彩条长度
             // 
+            this.integerInput_彩条长度.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.integerInput_彩条长度.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput_彩条长度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput_彩条长度.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_彩条长度.ForeColor = System.Drawing.Color.Black;
             this.integerInput_彩条长度.Location = new System.Drawing.Point(86, 57);
             this.integerInput_彩条长度.MaxValue = 100;
             this.integerInput_彩条长度.MinValue = 0;
@@ -479,6 +509,7 @@
             // 
             // groupBox_输出设置
             // 
+            this.groupBox_输出设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_输出设置.Controls.Add(this.radioButton_Combine);
             this.groupBox_输出设置.Controls.Add(this.radioButton_Insert);
             this.groupBox_输出设置.Controls.Add(this.buttonX_Reset);
@@ -489,6 +520,7 @@
             this.groupBox_输出设置.Controls.Add(this.integerInput_入点等待);
             this.groupBox_输出设置.Controls.Add(this.labelX_出点等待);
             this.groupBox_输出设置.Controls.Add(this.labelX_入点等待);
+            this.groupBox_输出设置.ForeColor = System.Drawing.Color.Black;
             this.groupBox_输出设置.Location = new System.Drawing.Point(12, 437);
             this.groupBox_输出设置.Name = "groupBox_输出设置";
             this.groupBox_输出设置.Size = new System.Drawing.Size(403, 238);
@@ -499,25 +531,29 @@
             // radioButton_Combine
             // 
             this.radioButton_Combine.AutoSize = true;
+            this.radioButton_Combine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.radioButton_Combine.ForeColor = System.Drawing.Color.Black;
             this.radioButton_Combine.Location = new System.Drawing.Point(174, 87);
             this.radioButton_Combine.Name = "radioButton_Combine";
             this.radioButton_Combine.Size = new System.Drawing.Size(50, 21);
             this.radioButton_Combine.TabIndex = 10;
             this.radioButton_Combine.TabStop = true;
             this.radioButton_Combine.Text = "组合";
-            this.radioButton_Combine.UseVisualStyleBackColor = true;
+            this.radioButton_Combine.UseVisualStyleBackColor = false;
             // 
             // radioButton_Insert
             // 
             this.radioButton_Insert.AutoSize = true;
+            this.radioButton_Insert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.radioButton_Insert.Checked = true;
+            this.radioButton_Insert.ForeColor = System.Drawing.Color.Black;
             this.radioButton_Insert.Location = new System.Drawing.Point(93, 87);
             this.radioButton_Insert.Name = "radioButton_Insert";
             this.radioButton_Insert.Size = new System.Drawing.Size(50, 21);
             this.radioButton_Insert.TabIndex = 9;
             this.radioButton_Insert.TabStop = true;
             this.radioButton_Insert.Text = "插入";
-            this.radioButton_Insert.UseVisualStyleBackColor = true;
+            this.radioButton_Insert.UseVisualStyleBackColor = false;
             // 
             // buttonX_Reset
             // 
@@ -546,10 +582,12 @@
             // 
             // checkBoxX_A4
             // 
+            this.checkBoxX_A4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.checkBoxX_A4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_A4.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_A4.Location = new System.Drawing.Point(330, 22);
             this.checkBoxX_A4.Name = "checkBoxX_A4";
             this.checkBoxX_A4.Size = new System.Drawing.Size(49, 23);
@@ -559,10 +597,12 @@
             // 
             // checkBoxX_A3
             // 
+            this.checkBoxX_A3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.checkBoxX_A3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_A3.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_A3.Location = new System.Drawing.Point(249, 22);
             this.checkBoxX_A3.Name = "checkBoxX_A3";
             this.checkBoxX_A3.Size = new System.Drawing.Size(49, 23);
@@ -572,10 +612,12 @@
             // 
             // checkBoxX_A2
             // 
+            this.checkBoxX_A2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.checkBoxX_A2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_A2.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_A2.Location = new System.Drawing.Point(168, 22);
             this.checkBoxX_A2.Name = "checkBoxX_A2";
             this.checkBoxX_A2.Size = new System.Drawing.Size(49, 23);
@@ -585,10 +627,12 @@
             // 
             // checkBoxX_A1
             // 
+            this.checkBoxX_A1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.checkBoxX_A1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_A1.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_A1.Location = new System.Drawing.Point(87, 22);
             this.checkBoxX_A1.Name = "checkBoxX_A1";
             this.checkBoxX_A1.Size = new System.Drawing.Size(49, 23);
@@ -598,6 +642,7 @@
             // 
             // checkBoxX_A0Video
             // 
+            this.checkBoxX_A0Video.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
@@ -605,6 +650,7 @@
             this.checkBoxX_A0Video.Checked = true;
             this.checkBoxX_A0Video.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxX_A0Video.CheckValue = "Y";
+            this.checkBoxX_A0Video.ForeColor = System.Drawing.Color.Black;
             this.checkBoxX_A0Video.Location = new System.Drawing.Point(6, 22);
             this.checkBoxX_A0Video.Name = "checkBoxX_A0Video";
             this.checkBoxX_A0Video.Size = new System.Drawing.Size(49, 23);
@@ -614,12 +660,14 @@
             // 
             // integerInput_出点等待
             // 
+            this.integerInput_出点等待.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.integerInput_出点等待.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput_出点等待.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput_出点等待.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_出点等待.ForeColor = System.Drawing.Color.Black;
             this.integerInput_出点等待.Location = new System.Drawing.Point(93, 55);
             this.integerInput_出点等待.MaxValue = 100;
             this.integerInput_出点等待.MinValue = 0;
@@ -657,12 +705,14 @@
             // 
             // integerInput_入点等待
             // 
+            this.integerInput_入点等待.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
             this.integerInput_入点等待.BackgroundStyle.Class = "DateTimeInputBackground";
             this.integerInput_入点等待.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInput_入点等待.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput_入点等待.ForeColor = System.Drawing.Color.Black;
             this.integerInput_入点等待.Location = new System.Drawing.Point(93, 24);
             this.integerInput_入点等待.MaxValue = 100;
             this.integerInput_入点等待.MinValue = 0;
@@ -754,28 +804,6 @@
             this.buttonX_CordBegin.TabIndex = 19;
             this.buttonX_CordBegin.Text = "开始";
             // 
-            // slider_PreviewTime
-            // 
-            this.slider_PreviewTime.BackColor = System.Drawing.Color.Transparent;
-            this.slider_PreviewTime.BarInnerColor = System.Drawing.SystemColors.ActiveBorder;
-            this.slider_PreviewTime.BarOuterColor = System.Drawing.SystemColors.ActiveBorder;
-            this.slider_PreviewTime.BarPenColor = System.Drawing.SystemColors.ActiveBorder;
-            this.slider_PreviewTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
-            this.slider_PreviewTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_PreviewTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_PreviewTime.LargeChange = ((uint)(5u));
-            this.slider_PreviewTime.Location = new System.Drawing.Point(17, 424);
-            this.slider_PreviewTime.Name = "slider_PreviewTime";
-            this.slider_PreviewTime.Size = new System.Drawing.Size(281, 25);
-            this.slider_PreviewTime.SmallChange = ((uint)(1u));
-            this.slider_PreviewTime.TabIndex = 28;
-            this.slider_PreviewTime.ThumbInnerColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_PreviewTime.ThumbOuterColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_PreviewTime.ThumbPenColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_PreviewTime.ThumbRoundRectSize = new System.Drawing.Size(5, 5);
-            this.slider_PreviewTime.ThumbSize = 5;
-            this.slider_PreviewTime.Value = 0;
-            // 
             // RecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -787,6 +815,7 @@
             this.Controls.Add(this.groupBox_基本设置);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
