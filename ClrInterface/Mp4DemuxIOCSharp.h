@@ -33,7 +33,7 @@ namespace ClrInterfaceDll
 		// >=0 成功 ; <0 失败
 		//注意：只能加载高清MP4或H264音视频素材
 		//该函数一直等到音视频分离完成或者强制退出时才返回！即返回成功，表明分离已经完成
-		int AddClip(String^ strDemuxVideoFile, String^ strDemuxAudioFile, String^ strClipFileName, long long  rtPos, long long  rtEndPos);
+		int AddClip(String^% strDemuxVideoFile, String^% strDemuxAudioFile, String^ strClipFileName, long long  rtPos, long long  rtEndPos);
 
 
 		//停止分离

@@ -102,6 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;CLRINTERFACE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalUsingDirectories>../Bin/x64/Debug;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -147,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClipPlayControlIO.h" />
-	<ClInclude Include="ClipPlayControlCSharp.h" />
+    <ClInclude Include="ClipPlayControlCSharp.h" />
     <ClInclude Include="H264CodecIO.h" />
     <ClInclude Include="H264CodecIOCSharp.h" />
     <ClInclude Include="Mp4DemuxIO.h" />

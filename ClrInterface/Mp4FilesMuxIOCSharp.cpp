@@ -15,7 +15,8 @@ Mp4FilesMuxIOCSharp::Mp4FilesMuxIOCSharp()
 }
 
 
-int Mp4FilesMuxIOCSharp::StartMuxer(System::Collections::Generic::List<String^> strInH264FileList, String^ stroutput_filename)
+//int Mp4FilesMuxIOCSharp::StartMuxer(System::Collections::Generic::List<String^> strInH264FileList, String^% stroutput_filename)
+int Mp4FilesMuxIOCSharp::StartMuxer(StringList^ strInH264FileList, String^ stroutput_filename)
 {
 	std::vector<TCHAR*> szInH264FileList;
 	for each (String^ str in strInH264FileList)
@@ -26,7 +27,13 @@ int Mp4FilesMuxIOCSharp::StartMuxer(System::Collections::Generic::List<String^> 
 
 	TCHAR *szoutput_filename = (TCHAR*)(Marshal::StringToHGlobalUni(stroutput_filename)).ToPointer();
 
+	//TCHAR *szoutput_filename = new TCHAR[MAX_PATH];
+	//ZeroMemory(szoutput_filename, MAX_PATH);
+
 	int res = m_CMp4FilesMuxIO->StartMuxer(szInH264FileList, szoutput_filename);
+
+	//stroutput_filename = (String^)(Marshal::PtrToStringUni((IntPtr)szoutput_filename));
+
 
 	return res;
 }

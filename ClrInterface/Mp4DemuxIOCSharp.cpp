@@ -14,7 +14,7 @@ Mp4DemuxIOCSharp::Mp4DemuxIOCSharp()
 }
 
 
-int Mp4DemuxIOCSharp::AddClip(String^ strDemuxVideoFile, String^ strDemuxAudioFile, String^ strClipFileName, long long rtPos, long long rtEndPos)
+int Mp4DemuxIOCSharp::AddClip(String^% strDemuxVideoFile, String^% strDemuxAudioFile, String^ strClipFileName, long long rtPos, long long rtEndPos)
 {
 	TCHAR *szrClipFileName = (TCHAR*)(Marshal::StringToHGlobalUni(strClipFileName)).ToPointer();
 	TCHAR *szDemuxVideoFile = new TCHAR[MAX_PATH];

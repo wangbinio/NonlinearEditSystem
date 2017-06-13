@@ -266,6 +266,10 @@
     <None Include="Resources\透明图片6.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClrDataTypeChange\ClrDataTypeChange.csproj">
+      <Project>{37c9cbd0-4af9-4889-930a-628a61b791a4}</Project>
+      <Name>ClrDataTypeChange</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClrInterface\ClrInterface.vcxproj">
       <Project>{ca6dc3d1-5c8a-498d-9362-146a30257a62}</Project>
       <Name>ClrInterface</Name>

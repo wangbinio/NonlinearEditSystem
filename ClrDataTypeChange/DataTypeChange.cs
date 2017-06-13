@@ -10,9 +10,11 @@ namespace ClrDataTypeChange
     public class DataTypeChange
     {
 
-        public class StringList : List<String>
-        {
-            
-        }
+        
+    }
+
+    public class StringList : List<String>
+    {
+
     }
 }

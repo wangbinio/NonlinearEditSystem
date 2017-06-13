@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using ClrInterfaceDll;
 using Common;
@@ -11,12 +13,12 @@ using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using NonLinearEditSystem.Properties;
 using XNetUtilities;
+using ClrDataTypeChange;
 
 namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
-
         #region 成员变量
 
         // 数据库连接字符串
@@ -24,6 +26,15 @@ namespace NonLinearEditSystem.Forms
 
         // 视频播放接口类
         private ClipPlayControlCSharp _iClipPlayControlCSharp;
+
+        // 音视频分离类
+        private Mp4DemuxIOCSharp _mp4DemuxIOCSharp;
+
+        // 编解码类
+        private H264CodecIOCSharp _h264CodecIOCSharp;
+
+        // 打包类
+        private Mp4FilesMuxIOCSharp _mp4FilesMuxIOCSharp;
 
         // 文件列表中选择的目录
         private string[] _choosedDirFullPath;
@@ -44,7 +55,6 @@ namespace NonLinearEditSystem.Forms
         private int _mousePosDelta = 0;
 
         #endregion 成员变量
-
 
         #region 初始化工作
 
@@ -85,15 +95,18 @@ namespace NonLinearEditSystem.Forms
                     _audioFilesPanel[i] = new PanelEx();
 
                     _vedioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                    _vedioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                    _vedioFilesPanel[i].ColorSchemeStyle =
+                        DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
                     _vedioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
                     _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
                     _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
                     _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
                     _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
                     _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                    _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                    _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                    _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart =
+                        DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                    _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart =
+                        DevComponents.DotNetBar.eColorSchemePart.PanelText;
                     _vedioFilesPanel[i].Style.GradientAngle = 90;
                     _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
                     _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
@@ -109,15 +122,18 @@ namespace NonLinearEditSystem.Forms
                     _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
 
                     _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                    _audioFilesPanel[i].ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+                    _audioFilesPanel[i].ColorSchemeStyle =
+                        DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
                     _audioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
                     _audioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
                     _audioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
                     _audioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
                     _audioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
                     _audioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                    _audioFilesPanel[i].Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                    _audioFilesPanel[i].Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+                    _audioFilesPanel[i].Style.BorderColor.ColorSchemePart =
+                        DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+                    _audioFilesPanel[i].Style.ForeColor.ColorSchemePart =
+                        DevComponents.DotNetBar.eColorSchemePart.PanelText;
                     _audioFilesPanel[i].Style.GradientAngle = 90;
                     _audioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
                     _audioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
@@ -147,6 +163,12 @@ namespace NonLinearEditSystem.Forms
             try
             {
                 _iClipPlayControlCSharp = new ClipPlayControlCSharp();
+
+                _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+
+                _h264CodecIOCSharp = new H264CodecIOCSharp();
+
+                _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
             }
             catch (Exception ex)
             {
@@ -154,9 +176,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 初始化工作
-
 
         #region 辅助函数
 
@@ -186,9 +206,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 辅助函数
-
 
         #region 文件拖动功能
 
@@ -267,7 +285,8 @@ namespace NonLinearEditSystem.Forms
                 double duirationTime = _iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec;
 
                 int length =
-                    (int)duirationTime/timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks]*
+                    (int)duirationTime /
+                    timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks] *
                     timeLineControl_MainTL.NDistanceOfTicks;
 
 
@@ -280,7 +299,6 @@ namespace NonLinearEditSystem.Forms
 
                 // 4.将此panel添加到sender上
                 ((PanelEx)sender).Controls.Add(_vedioFilesPanel[vedioFilePanelIndex]);
-
             }
             catch (Exception ex)
             {
@@ -384,7 +402,6 @@ namespace NonLinearEditSystem.Forms
 
                 // 4.将此panel添加到sender上
                 ((PanelEx)sender).Controls.Add(_audioFilesPanel[audioFilePanelIndex]);
-
             }
             catch (Exception ex)
             {
@@ -392,9 +409,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 文件拖动功能
-
 
         #region 菜单操作
 
@@ -478,7 +493,6 @@ namespace NonLinearEditSystem.Forms
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-
                     UploadClipsInFolder(dialog.SelectedPath);
 
                     // 2.刷新文件列表
@@ -507,7 +521,8 @@ namespace NonLinearEditSystem.Forms
                 int iRes = SqlHelper.ExecuteNonQuery(_connectionString, deleteText, CommandType.Text, parameter);
                 iRes = 0;
 
-                string commandText = @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
+                string commandText =
+                    @"INSERT ClipsTable ([Name],[ClipsTypeID],[ClipsClassID],[UploaderID],[StartDate],[FileAllName]) 
                                     VALUES (@Name, 1, 1, 1, @startDate, @FileAllName)";
 
                 string[] clipsPath = Directory.GetFiles(selectedPath, "*", SearchOption.AllDirectories);
@@ -529,16 +544,11 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 菜单操作
-
 
         #region 主时间线操作
 
-
-
         #endregion 主时间线操作
-
 
         #region 视频轨道操作
 
@@ -558,9 +568,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 视频轨道操作
-
 
         #region 音频轨道操作
 
@@ -580,9 +588,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 音频轨道操作
-
 
         #region 文件列表操作
 
@@ -598,7 +604,9 @@ namespace NonLinearEditSystem.Forms
 
                 string commandText = "SELECT Name, FileAllName FROM ClipsTable";
                 SqlParameter parameter = new SqlParameter("", SqlDbType.BigInt) { Value = 0 };
-                using (SqlDataReader reader = SqlHelper.ExecuteReader(_connectionString, commandText, CommandType.Text, parameter))
+                using (
+                    SqlDataReader reader = SqlHelper.ExecuteReader(_connectionString, commandText, CommandType.Text,
+                        parameter))
                 {
                     while (reader.Read())
                     {
@@ -760,9 +768,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 文件列表操作
-
 
         #region 序列监视器操作
 
@@ -816,9 +822,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         #endregion 序列监视器操作
-
 
         #region 片段监视器操作
 
@@ -832,9 +836,7 @@ namespace NonLinearEditSystem.Forms
             // 暂时不要实现
         }
 
-
         #endregion 片段监视器操作
-
 
         #region 视频轨道名称面板操作
 
@@ -848,14 +850,9 @@ namespace NonLinearEditSystem.Forms
             ((ButtonItem)sender).Icon = Resources.lock_open_16px;
         }
 
-
-
-
         #endregion 视频轨道名称面板操作
 
         #region 音频轨道名称面板操作
-
-
 
         #endregion 音频轨道名称面板操作
 
@@ -865,6 +862,134 @@ namespace NonLinearEditSystem.Forms
             Rectangle rect = panelEx_TrackContent.ClientTextRectangle;
 
             Rectangle rect2 = rect;
+        }
+
+        string strDemuxVideoFile = string.Empty;
+        string strDemuxAudioFile = string.Empty;
+
+        string strOutH264FileName = string.Empty;
+        string strOutAacFileName = string.Empty;
+
+
+
+        private void 分离ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.InitialDirectory = @"D:\视频素材";
+                openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4| All Files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filename = openFileDialog.FileName;
+
+                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
+
+                    if (res >= 0)
+                    {
+                        MessageBox.Show("分离成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("分离失败");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 编解码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //int Start(System::Collections::Generic::List < String ^> strInH264VideoFileList, String ^ strOutH264FileName);
+                //int StartAACDecEncoder(System::Collections::Generic::List < String ^> strInAacFileList, String ^ strOutAacFileName);
+
+                //List<String> strInH264VideoFileList = new List<String>(10);
+                //List<String> strInAacFileList = new List<String>(10);
+
+                StringList strInH264VideoFileList = new StringList();
+                StringList strInAacFileList = new StringList(); ;
+
+                strInH264VideoFileList.Add(strDemuxVideoFile);
+                strInAacFileList.Add(strDemuxAudioFile);
+
+                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
+                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
+
+                while (true)
+                {
+                    if (_h264CodecIOCSharp.isFinish())
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+
+                if (resVedio >= 0 && resAudio >= 0)
+                {
+                    MessageBox.Show("编解码成功");
+                }
+                else
+                {
+                    MessageBox.Show("编解码失败");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+        }
+
+        private void 打包ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // int StartMuxer(StringList ^ strInH264FileList, String ^% stroutput_filename);
+
+                StringList strInH264FileList = new StringList();
+                //strInH264FileList.Add(strOutH264FileName);
+                //strInH264FileList.Add(strOutAacFileName);
+                strInH264FileList.Add(strDemuxVideoFile);
+                strInH264FileList.Add(strDemuxAudioFile);
+
+                string strPackedFile = @"D:\视频素材\" + DateTime.Now.ToString("hh-mm-ss") + ".mp4";
+                int res = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList,  strPackedFile);
+
+                while (true)
+                {
+                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+
+                if (res >= 0)
+                {
+                    MessageBox.Show("打包成功");
+                }
+                else
+                {
+                    MessageBox.Show("打包失败");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
     }
 }

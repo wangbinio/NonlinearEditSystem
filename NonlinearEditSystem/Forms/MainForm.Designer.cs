@@ -108,6 +108,9 @@
             this.更新素材库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.输出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.分离ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.编解码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打包ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainmenuStrip = new System.Windows.Forms.MenuStrip();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.styleManagerAmbient1 = new DevComponents.DotNetBar.StyleManagerAmbient(this.components);
@@ -964,7 +967,10 @@
             // 输出ToolStripMenuItem
             // 
             this.输出ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.关于ToolStripMenuItem});
+            this.关于ToolStripMenuItem,
+            this.分离ToolStripMenuItem,
+            this.编解码ToolStripMenuItem,
+            this.打包ToolStripMenuItem});
             this.输出ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.输出ToolStripMenuItem.Name = "输出ToolStripMenuItem";
             this.输出ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -973,8 +979,29 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.关于ToolStripMenuItem.Text = "关于";
+            // 
+            // 分离ToolStripMenuItem
+            // 
+            this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
+            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.分离ToolStripMenuItem.Text = "分离";
+            this.分离ToolStripMenuItem.Click += new System.EventHandler(this.分离ToolStripMenuItem_Click);
+            // 
+            // 编解码ToolStripMenuItem
+            // 
+            this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
+            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.编解码ToolStripMenuItem.Text = "编解码";
+            this.编解码ToolStripMenuItem.Click += new System.EventHandler(this.编解码ToolStripMenuItem_Click);
+            // 
+            // 打包ToolStripMenuItem
+            // 
+            this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
+            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.打包ToolStripMenuItem.Text = "打包";
+            this.打包ToolStripMenuItem.Click += new System.EventHandler(this.打包ToolStripMenuItem_Click);
             // 
             // MainmenuStrip
             // 
@@ -1857,5 +1884,8 @@
         private System.Windows.Forms.ToolStripMenuItem 更新素材库ToolStripMenuItem;
         private MB.Controls.ColorSlider slider_SeqTime;
         private MB.Controls.ColorSlider slider_SegmentTime;
+        private System.Windows.Forms.ToolStripMenuItem 分离ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 编解码ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打包ToolStripMenuItem;
     }
 }
