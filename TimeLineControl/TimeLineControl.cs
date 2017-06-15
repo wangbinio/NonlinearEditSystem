@@ -14,6 +14,8 @@ namespace TimeLineControl
     /// 作者：szwb
     /// 修改：2017-03-18 szwb
     /// 修改：2017-04-23 szwb 随着视频的播放，游标自动移动
+    /// 修改：2017-05-19 szwb 时间刻度分类
+    /// 修改：2017-06-15 szwb 添加出点入点区域,右键点击生成区域废除
     /// </summary>
     [ToolboxBitmap(typeof(TrackBar))]
     [DefaultEvent("Click"), DefaultProperty("nBotmPadding")]
@@ -25,6 +27,8 @@ namespace TimeLineControl
         /// 画笔
         public Pen drawPen = new Pen(Color.Black, 1f);
 
+        public Pen drawIntervalPen = new Pen(Color.Blue, 1f);
+
         private Pen drawThumbPen = new Pen(SystemColors.HotTrack, 1f);
 
         /// 字符画刷
@@ -35,6 +39,8 @@ namespace TimeLineControl
 
         /// 透明画刷
         private TextureBrush transparentBrush = new TextureBrush(Resource.透明图片4);
+
+        private TextureBrush transparentBrush2 = new TextureBrush(Resource._0140230_50);
 
         /// 间隔
         public int NBotmPadding { get; set; } = 3;
@@ -69,6 +75,10 @@ namespace TimeLineControl
         /// 游标位置时间值
         public double ThumbValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)ThumbHPos / (double)NDistanceOfTicks);
 
+        // 入点和出点横坐标
+        public int enterPos = 100;
+        public int exitPos = 150;
+
         /// <summary>
         /// 每一秒的距离间隔
         /// </summary>
@@ -81,15 +91,44 @@ namespace TimeLineControl
         #endregion
 
 
-        #region Members
+        #region EventMembers
 
+        // 鼠标是否在区域中
         private bool _mouseInRegion;
         private bool _mouseInThumbRegion;
+
+        // 右键点击的次数
         private bool _clickedOnce;
         private bool _clickedTwice;
+
+        // 鼠标第一次右击的点和第二次右击的点
         private Point _clickedOncePoint;
         private Point _clickedTwicePoint;
+
+        /// <summary>
+        /// 鼠标是否移动
+        /// </summary>
         private bool _mouseMoved;
+
+        /// <summary>
+        /// 是否点击选中游标
+        /// </summary>
+        private bool _chooseThumb;
+
+        /// <summary>
+        /// 是否点击选中入点
+        /// </summary>
+        private bool _chooseEntrePoint;
+
+        /// <summary>
+        /// 是否点击选中出点
+        /// </summary>
+        private bool _chooseExitPoint;
+
+        /// <summary>
+        /// 用于表示鼠标点击误差范围
+        /// </summary>
+        private float fClickDelta = 3.0f;
 
         #endregion
 
@@ -111,11 +150,15 @@ namespace TimeLineControl
             DrawTicks(g);
             DrawTimeTag(g);
 
-            DrawSelectRects(g, _userSelectedRectangles);
+            // 不再画右键点击生成的矩形区域
+            // DrawSelectRects(g, _userSelectedRectangles);
 
             DrawThumb(g);
 
+            DrawInterval(g);
+
         }
+
 
         /// <summary>
         /// 画背景
@@ -131,6 +174,7 @@ namespace TimeLineControl
             g.FillPolygon(new SolidBrush(Color.Black), bkgPoint);
         }
 
+
         /// <summary>
         /// 画水平轴
         /// </summary>
@@ -142,6 +186,7 @@ namespace TimeLineControl
 
             g.DrawLine(drawPen, hStartPoint, hEndPoint);
         }
+
 
         /// <summary>
         /// 画刻度
@@ -173,6 +218,7 @@ namespace TimeLineControl
 
         }
 
+
         /// <summary>
         /// 画时间刻度
         /// </summary>
@@ -200,6 +246,7 @@ namespace TimeLineControl
 
         }
 
+
         /// <summary>
         /// 画游标
         /// </summary>
@@ -225,6 +272,37 @@ namespace TimeLineControl
 
             g.DrawLine(drawThumbPen, thumbPoints[2], endPoint);
         }
+
+
+        /// <summary>
+        /// 画区间,入点,出点
+        /// </summary>
+        /// <param name="g"></param>
+        private void DrawInterval(Graphics g)
+        {
+            Point[] intervalPoint = new Point[10];
+            intervalPoint[0] = new Point(enterPos, 2);
+            intervalPoint[1] = new Point(enterPos + 5, 2);
+            intervalPoint[2] = new Point(exitPos-5, 2);
+            intervalPoint[3] = new Point(exitPos, 2);
+
+            intervalPoint[4] = new Point(enterPos, Height-2);
+            intervalPoint[5] = new Point(enterPos + 5, Height-2);
+            intervalPoint[6] = new Point(exitPos-5, Height-2);
+            intervalPoint[7] = new Point(exitPos, Height-2);
+
+            g.DrawLine(drawIntervalPen, intervalPoint[0], intervalPoint[1]);
+            g.DrawLine(drawIntervalPen, intervalPoint[0], intervalPoint[4]);
+            g.DrawLine(drawIntervalPen, intervalPoint[5], intervalPoint[4]);
+                       
+            g.DrawLine(drawIntervalPen, intervalPoint[3], intervalPoint[2]);
+            g.DrawLine(drawIntervalPen, intervalPoint[3], intervalPoint[7]);
+            g.DrawLine(drawIntervalPen, intervalPoint[6], intervalPoint[7]);
+
+            //g.DrawRectangle(drawThumbPen, enterPos, 0, exitPos-enterPos, Height-2);
+            g.FillRectangle(transparentBrush2, enterPos+1, 2, exitPos - enterPos-2, Height - 4);
+        }
+
 
         /// <summary>
         /// 画时间线上鼠标选中区域
@@ -297,6 +375,23 @@ namespace TimeLineControl
             {
                 Capture = true;
 
+                // 点击的时候要确定是点击到了游标区域,还是出入点区域
+                // 1.如果点击的位置,离游标很近,则表示想移动游标
+                // 2.如果点击在出入点区域,那么表示想移动出入点
+                if (Math.Abs((float)e.X - (float)ThumbHPos) < fClickDelta)
+                {
+                    _chooseThumb = true;
+                }
+                else if (Math.Abs((float)e.X - (float)enterPos) < fClickDelta)
+                {
+                    _chooseEntrePoint = true;
+                }
+                else if (Math.Abs((float)e.X - (float)exitPos) < fClickDelta)
+                {
+                    _chooseExitPoint = true;
+                }
+
+
                 // 鼠标按下的时候，还未移动
                 _mouseMoved = false;
             }
@@ -309,7 +404,10 @@ namespace TimeLineControl
 
             // 鼠标松开
             _mouseMoved = false;
-        }
+            _chooseThumb = false;
+            _chooseEntrePoint= false;
+            _chooseExitPoint = false;
+        }  
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -319,17 +417,40 @@ namespace TimeLineControl
             //_mouseInThumbRegion = IsPointInRect(mousePoint, ThumbRectangle);
             if (Capture && e.Button == MouseButtons.Left)
             {
-                // 设置游标新位置
-                ThumbHPos = mousePoint.X;
-
                 // 设置鼠标移动为true
                 _mouseMoved = true;
+
+                if (_chooseThumb)
+                {
+                    // 设置游标新位置
+                    ThumbHPos = mousePoint.X;
+                }
+                else if (_chooseEntrePoint)
+                {
+                    // 设置入点新位置
+                    enterPos = mousePoint.X;
+                }
+                else if (_chooseExitPoint)
+                {
+                    // 设置出点新位置
+                    exitPos = mousePoint.X;
+                }
 
                 Invalidate();
             }
         }
 
         protected override void OnClick(EventArgs e)
+        {
+            
+        }
+
+
+        /// <summary>
+        /// 右键点击事件,现已弃用
+        /// </summary>
+        /// <param name="e"></param>
+        protected  void OnClick_RightButton(EventArgs e)
         {
             base.OnClick(e);
 
