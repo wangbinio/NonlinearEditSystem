@@ -112,6 +112,7 @@
             this.编解码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打包ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainmenuStrip = new System.Windows.Forms.MenuStrip();
+            this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.styleManagerAmbient1 = new DevComponents.DotNetBar.StyleManagerAmbient(this.components);
             this.tabControl_TimeLine = new DevComponents.DotNetBar.TabControl();
@@ -934,6 +935,7 @@
             this.打包输出ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.打包输出ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.打包输出ToolStripMenuItem.Text = "打包输出(&E)";
+            this.打包输出ToolStripMenuItem.Click += new System.EventHandler(this.打包输出ToolStripMenuItem_Click);
             // 
             // 录制ToolStripMenuItem
             // 
@@ -1011,13 +1013,21 @@
             this.工程ToolStripMenuItem,
             this.编辑ToolStripMenuItem,
             this.输入ToolStripMenuItem,
-            this.输出ToolStripMenuItem});
+            this.输出ToolStripMenuItem,
+            this.测试ToolStripMenuItem});
             this.MainmenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainmenuStrip.Name = "MainmenuStrip";
             this.MainmenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.MainmenuStrip.Size = new System.Drawing.Size(1336, 25);
             this.MainmenuStrip.TabIndex = 0;
             this.MainmenuStrip.Text = "主菜单";
+            // 
+            // 测试ToolStripMenuItem
+            // 
+            this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
+            this.测试ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.测试ToolStripMenuItem.Text = "测试";
+            this.测试ToolStripMenuItem.Click += new System.EventHandler(this.测试ToolStripMenuItem_Click);
             // 
             // styleManager1
             // 
@@ -1715,7 +1725,6 @@
             this.Controls.Add(this.MainmenuStrip);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1887,5 +1896,6 @@
         private System.Windows.Forms.ToolStripMenuItem 分离ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 编解码ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打包ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 测试ToolStripMenuItem;
     }
 }

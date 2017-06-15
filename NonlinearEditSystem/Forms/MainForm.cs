@@ -14,6 +14,7 @@ using DevComponents.DotNetBar.Metro;
 using NonLinearEditSystem.Properties;
 using XNetUtilities;
 using ClrDataTypeChange;
+using System.Diagnostics;
 
 namespace NonLinearEditSystem.Forms
 {
@@ -68,15 +69,25 @@ namespace NonLinearEditSystem.Forms
             //panelEx_TrackContent.AutoScroll = true;
             //panelEx_TrackContent.HorizontalScroll.Visible = true;
             //panelEx_TrackContent.VerticalScroll.Visible = true;
-            panelEx_TrackContent.HScrollBar.Visible = true;
-            panelEx_TrackContent.HScrollBar.Enabled = true;
+            //panelEx_TrackContent.HScrollBar.Visible = true;
+            //panelEx_TrackContent.HScrollBar.Enabled = true;
 
+            ExecuteBat();
 
             InitVedioAndAudioFilesPanel();
 
             InitPlayControl();
 
             ShowClipsInFileBox();
+        }
+
+        private void ExecuteBat()
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = @".\del.bat";
+            proc.StartInfo.CreateNoWindow = false;
+            proc.Start();
+            proc.WaitForExit();
         }
 
         /// <summary>
@@ -453,6 +464,12 @@ namespace NonLinearEditSystem.Forms
         {
             DubForm dubFrom = new DubForm();
             dubFrom.ShowDialog();
+        }
+
+        private void 打包输出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PackageForm packageForm = new PackageForm();
+            packageForm.ShowDialog();
         }
 
         /// <summary>
@@ -870,8 +887,6 @@ namespace NonLinearEditSystem.Forms
         string strOutH264FileName = string.Empty;
         string strOutAacFileName = string.Empty;
 
-
-
         private void 分离ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -962,8 +977,8 @@ namespace NonLinearEditSystem.Forms
                 strInH264FileList.Add(strDemuxVideoFile);
                 strInH264FileList.Add(strDemuxAudioFile);
 
-                string strPackedFile = @"D:\视频素材\" + DateTime.Now.ToString("hh-mm-ss") + ".mp4";
-                int res = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList,  strPackedFile);
+                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                int res = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
 
                 while (true)
                 {
@@ -991,5 +1006,100 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
+        private void 测试ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.InitialDirectory = @"D:\视频素材";
+                openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4| All Files (*.*)|*.*";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filename = openFileDialog.FileName;
+
+                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
+
+                    if (res >= 0)
+                    {
+                        StringList strInH264VideoFileList = new StringList();
+                        StringList strInAacFileList = new StringList(); ;
+
+                        strInH264VideoFileList.Add(strDemuxVideoFile);
+                        strInAacFileList.Add(strDemuxAudioFile);
+
+                        int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
+                        int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
+
+                        while (true)
+                        {
+                            if (_h264CodecIOCSharp.isFinish())
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Thread.Sleep(1000);
+                            }
+                        }
+
+                        if (resVedio >= 0 && resAudio >= 0)
+                        {
+                            StringList strInH264FileList = new StringList();
+                            //strInH264FileList.Add(strOutH264FileName);
+                            //strInH264FileList.Add(strOutAacFileName);
+                            strInH264FileList.Add(strDemuxVideoFile);
+                            strInH264FileList.Add(strDemuxAudioFile);
+
+                            string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                            int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
+
+                            while (true)
+                            {
+                                if (_mp4FilesMuxIOCSharp.MuxerFinished())
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Thread.Sleep(1000);
+                                }
+                            }
+
+                            if (PackRes >= 0)
+                            {
+                                if (MessageBox.Show("打包成功") == DialogResult.OK)
+                                {
+                                    Close();
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("打包失败");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("编解码失败");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("分离失败");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
     }
+
+
 }
