@@ -348,6 +348,7 @@ namespace TimeLineControl
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
+            return;
 
             if (!_mouseInRegion) return;
 
@@ -638,6 +639,37 @@ namespace TimeLineControl
                 RelativeTimeLineControl.SetPosByValue(exitValue, TimeLinePos.Pos_Exit);
                 RelativeTimeLineControl.SetPosByValue(ThumbValue, TimeLinePos.Pos_Thumb);
 
+                RelativeTimeLineControl.Invalidate();
+            }
+        }
+
+
+        /// <summary>
+        /// 设置刻度间隔
+        /// </summary>
+        /// <param name="bAdd">true为加, false为减</param>
+        public void ChangeIndexOfSecEveryTicks(bool bAdd)
+        {
+            if (bAdd)
+            {
+                if (IndexOfSecEveryTicks < SecondsEveryTicks.Length - 1)
+                {
+                    IndexOfSecEveryTicks++;
+                }
+            }
+            else
+            {
+                if (IndexOfSecEveryTicks > 0)
+                {
+                    IndexOfSecEveryTicks--;
+                }
+            }
+
+            Invalidate();
+
+            if (RelativeTimeLineControl != null)
+            {
+                RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
                 RelativeTimeLineControl.Invalidate();
             }
         }

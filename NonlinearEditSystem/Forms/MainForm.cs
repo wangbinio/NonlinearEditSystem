@@ -57,6 +57,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 成员变量
 
+
         #region 初始化工作
 
         public MainForm()
@@ -175,13 +176,13 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                _iClipPlayControlCSharp = new ClipPlayControlCSharp();
+                //_iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
-                _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
-
-                _h264CodecIOCSharp = new H264CodecIOCSharp();
-
-                _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
+                //_mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+                //
+                //_h264CodecIOCSharp = new H264CodecIOCSharp();
+                //
+                //_mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
             }
             catch (Exception ex)
             {
@@ -198,6 +199,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         #endregion 初始化工作
+
 
         #region 辅助函数
 
@@ -228,6 +230,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         #endregion 辅助函数
+
 
         #region 文件拖动功能
 
@@ -432,6 +435,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 文件拖动功能
 
+
         #region 菜单操作
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -573,6 +577,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 菜单操作
 
+
         #region 主时间线操作
 
         /// <summary>
@@ -607,6 +612,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 主时间线操作
 
+
         #region 视频轨道操作
 
         /// <summary>
@@ -627,6 +633,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 视频轨道操作
 
+
         #region 音频轨道操作
 
         /// <summary>
@@ -646,6 +653,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         #endregion 音频轨道操作
+
 
         #region 文件列表操作
 
@@ -816,8 +824,8 @@ namespace NonLinearEditSystem.Forms
                 labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(0);
 
                 // slider_SeqTime用来控制视频播放时间
-                slider_SeqTime.Maximum = clipDuration + 1;
-                slider_SeqTime.Value = 0;
+                //slider_SeqTime.Maximum = clipDuration + 1;
+                //slider_SeqTime.Value = 0;
             }
             catch (Exception ex)
             {
@@ -826,6 +834,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         #endregion 文件列表操作
+
 
         #region 序列监视器操作
 
@@ -836,6 +845,7 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timer_Sequence_Tick(object sender, EventArgs e)
         {
+            /*
             try
             {
                 // 如果播放到最后一秒，则停止播放
@@ -857,6 +867,7 @@ namespace NonLinearEditSystem.Forms
             {
                 ExceptionHandle.ExceptionHdl(ex);
             }
+            */
         }
 
         /// <summary>
@@ -866,6 +877,7 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void slider_SeqTime_Scroll(object sender, ScrollEventArgs e)
         {
+            /*
             try
             {
                 if (_iClipPlayControlCSharp.GetCurState() == 0)
@@ -877,9 +889,11 @@ namespace NonLinearEditSystem.Forms
             {
                 ExceptionHandle.ExceptionHdl(ex);
             }
+            */
         }
 
         #endregion 序列监视器操作
+
 
         #region 片段监视器操作
 
@@ -895,6 +909,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 片段监视器操作
 
+
         #region 视频轨道名称面板操作
 
         private void TrackName_BtnMouseHover(object sender, EventArgs e)
@@ -909,19 +924,40 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 视频轨道名称面板操作
 
+
         #region 音频轨道名称面板操作
 
         #endregion 音频轨道名称面板操作
 
 
+        #region 时间线快捷按钮点击事件
 
-        private void panelEx_TrackContent_Scroll(object sender, ScrollEventArgs e)
+        /// <summary>
+        /// 时间线刻度增加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_SecondsTicksAdd_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Test");
-            Rectangle rect = panelEx_TrackContent.ClientTextRectangle;
-
-            Rectangle rect2 = rect;
+            timeLineControl_MainTL.ChangeIndexOfSecEveryTicks(true);
+            UpdateLabelTime();
         }
+
+        /// <summary>
+        /// 时间线刻度缩小
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_SecondsTicksSub_Click(object sender, EventArgs e)
+        {
+            UpdateLabelTime();
+            timeLineControl_MainTL.ChangeIndexOfSecEveryTicks(false);
+        }
+
+        #endregion
+
+
+        #region TestCode
 
         string strDemuxVideoFile = string.Empty;
         string strDemuxAudioFile = string.Empty;
@@ -1139,6 +1175,11 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+        
+
+        #endregion
+
+
     }
 
 
