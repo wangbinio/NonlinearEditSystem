@@ -78,6 +78,8 @@ namespace NonLinearEditSystem.Forms
 
             InitPlayControl();
 
+            InitTimeLineControl();
+
             ShowClipsInFileBox();
         }
 
@@ -185,6 +187,14 @@ namespace NonLinearEditSystem.Forms
             {
                 ExceptionHandle.ExceptionHdl(ex);
             }
+        }
+
+        private void InitTimeLineControl()
+        {
+            timeLineControl_MainTL.SetRelativeControl(timeLineControl_Sequence);
+            timeLineControl_Sequence.SetRelativeControl(timeLineControl_MainTL);
+
+            UpdateLabelTime();
         }
 
         #endregion 初始化工作
@@ -565,6 +575,36 @@ namespace NonLinearEditSystem.Forms
 
         #region 主时间线操作
 
+        /// <summary>
+        /// 更新label上的时间
+        /// </summary>
+        private void UpdateLabelTime()
+        {
+            string strTime = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
+            labelItem_CurrentTime.Text = strTime;
+            labelX_SeqTime.Text = strTime;
+        }
+
+        /// <summary>
+        /// 点击时间线,更新label上的时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeLineControl_MainTL_Click(object sender, EventArgs e)
+        {
+            UpdateLabelTime();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeLineControl_MainTL_MouseMove(object sender, MouseEventArgs e)
+        {
+            UpdateLabelTime();
+        }
+
         #endregion 主时间线操作
 
         #region 视频轨道操作
@@ -873,6 +913,8 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 音频轨道名称面板操作
 
+
+
         private void panelEx_TrackContent_Scroll(object sender, ScrollEventArgs e)
         {
             //MessageBox.Show("Test");
@@ -1097,8 +1139,6 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
-
-
     }
 
 
