@@ -58,7 +58,7 @@ namespace TimeLineControl
         public int NNeedShowSeconds { get; set; } = 3600;
 
         /// 每一小格的时间间隔（秒），对应的大格为10s,20s,30s,1min,2min,5min,10min,20min,30min,1h
-        public readonly int[] SecondsEveryTicks = new []{1, 2, 3, 6, 12, 30, 60, 120, 180, 360};
+        public readonly int[] SecondsEveryTicks = new[] { 1, 2, 3, 6, 12, 30, 60, 120, 180, 360 };
 
         /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
         public int IndexOfSecEveryTicks { get; set; } = 6;
@@ -70,7 +70,7 @@ namespace TimeLineControl
         public Rectangle ThumbRectangle { get; set; }
 
         /// 用户鼠标点击两次选择区域
-        public List<Rectangle> _userSelectedRectangles  = new List<Rectangle>(10);
+        public List<Rectangle> _userSelectedRectangles = new List<Rectangle>(10);
 
         /// 游标位置时间值
         public double ThumbValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)ThumbHPos / (double)NDistanceOfTicks);
@@ -78,6 +78,14 @@ namespace TimeLineControl
         // 入点和出点横坐标
         public int enterPos = 100;
         public int exitPos = 150;
+
+        // 出点和入点的时间
+        public double enterValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)enterPos / (double)NDistanceOfTicks);
+        public double exitValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)exitPos / (double)NDistanceOfTicks);
+
+        // 关联时间线控件,当自身改变的时候,关联的也做相应改变
+        public TimeLineControl RelativeTimeLineControl;
+
 
         /// <summary>
         /// 每一秒的距离间隔
@@ -128,7 +136,7 @@ namespace TimeLineControl
         /// <summary>
         /// 用于表示鼠标点击误差范围
         /// </summary>
-        private float fClickDelta = 3.0f;
+        private float fClickDelta = 5.0f;
 
         #endregion
 
@@ -153,9 +161,9 @@ namespace TimeLineControl
             // 不再画右键点击生成的矩形区域
             // DrawSelectRects(g, _userSelectedRectangles);
 
-            DrawThumb(g);
 
             DrawInterval(g);
+            DrawThumb(g);
 
         }
 
@@ -238,7 +246,7 @@ namespace TimeLineControl
 
                 // 设置字符串的位置
                 //float nHPos = i * 10 * NDistanceOfTicks - 2.55f * NDistanceOfTicks;
-                float nHPos = i * 10 * NDistanceOfTicks - sizeOfString.Width/2;
+                float nHPos = i * 10 * NDistanceOfTicks - sizeOfString.Width / 2;
                 float nVPos = Height - /*2 * */ NBotmPadding - NBigTicksLength - Font.Height;
 
                 g.DrawString(sTimeString, Font, stringBrush, nHPos, nVPos);
@@ -283,24 +291,24 @@ namespace TimeLineControl
             Point[] intervalPoint = new Point[10];
             intervalPoint[0] = new Point(enterPos, 2);
             intervalPoint[1] = new Point(enterPos + 5, 2);
-            intervalPoint[2] = new Point(exitPos-5, 2);
+            intervalPoint[2] = new Point(exitPos - 5, 2);
             intervalPoint[3] = new Point(exitPos, 2);
 
-            intervalPoint[4] = new Point(enterPos, Height-2);
-            intervalPoint[5] = new Point(enterPos + 5, Height-2);
-            intervalPoint[6] = new Point(exitPos-5, Height-2);
-            intervalPoint[7] = new Point(exitPos, Height-2);
+            intervalPoint[4] = new Point(enterPos, Height - 2);
+            intervalPoint[5] = new Point(enterPos + 5, Height - 2);
+            intervalPoint[6] = new Point(exitPos - 5, Height - 2);
+            intervalPoint[7] = new Point(exitPos, Height - 2);
 
             g.DrawLine(drawIntervalPen, intervalPoint[0], intervalPoint[1]);
             g.DrawLine(drawIntervalPen, intervalPoint[0], intervalPoint[4]);
             g.DrawLine(drawIntervalPen, intervalPoint[5], intervalPoint[4]);
-                       
+
             g.DrawLine(drawIntervalPen, intervalPoint[3], intervalPoint[2]);
             g.DrawLine(drawIntervalPen, intervalPoint[3], intervalPoint[7]);
             g.DrawLine(drawIntervalPen, intervalPoint[6], intervalPoint[7]);
 
             //g.DrawRectangle(drawThumbPen, enterPos, 0, exitPos-enterPos, Height-2);
-            g.FillRectangle(transparentBrush2, enterPos+1, 2, exitPos - enterPos-2, Height - 4);
+            g.FillRectangle(transparentBrush2, enterPos + 1, 2, exitPos - enterPos - 2, Height - 4);
         }
 
 
@@ -405,9 +413,19 @@ namespace TimeLineControl
             // 鼠标松开
             _mouseMoved = false;
             _chooseThumb = false;
-            _chooseEntrePoint= false;
+            _chooseEntrePoint = false;
             _chooseExitPoint = false;
-        }  
+
+            if (RelativeTimeLineControl != null)
+            {
+                RelativeTimeLineControl.SetPosByValue(enterValue, TimeLinePos.Pos_Enter);
+                RelativeTimeLineControl.SetPosByValue(exitValue, TimeLinePos.Pos_Exit);
+                RelativeTimeLineControl.SetPosByValue(ThumbValue, TimeLinePos.Pos_Thumb);
+
+                RelativeTimeLineControl.Invalidate();
+            }
+
+        }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -429,20 +447,53 @@ namespace TimeLineControl
                 {
                     // 设置入点新位置
                     enterPos = mousePoint.X;
+                    if (enterPos <= 0)
+                    {
+                        enterPos = 0;
+                    }
+                    // 设置一个值,让入点不要被拖过出点
+                    if (enterPos >= exitPos - 10)
+                    {
+                        enterPos = exitPos - 10;
+                    }
                 }
                 else if (_chooseExitPoint)
                 {
                     // 设置出点新位置
                     exitPos = mousePoint.X;
+                    // 设置一个值,让入点不要被拖过出点
+                    if (enterPos >= exitPos - 10)
+                    {
+                        exitPos = enterPos + 10;
+                    }
                 }
 
                 Invalidate();
+
+                if (RelativeTimeLineControl != null)
+                {
+                    RelativeTimeLineControl.SetPosByValue(enterValue, TimeLinePos.Pos_Enter);
+                    RelativeTimeLineControl.SetPosByValue(exitValue, TimeLinePos.Pos_Exit);
+                    RelativeTimeLineControl.SetPosByValue(ThumbValue, TimeLinePos.Pos_Thumb);
+
+                    RelativeTimeLineControl.Invalidate();
+                }
             }
         }
 
         protected override void OnClick(EventArgs e)
         {
+            base.OnClick(e);
+            MouseEventArgs mouseEventArgs = (MouseEventArgs)e;
             
+            // 1.判断是左键点击还是右键点击
+            if (_mouseMoved) return;
+            if (mouseEventArgs.Button == MouseButtons.Left)
+            {
+                ThumbHPos = mouseEventArgs.X;
+            }
+
+            Invalidate();
         }
 
 
@@ -450,18 +501,18 @@ namespace TimeLineControl
         /// 右键点击事件,现已弃用
         /// </summary>
         /// <param name="e"></param>
-        protected  void OnClick_RightButton(EventArgs e)
+        protected void OnClick_RightButton(EventArgs e)
         {
             base.OnClick(e);
 
             // 1.确认是点击是否在MouseMove之后，是否是右键点击
             if (_mouseMoved) return;
-            MouseEventArgs mouseEventArgs = (MouseEventArgs) e;
+            MouseEventArgs mouseEventArgs = (MouseEventArgs)e;
             if (mouseEventArgs.Button != MouseButtons.Right) return;
 
             // 2.确认是第一次点击还是第二次点击
             if (!_clickedOnce && !_clickedTwice)
-            {   
+            {
                 // 3.第一次点击
                 _clickedOnce = true;
 
@@ -479,7 +530,7 @@ namespace TimeLineControl
 
                 // 4.1.确定矩形区域，矩形的宽度为第一次与第二次的坐标差
                 _clickedTwicePoint = mouseEventArgs.Location;
-                _userSelectedRectangles.RemoveAt(_userSelectedRectangles.Count-1);
+                _userSelectedRectangles.RemoveAt(_userSelectedRectangles.Count - 1);
                 _userSelectedRectangles.Add(new Rectangle(Math.Min(_clickedOncePoint.X, _clickedTwicePoint.X), 0, Math.Abs(_clickedOncePoint.X - _clickedTwicePoint.X), Height));
 
                 Invalidate();
@@ -496,10 +547,10 @@ namespace TimeLineControl
             base.OnSizeChanged(e);
 
             // 如果当前控件的宽度比刻度的总长度要大，那么增加刻度
-            int nDeltaWidth = Width - NNumOfBigTicks*10*NDistanceOfTicks;
+            int nDeltaWidth = Width - NNumOfBigTicks * 10 * NDistanceOfTicks;
             if (nDeltaWidth > 0)
             {
-                int nDeltaTicks = nDeltaWidth/(NDistanceOfTicks*10) + nDeltaWidth%(NDistanceOfTicks*10) > 0 ? 1 : 0;
+                int nDeltaTicks = nDeltaWidth / (NDistanceOfTicks * 10) + nDeltaWidth % (NDistanceOfTicks * 10) > 0 ? 1 : 0;
                 NNumOfBigTicks += nDeltaTicks;
                 //NNeedShowSeconds += nDeltaTicks * 600;
 
@@ -538,6 +589,59 @@ namespace TimeLineControl
                 return true;
             else return false;
         }
+
+        /// <summary>
+        /// 入点,出点,游标枚举
+        /// </summary>
+        public enum TimeLinePos
+        {
+            Pos_Enter,
+            Pos_Exit,
+            Pos_Thumb
+        }
+
+        /// <summary>
+        /// 通过时间值设置入点,出点,游标的位置
+        /// </summary>
+        /// <param name="dValue"></param>
+        /// <param name="EPos"></param>
+        public void SetPosByValue(double dValue, TimeLinePos EPos)
+        {
+            switch (EPos)
+            {
+                case TimeLinePos.Pos_Enter:
+                    enterPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+                    break;
+                case TimeLinePos.Pos_Exit:
+                    exitPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+                    break;
+                case TimeLinePos.Pos_Thumb:
+                    ThumbHPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+                    break;
+                default:
+                    break;
+            }
+
+            Invalidate();
+        }
+
+        /// <summary>
+        /// 设置关联的时间线控件
+        /// </summary>
+        /// <param name="otherTimelineControl"></param>
+        public void SetRelativeControl(TimeLineControl otherTimelineControl)
+        {
+            if (otherTimelineControl != null)
+            {
+                RelativeTimeLineControl = otherTimelineControl;
+                RelativeTimeLineControl.SetPosByValue(enterValue, TimeLinePos.Pos_Enter);
+                RelativeTimeLineControl.SetPosByValue(exitValue, TimeLinePos.Pos_Exit);
+                RelativeTimeLineControl.SetPosByValue(ThumbValue, TimeLinePos.Pos_Thumb);
+
+                RelativeTimeLineControl.Invalidate();
+            }
+        }
+
 
         #endregion
 
