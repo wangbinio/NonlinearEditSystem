@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
 using TimeLineControl;
 
@@ -52,16 +53,16 @@ namespace TimeLineControl
         public int NBigTicksLength { get; set; } = 10;
 
         /// 水平轴的大刻度个数
-        public int NNumOfBigTicks { get; set; } = 6;
+        public int NNumOfBigTicks { get; set; } = 24;
 
         /// 水平轴一共要显示多长时间(单位：s)，要向上取
-        public int NNeedShowSeconds { get; set; } = 3600;
+        public int NNeedShowSeconds { get; set; } = 7200;
 
-        /// 每一小格的时间间隔（秒），对应的大格为10s,20s,30s,1min,2min,5min,10min,20min,30min,1h
-        public readonly int[] SecondsEveryTicks = new[] { 1, 2, 3, 6, 12, 30, 60, 120, 180, 360 };
+        /// 每一小格的时间间隔（秒），对应的大格为10s,30s,1min,2min,5min,10min,20min
+        public readonly int[] SecondsEveryTicks = new[] { 1, 3, 6, 12, 30, 60, 120};
 
         /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
-        public int IndexOfSecEveryTicks { get; set; } = 6;
+        public int IndexOfSecEveryTicks { get; set; } = 4;
 
         /// 游标中心线的横坐标
         public double ThumbHPos { get; set; }
@@ -468,6 +469,10 @@ namespace TimeLineControl
                         exitPos = enterPos + 10;
                     }
                 }
+                else
+                {
+                    _mouseMoved = false;
+                }
 
                 Invalidate();
 
@@ -605,10 +610,10 @@ namespace TimeLineControl
         /// 通过时间值设置入点,出点,游标的位置
         /// </summary>
         /// <param name="dValue"></param>
-        /// <param name="EPos"></param>
-        public void SetPosByValue(double dValue, TimeLinePos EPos)
+        /// <param name="ePos"></param>
+        public void SetPosByValue(double dValue, TimeLinePos ePos)
         {
-            switch (EPos)
+            switch (ePos)
             {
                 case TimeLinePos.Pos_Enter:
                     enterPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
@@ -623,7 +628,7 @@ namespace TimeLineControl
                     break;
             }
 
-            Invalidate();
+            //Invalidate();
         }
 
         /// <summary>
@@ -648,37 +653,107 @@ namespace TimeLineControl
         /// 设置刻度间隔
         /// </summary>
         /// <param name="bAdd">true为加, false为减</param>
-        public void ChangeIndexOfSecEveryTicks(bool bAdd)
+        public bool ChangeIndexOfSecEveryTicks(bool bAdd)
         {
-            if (bAdd)
+            // 0.每次改变之前先判断能不能变,如果不能,则退出,提高效率
+            if (bAdd && IndexOfSecEveryTicks == 0 || !bAdd && IndexOfSecEveryTicks == SecondsEveryTicks.Length - 1)
             {
-                if (IndexOfSecEveryTicks < SecondsEveryTicks.Length - 1)
-                {
-                    IndexOfSecEveryTicks++;
-                }
+                return false;
             }
-            else
+
+            // 1.在改变之前保存入点,出点,游标点的值
+            double tempEnter = enterValue;
+            double tempExit = exitValue;
+            double tempThumb = ThumbValue;
+
+            // 2.变换刻度的同时,整个时间条需要显示的时间也需改变,长度也需要改变
+            if (bAdd)
             {
                 if (IndexOfSecEveryTicks > 0)
                 {
                     IndexOfSecEveryTicks--;
+
+                    /*NNeedShowSeconds = NNeedShowSeconds * SecondsEveryTicks[IndexOfSecEveryTicks] /
+                                       SecondsEveryTicks[IndexOfSecEveryTicks + 1];*/
+
+                    Width = Width * SecondsEveryTicks[IndexOfSecEveryTicks + 1] / SecondsEveryTicks[IndexOfSecEveryTicks];
                 }
             }
+            else
+            {
+                if (IndexOfSecEveryTicks < SecondsEveryTicks.Length - 1)
+                {
+                    IndexOfSecEveryTicks++;
+
+                    NNeedShowSeconds = NNeedShowSeconds * SecondsEveryTicks[IndexOfSecEveryTicks] /
+                                       SecondsEveryTicks[IndexOfSecEveryTicks - 1];
+
+                    Width = Width * SecondsEveryTicks[IndexOfSecEveryTicks - 1] / SecondsEveryTicks[IndexOfSecEveryTicks];
+                }
+            }
+
+            // 防止出现太短的情况
+            NNumOfBigTicks = NNeedShowSeconds / SecondsEveryTicks[IndexOfSecEveryTicks] / 10;
+            if (NNumOfBigTicks < 12)
+            {
+                NNumOfBigTicks = 12;
+            }
+            if (Width < Parent.Parent.Width)
+            {
+                Width = Parent.Parent.Width;
+            }
+
+
+
+            // 3.修改变换刻度之后的入点,出点,游标位置
+            SetPosByValue(tempEnter, TimeLinePos.Pos_Enter);
+            SetPosByValue(tempExit, TimeLinePos.Pos_Exit);
+            SetPosByValue(tempThumb, TimeLinePos.Pos_Thumb);
 
             Invalidate();
 
             if (RelativeTimeLineControl != null)
             {
-                RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
+                if (IndexOfSecEveryTicks >= SecondsEveryTicks.Length / 2 && IndexOfSecEveryTicks <= SecondsEveryTicks.Length - 2)
+                   RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks + 1;
+                RelativeTimeLineControl.SetPosByValue(tempEnter, TimeLinePos.Pos_Enter);
+                RelativeTimeLineControl.SetPosByValue(tempExit, TimeLinePos.Pos_Exit);
+                RelativeTimeLineControl.SetPosByValue(tempThumb, TimeLinePos.Pos_Thumb);
                 RelativeTimeLineControl.Invalidate();
             }
+
+            return true;
+
+            //Thread.Sleep(500);
         }
 
 
-        #endregion
+        /// <summary>
+        /// 通过传入一个位置,得到位置的时间
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public double GetTimeValueByPos(int pos)
+        {
+            return (SecondsEveryTicks[IndexOfSecEveryTicks] * pos / (double)NDistanceOfTicks);
+        }
 
 
-        public TimeLineControl()
+        /// <summary>
+        /// 通过值得到位置
+        /// </summary>
+        /// <param name="dValue"></param>
+        /// <returns></returns>
+        public int GetPosByTimeValue(double dValue)
+        {
+            return (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+        }
+
+
+    #endregion
+
+
+    public TimeLineControl()
         {
             InitializeComponent();
 
