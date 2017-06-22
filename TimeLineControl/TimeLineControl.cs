@@ -17,6 +17,7 @@ namespace TimeLineControl
     /// 修改：2017-04-23 szwb 随着视频的播放，游标自动移动
     /// 修改：2017-05-19 szwb 时间刻度分类
     /// 修改：2017-06-15 szwb 添加出点入点区域,右键点击生成区域废除
+    /// 修改：2017-06-22 szwb 时间线的缩放拖拉基本完成
     /// </summary>
     [ToolboxBitmap(typeof(TrackBar))]
     [DefaultEvent("Click"), DefaultProperty("nBotmPadding")]
@@ -65,7 +66,7 @@ namespace TimeLineControl
         public int IndexOfSecEveryTicks { get; set; } = 5;
 
         /// 游标中心线的横坐标
-        public double ThumbHPos { get; set; }
+        public int ThumbHPos { get; set; }
 
         /// 游标所在的矩形区域
         public Rectangle ThumbRectangle { get; set; }
@@ -453,20 +454,20 @@ namespace TimeLineControl
                     {
                         enterPos = 0;
                     }
-                    // 设置一个值,让入点不要被拖过出点
-                    if (enterPos >= exitPos - 10)
+                    // 设置一个值,让入点不要被拖过出点, 两者间距至少一格
+                    if (enterPos > exitPos - NDistanceOfTicks)
                     {
-                        enterPos = exitPos - 10;
+                        enterPos = exitPos - NDistanceOfTicks;
                     }
                 }
                 else if (_chooseExitPoint)
                 {
-                    // 设置出点新位置
+                    // 设置出点新位置,两者间距至少一格
                     exitPos = mousePoint.X;
                     // 设置一个值,让入点不要被拖过出点
-                    if (enterPos >= exitPos - 10)
+                    if (enterPos > exitPos - NDistanceOfTicks)
                     {
-                        exitPos = enterPos + 10;
+                        exitPos = enterPos + NDistanceOfTicks;
                     }
                 }
                 else
@@ -629,7 +630,7 @@ namespace TimeLineControl
                     break;
             }
 
-            //Invalidate();
+            Invalidate();
         }
 
         /// <summary>

@@ -209,7 +209,7 @@
             this.timeLineControl1.Size = new System.Drawing.Size(367, 35);
             this.timeLineControl1.TabIndex = 0;
             this.timeLineControl1.Text = "timeLineControl1";
-            this.timeLineControl1.ThumbHPos = 200D;
+            this.timeLineControl1.ThumbHPos = 200;
             this.timeLineControl1.ThumbRectangle = new System.Drawing.Rectangle(193, 0, 15, 15);
             // 
             // labelX1

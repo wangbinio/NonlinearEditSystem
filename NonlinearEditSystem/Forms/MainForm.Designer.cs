@@ -479,7 +479,7 @@
             this.timeLineControl_Sequence.NNumOfBigTicks = 24;
             this.timeLineControl_Sequence.Size = new System.Drawing.Size(817, 35);
             this.timeLineControl_Sequence.TabIndex = 6;
-            this.timeLineControl_Sequence.ThumbHPos = 333D;
+            this.timeLineControl_Sequence.ThumbHPos = 333;
             this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
             this.timeLineControl_Sequence.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
@@ -506,8 +506,9 @@
             this.buttonX_MoveToExit.Size = new System.Drawing.Size(23, 23);
             this.buttonX_MoveToExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_MoveToExit.TabIndex = 13;
-            this.buttonX_MoveToExit.Text = "]";
+            this.buttonX_MoveToExit.Text = "->]";
             this.buttonX_MoveToExit.Tooltip = "移至出点";
+            this.buttonX_MoveToExit.Click += new System.EventHandler(this.buttonX_MoveToExit_Click);
             // 
             // buttonX_SetExit
             // 
@@ -520,6 +521,7 @@
             this.buttonX_SetExit.TabIndex = 13;
             this.buttonX_SetExit.Text = "]";
             this.buttonX_SetExit.Tooltip = "设置出点";
+            this.buttonX_SetExit.Click += new System.EventHandler(this.buttonX_SetExit_Click);
             // 
             // buttonX_MoveToEnter
             // 
@@ -530,8 +532,9 @@
             this.buttonX_MoveToEnter.Size = new System.Drawing.Size(23, 23);
             this.buttonX_MoveToEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_MoveToEnter.TabIndex = 13;
-            this.buttonX_MoveToEnter.Text = "[";
+            this.buttonX_MoveToEnter.Text = "[<-";
             this.buttonX_MoveToEnter.Tooltip = "移至入点";
+            this.buttonX_MoveToEnter.Click += new System.EventHandler(this.buttonX_MoveToEnter_Click);
             // 
             // buttonX_SetEnter
             // 
@@ -544,6 +547,7 @@
             this.buttonX_SetEnter.TabIndex = 13;
             this.buttonX_SetEnter.Text = "[";
             this.buttonX_SetEnter.Tooltip = "设置入点";
+            this.buttonX_SetEnter.Click += new System.EventHandler(this.buttonX_SetEnter_Click);
             // 
             // buttonX_RecylePlay
             // 
@@ -716,7 +720,7 @@
             this.timeLineControl_Segment.NNumOfBigTicks = 9;
             this.timeLineControl_Segment.Size = new System.Drawing.Size(817, 30);
             this.timeLineControl_Segment.TabIndex = 10;
-            this.timeLineControl_Segment.ThumbHPos = 333D;
+            this.timeLineControl_Segment.ThumbHPos = 333;
             this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(328, 0, 10, 15);
             // 
             // panelEx_Segment
@@ -1239,7 +1243,7 @@
             this.timeLineControl_MainTL.NNumOfBigTicks = 24;
             this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
             this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 222D;
+            this.timeLineControl_MainTL.ThumbHPos = 222;
             this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
             this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
@@ -2142,7 +2146,6 @@
             this.Controls.Add(this.tabControl_TimeLine);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -20,7 +20,6 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class MainForm : MetroForm
     {
-        public static int trackHeight = 34;
 
         #region 成员变量
 
@@ -56,6 +55,8 @@ namespace NonLinearEditSystem.Forms
 
         // 鼠标拖动音/视频文件panel时保存位置差
         private int _mousePosDelta = 0;
+
+        public static int trackHeight = 34;
 
         #endregion 成员变量
 
@@ -1132,6 +1133,80 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
+        /// <summary>
+        /// 设置入点,将入点设置到游标位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_SetEnter_Click(object sender, EventArgs e)
+        {
+            // 如果游标位置 <= 出点位置 - distance, 同时游标和入点不在一个位置, 优化效率
+            if (timeLineControl_MainTL.ThumbHPos <= timeLineControl_MainTL.exitPos - timeLineControl_MainTL.NDistanceOfTicks 
+                && timeLineControl_MainTL.enterPos != timeLineControl_MainTL.ThumbHPos)
+            {
+                timeLineControl_MainTL.enterPos = timeLineControl_MainTL.ThumbHPos;
+                timeLineControl_Sequence.enterPos = timeLineControl_Sequence.ThumbHPos;
+
+                timeLineControl_MainTL.Invalidate();
+                timeLineControl_Sequence.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// 设置出点,将出点设置到游标位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_SetExit_Click(object sender, EventArgs e)
+        {
+            // 如果游标位置 >= 入点位置 + distance, 同时游标和出点不在一个位置, 优化效率
+            if (timeLineControl_MainTL.ThumbHPos >= timeLineControl_MainTL.enterPos + timeLineControl_MainTL.NDistanceOfTicks
+                && timeLineControl_MainTL.exitPos != timeLineControl_MainTL.ThumbHPos)
+            {
+                timeLineControl_MainTL.exitPos = timeLineControl_MainTL.ThumbHPos;
+                timeLineControl_Sequence.exitPos = timeLineControl_Sequence.ThumbHPos;
+
+                timeLineControl_MainTL.Invalidate();
+                timeLineControl_Sequence.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// 将游标移至入点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_MoveToEnter_Click(object sender, EventArgs e)
+        {
+            // 只要游标本身不与出点/入点在同一个位置,就将其移动到游标位置
+            if (timeLineControl_MainTL.enterPos != timeLineControl_MainTL.ThumbHPos)
+            {
+                timeLineControl_MainTL.ThumbHPos = timeLineControl_MainTL.enterPos;
+                timeLineControl_Sequence.ThumbHPos = timeLineControl_Sequence.enterPos;
+
+                timeLineControl_MainTL.Invalidate();
+                timeLineControl_Sequence.Invalidate();
+            }
+        }
+
+        /// <summary>
+        /// 将游标移至出点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_MoveToExit_Click(object sender, EventArgs e)
+        {
+            if (timeLineControl_MainTL.exitPos != timeLineControl_MainTL.ThumbHPos)
+            {
+                timeLineControl_MainTL.ThumbHPos = timeLineControl_MainTL.exitPos;
+                timeLineControl_Sequence.ThumbHPos = timeLineControl_Sequence.exitPos;
+
+                timeLineControl_MainTL.Invalidate();
+                timeLineControl_Sequence.Invalidate();
+            }
+        }
+
         #endregion
 
 
@@ -1355,7 +1430,11 @@ namespace NonLinearEditSystem.Forms
         }
 
 
+
+
+
         #endregion
+
 
 
     }
