@@ -62,7 +62,7 @@ namespace TimeLineControl
         public readonly int[] SecondsEveryTicks = new[] { 1, 3, 6, 12, 30, 60, 120};
 
         /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
-        public int IndexOfSecEveryTicks { get; set; } = 4;
+        public int IndexOfSecEveryTicks { get; set; } = 5;
 
         /// 游标中心线的横坐标
         public double ThumbHPos { get; set; }
@@ -551,7 +551,8 @@ namespace TimeLineControl
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
-
+            //TODO:sizechagne();
+            return;
             // 如果当前控件的宽度比刻度的总长度要大，那么增加刻度
             int nDeltaWidth = Width - NNumOfBigTicks * 10 * NDistanceOfTicks;
             if (nDeltaWidth > 0)
@@ -686,21 +687,46 @@ namespace TimeLineControl
                     IndexOfSecEveryTicks++;
 
                     NNeedShowSeconds = NNeedShowSeconds * SecondsEveryTicks[IndexOfSecEveryTicks] /
-                                       SecondsEveryTicks[IndexOfSecEveryTicks - 1];
+                                      SecondsEveryTicks[IndexOfSecEveryTicks - 1];
 
                     Width = Width * SecondsEveryTicks[IndexOfSecEveryTicks - 1] / SecondsEveryTicks[IndexOfSecEveryTicks];
                 }
             }
 
-            // 防止出现太短的情况
+            // 防止出现太长或者太短的情况,2个小时到4个小时
+            if (NNeedShowSeconds < 2 * 3600)
+            {
+                NNeedShowSeconds = 2 * 3600;
+            }
+            else if (NNeedShowSeconds > 4 * 3600)
+            {
+                NNeedShowSeconds = 4 * 3600;
+            }
+
             NNumOfBigTicks = NNeedShowSeconds / SecondsEveryTicks[IndexOfSecEveryTicks] / 10;
+
+            // 最少12个刻度
             if (NNumOfBigTicks < 12)
             {
                 NNumOfBigTicks = 12;
             }
+
+            // 最多2 * 60 * 6 个刻度,2个小时.
+            if (NNumOfBigTicks > 2 * 60 * 6)
+            {
+                NNumOfBigTicks = 2 * 60 * 6;
+            }
+
+            // 如果比大面板小,则设置为大面板的大小
             if (Width < Parent.Parent.Width)
             {
                 Width = Parent.Parent.Width;
+            }
+
+            // 如果太长,则设置为最大长度
+            if (Width > NDistanceOfTicks * 10 * NNumOfBigTicks)
+            {
+                Width = NDistanceOfTicks * 10 * NNumOfBigTicks;
             }
 
 
@@ -724,7 +750,6 @@ namespace TimeLineControl
 
             return true;
 
-            //Thread.Sleep(500);
         }
 
 

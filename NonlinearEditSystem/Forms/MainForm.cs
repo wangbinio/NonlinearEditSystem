@@ -719,6 +719,15 @@ namespace NonLinearEditSystem.Forms
             if (panelExSelected.Capture && e.Button == MouseButtons.Left)
             {
                 panelExSelected.Location = new Point(e.X - _mousePosDelta > 0 ? e.X - _mousePosDelta : 0, 0);
+
+                // 使用tag来存储开始结束位置在时间线的时间
+                double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
+                double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+
+                string objStr = dStartTime + "-" + dEndTime;
+
+                panelExSelected.Tag = objStr;
+
                 panelExSelected.Invalidate();
             }
         }
@@ -761,6 +770,10 @@ namespace NonLinearEditSystem.Forms
                 // 音视频内容面板单独处理
                 foreach (var panel in _vedioFilesPanel)
                 {
+                    if (panel.Tag as string == "")
+                    {
+                        return;
+                    }
                     // 1.先计算新的location.X与length
                     string objStr = panel.Tag as string;
                     if (objStr == null) return;
@@ -776,6 +789,11 @@ namespace NonLinearEditSystem.Forms
                 // 音视频内容面板单独处理
                 foreach (var panel in _audioFilesPanel)
                 {
+                    if (panel.Tag as string == "")
+                    {
+                        return;
+                    }
+
                     // 1.先计算新的location.X与length
                     string objStr = panel.Tag as string;
                     if (objStr == null) return;
