@@ -123,7 +123,7 @@ namespace TimeLineControl
         /// <summary>
         /// 是否点击选中游标
         /// </summary>
-        private bool _chooseThumb;
+        public bool _chooseThumb;
 
         /// <summary>
         /// 是否点击选中入点
@@ -432,7 +432,6 @@ namespace TimeLineControl
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
             Point mousePoint = e.Location;
 
             //_mouseInThumbRegion = IsPointInRect(mousePoint, ThumbRectangle);
@@ -486,11 +485,13 @@ namespace TimeLineControl
                     RelativeTimeLineControl.Invalidate();
                 }
             }
+
+            base.OnMouseMove(e);
+
         }
 
         protected override void OnClick(EventArgs e)
         {
-            base.OnClick(e);
             MouseEventArgs mouseEventArgs = (MouseEventArgs)e;
             
             // 1.判断是左键点击还是右键点击
@@ -501,6 +502,8 @@ namespace TimeLineControl
             }
 
             Invalidate();
+
+            base.OnClick(e);
         }
 
 

@@ -56,7 +56,14 @@ namespace NonLinearEditSystem.Forms
         // 鼠标拖动音/视频文件panel时保存位置差
         private int _mousePosDelta = 0;
 
+        // 音视频文件在轨道上的面板高度
         public static int trackHeight = 34;
+
+        // 视频轨道面板1234
+        private List<PanelEx> _vedioTrackPanels;
+
+        // 音频轨道面板12
+        private List<PanelEx> _audioTrackPanels;
 
         #endregion 成员变量
 
@@ -78,7 +85,9 @@ namespace NonLinearEditSystem.Forms
 
             ExecuteBat();
 
-            InitVedioAndAudioFilesPanel();
+            InitVedioAndAudioTrackPanels();
+
+            InitVedioAndAudioFilePanels();
 
             InitPlayControl();
 
@@ -89,20 +98,42 @@ namespace NonLinearEditSystem.Forms
 
         private void ExecuteBat()
         {
-            Process proc = new Process();
-            proc.StartInfo.FileName = @".\del.bat";
-            proc.StartInfo.CreateNoWindow = false;
-            proc.Start();
-            proc.WaitForExit();
+            try
+            {
+                Process proc = new Process();
+                proc.StartInfo.FileName = @".\del.bat";
+                proc.StartInfo.CreateNoWindow = false;
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void InitVedioAndAudioTrackPanels()
+        {
+            // 初始化音视频轨道panel
+            _vedioTrackPanels = new List<PanelEx>(4);
+            _vedioTrackPanels.Add(panelEx_VideoTrackConment4);
+            _vedioTrackPanels.Add(panelEx_VideoTrackConment3);
+            _vedioTrackPanels.Add(panelEx_VideoTrackConment2);
+            _vedioTrackPanels.Add(panelEx_VideoTrackConment1);
+
+            _audioTrackPanels = new List<PanelEx>(2);
+            _audioTrackPanels.Add(panelEx_AudioTrackConment1);
+            _audioTrackPanels.Add(panelEx_AudioTrackConment2);
         }
 
         /// <summary>
         /// 初始化音视频轨道文件panel
         /// </summary>
-        private void InitVedioAndAudioFilesPanel()
+        private void InitVedioAndAudioFilePanels()
         {
             try
             {
+                // 初始化音视频文件panel
                 _vedioFilesPanel = new PanelEx[_maxFilesPannel];
                 _audioFilesPanel = new PanelEx[_maxFilesPannel];
 
@@ -337,6 +368,8 @@ namespace NonLinearEditSystem.Forms
                 UpdateTrackWidthWhenAddFile(length);
 
                 //((PanelEx) sender).Invalidate();
+                // 6.更新需要显示的帧
+                UpdateShowFrame();
             }
             catch (Exception ex)
             {
@@ -400,12 +433,13 @@ namespace NonLinearEditSystem.Forms
                         {
                             _vedioFilesPanel[i].Name = fileName;
 
-                            // 处理一下fileName,Text只显示文件名,不显示路径
+                            // 处理一下fileName,Text只显示文件名和持续时间,不显示路径
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
                             string[] fileStrings = new string[1];
                             fileStrings[0] = fileName;
                             string[] tempStrings = ClearDirAndFilePath(fileStrings);
 
-                            _vedioFilesPanel[i].Text = tempStrings[0];
+                            _vedioFilesPanel[i].Text = tempStrings[0] + " (" + duriationStr + ")";
                             _vedioFilesPanel[i].Width = length;
                             _vedioFilesPanel[i].Height = trackHeight;
                             _vedioFilesPanel[i].Location = new System.Drawing.Point(pos, 0);
@@ -431,12 +465,13 @@ namespace NonLinearEditSystem.Forms
                         {
                             _audioFilesPanel[i].Name = fileName;
 
-                            // 处理一下fileName,Text只显示文件名,不显示路径
+                            // 处理一下fileName,Text只显示文件名和持续时间,不显示路径
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
                             string[] fileStrings = new string[1];
                             fileStrings[0] = fileName;
                             string[] tempStrings = ClearDirAndFilePath(fileStrings);
 
-                            _audioFilesPanel[i].Text = tempStrings[0];
+                            _audioFilesPanel[i].Text = tempStrings[0] + " (" + duriationStr + ")";
                             _audioFilesPanel[i].Width = length;
                             _audioFilesPanel[i].Height = trackHeight;
                             _audioFilesPanel[i].Location = new System.Drawing.Point(pos, 0);
@@ -485,7 +520,7 @@ namespace NonLinearEditSystem.Forms
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DragAudioDrop(object sender, DragEventArgs e)
-        {
+        {//TODO:将音频拖到轨道上
             try
             {
                 // 1.得到拖拽文件的文件名（全路径）
@@ -675,6 +710,8 @@ namespace NonLinearEditSystem.Forms
         private void timeLineControl_MainTL_Click(object sender, EventArgs e)
         {
             UpdateLabelTime();
+
+            UpdateShowFrame();
         }
 
         /// <summary>
@@ -685,6 +722,11 @@ namespace NonLinearEditSystem.Forms
         private void timeLineControl_MainTL_MouseMove(object sender, MouseEventArgs e)
         {
             UpdateLabelTime();
+
+            if (timeLineControl_MainTL._chooseThumb)
+            {
+                UpdateShowFrame();
+            }
         }
 
         #endregion 主时间线操作
@@ -715,21 +757,30 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void VideoFile_MouseMove(object sender, MouseEventArgs e)
         {
-            PanelEx panelExSelected = (PanelEx)sender;
-
-            if (panelExSelected.Capture && e.Button == MouseButtons.Left)
+            try
             {
-                panelExSelected.Location = new Point(e.X - _mousePosDelta > 0 ? e.X - _mousePosDelta : 0, 0);
+                PanelEx panelExSelected = (PanelEx)sender;
 
-                // 使用tag来存储开始结束位置在时间线的时间
-                double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
-                double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+                if (panelExSelected.Capture && e.Button == MouseButtons.Left)
+                {
+                    panelExSelected.Location = new Point(e.X - _mousePosDelta > 0 ? e.X - _mousePosDelta : 0, 0);
 
-                string objStr = dStartTime + "-" + dEndTime;
+                    // 使用tag来存储开始结束位置在时间线的时间
+                    double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
+                    double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
 
-                panelExSelected.Tag = objStr;
+                    string objStr = dStartTime + "-" + dEndTime;
 
-                panelExSelected.Invalidate();
+                    panelExSelected.Tag = objStr;
+
+                    panelExSelected.Invalidate();
+
+                    UpdateShowFrame();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -758,13 +809,13 @@ namespace NonLinearEditSystem.Forms
                 }
 
                 // 音视频轨道面板同步时间线长度
-                panelEx_VedioTrackComent.Width   = timeLineControl_MainTL.Width;
+                panelEx_VedioTrackComent.Width = timeLineControl_MainTL.Width;
                 panelEx_VideoTrackConment1.Width = timeLineControl_MainTL.Width;
                 panelEx_VideoTrackConment2.Width = timeLineControl_MainTL.Width;
                 panelEx_VideoTrackConment3.Width = timeLineControl_MainTL.Width;
                 panelEx_VideoTrackConment4.Width = timeLineControl_MainTL.Width;
-                                                   
-                panelEx_AudioTrackComent.Width   = timeLineControl_MainTL.Width;
+
+                panelEx_AudioTrackComent.Width = timeLineControl_MainTL.Width;
                 panelEx_AudioTrackConment1.Width = timeLineControl_MainTL.Width;
                 panelEx_AudioTrackConment2.Width = timeLineControl_MainTL.Width;
 
@@ -779,7 +830,7 @@ namespace NonLinearEditSystem.Forms
                     string objStr = panel.Tag as string;
                     if (objStr == null) return;
                     string[] startAndEndTime = objStr.Split('-');
-
+                    if (startAndEndTime.Length < 2) return;
 
                     int startX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[0]));
                     int endX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[1]));
@@ -1062,6 +1113,77 @@ namespace NonLinearEditSystem.Forms
             */
         }
 
+        /// <summary>
+        /// 更新序列监视面板需要显示的帧
+        /// </summary>
+        private void UpdateShowFrame()
+        {
+            try
+            {
+                foreach (PanelEx vedioTrackPanel in _vedioTrackPanels)
+                {
+                    foreach (Control control in vedioTrackPanel.Controls)
+                    {
+                        PanelEx panel = control as PanelEx;
+                        if (panel == null) continue;
+
+                        if (IsNeededShowPanel(panel))
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        private bool IsNeededShowPanel(PanelEx panel)
+        {
+            try
+            {
+                // 1.先取得每个panel在时间线上的起始时间和终止时间
+                string objStr = panel.Tag as string;
+                if (objStr == null) return false;
+                string[] startAndEndTime = objStr.Split('-');
+                if (startAndEndTime.Length < 2) return false;
+
+                // 如果时间线的游标时间处于两者之间,则说明此panel是处于可显示状态
+                if (timeLineControl_MainTL.ThumbValue > double.Parse(startAndEndTime[0])
+                    && timeLineControl_MainTL.ThumbValue < double.Parse(startAndEndTime[1]))
+                {
+                    double playTime = timeLineControl_MainTL.ThumbValue - double.Parse(startAndEndTime[0]);
+                    ShowThisPanelFrame(panel.Name, (long)(playTime * GeneralConversions.SecToNanoSec));
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+                return false;
+            }
+            return false;
+        }
+
+        private void ShowThisPanelFrame(string panelName, long playTime)
+        {
+            try
+            {
+                IntPtr rendWnd = PanelEx_Sequence.Handle;
+                int ires = _iClipPlayControlCSharp.SetClip(panelName, rendWnd);
+                _iClipPlayControlCSharp.SetPosition(playTime, 0);
+                _iClipPlayControlCSharp.Play();
+                //_iClipPlayControlCSharp.Pause();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
         #endregion 序列监视器操作
 
 
@@ -1142,7 +1264,7 @@ namespace NonLinearEditSystem.Forms
         private void buttonX_SetEnter_Click(object sender, EventArgs e)
         {
             // 如果游标位置 <= 出点位置 - distance, 同时游标和入点不在一个位置, 优化效率
-            if (timeLineControl_MainTL.ThumbHPos <= timeLineControl_MainTL.exitPos - timeLineControl_MainTL.NDistanceOfTicks 
+            if (timeLineControl_MainTL.ThumbHPos <= timeLineControl_MainTL.exitPos - timeLineControl_MainTL.NDistanceOfTicks
                 && timeLineControl_MainTL.enterPos != timeLineControl_MainTL.ThumbHPos)
             {
                 timeLineControl_MainTL.enterPos = timeLineControl_MainTL.ThumbHPos;
