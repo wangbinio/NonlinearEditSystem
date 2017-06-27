@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NonLinearEditSystem
 {
@@ -48,11 +50,12 @@ namespace NonLinearEditSystem
             Remarks = remarks;
         }
 
+
+
         /// <summary>
         /// 工程版本
         /// </summary>
         public string ProjectVersion { get; set; }
-
 
         /// <summary>
         /// 工程文件名
@@ -93,6 +96,45 @@ namespace NonLinearEditSystem
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
+
+
+        /// <summary>
+        /// 从本地文件中反序列化出类
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void Load(string fileName)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+            Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+            ProjectInfo projectInfo = xs.Deserialize(stream) as ProjectInfo;
+
+            if (projectInfo != null)
+            {
+                ProjectVersion = projectInfo.ProjectVersion;
+                ProjectName = projectInfo.ProjectName;
+                ProjectPath = projectInfo.ProjectPath;
+                Length = projectInfo.Length;
+                UpdateUser = projectInfo.UpdateUser;
+                UpdateTime = projectInfo.UpdateTime;
+                VideoInfo = projectInfo.VideoInfo;
+                AudioInfo = projectInfo.AudioInfo;
+                Remarks = projectInfo.Remarks;
+            }
+
+            stream.Close();
+        }
+
+        /// <summary>
+        /// 序列化文件存储到本地
+        /// </summary>
+        public void Save()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+            Stream stream = new FileStream(ProjectPath + @"\" + ProjectName, FileMode.Create, FileAccess.Write, FileShare.Read);
+            xs.Serialize(stream, this);
+            stream.Close();
+        }
+
     }
 
     /// <summary>
@@ -187,5 +229,6 @@ namespace NonLinearEditSystem
         right_channel,
         stereo
     }
+
 
 }

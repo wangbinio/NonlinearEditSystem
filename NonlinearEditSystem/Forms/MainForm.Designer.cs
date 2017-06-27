@@ -798,6 +798,7 @@
             this.保存ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.保存ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.保存ToolStripMenuItem.Text = "保存(&S)";
+            this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // 另存为ToolStripMenuItem
             // 
@@ -806,6 +807,7 @@
             | System.Windows.Forms.Keys.S)));
             this.另存为ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.另存为ToolStripMenuItem.Text = "另存为(&A)";
+            this.另存为ToolStripMenuItem.Click += new System.EventHandler(this.另存为ToolStripMenuItem_Click);
             // 
             // 关闭ToolStripMenuItem
             // 
@@ -813,6 +815,7 @@
             this.关闭ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
             this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.关闭ToolStripMenuItem.Text = "关闭(&C)";
+            this.关闭ToolStripMenuItem.Click += new System.EventHandler(this.关闭ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -905,8 +908,8 @@
             // szwbprjToolStripMenuItem
             // 
             this.szwbprjToolStripMenuItem.Name = "szwbprjToolStripMenuItem";
-            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.szwbprjToolStripMenuItem.Text = "szwb.prj";
+            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.szwbprjToolStripMenuItem.Text = "szwb.Non";
             // 
             // toolStripSeparator5
             // 

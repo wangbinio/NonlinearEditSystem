@@ -30,11 +30,8 @@
         {
             this.groupBox_视频设置 = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_解交织 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_解交织 = new DevComponents.Editors.ComboItem();
-            this.comboBoxEx_上场优先 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_上场优先 = new DevComponents.Editors.ComboItem();
+            this.comboBoxEx_扫描模式 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboBoxEx_帧率 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_25fps = new DevComponents.Editors.ComboItem();
             this.labelX_解交织 = new DevComponents.DotNetBar.LabelX();
             this.labelX_扫描模式 = new DevComponents.DotNetBar.LabelX();
             this.labelX_帧率 = new DevComponents.DotNetBar.LabelX();
@@ -42,13 +39,9 @@
             this.buttonX_CreateProjOK = new DevComponents.DotNetBar.ButtonX();
             this.groupBox_音频设置 = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_输出音频流 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_输出音频流 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_采样位 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_采样位 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_声道 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_立体声 = new DevComponents.Editors.ComboItem();
             this.comboBoxEx_采样频率 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_采样频率 = new DevComponents.Editors.ComboItem();
             this.labelX_输出音频流 = new DevComponents.DotNetBar.LabelX();
             this.labelX_声道 = new DevComponents.DotNetBar.LabelX();
             this.labelX_采样位 = new DevComponents.DotNetBar.LabelX();
@@ -66,7 +59,7 @@
             // 
             this.groupBox_视频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_解交织);
-            this.groupBox_视频设置.Controls.Add(this.comboBoxEx_上场优先);
+            this.groupBox_视频设置.Controls.Add(this.comboBoxEx_扫描模式);
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_帧率);
             this.groupBox_视频设置.Controls.Add(this.labelX_解交织);
             this.groupBox_视频设置.Controls.Add(this.labelX_扫描模式);
@@ -89,8 +82,6 @@
             this.comboBoxEx_解交织.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_解交织.FormattingEnabled = true;
             this.comboBoxEx_解交织.ItemHeight = 18;
-            this.comboBoxEx_解交织.Items.AddRange(new object[] {
-            this.comboItem_解交织});
             this.comboBoxEx_解交织.Location = new System.Drawing.Point(100, 121);
             this.comboBoxEx_解交织.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_解交织.Name = "comboBoxEx_解交织";
@@ -98,33 +89,21 @@
             this.comboBoxEx_解交织.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_解交织.TabIndex = 6;
             this.comboBoxEx_解交织.TabStop = false;
-            this.comboBoxEx_解交织.Text = "解交织";
             // 
-            // comboItem_解交织
+            // comboBoxEx_扫描模式
             // 
-            this.comboItem_解交织.Text = "解交织";
-            // 
-            // comboBoxEx_上场优先
-            // 
-            this.comboBoxEx_上场优先.DisplayMember = "Text";
-            this.comboBoxEx_上场优先.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_上场优先.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxEx_上场优先.FormattingEnabled = true;
-            this.comboBoxEx_上场优先.ItemHeight = 18;
-            this.comboBoxEx_上场优先.Items.AddRange(new object[] {
-            this.comboItem_上场优先});
-            this.comboBoxEx_上场优先.Location = new System.Drawing.Point(100, 77);
-            this.comboBoxEx_上场优先.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBoxEx_上场优先.Name = "comboBoxEx_上场优先";
-            this.comboBoxEx_上场优先.Size = new System.Drawing.Size(140, 24);
-            this.comboBoxEx_上场优先.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx_上场优先.TabIndex = 6;
-            this.comboBoxEx_上场优先.TabStop = false;
-            this.comboBoxEx_上场优先.Text = "上场优先";
-            // 
-            // comboItem_上场优先
-            // 
-            this.comboItem_上场优先.Text = "上场优先";
+            this.comboBoxEx_扫描模式.DisplayMember = "Text";
+            this.comboBoxEx_扫描模式.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx_扫描模式.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_扫描模式.FormattingEnabled = true;
+            this.comboBoxEx_扫描模式.ItemHeight = 18;
+            this.comboBoxEx_扫描模式.Location = new System.Drawing.Point(100, 77);
+            this.comboBoxEx_扫描模式.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxEx_扫描模式.Name = "comboBoxEx_扫描模式";
+            this.comboBoxEx_扫描模式.Size = new System.Drawing.Size(140, 24);
+            this.comboBoxEx_扫描模式.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx_扫描模式.TabIndex = 6;
+            this.comboBoxEx_扫描模式.TabStop = false;
             // 
             // comboBoxEx_帧率
             // 
@@ -133,8 +112,6 @@
             this.comboBoxEx_帧率.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_帧率.FormattingEnabled = true;
             this.comboBoxEx_帧率.ItemHeight = 18;
-            this.comboBoxEx_帧率.Items.AddRange(new object[] {
-            this.comboItem_25fps});
             this.comboBoxEx_帧率.Location = new System.Drawing.Point(100, 33);
             this.comboBoxEx_帧率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_帧率.Name = "comboBoxEx_帧率";
@@ -142,11 +119,6 @@
             this.comboBoxEx_帧率.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_帧率.TabIndex = 6;
             this.comboBoxEx_帧率.TabStop = false;
-            this.comboBoxEx_帧率.Text = "25.00 fps";
-            // 
-            // comboItem_25fps
-            // 
-            this.comboItem_25fps.Text = "25.00 fps";
             // 
             // labelX_解交织
             // 
@@ -216,7 +188,8 @@
             this.buttonX_CreateProjOK.Size = new System.Drawing.Size(82, 28);
             this.buttonX_CreateProjOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_CreateProjOK.TabIndex = 2;
-            this.buttonX_CreateProjOK.Text = "确认";
+            this.buttonX_CreateProjOK.Text = "新建工程";
+            this.buttonX_CreateProjOK.Click += new System.EventHandler(this.buttonX_CreateProjOK_Click);
             // 
             // groupBox_音频设置
             // 
@@ -247,8 +220,6 @@
             this.comboBoxEx_输出音频流.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_输出音频流.FormattingEnabled = true;
             this.comboBoxEx_输出音频流.ItemHeight = 18;
-            this.comboBoxEx_输出音频流.Items.AddRange(new object[] {
-            this.comboItem_输出音频流});
             this.comboBoxEx_输出音频流.Location = new System.Drawing.Point(100, 165);
             this.comboBoxEx_输出音频流.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_输出音频流.Name = "comboBoxEx_输出音频流";
@@ -256,11 +227,6 @@
             this.comboBoxEx_输出音频流.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_输出音频流.TabIndex = 6;
             this.comboBoxEx_输出音频流.TabStop = false;
-            this.comboBoxEx_输出音频流.Text = "输出音频流";
-            // 
-            // comboItem_输出音频流
-            // 
-            this.comboItem_输出音频流.Text = "输出音频流";
             // 
             // comboBoxEx_采样位
             // 
@@ -269,8 +235,6 @@
             this.comboBoxEx_采样位.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_采样位.FormattingEnabled = true;
             this.comboBoxEx_采样位.ItemHeight = 18;
-            this.comboBoxEx_采样位.Items.AddRange(new object[] {
-            this.comboItem_采样位});
             this.comboBoxEx_采样位.Location = new System.Drawing.Point(100, 75);
             this.comboBoxEx_采样位.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_采样位.Name = "comboBoxEx_采样位";
@@ -278,11 +242,6 @@
             this.comboBoxEx_采样位.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样位.TabIndex = 6;
             this.comboBoxEx_采样位.TabStop = false;
-            this.comboBoxEx_采样位.Text = "采样位";
-            // 
-            // comboItem_采样位
-            // 
-            this.comboItem_采样位.Text = "采样位";
             // 
             // comboBoxEx_声道
             // 
@@ -291,8 +250,6 @@
             this.comboBoxEx_声道.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_声道.FormattingEnabled = true;
             this.comboBoxEx_声道.ItemHeight = 18;
-            this.comboBoxEx_声道.Items.AddRange(new object[] {
-            this.comboItem_立体声});
             this.comboBoxEx_声道.Location = new System.Drawing.Point(100, 121);
             this.comboBoxEx_声道.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_声道.Name = "comboBoxEx_声道";
@@ -300,11 +257,6 @@
             this.comboBoxEx_声道.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_声道.TabIndex = 6;
             this.comboBoxEx_声道.TabStop = false;
-            this.comboBoxEx_声道.Text = "立体声";
-            // 
-            // comboItem_立体声
-            // 
-            this.comboItem_立体声.Text = "立体声";
             // 
             // comboBoxEx_采样频率
             // 
@@ -313,8 +265,6 @@
             this.comboBoxEx_采样频率.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_采样频率.FormattingEnabled = true;
             this.comboBoxEx_采样频率.ItemHeight = 18;
-            this.comboBoxEx_采样频率.Items.AddRange(new object[] {
-            this.comboItem_采样频率});
             this.comboBoxEx_采样频率.Location = new System.Drawing.Point(100, 33);
             this.comboBoxEx_采样频率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_采样频率.Name = "comboBoxEx_采样频率";
@@ -322,11 +272,6 @@
             this.comboBoxEx_采样频率.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样频率.TabIndex = 6;
             this.comboBoxEx_采样频率.TabStop = false;
-            this.comboBoxEx_采样频率.Text = "采样频率";
-            // 
-            // comboItem_采样频率
-            // 
-            this.comboItem_采样频率.Text = "采样频率";
             // 
             // labelX_输出音频流
             // 
@@ -432,10 +377,11 @@
             this.textBoxX_ProjFilePath.Location = new System.Drawing.Point(94, 249);
             this.textBoxX_ProjFilePath.Name = "textBoxX_ProjFilePath";
             this.textBoxX_ProjFilePath.PreventEnterBeep = true;
+            this.textBoxX_ProjFilePath.ReadOnly = true;
             this.textBoxX_ProjFilePath.Size = new System.Drawing.Size(405, 23);
             this.textBoxX_ProjFilePath.TabIndex = 0;
             this.textBoxX_ProjFilePath.TabStop = false;
-            this.textBoxX_ProjFilePath.Text = "C:\\Users\\Administrator";
+            this.textBoxX_ProjFilePath.Text = "D:\\NonProject";
             // 
             // buttonX_CreateProjScan
             // 
@@ -448,7 +394,7 @@
             this.buttonX_CreateProjScan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_CreateProjScan.TabIndex = 0;
             this.buttonX_CreateProjScan.Text = "浏览";
-            this.buttonX_CreateProjScan.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonX_CreateProjScan.Click += new System.EventHandler(this.buttonX_CreateProjScan_Click);
             // 
             // textBoxX_ProjFileName
             // 
@@ -465,7 +411,7 @@
             this.textBoxX_ProjFileName.PreventEnterBeep = true;
             this.textBoxX_ProjFileName.Size = new System.Drawing.Size(486, 23);
             this.textBoxX_ProjFileName.TabIndex = 1;
-            this.textBoxX_ProjFileName.Text = "Untitled Project";
+            this.textBoxX_ProjFileName.Text = "Untitled Project.Non";
             // 
             // CreateProjectSetForm
             // 
@@ -491,6 +437,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "新建工程";
+            this.Load += new System.EventHandler(this.CreateProjectSetForm_Load);
             this.groupBox_视频设置.ResumeLayout(false);
             this.groupBox_音频设置.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -501,27 +448,20 @@
         private System.Windows.Forms.GroupBox groupBox_视频设置;
         private DevComponents.DotNetBar.LabelX labelX_扫描模式;
         private DevComponents.DotNetBar.LabelX labelX_帧率;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_上场优先;
-        private DevComponents.Editors.ComboItem comboItem_上场优先;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_扫描模式;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_帧率;
-        private DevComponents.Editors.ComboItem comboItem_25fps;
         private DevComponents.DotNetBar.ButtonX buttonX_CreateProjCancel;
         private DevComponents.DotNetBar.ButtonX buttonX_CreateProjOK;
         private DevComponents.DotNetBar.LabelX labelX_采样频率;
         private DevComponents.DotNetBar.LabelX labelX_采样位;
         private System.Windows.Forms.GroupBox groupBox_音频设置;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_输出音频流;
-        private DevComponents.Editors.ComboItem comboItem_输出音频流;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_采样位;
-        private DevComponents.Editors.ComboItem comboItem_采样位;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_声道;
-        private DevComponents.Editors.ComboItem comboItem_立体声;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_采样频率;
-        private DevComponents.Editors.ComboItem comboItem_采样频率;
         private DevComponents.DotNetBar.LabelX labelX_输出音频流;
         private DevComponents.DotNetBar.LabelX labelX_声道;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_解交织;
-        private DevComponents.Editors.ComboItem comboItem_解交织;
         private DevComponents.DotNetBar.LabelX labelX_解交织;
         private DevComponents.DotNetBar.LabelX labelX_工程文件路径;
         private DevComponents.DotNetBar.LabelX labelX_工程文件名;

@@ -15,6 +15,7 @@ using NonLinearEditSystem.Properties;
 using XNetUtilities;
 using ClrDataTypeChange;
 using System.Diagnostics;
+using NonLinearEditSystem;
 
 namespace NonLinearEditSystem.Forms
 {
@@ -22,6 +23,9 @@ namespace NonLinearEditSystem.Forms
     {
 
         #region 成员变量
+
+        // 工程文件信息
+        private ProjectInfo projectInfo; 
 
         // 数据库连接字符串
         private String _connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
@@ -77,11 +81,7 @@ namespace NonLinearEditSystem.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //panelEx_TrackContent.AutoScroll = true;
-            //panelEx_TrackContent.HorizontalScroll.Visible = true;
-            //panelEx_TrackContent.VerticalScroll.Visible = true;
-            //panelEx_TrackContent.HScrollBar.Visible = true;
-            //panelEx_TrackContent.HScrollBar.Enabled = true;
+            projectInfo = new ProjectInfo();
 
             ExecuteBat();
 
@@ -212,7 +212,7 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                _iClipPlayControlCSharp = new ClipPlayControlCSharp();
+                //_iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
                 //_mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
                 //
@@ -550,23 +550,113 @@ namespace NonLinearEditSystem.Forms
 
         #region 菜单操作
 
-        private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PreferenceSetForm preferenceSetForm = new PreferenceSetForm();
-            preferenceSetForm.ShowDialog();
-        }
+        private CreateProjectSetForm createProjectSetForm;
+        private PreferenceSetForm preferenceSetForm;
+        private ProjectSetForm projectSetForm;
+
 
         private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProjectSetForm projectSetForm = new ProjectSetForm();
+            projectSetForm = new ProjectSetForm();
             projectSetForm.ShowDialog();
         }
 
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateProjectSetForm createProjectSetForm = new CreateProjectSetForm();
-            createProjectSetForm.ShowDialog();
+            createProjectSetForm = new CreateProjectSetForm();
+            DialogResult result = createProjectSetForm.ShowDialog();
+
+            projectInfo = createProjectSetForm.projectInfo;
         }
+
+        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "Project File (*.Non)|*.Non";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    OpenNewProject(dialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 打开选中的工程
+        /// </summary>
+        private void OpenNewProject(string fileName)
+        {
+            try
+            {
+            	projectInfo.Load(fileName);
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 保存工程文件
+        /// </summary>
+        private void SaveProject()
+        {
+            projectInfo.Save();
+        }
+
+        private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            	SaveFileDialog dialog = new SaveFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "Project File (*.Non)|*.Non";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string[] strArray = dialog.FileName.Split('\\');
+                    projectInfo.ProjectName = strArray[strArray.Length - 1];
+                    projectInfo.ProjectPath = "";
+                    for (int i = 0; i < strArray.Length-1; i++)
+                    {
+                        projectInfo.ProjectPath += strArray[i] + @"\";
+                    }
+
+                    SaveProject();
+                }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 关闭ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            preferenceSetForm = new PreferenceSetForm();
+            preferenceSetForm.ShowDialog();
+        }
+
 
         private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -598,28 +688,8 @@ namespace NonLinearEditSystem.Forms
             packageForm.ShowDialog();
         }
 
-        /// <summary>
-        /// 打开工程
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                dialog.Description = "请选择工程文件夹";
 
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ShowDirInFileBox(dialog.SelectedPath);
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
-        }
+
 
         /// <summary>
         /// 更新素材库
@@ -1555,8 +1625,11 @@ namespace NonLinearEditSystem.Forms
 
 
 
-        #endregion
 
+
+
+
+        #endregion
 
 
     }
