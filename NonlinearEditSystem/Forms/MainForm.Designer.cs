@@ -848,24 +848,28 @@
             this.导入工程ToolStripMenuItem.Name = "导入工程ToolStripMenuItem";
             this.导入工程ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入工程ToolStripMenuItem.Text = "导入工程";
+            this.导入工程ToolStripMenuItem.Click += new System.EventHandler(this.导入工程ToolStripMenuItem_Click);
             // 
             // 导入序列ToolStripMenuItem
             // 
             this.导入序列ToolStripMenuItem.Name = "导入序列ToolStripMenuItem";
             this.导入序列ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入序列ToolStripMenuItem.Text = "导入序列";
+            this.导入序列ToolStripMenuItem.Click += new System.EventHandler(this.导入序列ToolStripMenuItem_Click);
             // 
             // 导入AAFToolStripMenuItem
             // 
             this.导入AAFToolStripMenuItem.Name = "导入AAFToolStripMenuItem";
             this.导入AAFToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入AAFToolStripMenuItem.Text = "导入AAF";
+            this.导入AAFToolStripMenuItem.Click += new System.EventHandler(this.导入AAFToolStripMenuItem_Click);
             // 
             // 导入配音序列ToolStripMenuItem
             // 
             this.导入配音序列ToolStripMenuItem.Name = "导入配音序列ToolStripMenuItem";
             this.导入配音序列ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入配音序列ToolStripMenuItem.Text = "导入配音序列";
+            this.导入配音序列ToolStripMenuItem.Click += new System.EventHandler(this.导入配音序列ToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -908,7 +912,7 @@
             // szwbprjToolStripMenuItem
             // 
             this.szwbprjToolStripMenuItem.Name = "szwbprjToolStripMenuItem";
-            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.szwbprjToolStripMenuItem.Text = "szwb.Non";
             // 
             // toolStripSeparator5
@@ -1027,30 +1031,35 @@
             this.导入P2ToolStripMenuItem.Name = "导入P2ToolStripMenuItem";
             this.导入P2ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入P2ToolStripMenuItem.Text = "导入P2文件";
+            this.导入P2ToolStripMenuItem.Click += new System.EventHandler(this.导入P2ToolStripMenuItem_Click);
             // 
             // 导入XDCAMToolStripMenuItem
             // 
             this.导入XDCAMToolStripMenuItem.Name = "导入XDCAMToolStripMenuItem";
             this.导入XDCAMToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入XDCAMToolStripMenuItem.Text = "导入XDCAM文件";
+            this.导入XDCAMToolStripMenuItem.Click += new System.EventHandler(this.导入XDCAMToolStripMenuItem_Click);
             // 
             // 导入SxStoolStripMenuItem
             // 
             this.导入SxStoolStripMenuItem.Name = "导入SxStoolStripMenuItem";
             this.导入SxStoolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入SxStoolStripMenuItem.Text = "导入SxS文件";
+            this.导入SxStoolStripMenuItem.Click += new System.EventHandler(this.导入SxStoolStripMenuItem_Click);
             // 
             // 导入E2toolStripMenuItem
             // 
             this.导入E2toolStripMenuItem.Name = "导入E2toolStripMenuItem";
             this.导入E2toolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入E2toolStripMenuItem.Text = "导入E2文件";
+            this.导入E2toolStripMenuItem.Click += new System.EventHandler(this.导入E2toolStripMenuItem_Click);
             // 
             // 导入PPTtoolStripMenuItem
             // 
             this.导入PPTtoolStripMenuItem.Name = "导入PPTtoolStripMenuItem";
             this.导入PPTtoolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入PPTtoolStripMenuItem.Text = "导入PPT文件";
+            this.导入PPTtoolStripMenuItem.Click += new System.EventHandler(this.导入PPTtoolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
@@ -1302,6 +1311,7 @@
             this.VideoFile1.CanvasColor = System.Drawing.SystemColors.Control;
             this.VideoFile1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.VideoFile1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.VideoFile1.Enabled = false;
             this.VideoFile1.Location = new System.Drawing.Point(196, 0);
             this.VideoFile1.Name = "VideoFile1";
             this.VideoFile1.Size = new System.Drawing.Size(233, 34);
@@ -1319,6 +1329,7 @@
             this.VideoFile1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
+            this.VideoFile1.Visible = false;
             this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
             this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
             // 

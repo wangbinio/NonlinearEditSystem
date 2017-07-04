@@ -71,6 +71,12 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 成员变量
 
+        #region 控件变量
+
+        
+
+        #endregion
+
 
         #region 初始化工作
 
@@ -85,6 +91,8 @@ namespace NonLinearEditSystem.Forms
 
             ExecuteBat();
 
+            InitAllChildForm();
+
             InitVedioAndAudioTrackPanels();
 
             InitVedioAndAudioFilePanels();
@@ -93,7 +101,11 @@ namespace NonLinearEditSystem.Forms
 
             InitTimeLineControl();
 
-            ShowClipsInFileBox();
+            // TODO:现在显示的是数据库的内容,
+            //ShowClipsInFileBox();
+
+            // 测试版本显示本地文件夹的内容
+            ShowDirInFileBox(@"D:\视频素材");
         }
 
         private void ExecuteBat()
@@ -212,13 +224,13 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                //_iClipPlayControlCSharp = new ClipPlayControlCSharp();
+                _iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
-                //_mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
-                //
-                //_h264CodecIOCSharp = new H264CodecIOCSharp();
-                //
-                //_mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
+                _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+                
+                _h264CodecIOCSharp = new H264CodecIOCSharp();
+                
+                _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
             }
             catch (Exception ex)
             {
@@ -553,17 +565,24 @@ namespace NonLinearEditSystem.Forms
         private CreateProjectSetForm createProjectSetForm;
         private PreferenceSetForm preferenceSetForm;
         private ProjectSetForm projectSetForm;
+        private DubForm dubFrom;
+        private ImportP2Form importP2Form;
 
-
-        private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InitAllChildForm()
         {
+            createProjectSetForm = new CreateProjectSetForm();
+            preferenceSetForm = new PreferenceSetForm();
             projectSetForm = new ProjectSetForm();
-            projectSetForm.ShowDialog();
+            dubFrom = new DubForm();
+
+            importP2Form = new ImportP2Form();
         }
+
+
+
 
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            createProjectSetForm = new CreateProjectSetForm();
             DialogResult result = createProjectSetForm.ShowDialog();
 
             projectInfo = createProjectSetForm.projectInfo;
@@ -607,7 +626,7 @@ namespace NonLinearEditSystem.Forms
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SaveProject();
         }
 
         /// <summary>
@@ -653,10 +672,127 @@ namespace NonLinearEditSystem.Forms
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            preferenceSetForm = new PreferenceSetForm();
             preferenceSetForm.ShowDialog();
         }
 
+        private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            projectSetForm.ShowDialog();
+        }
+
+        private void 导入工程ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "Project File (*.Non)|*.Non";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //OpenNewProject(dialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 导入序列ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "All Support Files(*.aaf,*nxf,*.xml,*.edl)|*.aaf,*nxf,*.xml,*.edl";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //OpenNewProject(dialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 导入AAFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "AAF Files(*.aaf)|*.aaf";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //OpenNewProject(dialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 导入配音序列ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.InitialDirectory = projectInfo.ProjectPath;
+                dialog.Filter = "AAF Files(*.aaf)|*.aaf";
+                dialog.FilterIndex = 1;
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //OpenNewProject(dialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dubFrom.ShowDialog();
+        }
+
+        private void 导入P2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            importP2Form.ShowDialog();
+        }
+
+        private void 导入XDCAMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 导入SxStoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 导入E2toolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 导入PPTtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -676,11 +812,7 @@ namespace NonLinearEditSystem.Forms
             recordForm.ShowDialog();
         }
 
-        private void 配音DToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DubForm dubFrom = new DubForm();
-            dubFrom.ShowDialog();
-        }
+
 
         private void 打包输出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1620,6 +1752,8 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
+
 
 
 

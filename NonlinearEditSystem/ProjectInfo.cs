@@ -130,6 +130,7 @@ namespace NonLinearEditSystem
         public void Save()
         {
             XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+            UpdateTime = DateTime.Now;
             Stream stream = new FileStream(ProjectPath + @"\" + ProjectName, FileMode.Create, FileAccess.Write, FileShare.Read);
             xs.Serialize(stream, this);
             stream.Close();

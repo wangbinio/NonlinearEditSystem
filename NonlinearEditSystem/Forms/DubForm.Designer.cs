@@ -841,7 +841,7 @@
             this.MinimizeBox = false;
             this.Name = "DubForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MetroForm";
+            this.Text = "配音";
             this.groupBox_当前状态.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -111,6 +111,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ImportP2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportP2Form.Designer.cs">
+      <DependentUpon>ImportP2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PackageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="Forms\CreateProjectSetForm.Designer.cs">
       <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\ImportP2Form.resx">
+      <DependentUpon>ImportP2Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PackageForm.resx">
       <DependentUpon>PackageForm.cs</DependentUpon>
     </EmbeddedResource>

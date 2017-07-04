@@ -116,9 +116,9 @@ namespace NonLinearEditSystem.Forms
                 }
             }
 
+
+
             projectInfo.Save();
-
-
 
             Close();
         }
