@@ -567,6 +567,10 @@ namespace NonLinearEditSystem.Forms
         private ProjectSetForm projectSetForm;
         private DubForm dubFrom;
         private ImportP2Form importP2Form;
+        private ImportXDCAMForm importXdcamForm;
+        private ImportSxSForm importSxSForm;
+        private ImportE2Form importE2Form;
+        private ImportPPTForm importPPTForm;
 
         private void InitAllChildForm()
         {
@@ -576,6 +580,10 @@ namespace NonLinearEditSystem.Forms
             dubFrom = new DubForm();
 
             importP2Form = new ImportP2Form();
+            importXdcamForm = new ImportXDCAMForm();
+            importSxSForm = new ImportSxSForm();
+            importE2Form = new ImportE2Form();
+            importPPTForm = new ImportPPTForm();
         }
 
 
@@ -776,22 +784,22 @@ namespace NonLinearEditSystem.Forms
 
         private void 导入XDCAMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            importXdcamForm.ShowDialog();
         }
 
         private void 导入SxStoolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            importSxSForm.ShowDialog();
         }
 
         private void 导入E2toolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            importE2Form.ShowDialog();
         }
 
         private void 导入PPTtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            importPPTForm.ShowDialog();
         }
 
         private void 采集ToolStripMenuItem_Click(object sender, EventArgs e)

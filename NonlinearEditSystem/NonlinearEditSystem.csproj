@@ -98,6 +98,7 @@
       <HintPath>..\..\dll\CommonNet.dll</HintPath>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=12.8.0.6, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -111,6 +112,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ImportPPTForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportPPTForm.Designer.cs">
+      <DependentUpon>ImportPPTForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportE2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportE2Form.Designer.cs">
+      <DependentUpon>ImportE2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportSxSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportSxSForm.Designer.cs">
+      <DependentUpon>ImportSxSForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportXDCAMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportXDCAMForm.Designer.cs">
+      <DependentUpon>ImportXDCAMForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ImportP2Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +205,18 @@
     <Compile Include="Forms\CreateProjectSetForm.Designer.cs">
       <DependentUpon>CreateProjectSetForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\ImportPPTForm.resx">
+      <DependentUpon>ImportPPTForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportE2Form.resx">
+      <DependentUpon>ImportE2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportSxSForm.resx">
+      <DependentUpon>ImportSxSForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImportXDCAMForm.resx">
+      <DependentUpon>ImportXDCAMForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportP2Form.resx">
       <DependentUpon>ImportP2Form.cs</DependentUpon>
     </EmbeddedResource>

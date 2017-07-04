@@ -40,13 +40,10 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxEx_采样位数 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.buttonX_AddTrack = new DevComponents.DotNetBar.ButtonX();
             this.comboBoxEx_指定轨道 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.labelX_采样位数 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx_采样频率 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem_采样频率 = new DevComponents.Editors.ComboItem();
             this.labelX_指定轨道 = new DevComponents.DotNetBar.LabelX();
             this.labelX_采样频率 = new DevComponents.DotNetBar.LabelX();
             this.integerInput1 = new DevComponents.Editors.IntegerInput();
@@ -81,6 +78,11 @@
             this.tabControlPanel_ScrollWnd = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem_ScrollWnd = new DevComponents.DotNetBar.TabItem(this.components);
             this.slider_PreviewTime = new MB.Controls.ColorSlider();
+            this.tabControl_Dub = new DevComponents.DotNetBar.TabControl();
+            this.tabControlPanel_配音 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem_配音 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_音频合成 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItem_音频合成 = new DevComponents.DotNetBar.TabItem(this.components);
             this.groupBox_当前状态.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,6 +90,8 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Preview)).BeginInit();
             this.tabControl_Preview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl_Dub)).BeginInit();
+            this.tabControl_Dub.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_当前状态
@@ -99,7 +103,7 @@
             this.groupBox_当前状态.Controls.Add(this.labelX_CapTime);
             this.groupBox_当前状态.Location = new System.Drawing.Point(13, 13);
             this.groupBox_当前状态.Name = "groupBox_当前状态";
-            this.groupBox_当前状态.Size = new System.Drawing.Size(379, 121);
+            this.groupBox_当前状态.Size = new System.Drawing.Size(379, 111);
             this.groupBox_当前状态.TabIndex = 0;
             this.groupBox_当前状态.TabStop = false;
             this.groupBox_当前状态.Text = "当前状态";
@@ -189,7 +193,7 @@
             // 
             this.groupBox1.Controls.Add(this.timeLineControl1);
             this.groupBox1.Controls.Add(this.labelX1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 141);
+            this.groupBox1.Location = new System.Drawing.Point(13, 130);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(379, 97);
             this.groupBox1.TabIndex = 1;
@@ -222,7 +226,7 @@
             this.labelX1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX1.FontBold = true;
             this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Location = new System.Drawing.Point(52, 23);
+            this.labelX1.Location = new System.Drawing.Point(157, 23);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(80, 23);
@@ -253,9 +257,9 @@
             this.groupBox2.Controls.Add(this.labelX_入点时间);
             this.groupBox2.Controls.Add(this.labelX_出点时间);
             this.groupBox2.Controls.Add(this.labelX2);
-            this.groupBox2.Location = new System.Drawing.Point(13, 245);
+            this.groupBox2.Location = new System.Drawing.Point(13, 233);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(379, 246);
+            this.groupBox2.Size = new System.Drawing.Size(379, 236);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "设置";
@@ -267,8 +271,6 @@
             this.comboBoxEx_采样位数.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_采样位数.FormattingEnabled = true;
             this.comboBoxEx_采样位数.ItemHeight = 18;
-            this.comboBoxEx_采样位数.Items.AddRange(new object[] {
-            this.comboItem2});
             this.comboBoxEx_采样位数.Location = new System.Drawing.Point(274, 176);
             this.comboBoxEx_采样位数.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_采样位数.Name = "comboBoxEx_采样位数";
@@ -276,11 +278,7 @@
             this.comboBoxEx_采样位数.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样位数.TabIndex = 108;
             this.comboBoxEx_采样位数.TabStop = false;
-            this.comboBoxEx_采样位数.Text = "采样频率";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "采样频率";
+            this.comboBoxEx_采样位数.Text = "16";
             // 
             // buttonX_AddTrack
             // 
@@ -300,8 +298,6 @@
             this.comboBoxEx_指定轨道.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_指定轨道.FormattingEnabled = true;
             this.comboBoxEx_指定轨道.ItemHeight = 18;
-            this.comboBoxEx_指定轨道.Items.AddRange(new object[] {
-            this.comboItem1});
             this.comboBoxEx_指定轨道.Location = new System.Drawing.Point(274, 146);
             this.comboBoxEx_指定轨道.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_指定轨道.Name = "comboBoxEx_指定轨道";
@@ -309,11 +305,7 @@
             this.comboBoxEx_指定轨道.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_指定轨道.TabIndex = 108;
             this.comboBoxEx_指定轨道.TabStop = false;
-            this.comboBoxEx_指定轨道.Text = "采样频率";
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "采样频率";
+            this.comboBoxEx_指定轨道.Text = "A1";
             // 
             // labelX_采样位数
             // 
@@ -337,8 +329,6 @@
             this.comboBoxEx_采样频率.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx_采样频率.FormattingEnabled = true;
             this.comboBoxEx_采样频率.ItemHeight = 18;
-            this.comboBoxEx_采样频率.Items.AddRange(new object[] {
-            this.comboItem_采样频率});
             this.comboBoxEx_采样频率.Location = new System.Drawing.Point(78, 176);
             this.comboBoxEx_采样频率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEx_采样频率.Name = "comboBoxEx_采样频率";
@@ -346,11 +336,7 @@
             this.comboBoxEx_采样频率.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_采样频率.TabIndex = 108;
             this.comboBoxEx_采样频率.TabStop = false;
-            this.comboBoxEx_采样频率.Text = "采样频率";
-            // 
-            // comboItem_采样频率
-            // 
-            this.comboItem_采样频率.Text = "采样频率";
+            this.comboBoxEx_采样频率.Text = "48000";
             // 
             // labelX_指定轨道
             // 
@@ -582,9 +568,9 @@
             // 
             this.groupBox3.Controls.Add(this.buttonX_GiveUp);
             this.groupBox3.Controls.Add(this.buttonX_Record);
-            this.groupBox3.Location = new System.Drawing.Point(13, 498);
+            this.groupBox3.Location = new System.Drawing.Point(408, 699);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(379, 60);
+            this.groupBox3.Size = new System.Drawing.Size(363, 60);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "录音操作";
@@ -593,7 +579,7 @@
             // 
             this.buttonX_GiveUp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_GiveUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_GiveUp.Location = new System.Drawing.Point(202, 22);
+            this.buttonX_GiveUp.Location = new System.Drawing.Point(184, 22);
             this.buttonX_GiveUp.Name = "buttonX_GiveUp";
             this.buttonX_GiveUp.Size = new System.Drawing.Size(171, 23);
             this.buttonX_GiveUp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -736,7 +722,7 @@
             this.tabControl_Preview.Name = "tabControl_Preview";
             this.tabControl_Preview.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
             this.tabControl_Preview.SelectedTabIndex = 0;
-            this.tabControl_Preview.Size = new System.Drawing.Size(363, 416);
+            this.tabControl_Preview.Size = new System.Drawing.Size(363, 551);
             this.tabControl_Preview.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
             this.tabControl_Preview.TabIndex = 103;
             this.tabControl_Preview.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -751,7 +737,7 @@
             this.tabControlPanel_Preview.Location = new System.Drawing.Point(0, 29);
             this.tabControlPanel_Preview.Name = "tabControlPanel_Preview";
             this.tabControlPanel_Preview.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Preview.Size = new System.Drawing.Size(363, 387);
+            this.tabControlPanel_Preview.Size = new System.Drawing.Size(363, 522);
             this.tabControlPanel_Preview.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
             this.tabControlPanel_Preview.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.tabControlPanel_Preview.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
@@ -812,12 +798,78 @@
             this.slider_PreviewTime.ThumbSize = 5;
             this.slider_PreviewTime.Value = 0;
             // 
+            // tabControl_Dub
+            // 
+            this.tabControl_Dub.BackColor = System.Drawing.Color.White;
+            this.tabControl_Dub.CanReorderTabs = true;
+            this.tabControl_Dub.Controls.Add(this.tabControlPanel_配音);
+            this.tabControl_Dub.Controls.Add(this.tabControlPanel_音频合成);
+            this.tabControl_Dub.ForeColor = System.Drawing.Color.Black;
+            this.tabControl_Dub.Location = new System.Drawing.Point(13, 475);
+            this.tabControl_Dub.Name = "tabControl_Dub";
+            this.tabControl_Dub.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
+            this.tabControl_Dub.SelectedTabIndex = 0;
+            this.tabControl_Dub.Size = new System.Drawing.Size(379, 284);
+            this.tabControl_Dub.Style = DevComponents.DotNetBar.eTabStripStyle.Metro;
+            this.tabControl_Dub.TabIndex = 103;
+            this.tabControl_Dub.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
+            this.tabControl_Dub.Tabs.Add(this.tabItem_配音);
+            this.tabControl_Dub.Tabs.Add(this.tabItem_音频合成);
+            this.tabControl_Dub.Text = "tabControl_Dub";
+            // 
+            // tabControlPanel_配音
+            // 
+            this.tabControlPanel_配音.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_配音.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_配音.Location = new System.Drawing.Point(0, 29);
+            this.tabControlPanel_配音.Name = "tabControlPanel_配音";
+            this.tabControlPanel_配音.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_配音.Size = new System.Drawing.Size(379, 255);
+            this.tabControlPanel_配音.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_配音.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_配音.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_配音.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_配音.Style.GradientAngle = 90;
+            this.tabControlPanel_配音.TabIndex = 1;
+            this.tabControlPanel_配音.TabItem = this.tabItem_配音;
+            // 
+            // tabItem_配音
+            // 
+            this.tabItem_配音.AttachedControl = this.tabControlPanel_配音;
+            this.tabItem_配音.Name = "tabItem_配音";
+            this.tabItem_配音.Text = "配音";
+            // 
+            // tabControlPanel_音频合成
+            // 
+            this.tabControlPanel_音频合成.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_音频合成.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_音频合成.Location = new System.Drawing.Point(0, 29);
+            this.tabControlPanel_音频合成.Name = "tabControlPanel_音频合成";
+            this.tabControlPanel_音频合成.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_音频合成.Size = new System.Drawing.Size(379, 255);
+            this.tabControlPanel_音频合成.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_音频合成.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_音频合成.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_音频合成.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_音频合成.Style.GradientAngle = 90;
+            this.tabControlPanel_音频合成.TabIndex = 5;
+            this.tabControlPanel_音频合成.TabItem = this.tabItem_音频合成;
+            // 
+            // tabItem_音频合成
+            // 
+            this.tabItem_音频合成.AttachedControl = this.tabControlPanel_音频合成;
+            this.tabItem_音频合成.Name = "tabItem_音频合成";
+            this.tabItem_音频合成.Text = "音频合成";
+            // 
             // DubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 598);
+            this.ClientSize = new System.Drawing.Size(783, 761);
             this.Controls.Add(this.slider_PreviewTime);
+            this.Controls.Add(this.tabControl_Dub);
             this.Controls.Add(this.tabControl_Preview);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonX9);
@@ -849,6 +901,8 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl_Preview)).EndInit();
             this.tabControl_Preview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabControl_Dub)).EndInit();
+            this.tabControl_Dub.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -878,12 +932,9 @@
         private DevComponents.DotNetBar.LabelX labelX_预卷时间;
         private DevComponents.Editors.IntegerInput integerInput1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_采样位数;
-        private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_指定轨道;
-        private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.DotNetBar.LabelX labelX_采样位数;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx_采样频率;
-        private DevComponents.Editors.ComboItem comboItem_采样频率;
         private DevComponents.DotNetBar.LabelX labelX_指定轨道;
         private DevComponents.DotNetBar.LabelX labelX_采样频率;
         private DevComponents.DotNetBar.ButtonX buttonX_AddTrack;
@@ -907,5 +958,10 @@
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel_ScrollWnd;
         private DevComponents.DotNetBar.TabItem tabItem_ScrollWnd;
         private MB.Controls.ColorSlider slider_PreviewTime;
+        private DevComponents.DotNetBar.TabControl tabControl_Dub;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel_音频合成;
+        private DevComponents.DotNetBar.TabItem tabItem_音频合成;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel_配音;
+        private DevComponents.DotNetBar.TabItem tabItem_配音;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NonLinearEditSystem.Forms
 {
-    partial class ImportP2Form
+    partial class ImportE2Form
     {
         /// <summary>
         /// Required designer variable.
@@ -313,7 +313,6 @@
             this.groupBox1.Size = new System.Drawing.Size(520, 2);
             this.groupBox1.TabIndex = 104;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox3
             // 
@@ -575,7 +574,7 @@
             this.textBoxX_ChangeName.TabIndex = 100;
             this.textBoxX_ChangeName.TabStop = false;
             // 
-            // ImportP2Form
+            // ImportE2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -621,11 +620,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ImportP2Form";
+            this.Name = "ImportE2Form";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "导入P2文件";
-            this.Load += new System.EventHandler(this.ImportP2Form_Load);
+            this.Text = "导入E2文件";
+            this.Load += new System.EventHandler(this.ImportE2Form_Load);
             this.ResumeLayout(false);
 
         }
