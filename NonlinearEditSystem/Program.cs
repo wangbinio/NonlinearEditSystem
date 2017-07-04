@@ -14,7 +14,10 @@ namespace NonLinearEditSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            mainForm = new MainForm();
+            Application.Run(mainForm);
         }
+
+        public static MainForm mainForm;
     }
 }

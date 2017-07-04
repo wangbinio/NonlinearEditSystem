@@ -73,7 +73,7 @@ namespace NonLinearEditSystem.Forms
 
         #region 控件变量
 
-        
+        public string TimelineCurrentTime => labelItem_CurrentTime.Text;
 
         #endregion
 
@@ -560,17 +560,17 @@ namespace NonLinearEditSystem.Forms
         #endregion 文件拖动功能
 
 
-        #region 菜单操作
+        #region 主菜单操作
 
-        private CreateProjectSetForm createProjectSetForm;
-        private PreferenceSetForm preferenceSetForm;
-        private ProjectSetForm projectSetForm;
-        private DubForm dubFrom;
-        private ImportP2Form importP2Form;
-        private ImportXDCAMForm importXdcamForm;
-        private ImportSxSForm importSxSForm;
-        private ImportE2Form importE2Form;
-        private ImportPPTForm importPPTForm;
+        public CreateProjectSetForm createProjectSetForm;
+        public PreferenceSetForm preferenceSetForm;
+        public ProjectSetForm projectSetForm;
+        public DubForm dubFrom;
+        public ImportP2Form importP2Form;
+        public ImportXDCAMForm importXdcamForm;
+        public ImportSxSForm importSxSForm;
+        public ImportE2Form importE2Form;
+        public ImportPPTForm importPPTForm;
 
         private void InitAllChildForm()
         {
@@ -819,8 +819,6 @@ namespace NonLinearEditSystem.Forms
             RecordForm recordForm = new RecordForm();
             recordForm.ShowDialog();
         }
-
-
 
         private void 打包输出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1774,6 +1772,7 @@ namespace NonLinearEditSystem.Forms
         #endregion
 
 
+        // end line
     }
 
 

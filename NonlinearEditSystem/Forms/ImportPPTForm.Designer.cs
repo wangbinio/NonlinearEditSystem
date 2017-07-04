@@ -162,6 +162,7 @@
             this.buttonX_Start.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_Start.TabIndex = 5;
             this.buttonX_Start.Text = "开始";
+            this.buttonX_Start.Click += new System.EventHandler(this.buttonX_Start_Click);
             // 
             // groupBox2
             // 

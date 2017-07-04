@@ -24,6 +24,11 @@ namespace NonLinearEditSystem.Forms
             comboBoxEx_生成到.SelectedIndex = 0;
         }
 
+        private void buttonX_Start_Click(object sender, System.EventArgs e)
+        {
+            MessageBox.Show(Program.mainForm.TimelineCurrentTime);
+        }
+
 
 
 
