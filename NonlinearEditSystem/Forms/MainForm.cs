@@ -71,6 +71,7 @@ namespace NonLinearEditSystem.Forms
 
         #endregion 成员变量
 
+
         #region 控件变量
 
         public string TimelineCurrentTime => labelItem_CurrentTime.Text;
@@ -83,6 +84,7 @@ namespace NonLinearEditSystem.Forms
         public MainForm()
         {
             InitializeComponent();
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -106,6 +108,10 @@ namespace NonLinearEditSystem.Forms
 
             // 测试版本显示本地文件夹的内容
             ShowDirInFileBox(@"D:\视频素材");
+
+
+            // 创建所有右键菜单
+            CreateAllMenu();
         }
 
         private void ExecuteBat()
@@ -1538,6 +1544,834 @@ namespace NonLinearEditSystem.Forms
         }
 
         #endregion
+
+
+        #region 右键菜单成员变量
+
+        // 轨道空白右键菜单
+        private ContextMenuStrip _trackBlankMenu;
+        private ToolStripMenuItem _trackBlank删除空隙;
+        private ToolStripMenuItem _trackBlank粘贴空隙;
+        private ToolStripMenuItem _trackBlank粘贴;
+        private ToolStripSeparator _trackBlankSeparator1;
+        private ToolStripMenuItem _trackBlank当前轨道中插入工作区;
+        private ToolStripMenuItem _trackBlank删除当前轨道工作区;
+        private ToolStripMenuItem _trackBlank清除当前轨道工作区;
+
+        // 视频轨道文件右键菜单
+        private ContextMenuStrip _vedioTrackFileMenu;
+        private ToolStripMenuItem _vedioTrackFile打开片段;
+        private ToolStripMenuItem _vedioTrackFile剪切;
+        private ToolStripMenuItem _vedioTrackFile复制;
+        private ToolStripMenuItem _vedioTrackFile删除;
+        private ToolStripMenuItem _vedioTrackFile独立删除;
+        private ToolStripMenuItem _vedioTrackFile涟漪删除;
+        private ToolStripMenuItem _vedioTrackFile片段静音;
+        private ToolStripSeparator _vedioTrackFileSeparator1;
+        private ToolStripMenuItem _vedioTrackFile在片段监视器上加载原始片段;
+        private ToolStripMenuItem _vedioTrackFile在工程浏览器中查找片段;
+        private ToolStripMenuItem _vedioTrackFile保存模版;
+
+        private ToolStripMenuItem _vedioTrackFile复制特技;
+        private ToolStripMenuItem _vedioTrackFile复制属性特技;
+
+        private ToolStripMenuItem _vedioTrackFile粘贴特技;
+        private ToolStripMenuItem _vedioTrackFile删除特技;
+        private ToolStripSeparator _vedioTrackFileSeparator2;
+
+        private ToolStripMenuItem _vedioTrackFile轨道内移动;
+        private ToolStripMenuItem _vedioTrackFile向左平移一帧;
+        private ToolStripMenuItem _vedioTrackFile向左平移五帧;
+        private ToolStripMenuItem _vedioTrackFile向右平移一帧;
+        private ToolStripMenuItem _vedioTrackFile向右平移五帧;
+        private ToolStripMenuItem _vedioTrackFile向左平移指定时间长度;
+        private ToolStripMenuItem _vedioTrackFile向右平移指定时间长度;
+        private ToolStripMenuItem _vedioTrackFile平移片段入点至上一个片段出点;
+        private ToolStripMenuItem _vedioTrackFile平移片段出点至上一个片段入点;
+
+        private ToolStripMenuItem _vedioTrackFile移到时码线处;
+        private ToolStripMenuItem _vedioTrackFile平移片段入点至时码线处;
+        private ToolStripMenuItem _vedioTrackFile平移片段出点至时码线处;
+        private ToolStripMenuItem _vedioTrackFile平移片段之后至时码线处;
+        private ToolStripMenuItem _vedioTrackFile平移片段之前至时码线处;
+
+        private ToolStripSeparator _vedioTrackFileSeparator3;
+        private ToolStripMenuItem _vedioTrackFile片段编组;
+        private ToolStripMenuItem _vedioTrackFile解组;
+        private ToolStripMenuItem _vedioTrackFile素材互换;
+
+        private ToolStripMenuItem _vedioTrackFile联动控制;
+        private ToolStripMenuItem _vedioTrackFile视音频联动;
+        private ToolStripMenuItem _vedioTrackFile音频联动;
+        private ToolStripMenuItem _vedioTrackFile独立;
+
+        private ToolStripSeparator _vedioTrackFileSeparator4;
+        private ToolStripMenuItem _vedioTrackFile自动上下变换;
+
+        // 主时间线右键菜单
+        private ContextMenuStrip _mainTimeLineMenu;
+        private ToolStripMenuItem _mainTimeLineMenu添加标记点;
+        private ToolStripMenuItem _mainTimeLineMenu注释标记点;
+        private ToolStripMenuItem _mainTimeLineMenu删除标记点;
+        private ToolStripMenuItem _mainTimeLineMenu删除所有标记点;
+        private ToolStripMenuItem _mainTimeLineMenu上一个标记点;
+        private ToolStripMenuItem _mainTimeLineMenu下一个标记点;
+        private ToolStripMenuItem _mainTimeLineMenu标记点管理;
+        private ToolStripSeparator _mainTimeLineMenuSeparator1;
+
+        private ToolStripMenuItem _mainTimeLineMenu设置工作区入点;
+        private ToolStripMenuItem _mainTimeLineMenu设置工作区出点;
+        private ToolStripMenuItem _mainTimeLineMenu移至工作区入点;
+        private ToolStripMenuItem _mainTimeLineMenu移至工作区出点;
+        private ToolStripSeparator _mainTimeLineMenuSeparator2;
+
+        private ToolStripMenuItem _mainTimeLineMenu设置序列入出点;
+        private ToolStripMenuItem _mainTimeLineMenu加入批打包列表;
+        private ToolStripMenuItem _mainTimeLineMenu查看批打包列表;
+        private ToolStripMenuItem _mainTimeLineMenu清除批打包列表;
+        private ToolStripMenuItem _mainTimeLineMenu时间标尺精度;
+        private ToolStripSeparator _mainTimeLineMenuSeparator3;
+
+        private ToolStripMenuItem _mainTimeLineMenu所有轨道插入工作区;
+        private ToolStripMenuItem _mainTimeLineMenu删除工作区中所有片段;
+        private ToolStripMenuItem _mainTimeLineMenu清除工作区中所有片段;
+        private ToolStripMenuItem _mainTimeLineMenu复制工作区中片段;
+        private ToolStripMenuItem _mainTimeLineMenu粘贴工作区至时码线;
+        private ToolStripSeparator _mainTimeLineMenuSeparator4;
+
+        private ToolStripMenuItem _mainTimeLineMenu黑场检测;
+        private ToolStripMenuItem _mainTimeLineMenu质量检测;
+
+        #endregion
+
+        #region 创建右键菜单
+        public static Size _menuSize = new Size(125, 148);
+        public static Size _menuItemSize = new Size(124, 22);
+        public static Size _seperatorSize = new Size(121, 6);
+        public static Color _menuColor = Color.FromArgb(239, 239, 242);
+
+        private void CreateAllMenu()
+        {
+            CreateTrackBlankMenu();
+
+            CreateTrackFileMenu();
+
+            CreateTimelineMenu();
+        }
+
+        /// <summary>
+        /// 创建轨道空白右键菜单
+        /// </summary>
+        private void CreateTrackBlankMenu()
+        {
+            _trackBlankMenu = new ContextMenuStrip
+            {
+                Name = "_trackBlankMenu",
+                Size = _menuSize
+            };
+
+            _trackBlank删除空隙 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_删除空隙MenuItem",
+                Size = _menuItemSize,
+                Text = "删除空隙"
+            };
+            _trackBlank删除空隙.Click += 删除空隙ToolStripMenuItem_Click;
+
+            _trackBlank粘贴空隙 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_粘贴空隙MenuItem",
+                Size = _menuItemSize,
+                Text = "粘贴空隙"
+            };
+
+            _trackBlank粘贴 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_粘贴MenuItem",
+                Size = _menuItemSize,
+                Text = "粘贴"
+            }; 
+
+            _trackBlankSeparator1 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_trackBlankSeparator1",
+                Size = _seperatorSize,
+            }; 
+
+            _trackBlank当前轨道中插入工作区 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_当前轨道中插入工作区MenuItem",
+                Size = _menuItemSize,
+                Text = "当前轨道中插入工作区"
+            }; 
+
+            _trackBlank删除当前轨道工作区 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_删除当前轨道工作区MenuItem",
+                Size = _menuItemSize,
+                Text = "删除当前轨道工作区"
+            }; 
+
+            _trackBlank清除当前轨道工作区 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_清除当前轨道工作区MenuItem",
+                Size = _menuItemSize,
+                Text = "清除当前轨道工作区"
+            }; 
+
+            _trackBlankMenu.Items.AddRange(new ToolStripItem[]
+            {
+                _trackBlank删除空隙,
+                _trackBlank粘贴空隙,
+                _trackBlank粘贴,
+                _trackBlankSeparator1,
+                _trackBlank当前轨道中插入工作区,
+                _trackBlank删除当前轨道工作区,
+                _trackBlank清除当前轨道工作区
+            });
+
+            foreach (PanelEx panelEx in _vedioTrackPanels)
+            {
+                panelEx.ContextMenuStrip = _trackBlankMenu;
+            }
+
+            foreach (PanelEx panelEx in _audioTrackPanels)
+            {
+                panelEx.ContextMenuStrip = _trackBlankMenu;
+            }
+
+        }
+
+        /// <summary>
+        /// 创建轨道视频文件右键菜单
+        /// </summary>
+        private void CreateTrackFileMenu()
+        {
+            _vedioTrackFileMenu = new ContextMenuStrip
+            {
+                Name = "_vedioTrackFileMenu",
+                Size = _menuSize
+            };
+
+            _vedioTrackFile打开片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile打开片段",
+                Size = _menuItemSize,
+                Text = "打开片段"
+            };
+            _vedioTrackFile剪切 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile剪切",
+                Size = _menuItemSize,
+                Text = "剪切"
+            };
+            _vedioTrackFile复制 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile复制",
+                Size = _menuItemSize,
+                Text = "复制"
+            };
+            _vedioTrackFile删除 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile删除",
+                Size = _menuItemSize,
+                Text = "删除"
+            };
+            _vedioTrackFile独立删除 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile独立删除",
+                Size = _menuItemSize,
+                Text = "独立删除"
+            };
+            _vedioTrackFile涟漪删除 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile涟漪删除",
+                Size = _menuItemSize,
+                Text = "涟漪删除"
+            };
+            _vedioTrackFile片段静音 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile片段静音",
+                Size = _menuItemSize,
+                Text = "片段静音",
+
+                CheckOnClick = true
+            };
+            _vedioTrackFileSeparator1 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFileSeparator1",
+                Size = _seperatorSize,
+            };
+
+            _vedioTrackFile在片段监视器上加载原始片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile在片段监视器上加载原始片段",
+                Size = _menuItemSize,
+                Text = "在片段监视器上加载原始片段"
+            };
+            _vedioTrackFile在工程浏览器中查找片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile在工程浏览器中查找片段",
+                Size = _menuItemSize,
+                Text = "在工程浏览器中查找片段"
+            };
+            _vedioTrackFile保存模版 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile保存模版",
+                Size = _menuItemSize,
+                Text = "保存模版"
+            };
+            _vedioTrackFile复制特技 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile复制特技",
+                Size = _menuItemSize,
+                Text = "复制特技"
+            };
+            _vedioTrackFile复制属性特技 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile复制属性特技",
+                Size = _menuItemSize,
+                Text = "复制属性特技"
+            };
+            _vedioTrackFile粘贴特技 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile粘贴特技",
+                Size = _menuItemSize,
+                Text = "粘贴特技"
+            };
+            _vedioTrackFile删除特技 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile删除特技",
+                Size = _menuItemSize,
+                Text = "删除特技"
+            };
+            _vedioTrackFileSeparator2 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFileSeparator2",
+                Size = _seperatorSize,
+            };
+
+            _vedioTrackFile轨道内移动 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile轨道内移动",
+                Size = _menuItemSize,
+                Text = "轨道内移动"
+            };
+            _vedioTrackFile向左平移一帧 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向左平移一帧",
+                Size = _menuItemSize,
+                Text = "向左平移一帧"
+            };
+            _vedioTrackFile向左平移五帧 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向左平移五帧",
+                Size = _menuItemSize,
+                Text = "向左平移五帧"
+            };
+            _vedioTrackFile向右平移一帧 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向右平移一帧",
+                Size = _menuItemSize,
+                Text = "向右平移一帧"
+            };
+            _vedioTrackFile向右平移五帧 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向右平移五帧",
+                Size = _menuItemSize,
+                Text = "向右平移五帧"
+            };
+            _vedioTrackFile向左平移指定时间长度 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向左平移指定时间长度",
+                Size = _menuItemSize,
+                Text = "向左平移指定时间长度"
+            };
+            _vedioTrackFile向右平移指定时间长度 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile向右平移指定时间长度",
+                Size = _menuItemSize,
+                Text = "向右平移指定时间长度"
+            };
+            _vedioTrackFile平移片段入点至上一个片段出点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段入点至上一个片段出点",
+                Size = _menuItemSize,
+                Text = "平移片段入点至上一个片段出点"
+            };
+            _vedioTrackFile平移片段出点至上一个片段入点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段出点至上一个片段入点",
+                Size = _menuItemSize,
+                Text = "平移片段出点至上一个片段入点"
+            };
+
+            _vedioTrackFile移到时码线处 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile移到时码线处",
+                Size = _menuItemSize,
+                Text = "移到时码线处"
+            };
+            _vedioTrackFile平移片段入点至时码线处 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段入点至时码线处",
+                Size = _menuItemSize,
+                Text = "平移片段入点至时码线处"
+            };
+            _vedioTrackFile平移片段出点至时码线处 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段出点至时码线处",
+                Size = _menuItemSize,
+                Text = "平移片段出点至时码线处"
+            };
+            _vedioTrackFile平移片段之后至时码线处 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段之后至时码线处",
+                Size = _menuItemSize,
+                Text = "平移片段之后至时码线处"
+            };
+            _vedioTrackFile平移片段之前至时码线处 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile平移片段之前至时码线处",
+                Size = _menuItemSize,
+                Text = "平移片段之前至时码线处"
+            };
+
+            _vedioTrackFileSeparator3 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFileSeparator3",
+                Size = _seperatorSize,
+            };
+            _vedioTrackFile片段编组 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile片段编组",
+                Size = _menuItemSize,
+                Text = "片段编组"
+            };
+            _vedioTrackFile解组 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile解组",
+                Size = _menuItemSize,
+                Text = "解组"
+            };
+            _vedioTrackFile素材互换 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile素材互换",
+                Size = _menuItemSize,
+                Text = "素材互换"
+            };
+
+            _vedioTrackFile联动控制 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile联动控制",
+                Size = _menuItemSize,
+                Text = "联动控制"
+            };
+            _vedioTrackFile视音频联动 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile视音频联动",
+                Size = _menuItemSize,
+                Text = "视音频联动"
+            };
+            _vedioTrackFile音频联动 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile音频联动",
+                Size = _menuItemSize,
+                Text = "音频联动"
+            };
+            _vedioTrackFile独立 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile独立",
+                Size = _menuItemSize,
+                Text = "独立"
+            };
+
+            _vedioTrackFileSeparator4 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFileSeparator4",
+                Size = _seperatorSize,
+            };
+            _vedioTrackFile自动上下变换 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_vedioTrackFile自动上下变换",
+                Size = _menuItemSize,
+                Text = "自动上下变换",
+
+                CheckOnClick = true
+            };
+
+            _vedioTrackFile复制特技.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _vedioTrackFile复制属性特技
+            });
+
+            _vedioTrackFile轨道内移动.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _vedioTrackFile向左平移一帧,
+                _vedioTrackFile向左平移五帧,
+                _vedioTrackFile向右平移一帧,
+                _vedioTrackFile向右平移五帧,
+                _vedioTrackFile向左平移指定时间长度,
+                _vedioTrackFile向右平移指定时间长度,
+                _vedioTrackFile平移片段入点至上一个片段出点,
+                _vedioTrackFile平移片段出点至上一个片段入点
+            });
+
+            _vedioTrackFile移到时码线处.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _vedioTrackFile平移片段入点至时码线处,
+                _vedioTrackFile平移片段出点至时码线处,
+                _vedioTrackFile平移片段之后至时码线处,
+                _vedioTrackFile平移片段之前至时码线处
+            });
+
+            _vedioTrackFile联动控制.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _vedioTrackFile视音频联动,
+                _vedioTrackFile音频联动,
+                _vedioTrackFile独立
+            });
+
+            _vedioTrackFileMenu.Items.AddRange(new ToolStripItem[]
+            {
+                _vedioTrackFile打开片段,
+                _vedioTrackFile剪切,
+                _vedioTrackFile复制,
+                _vedioTrackFile删除,
+                _vedioTrackFile独立删除,
+                _vedioTrackFile涟漪删除,
+                _vedioTrackFile片段静音,
+                _vedioTrackFileSeparator1,
+                _vedioTrackFile在片段监视器上加载原始片段,
+                _vedioTrackFile在工程浏览器中查找片段,
+                _vedioTrackFile保存模版,
+                _vedioTrackFile复制特技,
+                _vedioTrackFile粘贴特技,
+                _vedioTrackFile删除特技,
+                _vedioTrackFileSeparator2,
+                _vedioTrackFile轨道内移动,
+                _vedioTrackFile移到时码线处,
+                _vedioTrackFileSeparator3,
+                _vedioTrackFile片段编组,
+                _vedioTrackFile解组,
+                _vedioTrackFile素材互换,
+                _vedioTrackFile联动控制,
+                _vedioTrackFileSeparator4,
+                _vedioTrackFile自动上下变换
+            });
+
+            foreach (PanelEx panelEx in _vedioFilesPanel)
+            {
+                panelEx.ContextMenuStrip = _vedioTrackFileMenu;
+            }
+
+            foreach (PanelEx panelEx in _audioFilesPanel)
+            {
+                panelEx.ContextMenuStrip = _vedioTrackFileMenu;
+            }
+        }
+
+        /// <summary>
+        /// 创建时间线右键菜单
+        /// </summary>
+        private void CreateTimelineMenu()
+        {
+            _mainTimeLineMenu = new ContextMenuStrip
+            {
+                Name = "_mainTimeLineMenu",
+                Size = _menuSize
+            };
+            _mainTimeLineMenu添加标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu添加标记点",
+                Size = _menuItemSize,
+                Text = "添加标记点"
+            };
+            _mainTimeLineMenu注释标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu注释标记点",
+                Size = _menuItemSize,
+                Text = "注释标记点"
+            };
+            _mainTimeLineMenu删除标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu删除标记点",
+                Size = _menuItemSize,
+                Text = "删除标记点"
+            };
+            _mainTimeLineMenu删除所有标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu删除所有标记点",
+                Size = _menuItemSize,
+                Text = "删除所有标记点"
+            };
+            _mainTimeLineMenu上一个标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu上一个标记点",
+                Size = _menuItemSize,
+                Text = "上一个标记点"
+            };
+            _mainTimeLineMenu下一个标记点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu下一个标记点",
+                Size = _menuItemSize,
+                Text = "下一个标记点"
+            };
+            _mainTimeLineMenu标记点管理 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu标记点管理",
+                Size = _menuItemSize,
+                Text = "标记点管理"
+            };
+            _mainTimeLineMenuSeparator1 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_mainTimeLineMenuSeparator1",
+                Size = _seperatorSize,
+            };
+
+            _mainTimeLineMenu设置工作区入点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu设置工作区入点",
+                Size = _menuItemSize,
+                Text = "设置工作区入点"
+            };
+            _mainTimeLineMenu设置工作区出点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu设置工作区出点",
+                Size = _menuItemSize,
+                Text = "设置工作区出点"
+            };
+            _mainTimeLineMenu移至工作区入点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu移至工作区入点",
+                Size = _menuItemSize,
+                Text = "移至工作区入点"
+            };
+            _mainTimeLineMenu移至工作区出点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu移至工作区出点",
+                Size = _menuItemSize,
+                Text = "移至工作区出点"
+            };
+            _mainTimeLineMenuSeparator2 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_mainTimeLineMenuSeparator2",
+                Size = _seperatorSize,
+            };
+
+            _mainTimeLineMenu设置序列入出点 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu设置序列入出点",
+                Size = _menuItemSize,
+                Text = "设置序列入出点"
+            };
+            _mainTimeLineMenu加入批打包列表 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu加入批打包列表",
+                Size = _menuItemSize,
+                Text = "加入批打包列表"
+            };
+            _mainTimeLineMenu查看批打包列表 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu查看批打包列表",
+                Size = _menuItemSize,
+                Text = "查看批打包列表"
+            };
+            _mainTimeLineMenu清除批打包列表 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu清除批打包列表",
+                Size = _menuItemSize,
+                Text = "清除批打包列表"
+            };
+            _mainTimeLineMenu时间标尺精度 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu时间标尺精度",
+                Size = _menuItemSize,
+                Text = "时间标尺精度"
+            };
+            _mainTimeLineMenuSeparator3 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_mainTimeLineMenuSeparator3",
+                Size = _seperatorSize,
+            };
+
+            _mainTimeLineMenu所有轨道插入工作区 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu所有轨道插入工作区",
+                Size = _menuItemSize,
+                Text = "所有轨道插入工作区"
+            };
+            _mainTimeLineMenu删除工作区中所有片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu删除工作区中所有片段",
+                Size = _menuItemSize,
+                Text = "删除工作区中所有片段"
+            };
+            _mainTimeLineMenu清除工作区中所有片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu清除工作区中所有片段",
+                Size = _menuItemSize,
+                Text = "清除工作区中所有片段"
+            };
+            _mainTimeLineMenu复制工作区中片段 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu复制工作区中片段",
+                Size = _menuItemSize,
+                Text = "复制工作区中片段"
+            };
+            _mainTimeLineMenu粘贴工作区至时码线 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu粘贴工作区至时码线",
+                Size = _menuItemSize,
+                Text = "粘贴工作区至时码线"
+            };
+            _mainTimeLineMenuSeparator4 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_mainTimeLineMenuSeparator4",
+                Size = _seperatorSize,
+            };
+
+            _mainTimeLineMenu黑场检测 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu黑场检测",
+                Size = _menuItemSize,
+                Text = "黑场检测"
+            };
+            _mainTimeLineMenu质量检测 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_mainTimeLineMenu质量检测",
+                Size = _menuItemSize,
+                Text = "质量检测"
+            };
+
+            _mainTimeLineMenu.Items.AddRange(new ToolStripItem[]
+            {
+                _mainTimeLineMenu添加标记点,
+                _mainTimeLineMenu注释标记点,
+                _mainTimeLineMenu删除标记点,
+                _mainTimeLineMenu删除所有标记点,
+                _mainTimeLineMenu上一个标记点,
+                _mainTimeLineMenu下一个标记点,
+                _mainTimeLineMenu标记点管理,
+                _mainTimeLineMenuSeparator1,
+                _mainTimeLineMenu设置工作区入点,
+                _mainTimeLineMenu设置工作区出点,
+                _mainTimeLineMenu移至工作区入点,
+                _mainTimeLineMenu移至工作区出点,
+                _mainTimeLineMenuSeparator2,
+                _mainTimeLineMenu设置序列入出点,
+                _mainTimeLineMenu加入批打包列表,
+                _mainTimeLineMenu查看批打包列表,
+                _mainTimeLineMenu清除批打包列表,
+                _mainTimeLineMenu时间标尺精度,
+                _mainTimeLineMenuSeparator3,
+                _mainTimeLineMenu所有轨道插入工作区,
+                _mainTimeLineMenu删除工作区中所有片段,
+                _mainTimeLineMenu清除工作区中所有片段,
+                _mainTimeLineMenu复制工作区中片段,
+                _mainTimeLineMenu粘贴工作区至时码线,
+                _mainTimeLineMenuSeparator4,
+                _mainTimeLineMenu黑场检测,
+                _mainTimeLineMenu质量检测,
+            });
+
+            timeLineControl_MainTL.ContextMenuStrip = _mainTimeLineMenu;
+
+        }
+
+        #endregion
+
+
+        #region 右键菜单事件处理
+
+        private void 删除空隙ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("删除空隙");
+        }
+
+
+        #endregion
+
+
 
 
         #region TestCode

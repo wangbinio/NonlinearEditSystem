@@ -286,6 +286,7 @@
             this.Controls.Add(this.labelX_生成路径);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
