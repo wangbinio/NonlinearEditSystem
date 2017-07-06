@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Common;
 
 namespace NonLinearEditSystem
 {
@@ -33,10 +34,10 @@ namespace NonLinearEditSystem
     {
         public ProjectInfo()
         {
-            
+
         }
 
-        public ProjectInfo(string version, string name, string path, long len, string updater, DateTime time, 
+        public ProjectInfo(string version, string name, string path, long len, string updater, DateTime time,
             VideoInfoStruct videoInfo, AudioInfoStruct audioInfo, string remarks)
         {
             ProjectVersion = version;
@@ -104,24 +105,31 @@ namespace NonLinearEditSystem
         /// <param name="fileName"></param>
         public void Load(string fileName)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
-            Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
-            ProjectInfo projectInfo = xs.Deserialize(stream) as ProjectInfo;
-
-            if (projectInfo != null)
+            try
             {
-                ProjectVersion = projectInfo.ProjectVersion;
-                ProjectName = projectInfo.ProjectName;
-                ProjectPath = projectInfo.ProjectPath;
-                Length = projectInfo.Length;
-                UpdateUser = projectInfo.UpdateUser;
-                UpdateTime = projectInfo.UpdateTime;
-                VideoInfo = projectInfo.VideoInfo;
-                AudioInfo = projectInfo.AudioInfo;
-                Remarks = projectInfo.Remarks;
-            }
+                XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+                Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                ProjectInfo projectInfo = xs.Deserialize(stream) as ProjectInfo;
 
-            stream.Close();
+                if (projectInfo != null)
+                {
+                    ProjectVersion = projectInfo.ProjectVersion;
+                    ProjectName = projectInfo.ProjectName;
+                    ProjectPath = projectInfo.ProjectPath;
+                    Length = projectInfo.Length;
+                    UpdateUser = projectInfo.UpdateUser;
+                    UpdateTime = projectInfo.UpdateTime;
+                    VideoInfo = projectInfo.VideoInfo;
+                    AudioInfo = projectInfo.AudioInfo;
+                    Remarks = projectInfo.Remarks;
+                }
+
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
         /// <summary>
@@ -129,11 +137,18 @@ namespace NonLinearEditSystem
         /// </summary>
         public void Save()
         {
-            XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
-            UpdateTime = DateTime.Now;
-            Stream stream = new FileStream(ProjectPath + @"\" + ProjectName, FileMode.Create, FileAccess.Write, FileShare.Read);
-            xs.Serialize(stream, this);
-            stream.Close();
+            try
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+                UpdateTime = DateTime.Now;
+                Stream stream = new FileStream(ProjectPath + @"\" + ProjectName, FileMode.Create, FileAccess.Write, FileShare.Read);
+                xs.Serialize(stream, this);
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
     }

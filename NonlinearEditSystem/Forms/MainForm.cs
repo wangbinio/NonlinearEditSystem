@@ -25,7 +25,7 @@ namespace NonLinearEditSystem.Forms
         #region 成员变量
 
         // 工程文件信息
-        private ProjectInfo projectInfo; 
+        private ProjectInfo projectInfo;
 
         // 数据库连接字符串
         private String _connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
@@ -233,9 +233,9 @@ namespace NonLinearEditSystem.Forms
                 _iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
                 _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
-                
+
                 _h264CodecIOCSharp = new H264CodecIOCSharp();
-                
+
                 _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
             }
             catch (Exception ex)
@@ -630,11 +630,11 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-            	projectInfo.Load(fileName);
+                projectInfo.Load(fileName);
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -655,7 +655,7 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-            	SaveFileDialog dialog = new SaveFileDialog();
+                SaveFileDialog dialog = new SaveFileDialog();
                 dialog.InitialDirectory = projectInfo.ProjectPath;
                 dialog.Filter = "Project File (*.Non)|*.Non";
                 dialog.FilterIndex = 1;
@@ -665,7 +665,7 @@ namespace NonLinearEditSystem.Forms
                     string[] strArray = dialog.FileName.Split('\\');
                     projectInfo.ProjectName = strArray[strArray.Length - 1];
                     projectInfo.ProjectPath = "";
-                    for (int i = 0; i < strArray.Length-1; i++)
+                    for (int i = 0; i < strArray.Length - 1; i++)
                     {
                         projectInfo.ProjectPath += strArray[i] + @"\";
                     }
@@ -675,7 +675,7 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -1642,7 +1642,54 @@ namespace NonLinearEditSystem.Forms
         private ToolStripMenuItem _mainTimeLineMenu黑场检测;
         private ToolStripMenuItem _mainTimeLineMenu质量检测;
 
+        // 序列监视器右键
+        private ContextMenuStrip _sequenceMenu;
+        private ToolStripMenuItem _sequenceMenu显示模式;
+        private ToolStripMenuItem _sequenceMenu帧方式显示;
+        private ToolStripMenuItem _sequenceMenu显示第一场;
+        private ToolStripMenuItem _sequenceMenu显示第二场;
+        private ToolStripSeparator _sequenceMenuSeparator1;
+
+        private ToolStripMenuItem _sequenceMenu缩放;
+        private ToolStripMenuItem _sequenceMenu缩放适配;
+        private ToolStripMenuItem _sequenceMenu缩放25;
+        private ToolStripMenuItem _sequenceMenu缩放50;
+        private ToolStripMenuItem _sequenceMenu缩放100;
+        private ToolStripMenuItem _sequenceMenu缩放150;
+        private ToolStripMenuItem _sequenceMenu缩放200;
+        private ToolStripMenuItem _sequenceMenu放大;
+        private ToolStripMenuItem _sequenceMenu缩小;
+        private ToolStripSeparator _sequenceMenuSeparator2;
+
+        private ToolStripMenuItem _sequenceMenu通道;
+        private ToolStripMenuItem _sequenceMenu通道RGBA;
+        private ToolStripMenuItem _sequenceMenu通道RGB;
+        private ToolStripMenuItem _sequenceMenu通道红色通道;
+        private ToolStripMenuItem _sequenceMenu通道绿色通道;
+        private ToolStripMenuItem _sequenceMenu通道蓝色通道;
+        private ToolStripMenuItem _sequenceMenu通道Alpha通道;
+        private ToolStripMenuItem _sequenceMenu通道亮度通道709;
+        private ToolStripMenuItem _sequenceMenu通道亮度通道601;
+        private ToolStripMenuItem _sequenceMenu输出图像;
+        private ToolStripSeparator _sequenceMenuSeparator3;
+
+        private ToolStripMenuItem _sequenceMenu方形像素显示;
+        private ToolStripMenuItem _sequenceMenu显示棋盘格;
+        private ToolStripMenuItem _sequenceMenu显示素材信息;
+        private ToolStripMenuItem _sequenceMenu网格;
+        private ToolStripMenuItem _sequenceMenu辅助线;
+        private ToolStripMenuItem _sequenceMenu辅助线显示辅助线;
+        private ToolStripSeparator _sequenceMenu辅助线Separator1;
+        private ToolStripMenuItem _sequenceMenu标题操作安全区域;
+        private ToolStripMenuItem _sequenceMenu辅助线图像框;
+        private ToolStripMenuItem _sequenceMenu辅助线坐标轴;
+
+
+
+
+
         #endregion
+
 
         #region 创建右键菜单
         public static Size _menuSize = new Size(125, 148);
@@ -1657,6 +1704,8 @@ namespace NonLinearEditSystem.Forms
             CreateTrackFileMenu();
 
             CreateTimelineMenu();
+
+            CreatesequenceMenu();
         }
 
         /// <summary>
@@ -1666,6 +1715,7 @@ namespace NonLinearEditSystem.Forms
         {
             _trackBlankMenu = new ContextMenuStrip
             {
+                BackColor = _menuColor,
                 Name = "_trackBlankMenu",
                 Size = _menuSize
             };
@@ -1693,7 +1743,7 @@ namespace NonLinearEditSystem.Forms
                 Name = "_粘贴MenuItem",
                 Size = _menuItemSize,
                 Text = "粘贴"
-            }; 
+            };
 
             _trackBlankSeparator1 = new ToolStripSeparator
             {
@@ -1701,7 +1751,7 @@ namespace NonLinearEditSystem.Forms
                 ForeColor = _menuColor,
                 Name = "_trackBlankSeparator1",
                 Size = _seperatorSize,
-            }; 
+            };
 
             _trackBlank当前轨道中插入工作区 = new ToolStripMenuItem
             {
@@ -1709,7 +1759,7 @@ namespace NonLinearEditSystem.Forms
                 Name = "_当前轨道中插入工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "当前轨道中插入工作区"
-            }; 
+            };
 
             _trackBlank删除当前轨道工作区 = new ToolStripMenuItem
             {
@@ -1717,7 +1767,7 @@ namespace NonLinearEditSystem.Forms
                 Name = "_删除当前轨道工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "删除当前轨道工作区"
-            }; 
+            };
 
             _trackBlank清除当前轨道工作区 = new ToolStripMenuItem
             {
@@ -1725,7 +1775,7 @@ namespace NonLinearEditSystem.Forms
                 Name = "_清除当前轨道工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "清除当前轨道工作区"
-            }; 
+            };
 
             _trackBlankMenu.Items.AddRange(new ToolStripItem[]
             {
@@ -1757,6 +1807,7 @@ namespace NonLinearEditSystem.Forms
         {
             _vedioTrackFileMenu = new ContextMenuStrip
             {
+                BackColor = _menuColor,
                 Name = "_vedioTrackFileMenu",
                 Size = _menuSize
             };
@@ -2126,6 +2177,7 @@ namespace NonLinearEditSystem.Forms
         {
             _mainTimeLineMenu = new ContextMenuStrip
             {
+                BackColor = _menuColor,
                 Name = "_mainTimeLineMenu",
                 Size = _menuSize
             };
@@ -2356,6 +2408,332 @@ namespace NonLinearEditSystem.Forms
 
             timeLineControl_MainTL.ContextMenuStrip = _mainTimeLineMenu;
 
+        }
+
+        /// <summary>
+        /// 创建序列监视器面板右键菜单
+        /// </summary>
+        private void CreatesequenceMenu()
+        {
+            _sequenceMenu = new ContextMenuStrip
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu",
+                Size = _menuSize
+            };
+            _sequenceMenu显示模式 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu显示模式",
+                Size = _menuItemSize,
+                Text = "显示模式"
+            };
+            _sequenceMenu帧方式显示 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu帧方式显示",
+                Size = _menuItemSize,
+                Text = "帧方式显示"
+            };
+            _sequenceMenu显示第一场 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu显示第一场",
+                Size = _menuItemSize,
+                Text = "显示第一场"
+            };
+            _sequenceMenu显示第二场 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu显示第二场",
+                Size = _menuItemSize,
+                Text = "显示第二场"
+            };
+            _sequenceMenuSeparator1 = new ToolStripSeparator
+            {
+                //BackColor = _menuColor,
+                //ForeColor = _menuColor,
+                Name = "_sequenceMenuSeparator1",
+                Size = _seperatorSize,
+            };
+
+            _sequenceMenu缩放 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放",
+                Size = _menuItemSize,
+                Text = "缩放"
+            };
+            _sequenceMenu缩放适配 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放适配",
+                Size = _menuItemSize,
+                Text = "适配"
+            };
+            _sequenceMenu缩放25 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放25",
+                Size = _menuItemSize,
+                Text = "25%"
+            };
+            _sequenceMenu缩放50 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放50",
+                Size = _menuItemSize,
+                Text = "50%"
+            };
+            _sequenceMenu缩放100 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放100",
+                Size = _menuItemSize,
+                Text = "100%"
+            };
+            _sequenceMenu缩放150 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放150",
+                Size = _menuItemSize,
+                Text = "150%"
+            };
+            _sequenceMenu缩放200 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩放200",
+                Size = _menuItemSize,
+                Text = "200%"
+            };
+            _sequenceMenu放大 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu放大",
+                Size = _menuItemSize,
+                Text = "放大"
+            };
+            _sequenceMenu缩小 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu缩小",
+                Size = _menuItemSize,
+                Text = "缩小"
+            };
+            _sequenceMenuSeparator2 = new ToolStripSeparator
+            {
+                //BackColor = _menuColor,
+                //ForeColor = _menuColor,
+                Name = "_sequenceMenuSeparator2",
+                Size = _seperatorSize,
+            };
+
+            _sequenceMenu通道 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道",
+                Size = _menuItemSize,
+                Text = "通道"
+            };
+            _sequenceMenu通道RGBA = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道RGBA",
+                Size = _menuItemSize,
+                Text = "RGBA"
+            };
+            _sequenceMenu通道RGB = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道RGB",
+                Size = _menuItemSize,
+                Text = "RGB"
+            };
+            _sequenceMenu通道红色通道 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道红色通道",
+                Size = _menuItemSize,
+                Text = "红色通道"
+            };
+            _sequenceMenu通道绿色通道 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道绿色通道",
+                Size = _menuItemSize,
+                Text = "绿色通道"
+            };
+            _sequenceMenu通道蓝色通道 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道蓝色通道",
+                Size = _menuItemSize,
+                Text = "蓝色通道"
+            };
+            _sequenceMenu通道Alpha通道 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道Alpha通道",
+                Size = _menuItemSize,
+                Text = "Alpha通道"
+            };
+            _sequenceMenu通道亮度通道709 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道亮度通道709",
+                Size = _menuItemSize,
+                Text = "亮度通道(709)"
+            };
+            _sequenceMenu通道亮度通道601 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu通道亮度通道601",
+                Size = _menuItemSize,
+                Text = "亮度通道(601)"
+            };
+            _sequenceMenu输出图像 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu输出图像",
+                Size = _menuItemSize,
+                Text = "输出图像"
+            };
+            _sequenceMenuSeparator3 = new ToolStripSeparator
+            {
+                //BackColor = _menuColor,
+                //ForeColor = _menuColor,
+                Name = "_sequenceMenuSeparator3",
+                Size = _seperatorSize,
+            };
+
+            _sequenceMenu方形像素显示 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu方形像素显示",
+                Size = _menuItemSize,
+                Text = "方形像素显示"
+            };
+            _sequenceMenu显示棋盘格 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu显示棋盘格",
+                Size = _menuItemSize,
+                Text = "显示棋盘格"
+            };
+            _sequenceMenu显示素材信息 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu显示素材信息",
+                Size = _menuItemSize,
+                Text = "显示素材信息"
+            };
+            _sequenceMenu网格 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu网格",
+                Size = _menuItemSize,
+                Text = "网格"
+            };
+            _sequenceMenu辅助线 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu辅助线",
+                Size = _menuItemSize,
+                Text = "辅助线"
+            };
+            _sequenceMenu辅助线显示辅助线 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu辅助线显示辅助线",
+                Size = _menuItemSize,
+                Text = "显示辅助线"
+            };
+            _sequenceMenu辅助线Separator1 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menuColor,
+                Name = "_sequenceMenu辅助线Separator1",
+                Size = _seperatorSize,
+            };
+            _sequenceMenu标题操作安全区域 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu标题操作安全区域",
+                Size = _menuItemSize,
+                Text = "标题/操作安全区域"
+            };
+            _sequenceMenu辅助线图像框 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu辅助线图像框",
+                Size = _menuItemSize,
+                Text = "辅助线图像框"
+            };
+            _sequenceMenu辅助线坐标轴 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                Name = "_sequenceMenu辅助线坐标轴",
+                Size = _menuItemSize,
+                Text = "辅助线坐标轴"
+            };
+
+            _sequenceMenu.Items.AddRange(new ToolStripItem[]
+            {
+               _sequenceMenu显示模式,
+               _sequenceMenuSeparator1,
+               _sequenceMenu缩放,
+               _sequenceMenu放大,
+               _sequenceMenu缩小,
+               _sequenceMenuSeparator2,
+               _sequenceMenu通道,
+               _sequenceMenu输出图像,
+               _sequenceMenuSeparator3,
+               _sequenceMenu方形像素显示,
+               _sequenceMenu显示棋盘格,
+               _sequenceMenu显示素材信息,
+               _sequenceMenu网格,
+               _sequenceMenu辅助线
+            });
+
+            _sequenceMenu显示模式.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _sequenceMenu帧方式显示,
+                _sequenceMenu显示第一场,
+                _sequenceMenu显示第二场
+            });
+
+            _sequenceMenu缩放.DropDownItems.AddRange(new ToolStripItem[]
+            {
+               _sequenceMenu缩放适配,
+                _sequenceMenu缩放25,
+                _sequenceMenu缩放50,
+                _sequenceMenu缩放100,
+                _sequenceMenu缩放150,
+                _sequenceMenu缩放200
+            });
+
+            _sequenceMenu通道.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _sequenceMenu通道RGBA,
+                _sequenceMenu通道RGB,
+                _sequenceMenu通道红色通道,
+                _sequenceMenu通道绿色通道,
+                _sequenceMenu通道蓝色通道,
+                _sequenceMenu通道Alpha通道,
+                _sequenceMenu通道亮度通道709,
+                _sequenceMenu通道亮度通道601
+            });
+
+            _sequenceMenu辅助线.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                _sequenceMenu辅助线显示辅助线,
+                _sequenceMenu辅助线Separator1,
+                _sequenceMenu标题操作安全区域,
+                _sequenceMenu辅助线图像框,
+                _sequenceMenu辅助线坐标轴
+            });
+
+            PanelEx_Sequence.ContextMenuStrip = _sequenceMenu;
         }
 
         #endregion
