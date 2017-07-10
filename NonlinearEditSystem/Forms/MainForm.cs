@@ -74,7 +74,16 @@ namespace NonLinearEditSystem.Forms
 
         #region 控件变量
 
+        /// <summary>
+        /// 时间线游标当前时间
+        /// </summary>
         public string TimelineCurrentTime => labelItem_CurrentTime.Text;
+
+        /// <summary>
+        /// 轨道上的视频素材
+        /// </summary>
+        public List<PanelEx> listVedioClips = new List<PanelEx>();
+
 
         #endregion
 
@@ -265,7 +274,7 @@ namespace NonLinearEditSystem.Forms
         ///     去除完整路径,只留下文件名
         /// </summary>
         /// <param name="dirsAndFilePath"></param>
-        private static string[] ClearDirAndFilePath(string[] dirsAndFilePath)
+        public static string[] ClearDirAndFilePath(string[] dirsAndFilePath)
         {
             try
             {
@@ -286,6 +295,22 @@ namespace NonLinearEditSystem.Forms
                 return null;
             }
         }
+
+        /// <summary>
+        /// 按时间顺序排列轨道上的音视频文件
+        /// </summary>
+        public void SortVedioClips()
+        {
+            listVedioClips.Sort((x, y) =>
+            {
+                if (x.Location.X <= y.Location.X)
+                {
+                    return -1;
+                }
+                return 1;
+            });
+        }
+
 
         #endregion 辅助函数
 
@@ -381,6 +406,7 @@ namespace NonLinearEditSystem.Forms
 
                 // 4.将此panel添加到sender上
                 ((PanelEx)sender).Controls.Add(_vedioFilesPanel[vedioFilePanelIndex]);
+                listVedioClips.Add(_vedioFilesPanel[vedioFilePanelIndex]);
 
                 // 5.更新所有轨道面板的长度
                 UpdateTrackWidthWhenAddFile(length);
@@ -2760,6 +2786,11 @@ namespace NonLinearEditSystem.Forms
         string strOutH264FileName = string.Empty;
         string strOutAacFileName = string.Empty;
 
+        StringList strInH264VideoFileList = new StringList();
+        StringList strInAacFileList = new StringList();
+
+        private bool bDeEncodeFinish = false;
+
         private void 分离ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -2800,9 +2831,6 @@ namespace NonLinearEditSystem.Forms
 
                 //List<String> strInH264VideoFileList = new List<String>(10);
                 //List<String> strInAacFileList = new List<String>(10);
-
-                StringList strInH264VideoFileList = new StringList();
-                StringList strInAacFileList = new StringList(); ;
 
                 strInH264VideoFileList.Add(strDemuxVideoFile);
                 strInAacFileList.Add(strDemuxAudioFile);
@@ -2845,10 +2873,10 @@ namespace NonLinearEditSystem.Forms
                 // int StartMuxer(StringList ^ strInH264FileList, String ^% stroutput_filename);
 
                 StringList strInH264FileList = new StringList();
-                //strInH264FileList.Add(strOutH264FileName);
-                //strInH264FileList.Add(strOutAacFileName);
-                strInH264FileList.Add(strDemuxVideoFile);
-                strInH264FileList.Add(strDemuxAudioFile);
+                strInH264FileList.Add(strOutH264FileName);
+                strInH264FileList.Add(strOutAacFileName);
+                //strInH264FileList.Add(strDemuxVideoFile);
+                //strInH264FileList.Add(strDemuxAudioFile);
 
                 string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
                 int res = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
@@ -2884,6 +2912,8 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+
+                /*
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.InitialDirectory = @"D:\视频素材";
                 openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4| All Files (*.*)|*.*";
@@ -2921,10 +2951,10 @@ namespace NonLinearEditSystem.Forms
                         if (resVedio >= 0 && resAudio >= 0)
                         {
                             StringList strInH264FileList = new StringList();
-                            //strInH264FileList.Add(strOutH264FileName);
-                            //strInH264FileList.Add(strOutAacFileName);
-                            strInH264FileList.Add(strDemuxVideoFile);
-                            strInH264FileList.Add(strDemuxAudioFile);
+                            strInH264FileList.Add(strOutH264FileName);
+                            strInH264FileList.Add(strOutAacFileName);
+                            //strInH264FileList.Add(strDemuxVideoFile);
+                            //strInH264FileList.Add(strDemuxAudioFile);
 
                             string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
                             int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
@@ -2963,7 +2993,85 @@ namespace NonLinearEditSystem.Forms
                     {
                         MessageBox.Show("分离失败");
                     }
+                }*/
+
+                SortVedioClips();
+
+                foreach (var vedioClip in listVedioClips)
+                {
+                    string filename = vedioClip.Name;
+
+                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
+
+                    if (res >= 0)
+                    {
+                        strInH264VideoFileList.Add(strDemuxVideoFile);
+                        strInAacFileList.Add(strDemuxAudioFile);
+                    }
+                    else
+                    {
+                        MessageBox.Show(filename + "分离失败");
+                    }
                 }
+
+                if (strInH264VideoFileList.Count == 0)
+                {
+                    MessageBox.Show("未分离出音视频文件, 无法进行编解码");
+                    return;
+                }
+
+                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
+                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
+
+                if (resVedio >= 0 && resAudio >= 0)
+                {
+                    while (true)
+                    {
+                        if (_h264CodecIOCSharp.isFinish())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Thread.Sleep(1000);
+                        }
+                    }
+                }
+
+
+               
+                    StringList strInH264FileList = new StringList();
+                    strInH264FileList.Add(strOutH264FileName);
+                    strInH264FileList.Add(strOutAacFileName);
+
+                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                    int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
+
+                    while (true)
+                    {
+                        if (_mp4FilesMuxIOCSharp.MuxerFinished())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Thread.Sleep(1000);
+                        }
+                    }
+
+                    if (PackRes >= 0)
+                    {
+                        if (MessageBox.Show("打包成功") == DialogResult.OK)
+                        {
+                            Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("打包失败");
+                    }
+                
             }
             catch (Exception ex)
             {
@@ -2972,7 +3080,27 @@ namespace NonLinearEditSystem.Forms
         }
 
 
+        public void DecEncoder()
+        {
+            int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
+            int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
 
+            if (resVedio >= 0 && resAudio >= 0)
+            {
+                while (true)
+                {
+                    if (_h264CodecIOCSharp.isFinish())
+                    {
+                        bDeEncodeFinish = true;
+                        return;
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+            }
+        }
 
 
 
