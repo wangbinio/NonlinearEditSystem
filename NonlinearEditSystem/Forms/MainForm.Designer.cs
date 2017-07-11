@@ -2160,7 +2160,9 @@
             this.Controls.Add(this.tabControl_TimeLine);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "时间线桌面";

@@ -261,7 +261,8 @@ namespace NonLinearEditSystem.Forms
             timeLineControl_MainTL.SetRelativeControl(timeLineControl_Sequence);
             timeLineControl_Sequence.SetRelativeControl(timeLineControl_MainTL);
             timeLineControl_Sequence.NDistanceOfTicks = 10;
-
+            timeLineControl_MainTL.Invalidate();
+            timeLineControl_Sequence.Invalidate();
             UpdateLabelTime();
         }
 
@@ -1358,6 +1359,8 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void UpdateShowFrame()
         {
+            //TODO:更新需要显示的帧的处理不能这样
+            return;
             try
             {
                 foreach (PanelEx vedioTrackPanel in _vedioTrackPanels)
@@ -1549,6 +1552,8 @@ namespace NonLinearEditSystem.Forms
 
                 timeLineControl_MainTL.Invalidate();
                 timeLineControl_Sequence.Invalidate();
+
+                UpdateLabelTime();
             }
         }
 
@@ -1566,6 +1571,8 @@ namespace NonLinearEditSystem.Forms
 
                 timeLineControl_MainTL.Invalidate();
                 timeLineControl_Sequence.Invalidate();
+
+                UpdateLabelTime();
             }
         }
 
