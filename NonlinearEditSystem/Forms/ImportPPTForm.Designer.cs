@@ -59,14 +59,14 @@
             // 
             // textBoxX_FilePath
             // 
-            this.textBoxX_FilePath.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FilePath.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FilePath.Border.Class = "TextBoxBorder";
             this.textBoxX_FilePath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FilePath.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FilePath.Location = new System.Drawing.Point(101, 167);
             this.textBoxX_FilePath.Name = "textBoxX_FilePath";
             this.textBoxX_FilePath.PreventEnterBeep = true;
@@ -77,12 +77,12 @@
             // 
             // labelX_生成路径
             // 
-            this.labelX_生成路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_生成路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_生成路径.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_生成路径.ForeColor = System.Drawing.Color.Black;
+            this.labelX_生成路径.ForeColor = System.Drawing.Color.White;
             this.labelX_生成路径.Location = new System.Drawing.Point(19, 167);
             this.labelX_生成路径.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_生成路径.Name = "labelX_生成路径";
@@ -94,7 +94,8 @@
             // 
             this.comboBoxEx_生成到.DisplayMember = "Text";
             this.comboBoxEx_生成到.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_生成到.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_生成到.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_生成到.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_生成到.FormattingEnabled = true;
             this.comboBoxEx_生成到.ItemHeight = 18;
             this.comboBoxEx_生成到.Location = new System.Drawing.Point(101, 50);
@@ -106,12 +107,12 @@
             // 
             // labelX_缩略图
             // 
-            this.labelX_缩略图.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_缩略图.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_缩略图.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_缩略图.ForeColor = System.Drawing.Color.Black;
+            this.labelX_缩略图.ForeColor = System.Drawing.Color.White;
             this.labelX_缩略图.Location = new System.Drawing.Point(18, 50);
             this.labelX_缩略图.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_缩略图.Name = "labelX_缩略图";
@@ -121,14 +122,14 @@
             // 
             // textBoxX_FileName
             // 
-            this.textBoxX_FileName.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FileName.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FileName.Border.Class = "TextBoxBorder";
             this.textBoxX_FileName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FileName.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FileName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FileName.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FileName.Location = new System.Drawing.Point(101, 89);
             this.textBoxX_FileName.Name = "textBoxX_FileName";
             this.textBoxX_FileName.PreventEnterBeep = true;
@@ -139,12 +140,12 @@
             // 
             // labelX_文件名
             // 
-            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_文件名.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_文件名.ForeColor = System.Drawing.Color.Black;
+            this.labelX_文件名.ForeColor = System.Drawing.Color.White;
             this.labelX_文件名.Location = new System.Drawing.Point(19, 89);
             this.labelX_文件名.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_文件名.Name = "labelX_文件名";
@@ -166,8 +167,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(18, 41);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(480, 2);
@@ -176,8 +177,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(19, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(480, 2);
@@ -186,8 +187,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox5.ForeColor = System.Drawing.Color.Black;
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
             this.groupBox5.Location = new System.Drawing.Point(18, 205);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(480, 2);
@@ -196,12 +197,12 @@
             // 
             // labelX1
             // 
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.ForeColor = System.Drawing.Color.Black;
+            this.labelX1.ForeColor = System.Drawing.Color.White;
             this.labelX1.Location = new System.Drawing.Point(19, 128);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
@@ -211,14 +212,14 @@
             // 
             // textBoxX_PPT路径
             // 
-            this.textBoxX_PPT路径.BackColor = System.Drawing.Color.White;
+            this.textBoxX_PPT路径.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_PPT路径.Border.Class = "TextBoxBorder";
             this.textBoxX_PPT路径.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_PPT路径.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_PPT路径.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_PPT路径.ForeColor = System.Drawing.Color.White;
             this.textBoxX_PPT路径.Location = new System.Drawing.Point(101, 128);
             this.textBoxX_PPT路径.Name = "textBoxX_PPT路径";
             this.textBoxX_PPT路径.PreventEnterBeep = true;
@@ -240,8 +241,8 @@
             // radioButton_生成图片
             // 
             this.radioButton_生成图片.AutoSize = true;
-            this.radioButton_生成图片.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.radioButton_生成图片.ForeColor = System.Drawing.Color.Black;
+            this.radioButton_生成图片.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.radioButton_生成图片.ForeColor = System.Drawing.Color.White;
             this.radioButton_生成图片.Location = new System.Drawing.Point(19, 10);
             this.radioButton_生成图片.Name = "radioButton_生成图片";
             this.radioButton_生成图片.Size = new System.Drawing.Size(74, 21);
@@ -252,9 +253,9 @@
             // radioButton_生成视频
             // 
             this.radioButton_生成视频.AutoSize = true;
-            this.radioButton_生成视频.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.radioButton_生成视频.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.radioButton_生成视频.Checked = true;
-            this.radioButton_生成视频.ForeColor = System.Drawing.Color.Black;
+            this.radioButton_生成视频.ForeColor = System.Drawing.Color.White;
             this.radioButton_生成视频.Location = new System.Drawing.Point(127, 10);
             this.radioButton_生成视频.Name = "radioButton_生成视频";
             this.radioButton_生成视频.Size = new System.Drawing.Size(74, 21);
@@ -286,7 +287,6 @@
             this.Controls.Add(this.labelX_生成路径);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

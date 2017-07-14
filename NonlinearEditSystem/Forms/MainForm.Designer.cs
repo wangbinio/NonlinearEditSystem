@@ -42,10 +42,10 @@
             this.imageList_Files = new System.Windows.Forms.ImageList(this.components);
             this.label_FileInfo = new DevComponents.DotNetBar.LabelX();
             this.tabItem_Project = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel_SpecialEffect = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem_SpecialEffect = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel_Template = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabItemTemplate = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControl_Sequence = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_Seq = new DevComponents.DotNetBar.TabControlPanel();
             this.timeLineControl_Sequence = new TimeLineControl.TimeLineControl();
@@ -73,41 +73,30 @@
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.偏好设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工程设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.导入工程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入序列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入AAFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入配音序列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.删除未引用的素材ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.工程整理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工程信息统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.最近打开工程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.szwbprjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.撤销ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重做ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.配音DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.显示第二效果监视器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.缓存管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.导入P2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入XDCAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入SxStoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入E2toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导入PPTtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.采集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打包输出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.录制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,13 +217,13 @@
             // 
             // tabControl_Project
             // 
-            this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControl_Project.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControl_Project.CanReorderTabs = true;
             this.tabControl_Project.Controls.Add(this.tabControlPanel_Project);
-            this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
             this.tabControl_Project.Controls.Add(this.tabControlPanel_SpecialEffect);
+            this.tabControl_Project.Controls.Add(this.tabControlPanel_Template);
             this.tabControl_Project.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tabControl_Project.ForeColor = System.Drawing.Color.Black;
+            this.tabControl_Project.ForeColor = System.Drawing.Color.White;
             this.tabControl_Project.Location = new System.Drawing.Point(0, 25);
             this.tabControl_Project.Name = "tabControl_Project";
             this.tabControl_Project.Padding = new System.Windows.Forms.Padding(3);
@@ -260,9 +249,9 @@
             this.tabControlPanel_Project.Name = "tabControlPanel_Project";
             this.tabControlPanel_Project.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_Project.Size = new System.Drawing.Size(760, 429);
-            this.tabControlPanel_Project.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Project.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControlPanel_Project.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Project.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Project.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.tabControlPanel_Project.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_Project.Style.GradientAngle = 90;
@@ -272,10 +261,11 @@
             // listView_Files
             // 
             this.listView_Files.AllowDrop = true;
-            this.listView_Files.BackColor = System.Drawing.Color.White;
+            this.listView_Files.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
+            this.listView_Files.Border.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.listView_Files.Border.Class = "ListViewBorder";
             this.listView_Files.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.listView_Files.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -286,9 +276,10 @@
             this.columnHeader5,
             this.columnHeader6});
             this.listView_Files.DisabledBackColor = System.Drawing.Color.Empty;
+            this.listView_Files.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.listView_Files.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView_Files.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.listView_Files.ForeColor = System.Drawing.Color.Black;
+            this.listView_Files.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.listView_Files.ForeColor = System.Drawing.Color.White;
             this.listView_Files.FullRowSelect = true;
             this.listView_Files.Location = new System.Drawing.Point(1, 65);
             this.listView_Files.Name = "listView_Files";
@@ -343,14 +334,14 @@
             // 
             // label_FileInfo
             // 
-            this.label_FileInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.label_FileInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.label_FileInfo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.label_FileInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.label_FileInfo.Font = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.label_FileInfo.ForeColor = System.Drawing.Color.Black;
+            this.label_FileInfo.ForeColor = System.Drawing.Color.White;
             this.label_FileInfo.Location = new System.Drawing.Point(1, 1);
             this.label_FileInfo.Name = "label_FileInfo";
             this.label_FileInfo.SingleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
@@ -366,29 +357,6 @@
             this.tabItem_Project.Name = "tabItem_Project";
             this.tabItem_Project.Text = "工程浏览器";
             // 
-            // tabControlPanel_Template
-            // 
-            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
-            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
-            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel_Template.Size = new System.Drawing.Size(760, 429);
-            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
-            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel_Template.Style.GradientAngle = 90;
-            this.tabControlPanel_Template.TabIndex = 9;
-            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
-            // 
-            // tabItemTemplate
-            // 
-            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
-            this.tabItemTemplate.Name = "tabItemTemplate";
-            this.tabItemTemplate.Text = "模板库";
-            // 
             // tabControlPanel_SpecialEffect
             // 
             this.tabControlPanel_SpecialEffect.DisabledBackColor = System.Drawing.Color.Empty;
@@ -397,9 +365,9 @@
             this.tabControlPanel_SpecialEffect.Name = "tabControlPanel_SpecialEffect";
             this.tabControlPanel_SpecialEffect.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_SpecialEffect.Size = new System.Drawing.Size(760, 429);
-            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_SpecialEffect.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControlPanel_SpecialEffect.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_SpecialEffect.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.tabControlPanel_SpecialEffect.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_SpecialEffect.Style.GradientAngle = 90;
@@ -412,14 +380,37 @@
             this.tabItem_SpecialEffect.Name = "tabItem_SpecialEffect";
             this.tabItem_SpecialEffect.Text = "特技控制";
             // 
+            // tabControlPanel_Template
+            // 
+            this.tabControlPanel_Template.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel_Template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel_Template.Location = new System.Drawing.Point(0, 28);
+            this.tabControlPanel_Template.Name = "tabControlPanel_Template";
+            this.tabControlPanel_Template.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel_Template.Size = new System.Drawing.Size(760, 429);
+            this.tabControlPanel_Template.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.tabControlPanel_Template.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel_Template.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.tabControlPanel_Template.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel_Template.Style.GradientAngle = 90;
+            this.tabControlPanel_Template.TabIndex = 9;
+            this.tabControlPanel_Template.TabItem = this.tabItemTemplate;
+            // 
+            // tabItemTemplate
+            // 
+            this.tabItemTemplate.AttachedControl = this.tabControlPanel_Template;
+            this.tabItemTemplate.Name = "tabItemTemplate";
+            this.tabItemTemplate.Text = "模板库";
+            // 
             // tabControl_Sequence
             // 
-            this.tabControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControl_Sequence.CanReorderTabs = true;
             this.tabControl_Sequence.Controls.Add(this.tabControlPanel_Seq);
             this.tabControl_Sequence.Controls.Add(this.tabControlPanel_Segment);
             this.tabControl_Sequence.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl_Sequence.ForeColor = System.Drawing.Color.Black;
+            this.tabControl_Sequence.ForeColor = System.Drawing.Color.White;
             this.tabControl_Sequence.Location = new System.Drawing.Point(765, 25);
             this.tabControl_Sequence.Name = "tabControl_Sequence";
             this.tabControl_Sequence.Padding = new System.Windows.Forms.Padding(3);
@@ -454,9 +445,9 @@
             this.tabControlPanel_Seq.Name = "tabControlPanel_Seq";
             this.tabControlPanel_Seq.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_Seq.Size = new System.Drawing.Size(819, 429);
-            this.tabControlPanel_Seq.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Seq.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControlPanel_Seq.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Seq.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Seq.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.tabControlPanel_Seq.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_Seq.Style.GradientAngle = 90;
@@ -465,10 +456,10 @@
             // 
             // timeLineControl_Sequence
             // 
-            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Sequence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
             this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.White;
             this.timeLineControl_Sequence.IndexOfSecEveryTicks = 5;
             this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 359);
             this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
@@ -601,14 +592,14 @@
             // labelX_SeqTime
             // 
             this.labelX_SeqTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelX_SeqTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_SeqTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_SeqTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_SeqTime.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX_SeqTime.FontBold = true;
-            this.labelX_SeqTime.ForeColor = System.Drawing.Color.Black;
+            this.labelX_SeqTime.ForeColor = System.Drawing.Color.White;
             this.labelX_SeqTime.Location = new System.Drawing.Point(3, 404);
             this.labelX_SeqTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_SeqTime.Name = "labelX_SeqTime";
@@ -653,9 +644,9 @@
             this.tabControlPanel_Segment.Name = "tabControlPanel_Segment";
             this.tabControlPanel_Segment.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_Segment.Size = new System.Drawing.Size(819, 429);
-            this.tabControlPanel_Segment.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_Segment.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControlPanel_Segment.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_Segment.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_Segment.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.tabControlPanel_Segment.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_Segment.Style.GradientAngle = 90;
@@ -671,7 +662,7 @@
             this.slider_SegmentTime.BorderRoundRectSize = new System.Drawing.Size(4, 4);
             this.slider_SegmentTime.ElapsedInnerColor = System.Drawing.SystemColors.HotTrack;
             this.slider_SegmentTime.ElapsedOuterColor = System.Drawing.SystemColors.HotTrack;
-            this.slider_SegmentTime.ForeColor = System.Drawing.Color.Black;
+            this.slider_SegmentTime.ForeColor = System.Drawing.Color.White;
             this.slider_SegmentTime.LargeChange = ((uint)(5u));
             this.slider_SegmentTime.Location = new System.Drawing.Point(89, 346);
             this.slider_SegmentTime.Name = "slider_SegmentTime";
@@ -688,14 +679,14 @@
             // labelX_SegmentTime
             // 
             this.labelX_SegmentTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelX_SegmentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_SegmentTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_SegmentTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_SegmentTime.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX_SegmentTime.FontBold = true;
-            this.labelX_SegmentTime.ForeColor = System.Drawing.Color.Black;
+            this.labelX_SegmentTime.ForeColor = System.Drawing.Color.White;
             this.labelX_SegmentTime.Location = new System.Drawing.Point(3, 404);
             this.labelX_SegmentTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_SegmentTime.Name = "labelX_SegmentTime";
@@ -706,10 +697,10 @@
             // 
             // timeLineControl_Segment
             // 
-            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_Segment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.timeLineControl_Segment.Dock = System.Windows.Forms.DockStyle.Top;
             this.timeLineControl_Segment.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_Segment.ForeColor = System.Drawing.Color.White;
             this.timeLineControl_Segment.IndexOfSecEveryTicks = 6;
             this.timeLineControl_Segment.Location = new System.Drawing.Point(1, 313);
             this.timeLineControl_Segment.Name = "timeLineControl_Segment";
@@ -749,35 +740,33 @@
             // 
             // 工程ToolStripMenuItem
             // 
+            this.工程ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.工程ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新建ToolStripMenuItem,
             this.打开ToolStripMenuItem,
             this.保存ToolStripMenuItem,
             this.另存为ToolStripMenuItem,
             this.关闭ToolStripMenuItem,
-            this.toolStripSeparator1,
             this.偏好设置ToolStripMenuItem,
             this.工程设置ToolStripMenuItem,
-            this.toolStripSeparator2,
             this.导入工程ToolStripMenuItem,
             this.导入序列ToolStripMenuItem,
             this.导入AAFToolStripMenuItem,
             this.导入配音序列ToolStripMenuItem,
-            this.toolStripSeparator3,
             this.删除未引用的素材ToolStripMenuItem,
-            this.toolStripSeparator4,
             this.工程整理ToolStripMenuItem,
             this.工程信息统计ToolStripMenuItem,
             this.最近打开工程ToolStripMenuItem,
-            this.toolStripSeparator5,
             this.退出ToolStripMenuItem});
-            this.工程ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.工程ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工程ToolStripMenuItem.Name = "工程ToolStripMenuItem";
             this.工程ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.工程ToolStripMenuItem.Text = "工程";
             // 
             // 新建ToolStripMenuItem
             // 
+            this.新建ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.新建ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
             this.新建ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.新建ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -786,6 +775,8 @@
             // 
             // 打开ToolStripMenuItem
             // 
+            this.打开ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.打开ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
             this.打开ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.打开ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -794,6 +785,8 @@
             // 
             // 保存ToolStripMenuItem
             // 
+            this.保存ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.保存ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
             this.保存ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.保存ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -802,6 +795,8 @@
             // 
             // 另存为ToolStripMenuItem
             // 
+            this.另存为ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.另存为ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.另存为ToolStripMenuItem.Name = "另存为ToolStripMenuItem";
             this.另存为ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
@@ -811,20 +806,18 @@
             // 
             // 关闭ToolStripMenuItem
             // 
+            this.关闭ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.关闭ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.关闭ToolStripMenuItem.Name = "关闭ToolStripMenuItem";
             this.关闭ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
             this.关闭ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.关闭ToolStripMenuItem.Text = "关闭(&C)";
             this.关闭ToolStripMenuItem.Click += new System.EventHandler(this.关闭ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
-            // 
             // 偏好设置ToolStripMenuItem
             // 
+            this.偏好设置ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.偏好设置ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.偏好设置ToolStripMenuItem.Name = "偏好设置ToolStripMenuItem";
             this.偏好设置ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.偏好设置ToolStripMenuItem.Text = "偏好设置";
@@ -832,19 +825,17 @@
             // 
             // 工程设置ToolStripMenuItem
             // 
+            this.工程设置ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.工程设置ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工程设置ToolStripMenuItem.Name = "工程设置ToolStripMenuItem";
             this.工程设置ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.工程设置ToolStripMenuItem.Text = "工程设置";
             this.工程设置ToolStripMenuItem.Click += new System.EventHandler(this.工程设置ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(203, 6);
-            // 
             // 导入工程ToolStripMenuItem
             // 
+            this.导入工程ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入工程ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入工程ToolStripMenuItem.Name = "导入工程ToolStripMenuItem";
             this.导入工程ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入工程ToolStripMenuItem.Text = "导入工程";
@@ -852,6 +843,8 @@
             // 
             // 导入序列ToolStripMenuItem
             // 
+            this.导入序列ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入序列ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入序列ToolStripMenuItem.Name = "导入序列ToolStripMenuItem";
             this.导入序列ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入序列ToolStripMenuItem.Text = "导入序列";
@@ -859,6 +852,8 @@
             // 
             // 导入AAFToolStripMenuItem
             // 
+            this.导入AAFToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入AAFToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入AAFToolStripMenuItem.Name = "导入AAFToolStripMenuItem";
             this.导入AAFToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入AAFToolStripMenuItem.Text = "导入AAF";
@@ -866,63 +861,49 @@
             // 
             // 导入配音序列ToolStripMenuItem
             // 
+            this.导入配音序列ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入配音序列ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入配音序列ToolStripMenuItem.Name = "导入配音序列ToolStripMenuItem";
             this.导入配音序列ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入配音序列ToolStripMenuItem.Text = "导入配音序列";
             this.导入配音序列ToolStripMenuItem.Click += new System.EventHandler(this.导入配音序列ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(203, 6);
-            // 
             // 删除未引用的素材ToolStripMenuItem
             // 
+            this.删除未引用的素材ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.删除未引用的素材ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.删除未引用的素材ToolStripMenuItem.Name = "删除未引用的素材ToolStripMenuItem";
             this.删除未引用的素材ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.删除未引用的素材ToolStripMenuItem.Text = "删除未引用的素材";
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(203, 6);
-            // 
             // 工程整理ToolStripMenuItem
             // 
+            this.工程整理ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.工程整理ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工程整理ToolStripMenuItem.Name = "工程整理ToolStripMenuItem";
             this.工程整理ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.工程整理ToolStripMenuItem.Text = "工程整理";
             // 
             // 工程信息统计ToolStripMenuItem
             // 
+            this.工程信息统计ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.工程信息统计ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工程信息统计ToolStripMenuItem.Name = "工程信息统计ToolStripMenuItem";
             this.工程信息统计ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.工程信息统计ToolStripMenuItem.Text = "工程信息统计";
             // 
             // 最近打开工程ToolStripMenuItem
             // 
-            this.最近打开工程ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.szwbprjToolStripMenuItem});
+            this.最近打开工程ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.最近打开工程ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.最近打开工程ToolStripMenuItem.Name = "最近打开工程ToolStripMenuItem";
             this.最近打开工程ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.最近打开工程ToolStripMenuItem.Text = "最近打开工程";
             // 
-            // szwbprjToolStripMenuItem
-            // 
-            this.szwbprjToolStripMenuItem.Name = "szwbprjToolStripMenuItem";
-            this.szwbprjToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.szwbprjToolStripMenuItem.Text = "szwb.Non";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(203, 6);
-            // 
             // 退出ToolStripMenuItem
             // 
+            this.退出ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.退出ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -930,22 +911,22 @@
             // 
             // 编辑ToolStripMenuItem
             // 
+            this.编辑ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.撤销ToolStripMenuItem,
             this.重做ToolStripMenuItem,
-            this.toolStripSeparator6,
             this.配音DToolStripMenuItem,
-            this.toolStripSeparator7,
             this.显示第二效果监视器ToolStripMenuItem,
-            this.toolStripSeparator8,
             this.缓存管理ToolStripMenuItem});
-            this.编辑ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.编辑ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.编辑ToolStripMenuItem.Text = "编辑";
             // 
             // 撤销ToolStripMenuItem
             // 
+            this.撤销ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.撤销ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.撤销ToolStripMenuItem.Name = "撤销ToolStripMenuItem";
             this.撤销ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.撤销ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
@@ -953,81 +934,72 @@
             // 
             // 重做ToolStripMenuItem
             // 
+            this.重做ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.重做ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.重做ToolStripMenuItem.Name = "重做ToolStripMenuItem";
             this.重做ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.重做ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.重做ToolStripMenuItem.Text = "重做(&R)";
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(181, 6);
-            // 
             // 配音DToolStripMenuItem
             // 
+            this.配音DToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.配音DToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.配音DToolStripMenuItem.Name = "配音DToolStripMenuItem";
             this.配音DToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.配音DToolStripMenuItem.Text = "配音(&D)";
             this.配音DToolStripMenuItem.Click += new System.EventHandler(this.配音DToolStripMenuItem_Click);
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(181, 6);
-            // 
             // 显示第二效果监视器ToolStripMenuItem
             // 
+            this.显示第二效果监视器ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.显示第二效果监视器ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.显示第二效果监视器ToolStripMenuItem.Name = "显示第二效果监视器ToolStripMenuItem";
             this.显示第二效果监视器ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.显示第二效果监视器ToolStripMenuItem.Text = "显示第二效果监视器";
             // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(181, 6);
-            // 
             // 缓存管理ToolStripMenuItem
             // 
+            this.缓存管理ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.缓存管理ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.缓存管理ToolStripMenuItem.Name = "缓存管理ToolStripMenuItem";
             this.缓存管理ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.缓存管理ToolStripMenuItem.Text = "缓存管理";
             // 
             // 输入ToolStripMenuItem
             // 
+            this.输入ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.输入ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.导入ToolStripMenuItem,
-            this.toolStripSeparator10,
             this.导入P2ToolStripMenuItem,
             this.导入XDCAMToolStripMenuItem,
             this.导入SxStoolStripMenuItem,
             this.导入E2toolStripMenuItem,
             this.导入PPTtoolStripMenuItem,
-            this.toolStripSeparator9,
             this.采集ToolStripMenuItem,
             this.打包输出ToolStripMenuItem,
             this.录制ToolStripMenuItem,
             this.设备输出设置ToolStripMenuItem,
             this.光盘刻录ToolStripMenuItem,
             this.更新素材库ToolStripMenuItem});
-            this.输入ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.输入ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.输入ToolStripMenuItem.Name = "输入ToolStripMenuItem";
             this.输入ToolStripMenuItem.Size = new System.Drawing.Size(73, 21);
             this.输入ToolStripMenuItem.Text = "输入/输出";
             // 
             // 导入ToolStripMenuItem
             // 
+            this.导入ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
             this.导入ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.导入ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入ToolStripMenuItem.Text = "导入(&I)";
             // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(183, 6);
-            // 
             // 导入P2ToolStripMenuItem
             // 
+            this.导入P2ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入P2ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入P2ToolStripMenuItem.Name = "导入P2ToolStripMenuItem";
             this.导入P2ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入P2ToolStripMenuItem.Text = "导入P2文件";
@@ -1035,6 +1007,8 @@
             // 
             // 导入XDCAMToolStripMenuItem
             // 
+            this.导入XDCAMToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入XDCAMToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入XDCAMToolStripMenuItem.Name = "导入XDCAMToolStripMenuItem";
             this.导入XDCAMToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入XDCAMToolStripMenuItem.Text = "导入XDCAM文件";
@@ -1042,6 +1016,8 @@
             // 
             // 导入SxStoolStripMenuItem
             // 
+            this.导入SxStoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入SxStoolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入SxStoolStripMenuItem.Name = "导入SxStoolStripMenuItem";
             this.导入SxStoolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入SxStoolStripMenuItem.Text = "导入SxS文件";
@@ -1049,6 +1025,8 @@
             // 
             // 导入E2toolStripMenuItem
             // 
+            this.导入E2toolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入E2toolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入E2toolStripMenuItem.Name = "导入E2toolStripMenuItem";
             this.导入E2toolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入E2toolStripMenuItem.Text = "导入E2文件";
@@ -1056,18 +1034,17 @@
             // 
             // 导入PPTtoolStripMenuItem
             // 
+            this.导入PPTtoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.导入PPTtoolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入PPTtoolStripMenuItem.Name = "导入PPTtoolStripMenuItem";
             this.导入PPTtoolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.导入PPTtoolStripMenuItem.Text = "导入PPT文件";
             this.导入PPTtoolStripMenuItem.Click += new System.EventHandler(this.导入PPTtoolStripMenuItem_Click);
             // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(183, 6);
-            // 
             // 采集ToolStripMenuItem
             // 
+            this.采集ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.采集ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.采集ToolStripMenuItem.Name = "采集ToolStripMenuItem";
             this.采集ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.采集ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
@@ -1076,6 +1053,8 @@
             // 
             // 打包输出ToolStripMenuItem
             // 
+            this.打包输出ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.打包输出ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打包输出ToolStripMenuItem.Name = "打包输出ToolStripMenuItem";
             this.打包输出ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.打包输出ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
@@ -1084,6 +1063,8 @@
             // 
             // 录制ToolStripMenuItem
             // 
+            this.录制ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.录制ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.录制ToolStripMenuItem.Name = "录制ToolStripMenuItem";
             this.录制ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
             this.录制ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
@@ -1092,6 +1073,8 @@
             // 
             // 设备输出设置ToolStripMenuItem
             // 
+            this.设备输出设置ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.设备输出设置ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.设备输出设置ToolStripMenuItem.Name = "设备输出设置ToolStripMenuItem";
             this.设备输出设置ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.设备输出设置ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
@@ -1100,12 +1083,16 @@
             // 
             // 光盘刻录ToolStripMenuItem
             // 
+            this.光盘刻录ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.光盘刻录ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.光盘刻录ToolStripMenuItem.Name = "光盘刻录ToolStripMenuItem";
             this.光盘刻录ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.光盘刻录ToolStripMenuItem.Text = "光盘刻录";
             // 
             // 更新素材库ToolStripMenuItem
             // 
+            this.更新素材库ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.更新素材库ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.更新素材库ToolStripMenuItem.Name = "更新素材库ToolStripMenuItem";
             this.更新素材库ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.更新素材库ToolStripMenuItem.Text = "更新素材库";
@@ -1113,24 +1100,29 @@
             // 
             // 输出ToolStripMenuItem
             // 
+            this.输出ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.输出ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.关于ToolStripMenuItem,
             this.分离ToolStripMenuItem,
             this.编解码ToolStripMenuItem,
             this.打包ToolStripMenuItem});
-            this.输出ToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.输出ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.输出ToolStripMenuItem.Name = "输出ToolStripMenuItem";
             this.输出ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.输出ToolStripMenuItem.Text = "帮助";
             // 
             // 关于ToolStripMenuItem
             // 
+            this.关于ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.关于ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             this.关于ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 分离ToolStripMenuItem
             // 
+            this.分离ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.分离ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
             this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.分离ToolStripMenuItem.Text = "分离";
@@ -1138,6 +1130,8 @@
             // 
             // 编解码ToolStripMenuItem
             // 
+            this.编解码ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.编解码ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
             this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.编解码ToolStripMenuItem.Text = "编解码";
@@ -1145,6 +1139,8 @@
             // 
             // 打包ToolStripMenuItem
             // 
+            this.打包ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.打包ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
             this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.打包ToolStripMenuItem.Text = "打包";
@@ -1152,8 +1148,8 @@
             // 
             // MainmenuStrip
             // 
-            this.MainmenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.MainmenuStrip.ForeColor = System.Drawing.Color.Black;
+            this.MainmenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.MainmenuStrip.ForeColor = System.Drawing.Color.White;
             this.MainmenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.工程ToolStripMenuItem,
             this.编辑ToolStripMenuItem,
@@ -1176,16 +1172,16 @@
             // 
             // styleManager1
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2012Light;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2012Dark;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69))))), System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125))))));
             // 
             // tabControl_TimeLine
             // 
-            this.tabControl_TimeLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControl_TimeLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControl_TimeLine.CanReorderTabs = true;
             this.tabControl_TimeLine.Controls.Add(this.tabControlPanel_TimeLine);
             this.tabControl_TimeLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl_TimeLine.ForeColor = System.Drawing.Color.Black;
+            this.tabControl_TimeLine.ForeColor = System.Drawing.Color.White;
             this.tabControl_TimeLine.Location = new System.Drawing.Point(0, 482);
             this.tabControl_TimeLine.Name = "tabControl_TimeLine";
             this.tabControl_TimeLine.Padding = new System.Windows.Forms.Padding(3);
@@ -1209,9 +1205,9 @@
             this.tabControlPanel_TimeLine.Name = "tabControlPanel_TimeLine";
             this.tabControlPanel_TimeLine.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel_TimeLine.Size = new System.Drawing.Size(1584, 352);
-            this.tabControlPanel_TimeLine.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.tabControlPanel_TimeLine.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.tabControlPanel_TimeLine.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel_TimeLine.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(198)))));
+            this.tabControlPanel_TimeLine.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.tabControlPanel_TimeLine.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel_TimeLine.Style.GradientAngle = 90;
@@ -1242,9 +1238,9 @@
             // 
             // timeLineControl_MainTL
             // 
-            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.White;
             this.timeLineControl_MainTL.IndexOfSecEveryTicks = 5;
             this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
             this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
@@ -1273,7 +1269,7 @@
             this.panelEx_VedioTrackComent.Name = "panelEx_VedioTrackComent";
             this.panelEx_VedioTrackComent.Size = new System.Drawing.Size(1600, 177);
             this.panelEx_VedioTrackComent.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VedioTrackComent.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panelEx_VedioTrackComent.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.panelEx_VedioTrackComent.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VedioTrackComent.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VedioTrackComent.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -1294,13 +1290,13 @@
             this.panelEx_VideoTrackConment2.Name = "panelEx_VideoTrackConment2";
             this.panelEx_VideoTrackConment2.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_VideoTrackConment2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment2.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VideoTrackConment2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VideoTrackConment2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment2.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment2.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment2.TabIndex = 8;
             this.panelEx_VideoTrackConment2.Text = "视频轨道内容2";
             this.panelEx_VideoTrackConment2.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
@@ -1329,7 +1325,6 @@
             this.VideoFile1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
-            this.VideoFile1.Visible = false;
             this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
             this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
             // 
@@ -1345,13 +1340,13 @@
             this.panelEx_VideoTrackConment3.Name = "panelEx_VideoTrackConment3";
             this.panelEx_VideoTrackConment3.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_VideoTrackConment3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment3.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VideoTrackConment3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VideoTrackConment3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment3.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment3.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment3.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment3.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment3.TabIndex = 4;
             this.panelEx_VideoTrackConment3.Text = "视频轨道内容3";
             this.panelEx_VideoTrackConment3.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
@@ -1369,13 +1364,13 @@
             this.panelEx_VideoTrackConment4.Name = "panelEx_VideoTrackConment4";
             this.panelEx_VideoTrackConment4.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_VideoTrackConment4.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment4.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VideoTrackConment4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VideoTrackConment4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment4.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment4.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment4.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment4.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment4.TabIndex = 4;
             this.panelEx_VideoTrackConment4.Text = "视频轨道内容4";
             this.panelEx_VideoTrackConment4.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
@@ -1393,13 +1388,13 @@
             this.panelEx_VideoTrackConment1.Name = "panelEx_VideoTrackConment1";
             this.panelEx_VideoTrackConment1.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_VideoTrackConment1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment1.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VideoTrackConment1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VideoTrackConment1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_VideoTrackConment1.Style.GradientAngle = 90;
             this.panelEx_VideoTrackConment1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_VideoTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_VideoTrackConment1.TabIndex = 4;
             this.panelEx_VideoTrackConment1.Text = "视频轨道内容1";
             this.panelEx_VideoTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
@@ -1416,7 +1411,7 @@
             this.panelEx_AudioTrackComent.Name = "panelEx_AudioTrackComent";
             this.panelEx_AudioTrackComent.Size = new System.Drawing.Size(1600, 96);
             this.panelEx_AudioTrackComent.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackComent.Style.BackColor1.Color = System.Drawing.Color.DarkOliveGreen;
+            this.panelEx_AudioTrackComent.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.panelEx_AudioTrackComent.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_AudioTrackComent.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_AudioTrackComent.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -1436,13 +1431,13 @@
             this.panelEx_AudioTrackConment1.Name = "panelEx_AudioTrackConment1";
             this.panelEx_AudioTrackConment1.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_AudioTrackConment1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment1.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_AudioTrackConment1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_AudioTrackConment1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_AudioTrackConment1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_AudioTrackConment1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_AudioTrackConment1.Style.GradientAngle = 90;
             this.panelEx_AudioTrackConment1.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_AudioTrackConment1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_AudioTrackConment1.TabIndex = 0;
             this.panelEx_AudioTrackConment1.Text = "音频轨道内容1";
             this.panelEx_AudioTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragAudioDrop);
@@ -1460,13 +1455,13 @@
             this.panelEx_AudioTrackConment2.Name = "panelEx_AudioTrackConment2";
             this.panelEx_AudioTrackConment2.Size = new System.Drawing.Size(1600, 40);
             this.panelEx_AudioTrackConment2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment2.Style.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_AudioTrackConment2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_AudioTrackConment2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_AudioTrackConment2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_AudioTrackConment2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_AudioTrackConment2.Style.GradientAngle = 90;
             this.panelEx_AudioTrackConment2.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.SystemColors.ActiveBorder;
+            this.panelEx_AudioTrackConment2.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_AudioTrackConment2.TabIndex = 0;
             this.panelEx_AudioTrackConment2.Text = "音频轨道内容2";
             this.panelEx_AudioTrackConment2.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragAudioDrop);
@@ -1508,7 +1503,7 @@
             this.panelEx_VideoName.Name = "panelEx_VideoName";
             this.panelEx_VideoName.Size = new System.Drawing.Size(248, 177);
             this.panelEx_VideoName.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_VideoName.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panelEx_VideoName.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.panelEx_VideoName.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_VideoName.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_VideoName.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -1537,7 +1532,7 @@
             // bar2
             // 
             this.bar2.AntiAlias = true;
-            this.bar2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar2.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1618,7 +1613,7 @@
             // bar1
             // 
             this.bar1.AntiAlias = true;
-            this.bar1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1699,7 +1694,7 @@
             // bar_VideoTrackButtonBar2
             // 
             this.bar_VideoTrackButtonBar2.AntiAlias = true;
-            this.bar_VideoTrackButtonBar2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar_VideoTrackButtonBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar_VideoTrackButtonBar2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar_VideoTrackButtonBar2.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar_VideoTrackButtonBar2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1780,7 +1775,7 @@
             // bar_VideoTrackButtonBar1
             // 
             this.bar_VideoTrackButtonBar1.AntiAlias = true;
-            this.bar_VideoTrackButtonBar1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar_VideoTrackButtonBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar_VideoTrackButtonBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar_VideoTrackButtonBar1.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar_VideoTrackButtonBar1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1852,7 +1847,7 @@
             this.panelEx_AudioName.Name = "panelEx_AudioName";
             this.panelEx_AudioName.Size = new System.Drawing.Size(248, 96);
             this.panelEx_AudioName.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioName.Style.BackColor1.Color = System.Drawing.Color.DarkOliveGreen;
+            this.panelEx_AudioName.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.panelEx_AudioName.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_AudioName.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_AudioName.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -1881,7 +1876,7 @@
             // bar_AudioTrackButtonBar1
             // 
             this.bar_AudioTrackButtonBar1.AntiAlias = true;
-            this.bar_AudioTrackButtonBar1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar_AudioTrackButtonBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar_AudioTrackButtonBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar_AudioTrackButtonBar1.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar_AudioTrackButtonBar1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1973,7 +1968,7 @@
             this.bar_AudioTrackButtonBar2.AccessibleName = "AudioTrackButtonBar2";
             this.bar_AudioTrackButtonBar2.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.bar_AudioTrackButtonBar2.AntiAlias = true;
-            this.bar_AudioTrackButtonBar2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar_AudioTrackButtonBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.bar_AudioTrackButtonBar2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar_AudioTrackButtonBar2.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar_AudioTrackButtonBar2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
@@ -2051,7 +2046,7 @@
             this.panelEx_FillBlock.Name = "panelEx_FillBlock";
             this.panelEx_FillBlock.Size = new System.Drawing.Size(248, 16);
             this.panelEx_FillBlock.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_FillBlock.Style.BackColor1.Color = System.Drawing.SystemColors.Control;
+            this.panelEx_FillBlock.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.panelEx_FillBlock.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.panelEx_FillBlock.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx_FillBlock.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
@@ -2061,7 +2056,7 @@
             // bar_TrackNameToolBar
             // 
             this.bar_TrackNameToolBar.AntiAlias = true;
-            this.bar_TrackNameToolBar.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bar_TrackNameToolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(46)))));
             this.bar_TrackNameToolBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar_TrackNameToolBar.DockSide = DevComponents.DotNetBar.eDockSide.Left;
             this.bar_TrackNameToolBar.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -2151,8 +2146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.ClientSize = new System.Drawing.Size(1584, 862);
             this.Controls.Add(this.tabControl_Sequence);
             this.Controls.Add(this.tabControl_Project);
@@ -2160,7 +2154,6 @@
             this.Controls.Add(this.tabControl_TimeLine);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.MainmenuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -2298,37 +2291,26 @@
         private TimeLineControl.TimeLineControl timeLineControl_Segment;
         private System.Windows.Forms.ToolStripMenuItem 另存为ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关闭ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem 偏好设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工程设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem 导入工程ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入序列ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入AAFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入配音序列ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem 删除未引用的素材ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem 工程整理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工程信息统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 最近打开工程ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem szwbprjToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem 配音DToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem 显示第二效果监视器ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem 缓存管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem 导入P2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入XDCAMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入SxStoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入E2toolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导入PPTtoolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem 光盘刻录ToolStripMenuItem;
         private DevComponents.DotNetBar.LabelX labelX_SeqTime;
         private DevComponents.DotNetBar.LabelX labelX_SegmentTime;

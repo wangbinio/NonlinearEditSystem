@@ -17,6 +17,17 @@ namespace NonLinearEditSystem.Forms
         {
             InitComboBox();
             InitListView();
+            InitColor();
+        }
+
+        private void InitColor()
+        {
+            textBoxX_ChangeName.BackColor = MainForm.bkgColor;
+            textBoxX_FilePath.BackColor = MainForm.bkgColor;
+            textBoxX_FileName.BackColor = MainForm.bkgColor;
+            listViewEx1.BackColor = MainForm.bkgColor;
+            listViewEx2.BackColor = MainForm.bkgColor;
+            comboBoxEx_缩略图.BackColor = MainForm.bkgColor;
         }
 
         private void InitComboBox()

@@ -16,6 +16,14 @@ namespace NonLinearEditSystem.Forms
         private void ImportPPTForm_Load(object sender, System.EventArgs e)
         {
             InitComboBox();
+            InitColor();
+        }
+
+        private void InitColor()
+        {
+            textBoxX_PPT路径.BackColor = MainForm.bkgColor;
+            textBoxX_FilePath.BackColor = MainForm.bkgColor;
+            textBoxX_FileName.BackColor = MainForm.bkgColor;
         }
 
         private void InitComboBox()

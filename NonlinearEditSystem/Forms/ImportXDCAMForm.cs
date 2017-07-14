@@ -16,6 +16,19 @@ namespace NonLinearEditSystem.Forms
         {
 
             InitListView();
+            InitColor();
+        }
+
+        private void InitColor()
+        {
+            textBoxX_IP地址.BackColor = MainForm.bkgColor;
+            textBoxX_密码.BackColor = MainForm.bkgColor;
+            textBoxX_用户名.BackColor = MainForm.bkgColor;
+            textBoxX_站点.BackColor = MainForm.bkgColor;
+            textBoxX_ChangeName.BackColor = MainForm.bkgColor;
+            textBoxX_FilePath.BackColor = MainForm.bkgColor;
+            textBoxX_FileName.BackColor = MainForm.bkgColor;
+            listViewEx1.BackColor = MainForm.bkgColor;
         }
 
         private void InitListView()

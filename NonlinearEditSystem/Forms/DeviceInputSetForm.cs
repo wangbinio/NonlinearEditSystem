@@ -15,5 +15,15 @@ namespace NonLinearEditSystem.Forms
         {
             InitializeComponent();
         }
+
+        private void InitColor()
+        {
+            textBoxX_ConnectStatus.BackColor = MainForm.bkgColor;
+        }
+
+        private void DeviceInputSetForm_Load(object sender, EventArgs e)
+        {
+            InitColor();
+        }
     }
 }

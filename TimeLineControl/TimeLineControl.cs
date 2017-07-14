@@ -27,17 +27,17 @@ namespace TimeLineControl
         #region Properties
 
         /// 画笔
-        public Pen drawPen = new Pen(Color.Black, 1f);
+        public Pen drawPen = new Pen(Color.FromArgb(239, 239, 242), 1f);
 
-        public Pen drawIntervalPen = new Pen(Color.Blue, 1f);
+        public Pen drawIntervalPen = new Pen(Color.Orange, 1f);
 
-        private Pen drawThumbPen = new Pen(SystemColors.HotTrack, 1f);
+        private Pen drawThumbPen = new Pen(SystemColors.Highlight, 1f);
 
         /// 字符画刷
-        private SolidBrush stringBrush = new SolidBrush(Color.Black);
+        private SolidBrush stringBrush = new SolidBrush(Color.FromArgb(239, 239, 242));
 
         /// 游标画刷
-        private SolidBrush thumbBrush = new SolidBrush(SystemColors.HotTrack);
+        private SolidBrush thumbBrush = new SolidBrush(SystemColors.Highlight);
 
         /// 透明画刷
         private TextureBrush transparentBrush = new TextureBrush(Resource.透明图片4);
@@ -443,7 +443,7 @@ namespace TimeLineControl
                 if (_chooseThumb)
                 {
                     // 设置游标新位置
-                    ThumbHPos = mousePoint.X;
+                    ThumbHPos = mousePoint.X > 0 ? mousePoint.X : 0;
                 }
                 else if (_chooseEntrePoint)
                 {

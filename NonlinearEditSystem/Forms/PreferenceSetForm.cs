@@ -56,6 +56,14 @@ namespace NonLinearEditSystem.Forms
 
             // 初始化LUT设置
             InitLUT();
+
+            InitColor();
+        }
+
+        private void InitColor()
+        {
+            textBoxX_Template.BackColor = MainForm.bkgColor;
+            textBoxX_CachePath.BackColor = MainForm.bkgColor;
         }
 
         /// <summary>

@@ -14,6 +14,18 @@ namespace NonLinearEditSystem.Forms
         public DubForm()
         {
             InitializeComponent();
+
+        }
+
+        private void InitColor()
+        {
+            textBoxX_FilePath.BackColor = MainForm.bkgColor;
+            textBoxX_FileName.BackColor = MainForm.bkgColor;
+        }
+
+        private void DubForm_Load(object sender, EventArgs e)
+        {
+            InitColor();
         }
     }
 }

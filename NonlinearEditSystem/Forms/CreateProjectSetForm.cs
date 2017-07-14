@@ -3,11 +3,18 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Common;
+using System.Drawing;
 
 namespace NonLinearEditSystem.Forms
 {
     public partial class CreateProjectSetForm : DevComponents.DotNetBar.Metro.MetroForm
     {
+        // 背景颜色
+        public static Color bkgColor = MainForm.bkgColor;
+
+        // 字体颜色
+        public static Color fontsColor = MainForm.fontsColor;
+
         // 帧率
         public static readonly object[] FpsObjects = { "25fps", "30fps", "60fps" };
 
@@ -68,6 +75,14 @@ namespace NonLinearEditSystem.Forms
             comboBoxEx_输出音频流.Items.AddRange(OutPutAudios);
             comboBoxEx_解交织.Items.AddRange(DeInterleave);
 
+            comboBoxEx_帧率.BackColor = bkgColor;
+            comboBoxEx_扫描模式.BackColor = bkgColor;
+            comboBoxEx_采样频率.BackColor = bkgColor;
+            comboBoxEx_采样位.BackColor = bkgColor;
+            comboBoxEx_声道.BackColor = bkgColor;
+            comboBoxEx_输出音频流.BackColor = bkgColor;
+            comboBoxEx_解交织.BackColor = bkgColor;
+
             comboBoxEx_帧率.SelectedIndex = 0;
             comboBoxEx_扫描模式.SelectedIndex = 0;
             comboBoxEx_采样频率.SelectedIndex = 0;
@@ -75,6 +90,9 @@ namespace NonLinearEditSystem.Forms
             comboBoxEx_声道.SelectedIndex = 0;
             comboBoxEx_输出音频流.SelectedIndex = 1;
             comboBoxEx_解交织.SelectedIndex = 0;
+
+            textBoxX_ProjFileName.BackColor = bkgColor;
+            textBoxX_ProjFilePath.BackColor = bkgColor;
         }
 
         /// <summary>

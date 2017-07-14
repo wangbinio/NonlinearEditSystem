@@ -53,7 +53,8 @@
             this.textBoxX_ChangeName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX_批量修改文件名 = new DevComponents.DotNetBar.LabelX();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBoxX_FTP = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX_Link = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX_密码 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -62,13 +63,10 @@
             this.textBoxX_站点 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX_IP地址 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.checkBoxX_FTP = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX_Link = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.buttonX_停止 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_载入 = new DevComponents.DotNetBar.ButtonX();
             this.groupBox7.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonX_ScanFilePath
@@ -84,14 +82,14 @@
             // 
             // textBoxX_FilePath
             // 
-            this.textBoxX_FilePath.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FilePath.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FilePath.Border.Class = "TextBoxBorder";
             this.textBoxX_FilePath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FilePath.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FilePath.Location = new System.Drawing.Point(198, 197);
             this.textBoxX_FilePath.Name = "textBoxX_FilePath";
             this.textBoxX_FilePath.PreventEnterBeep = true;
@@ -102,12 +100,12 @@
             // 
             // labelX_目标路径
             // 
-            this.labelX_目标路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_目标路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_目标路径.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_目标路径.ForeColor = System.Drawing.Color.Black;
+            this.labelX_目标路径.ForeColor = System.Drawing.Color.White;
             this.labelX_目标路径.Location = new System.Drawing.Point(129, 197);
             this.labelX_目标路径.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_目标路径.Name = "labelX_目标路径";
@@ -117,12 +115,12 @@
             // 
             // checkBoxX_导入到网络
             // 
-            this.checkBoxX_导入到网络.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.checkBoxX_导入到网络.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.checkBoxX_导入到网络.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX_导入到网络.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxX_导入到网络.ForeColor = System.Drawing.Color.White;
             this.checkBoxX_导入到网络.Location = new System.Drawing.Point(18, 197);
             this.checkBoxX_导入到网络.Name = "checkBoxX_导入到网络";
             this.checkBoxX_导入到网络.Size = new System.Drawing.Size(91, 23);
@@ -132,14 +130,14 @@
             // 
             // textBoxX_FileName
             // 
-            this.textBoxX_FileName.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FileName.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FileName.Border.Class = "TextBoxBorder";
             this.textBoxX_FileName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FileName.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FileName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FileName.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FileName.Location = new System.Drawing.Point(762, 647);
             this.textBoxX_FileName.Name = "textBoxX_FileName";
             this.textBoxX_FileName.PreventEnterBeep = true;
@@ -149,12 +147,12 @@
             // 
             // labelX_文件名
             // 
-            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_文件名.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_文件名.ForeColor = System.Drawing.Color.Black;
+            this.labelX_文件名.ForeColor = System.Drawing.Color.White;
             this.labelX_文件名.Location = new System.Drawing.Point(710, 647);
             this.labelX_文件名.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_文件名.Name = "labelX_文件名";
@@ -175,12 +173,12 @@
             // 
             // labelX_进度
             // 
-            this.labelX_进度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_进度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_进度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_进度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_进度.ForeColor = System.Drawing.Color.White;
             this.labelX_进度.Location = new System.Drawing.Point(18, 618);
             this.labelX_进度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_进度.Name = "labelX_进度";
@@ -190,13 +188,13 @@
             // 
             // progressBarX_Current
             // 
-            this.progressBarX_Current.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.progressBarX_Current.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.progressBarX_Current.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressBarX_Current.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.progressBarX_Current.ForeColor = System.Drawing.Color.Black;
+            this.progressBarX_Current.ForeColor = System.Drawing.Color.White;
             this.progressBarX_Current.Location = new System.Drawing.Point(90, 618);
             this.progressBarX_Current.Name = "progressBarX_Current";
             this.progressBarX_Current.Size = new System.Drawing.Size(448, 23);
@@ -208,7 +206,7 @@
             // 
             // listViewEx1
             // 
-            this.listViewEx1.BackColor = System.Drawing.Color.White;
+            this.listViewEx1.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
@@ -216,7 +214,7 @@
             this.listViewEx1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.listViewEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.listViewEx1.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.listViewEx1.ForeColor = System.Drawing.Color.Black;
+            this.listViewEx1.ForeColor = System.Drawing.Color.White;
             this.listViewEx1.FullRowSelect = true;
             this.listViewEx1.Location = new System.Drawing.Point(18, 274);
             this.listViewEx1.Name = "listViewEx1";
@@ -228,8 +226,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(18, 188);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(520, 2);
@@ -238,8 +236,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(19, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(520, 2);
@@ -248,8 +246,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox3.ForeColor = System.Drawing.Color.Black;
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(19, 226);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(520, 2);
@@ -258,8 +256,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox4.ForeColor = System.Drawing.Color.Black;
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
             this.groupBox4.Location = new System.Drawing.Point(19, 266);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(520, 2);
@@ -268,12 +266,12 @@
             // 
             // labelX1
             // 
-            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.ForeColor = System.Drawing.Color.Black;
+            this.labelX1.ForeColor = System.Drawing.Color.White;
             this.labelX1.Location = new System.Drawing.Point(18, 647);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX1.Name = "labelX1";
@@ -283,13 +281,13 @@
             // 
             // progressBarX_All
             // 
-            this.progressBarX_All.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.progressBarX_All.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.progressBarX_All.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressBarX_All.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.progressBarX_All.ForeColor = System.Drawing.Color.Black;
+            this.progressBarX_All.ForeColor = System.Drawing.Color.White;
             this.progressBarX_All.Location = new System.Drawing.Point(90, 647);
             this.progressBarX_All.Name = "progressBarX_All";
             this.progressBarX_All.Size = new System.Drawing.Size(448, 23);
@@ -317,8 +315,8 @@
             // 
             // timeLineControl1
             // 
-            this.timeLineControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.timeLineControl1.ForeColor = System.Drawing.Color.Black;
+            this.timeLineControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.timeLineControl1.ForeColor = System.Drawing.Color.White;
             this.timeLineControl1.IndexOfSecEveryTicks = 5;
             this.timeLineControl1.Location = new System.Drawing.Point(544, 540);
             this.timeLineControl1.Name = "timeLineControl1";
@@ -335,12 +333,12 @@
             // 
             // checkBoxX_CutFile
             // 
-            this.checkBoxX_CutFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.checkBoxX_CutFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.checkBoxX_CutFile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX_CutFile.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxX_CutFile.ForeColor = System.Drawing.Color.White;
             this.checkBoxX_CutFile.Location = new System.Drawing.Point(545, 647);
             this.checkBoxX_CutFile.Name = "checkBoxX_CutFile";
             this.checkBoxX_CutFile.Size = new System.Drawing.Size(91, 23);
@@ -350,14 +348,14 @@
             // 
             // labelX_EntrePoint
             // 
-            this.labelX_EntrePoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_EntrePoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_EntrePoint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_EntrePoint.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX_EntrePoint.FontBold = true;
-            this.labelX_EntrePoint.ForeColor = System.Drawing.Color.Black;
+            this.labelX_EntrePoint.ForeColor = System.Drawing.Color.White;
             this.labelX_EntrePoint.Location = new System.Drawing.Point(544, 619);
             this.labelX_EntrePoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_EntrePoint.Name = "labelX_EntrePoint";
@@ -368,14 +366,14 @@
             // 
             // labelX2
             // 
-            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX2.FontBold = true;
-            this.labelX2.ForeColor = System.Drawing.Color.Black;
+            this.labelX2.ForeColor = System.Drawing.Color.White;
             this.labelX2.Location = new System.Drawing.Point(814, 617);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX2.Name = "labelX2";
@@ -386,14 +384,14 @@
             // 
             // labelX3
             // 
-            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX3.FontBold = true;
-            this.labelX3.ForeColor = System.Drawing.Color.Black;
+            this.labelX3.ForeColor = System.Drawing.Color.White;
             this.labelX3.Location = new System.Drawing.Point(1100, 619);
             this.labelX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX3.Name = "labelX3";
@@ -404,14 +402,14 @@
             // 
             // textBoxX_ChangeName
             // 
-            this.textBoxX_ChangeName.BackColor = System.Drawing.Color.White;
+            this.textBoxX_ChangeName.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_ChangeName.Border.Class = "TextBoxBorder";
             this.textBoxX_ChangeName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_ChangeName.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_ChangeName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_ChangeName.ForeColor = System.Drawing.Color.White;
             this.textBoxX_ChangeName.Location = new System.Drawing.Point(232, 236);
             this.textBoxX_ChangeName.Name = "textBoxX_ChangeName";
             this.textBoxX_ChangeName.PreventEnterBeep = true;
@@ -421,12 +419,12 @@
             // 
             // labelX_批量修改文件名
             // 
-            this.labelX_批量修改文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_批量修改文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_批量修改文件名.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_批量修改文件名.ForeColor = System.Drawing.Color.Black;
+            this.labelX_批量修改文件名.ForeColor = System.Drawing.Color.White;
             this.labelX_批量修改文件名.Location = new System.Drawing.Point(129, 236);
             this.labelX_批量修改文件名.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_批量修改文件名.Name = "labelX_批量修改文件名";
@@ -436,45 +434,64 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox7.Controls.Add(this.groupBox5);
+            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.groupBox7.Controls.Add(this.checkBoxX_FTP);
             this.groupBox7.Controls.Add(this.checkBoxX_Link);
-            this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(19, 11);
+            this.groupBox7.Controls.Add(this.labelX4);
+            this.groupBox7.Controls.Add(this.labelX5);
+            this.groupBox7.Controls.Add(this.textBoxX_用户名);
+            this.groupBox7.Controls.Add(this.labelX7);
+            this.groupBox7.Controls.Add(this.labelX6);
+            this.groupBox7.Controls.Add(this.textBoxX_密码);
+            this.groupBox7.Controls.Add(this.textBoxX_站点);
+            this.groupBox7.Controls.Add(this.textBoxX_IP地址);
+            this.groupBox7.ForeColor = System.Drawing.Color.White;
+            this.groupBox7.Location = new System.Drawing.Point(20, 12);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(519, 171);
             this.groupBox7.TabIndex = 116;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "连接模式";
             // 
-            // groupBox5
+            // checkBoxX_FTP
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox5.Controls.Add(this.labelX7);
-            this.groupBox5.Controls.Add(this.labelX5);
-            this.groupBox5.Controls.Add(this.textBoxX_密码);
-            this.groupBox5.Controls.Add(this.textBoxX_用户名);
-            this.groupBox5.Controls.Add(this.labelX6);
-            this.groupBox5.Controls.Add(this.textBoxX_站点);
-            this.groupBox5.Controls.Add(this.labelX4);
-            this.groupBox5.Controls.Add(this.textBoxX_IP地址);
-            this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(7, 71);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(506, 94);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
+            this.checkBoxX_FTP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            // 
+            // 
+            // 
+            this.checkBoxX_FTP.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_FTP.ForeColor = System.Drawing.Color.White;
+            this.checkBoxX_FTP.Location = new System.Drawing.Point(6, 51);
+            this.checkBoxX_FTP.Name = "checkBoxX_FTP";
+            this.checkBoxX_FTP.Size = new System.Drawing.Size(91, 23);
+            this.checkBoxX_FTP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX_FTP.TabIndex = 2;
+            this.checkBoxX_FTP.Text = "FTP连接";
+            // 
+            // checkBoxX_Link
+            // 
+            this.checkBoxX_Link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            // 
+            // 
+            // 
+            this.checkBoxX_Link.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX_Link.ForeColor = System.Drawing.Color.White;
+            this.checkBoxX_Link.Location = new System.Drawing.Point(6, 22);
+            this.checkBoxX_Link.Name = "checkBoxX_Link";
+            this.checkBoxX_Link.Size = new System.Drawing.Size(147, 23);
+            this.checkBoxX_Link.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX_Link.TabIndex = 1;
+            this.checkBoxX_Link.Text = "i.Link或USB Link";
             // 
             // labelX7
             // 
-            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.ForeColor = System.Drawing.Color.Black;
-            this.labelX7.Location = new System.Drawing.Point(263, 54);
+            this.labelX7.ForeColor = System.Drawing.Color.White;
+            this.labelX7.Location = new System.Drawing.Point(260, 128);
             this.labelX7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(52, 23);
@@ -483,13 +500,13 @@
             // 
             // labelX5
             // 
-            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.ForeColor = System.Drawing.Color.Black;
-            this.labelX5.Location = new System.Drawing.Point(6, 54);
+            this.labelX5.ForeColor = System.Drawing.Color.White;
+            this.labelX5.Location = new System.Drawing.Point(6, 127);
             this.labelX5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(52, 23);
@@ -498,15 +515,15 @@
             // 
             // textBoxX_密码
             // 
-            this.textBoxX_密码.BackColor = System.Drawing.Color.White;
+            this.textBoxX_密码.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_密码.Border.Class = "TextBoxBorder";
             this.textBoxX_密码.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_密码.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_密码.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX_密码.Location = new System.Drawing.Point(321, 53);
+            this.textBoxX_密码.ForeColor = System.Drawing.Color.White;
+            this.textBoxX_密码.Location = new System.Drawing.Point(318, 127);
             this.textBoxX_密码.Name = "textBoxX_密码";
             this.textBoxX_密码.PreventEnterBeep = true;
             this.textBoxX_密码.Size = new System.Drawing.Size(176, 23);
@@ -515,15 +532,15 @@
             // 
             // textBoxX_用户名
             // 
-            this.textBoxX_用户名.BackColor = System.Drawing.Color.White;
+            this.textBoxX_用户名.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_用户名.Border.Class = "TextBoxBorder";
             this.textBoxX_用户名.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_用户名.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_用户名.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX_用户名.Location = new System.Drawing.Point(64, 53);
+            this.textBoxX_用户名.ForeColor = System.Drawing.Color.White;
+            this.textBoxX_用户名.Location = new System.Drawing.Point(61, 127);
             this.textBoxX_用户名.Name = "textBoxX_用户名";
             this.textBoxX_用户名.PreventEnterBeep = true;
             this.textBoxX_用户名.Size = new System.Drawing.Size(176, 23);
@@ -532,13 +549,13 @@
             // 
             // labelX6
             // 
-            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.ForeColor = System.Drawing.Color.Black;
-            this.labelX6.Location = new System.Drawing.Point(263, 23);
+            this.labelX6.ForeColor = System.Drawing.Color.White;
+            this.labelX6.Location = new System.Drawing.Point(260, 97);
             this.labelX6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(52, 23);
@@ -547,15 +564,15 @@
             // 
             // textBoxX_站点
             // 
-            this.textBoxX_站点.BackColor = System.Drawing.Color.White;
+            this.textBoxX_站点.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_站点.Border.Class = "TextBoxBorder";
             this.textBoxX_站点.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_站点.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_站点.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX_站点.Location = new System.Drawing.Point(321, 22);
+            this.textBoxX_站点.ForeColor = System.Drawing.Color.White;
+            this.textBoxX_站点.Location = new System.Drawing.Point(318, 96);
             this.textBoxX_站点.Name = "textBoxX_站点";
             this.textBoxX_站点.PreventEnterBeep = true;
             this.textBoxX_站点.ReadOnly = true;
@@ -566,13 +583,13 @@
             // 
             // labelX4
             // 
-            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.ForeColor = System.Drawing.Color.Black;
-            this.labelX4.Location = new System.Drawing.Point(6, 23);
+            this.labelX4.ForeColor = System.Drawing.Color.White;
+            this.labelX4.Location = new System.Drawing.Point(6, 96);
             this.labelX4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(52, 23);
@@ -581,55 +598,25 @@
             // 
             // textBoxX_IP地址
             // 
-            this.textBoxX_IP地址.BackColor = System.Drawing.Color.White;
+            this.textBoxX_IP地址.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_IP地址.Border.Class = "TextBoxBorder";
             this.textBoxX_IP地址.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_IP地址.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_IP地址.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX_IP地址.Location = new System.Drawing.Point(64, 22);
+            this.textBoxX_IP地址.ForeColor = System.Drawing.Color.White;
+            this.textBoxX_IP地址.Location = new System.Drawing.Point(61, 96);
             this.textBoxX_IP地址.Name = "textBoxX_IP地址";
             this.textBoxX_IP地址.PreventEnterBeep = true;
             this.textBoxX_IP地址.Size = new System.Drawing.Size(176, 23);
             this.textBoxX_IP地址.TabIndex = 100;
             this.textBoxX_IP地址.TabStop = false;
             // 
-            // checkBoxX_FTP
-            // 
-            this.checkBoxX_FTP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.checkBoxX_FTP.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX_FTP.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxX_FTP.Location = new System.Drawing.Point(6, 51);
-            this.checkBoxX_FTP.Name = "checkBoxX_FTP";
-            this.checkBoxX_FTP.Size = new System.Drawing.Size(91, 23);
-            this.checkBoxX_FTP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX_FTP.TabIndex = 2;
-            this.checkBoxX_FTP.Text = "FTP连接";
-            // 
-            // checkBoxX_Link
-            // 
-            this.checkBoxX_Link.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            // 
-            // 
-            // 
-            this.checkBoxX_Link.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX_Link.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxX_Link.Location = new System.Drawing.Point(6, 22);
-            this.checkBoxX_Link.Name = "checkBoxX_Link";
-            this.checkBoxX_Link.Size = new System.Drawing.Size(147, 23);
-            this.checkBoxX_Link.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX_Link.TabIndex = 1;
-            this.checkBoxX_Link.Text = "i.Link或USB Link";
-            // 
             // groupBox6
             // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
-            this.groupBox6.ForeColor = System.Drawing.Color.Black;
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.groupBox6.ForeColor = System.Drawing.Color.White;
             this.groupBox6.Location = new System.Drawing.Point(18, 581);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(520, 2);
@@ -702,7 +689,6 @@
             this.Text = "导入XDCAM文件";
             this.Load += new System.EventHandler(this.ImportXDCAMForm_Load);
             this.groupBox7.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -733,7 +719,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX_ChangeName;
         private DevComponents.DotNetBar.LabelX labelX_批量修改文件名;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox5;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX_密码;

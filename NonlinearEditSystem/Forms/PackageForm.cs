@@ -50,6 +50,16 @@
         private void PackageForm_Load(object sender, System.EventArgs e)
         {
             InitComboBox();
+            InitColor();
+        }
+
+        private void InitColor()
+        {
+            textBoxX_FilePath.BackColor = MainForm.bkgColor;
+            textBoxX_FileName.BackColor = MainForm.bkgColor;
+            textBoxX_Compress.BackColor = MainForm.bkgColor;
+            textBoxX_输出音频流.BackColor = MainForm.bkgColor;
+            listView_Files.BackColor = MainForm.bkgColor;
         }
 
         private void InitComboBox()

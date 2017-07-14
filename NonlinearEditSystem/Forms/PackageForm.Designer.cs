@@ -133,14 +133,14 @@
             // 
             // textBoxX_FileName
             // 
-            this.textBoxX_FileName.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FileName.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FileName.Border.Class = "TextBoxBorder";
             this.textBoxX_FileName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FileName.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FileName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FileName.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FileName.Location = new System.Drawing.Point(87, 32);
             this.textBoxX_FileName.Name = "textBoxX_FileName";
             this.textBoxX_FileName.PreventEnterBeep = true;
@@ -150,14 +150,14 @@
             // 
             // textBoxX_FilePath
             // 
-            this.textBoxX_FilePath.BackColor = System.Drawing.Color.White;
+            this.textBoxX_FilePath.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_FilePath.Border.Class = "TextBoxBorder";
             this.textBoxX_FilePath.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_FilePath.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_FilePath.ForeColor = System.Drawing.Color.White;
             this.textBoxX_FilePath.Location = new System.Drawing.Point(87, 64);
             this.textBoxX_FilePath.Name = "textBoxX_FilePath";
             this.textBoxX_FilePath.PreventEnterBeep = true;
@@ -168,12 +168,12 @@
             // 
             // labelX_文件名
             // 
-            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_文件名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_文件名.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_文件名.ForeColor = System.Drawing.Color.Black;
+            this.labelX_文件名.ForeColor = System.Drawing.Color.White;
             this.labelX_文件名.Location = new System.Drawing.Point(18, 33);
             this.labelX_文件名.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_文件名.Name = "labelX_文件名";
@@ -183,12 +183,12 @@
             // 
             // labelX_路径
             // 
-            this.labelX_路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_路径.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_路径.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_路径.ForeColor = System.Drawing.Color.Black;
+            this.labelX_路径.ForeColor = System.Drawing.Color.White;
             this.labelX_路径.Location = new System.Drawing.Point(18, 64);
             this.labelX_路径.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_路径.Name = "labelX_路径";
@@ -246,12 +246,12 @@
             // 
             // labelX_打包到
             // 
-            this.labelX_打包到.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_打包到.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_打包到.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_打包到.ForeColor = System.Drawing.Color.Black;
+            this.labelX_打包到.ForeColor = System.Drawing.Color.White;
             this.labelX_打包到.Location = new System.Drawing.Point(18, 2);
             this.labelX_打包到.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_打包到.Name = "labelX_打包到";
@@ -263,7 +263,8 @@
             // 
             this.comboBoxEx_PackTo.DisplayMember = "Text";
             this.comboBoxEx_PackTo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_PackTo.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_PackTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_PackTo.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_PackTo.FormattingEnabled = true;
             this.comboBoxEx_PackTo.ItemHeight = 18;
             this.comboBoxEx_PackTo.Location = new System.Drawing.Point(87, 1);
@@ -275,12 +276,12 @@
             // 
             // labelX_Prefab
             // 
-            this.labelX_Prefab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_Prefab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_Prefab.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_Prefab.ForeColor = System.Drawing.Color.Black;
+            this.labelX_Prefab.ForeColor = System.Drawing.Color.White;
             this.labelX_Prefab.Location = new System.Drawing.Point(18, 95);
             this.labelX_Prefab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_Prefab.Name = "labelX_Prefab";
@@ -292,7 +293,8 @@
             // 
             this.comboBoxEx_Prefab.DisplayMember = "Text";
             this.comboBoxEx_Prefab.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_Prefab.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_Prefab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_Prefab.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_Prefab.FormattingEnabled = true;
             this.comboBoxEx_Prefab.ItemHeight = 18;
             this.comboBoxEx_Prefab.Location = new System.Drawing.Point(87, 94);
@@ -328,7 +330,7 @@
             // 
             // checkBoxX_视音频交织文件
             // 
-            this.checkBoxX_视音频交织文件.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.checkBoxX_视音频交织文件.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
@@ -336,7 +338,7 @@
             this.checkBoxX_视音频交织文件.Checked = true;
             this.checkBoxX_视音频交织文件.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxX_视音频交织文件.CheckValue = "Y";
-            this.checkBoxX_视音频交织文件.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxX_视音频交织文件.ForeColor = System.Drawing.Color.White;
             this.checkBoxX_视音频交织文件.Location = new System.Drawing.Point(18, 125);
             this.checkBoxX_视音频交织文件.Name = "checkBoxX_视音频交织文件";
             this.checkBoxX_视音频交织文件.Size = new System.Drawing.Size(128, 23);
@@ -346,7 +348,7 @@
             // 
             // groupBox_视频设置
             // 
-            this.groupBox_视频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_视频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.groupBox_视频设置.Controls.Add(this.comboBoxEx_Resolution);
             this.groupBox_视频设置.Controls.Add(this.labelX_Resolution);
             this.groupBox_视频设置.Controls.Add(this.checkBoxX1);
@@ -358,7 +360,7 @@
             this.groupBox_视频设置.Controls.Add(this.labelX_Compress);
             this.groupBox_视频设置.Controls.Add(this.buttonX1_FileNameSet);
             this.groupBox_视频设置.Controls.Add(this.buttonX_CompressSet);
-            this.groupBox_视频设置.ForeColor = System.Drawing.Color.Black;
+            this.groupBox_视频设置.ForeColor = System.Drawing.Color.White;
             this.groupBox_视频设置.Location = new System.Drawing.Point(18, 155);
             this.groupBox_视频设置.Name = "groupBox_视频设置";
             this.groupBox_视频设置.Size = new System.Drawing.Size(368, 184);
@@ -370,7 +372,8 @@
             // 
             this.comboBoxEx_Resolution.DisplayMember = "Text";
             this.comboBoxEx_Resolution.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_Resolution.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_Resolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_Resolution.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_Resolution.FormattingEnabled = true;
             this.comboBoxEx_Resolution.ItemHeight = 18;
             this.comboBoxEx_Resolution.Location = new System.Drawing.Point(69, 54);
@@ -382,12 +385,12 @@
             // 
             // labelX_Resolution
             // 
-            this.labelX_Resolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_Resolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_Resolution.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_Resolution.ForeColor = System.Drawing.Color.Black;
+            this.labelX_Resolution.ForeColor = System.Drawing.Color.White;
             this.labelX_Resolution.Location = new System.Drawing.Point(6, 55);
             this.labelX_Resolution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_Resolution.Name = "labelX_Resolution";
@@ -397,12 +400,12 @@
             // 
             // checkBoxX1
             // 
-            this.checkBoxX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.checkBoxX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxX1.ForeColor = System.Drawing.Color.White;
             this.checkBoxX1.Location = new System.Drawing.Point(274, 117);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(88, 23);
@@ -414,7 +417,8 @@
             // 
             this.comboBoxEx_BitDepth.DisplayMember = "Text";
             this.comboBoxEx_BitDepth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_BitDepth.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_BitDepth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_BitDepth.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_BitDepth.FormattingEnabled = true;
             this.comboBoxEx_BitDepth.ItemHeight = 18;
             this.comboBoxEx_BitDepth.Location = new System.Drawing.Point(69, 116);
@@ -426,12 +430,12 @@
             // 
             // labelX_BitDepth
             // 
-            this.labelX_BitDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_BitDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_BitDepth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_BitDepth.ForeColor = System.Drawing.Color.Black;
+            this.labelX_BitDepth.ForeColor = System.Drawing.Color.White;
             this.labelX_BitDepth.Location = new System.Drawing.Point(6, 117);
             this.labelX_BitDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_BitDepth.Name = "labelX_BitDepth";
@@ -443,7 +447,8 @@
             // 
             this.comboBoxEx_FileType.DisplayMember = "Text";
             this.comboBoxEx_FileType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_FileType.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_FileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_FileType.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_FileType.FormattingEnabled = true;
             this.comboBoxEx_FileType.ItemHeight = 18;
             this.comboBoxEx_FileType.Location = new System.Drawing.Point(69, 22);
@@ -455,12 +460,12 @@
             // 
             // labelX_FileType
             // 
-            this.labelX_FileType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_FileType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_FileType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_FileType.ForeColor = System.Drawing.Color.Black;
+            this.labelX_FileType.ForeColor = System.Drawing.Color.White;
             this.labelX_FileType.Location = new System.Drawing.Point(6, 23);
             this.labelX_FileType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_FileType.Name = "labelX_FileType";
@@ -470,14 +475,14 @@
             // 
             // textBoxX_Compress
             // 
-            this.textBoxX_Compress.BackColor = System.Drawing.Color.White;
+            this.textBoxX_Compress.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_Compress.Border.Class = "TextBoxBorder";
             this.textBoxX_Compress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_Compress.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_Compress.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_Compress.ForeColor = System.Drawing.Color.White;
             this.textBoxX_Compress.Location = new System.Drawing.Point(69, 85);
             this.textBoxX_Compress.Name = "textBoxX_Compress";
             this.textBoxX_Compress.PreventEnterBeep = true;
@@ -488,12 +493,12 @@
             // 
             // labelX_Compress
             // 
-            this.labelX_Compress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_Compress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_Compress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_Compress.ForeColor = System.Drawing.Color.Black;
+            this.labelX_Compress.ForeColor = System.Drawing.Color.White;
             this.labelX_Compress.Location = new System.Drawing.Point(6, 85);
             this.labelX_Compress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_Compress.Name = "labelX_Compress";
@@ -525,7 +530,7 @@
             // 
             // groupBox_音频设置
             // 
-            this.groupBox_音频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.groupBox_音频设置.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.groupBox_音频设置.Controls.Add(this.labelX_通道类型);
             this.groupBox_音频设置.Controls.Add(this.labelX_采样位);
             this.groupBox_音频设置.Controls.Add(this.labelX_比特率);
@@ -541,7 +546,7 @@
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_采样频率);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_采样格式);
             this.groupBox_音频设置.Controls.Add(this.comboBoxEx_AudioFileType);
-            this.groupBox_音频设置.ForeColor = System.Drawing.Color.Black;
+            this.groupBox_音频设置.ForeColor = System.Drawing.Color.White;
             this.groupBox_音频设置.Location = new System.Drawing.Point(18, 345);
             this.groupBox_音频设置.Name = "groupBox_音频设置";
             this.groupBox_音频设置.Size = new System.Drawing.Size(368, 246);
@@ -551,12 +556,12 @@
             // 
             // labelX_通道类型
             // 
-            this.labelX_通道类型.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_通道类型.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_通道类型.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_通道类型.ForeColor = System.Drawing.Color.Black;
+            this.labelX_通道类型.ForeColor = System.Drawing.Color.White;
             this.labelX_通道类型.Location = new System.Drawing.Point(6, 183);
             this.labelX_通道类型.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_通道类型.Name = "labelX_通道类型";
@@ -566,12 +571,12 @@
             // 
             // labelX_采样位
             // 
-            this.labelX_采样位.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_采样位.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_采样位.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_采样位.ForeColor = System.Drawing.Color.Black;
+            this.labelX_采样位.ForeColor = System.Drawing.Color.White;
             this.labelX_采样位.Location = new System.Drawing.Point(6, 151);
             this.labelX_采样位.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_采样位.Name = "labelX_采样位";
@@ -581,12 +586,12 @@
             // 
             // labelX_比特率
             // 
-            this.labelX_比特率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_比特率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_比特率.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_比特率.ForeColor = System.Drawing.Color.Black;
+            this.labelX_比特率.ForeColor = System.Drawing.Color.White;
             this.labelX_比特率.Location = new System.Drawing.Point(6, 119);
             this.labelX_比特率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_比特率.Name = "labelX_比特率";
@@ -596,12 +601,12 @@
             // 
             // labelX_采样频率
             // 
-            this.labelX_采样频率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_采样频率.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_采样频率.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_采样频率.ForeColor = System.Drawing.Color.Black;
+            this.labelX_采样频率.ForeColor = System.Drawing.Color.White;
             this.labelX_采样频率.Location = new System.Drawing.Point(6, 87);
             this.labelX_采样频率.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_采样频率.Name = "labelX_采样频率";
@@ -611,12 +616,12 @@
             // 
             // labelX_采样格式
             // 
-            this.labelX_采样格式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_采样格式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_采样格式.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_采样格式.ForeColor = System.Drawing.Color.Black;
+            this.labelX_采样格式.ForeColor = System.Drawing.Color.White;
             this.labelX_采样格式.Location = new System.Drawing.Point(6, 55);
             this.labelX_采样格式.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_采样格式.Name = "labelX_采样格式";
@@ -626,12 +631,12 @@
             // 
             // labelX_AudioFileType
             // 
-            this.labelX_AudioFileType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_AudioFileType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_AudioFileType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_AudioFileType.ForeColor = System.Drawing.Color.Black;
+            this.labelX_AudioFileType.ForeColor = System.Drawing.Color.White;
             this.labelX_AudioFileType.Location = new System.Drawing.Point(6, 23);
             this.labelX_AudioFileType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_AudioFileType.Name = "labelX_AudioFileType";
@@ -643,7 +648,8 @@
             // 
             this.comboBoxEx_通道类型.DisplayMember = "Text";
             this.comboBoxEx_通道类型.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_通道类型.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_通道类型.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_通道类型.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_通道类型.FormattingEnabled = true;
             this.comboBoxEx_通道类型.ItemHeight = 18;
             this.comboBoxEx_通道类型.Location = new System.Drawing.Point(69, 182);
@@ -655,14 +661,14 @@
             // 
             // textBoxX_输出音频流
             // 
-            this.textBoxX_输出音频流.BackColor = System.Drawing.Color.White;
+            this.textBoxX_输出音频流.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
             this.textBoxX_输出音频流.Border.Class = "TextBoxBorder";
             this.textBoxX_输出音频流.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX_输出音频流.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX_输出音频流.ForeColor = System.Drawing.Color.Black;
+            this.textBoxX_输出音频流.ForeColor = System.Drawing.Color.White;
             this.textBoxX_输出音频流.Location = new System.Drawing.Point(69, 213);
             this.textBoxX_输出音频流.Name = "textBoxX_输出音频流";
             this.textBoxX_输出音频流.PreventEnterBeep = true;
@@ -673,12 +679,12 @@
             // 
             // labelX_输出音频流
             // 
-            this.labelX_输出音频流.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_输出音频流.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_输出音频流.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_输出音频流.ForeColor = System.Drawing.Color.Black;
+            this.labelX_输出音频流.ForeColor = System.Drawing.Color.White;
             this.labelX_输出音频流.Location = new System.Drawing.Point(6, 213);
             this.labelX_输出音频流.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_输出音频流.Name = "labelX_输出音频流";
@@ -690,7 +696,8 @@
             // 
             this.comboBoxEx_采样位.DisplayMember = "Text";
             this.comboBoxEx_采样位.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_采样位.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_采样位.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_采样位.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_采样位.FormattingEnabled = true;
             this.comboBoxEx_采样位.ItemHeight = 18;
             this.comboBoxEx_采样位.Location = new System.Drawing.Point(69, 150);
@@ -704,7 +711,8 @@
             // 
             this.comboBoxEx_比特率.DisplayMember = "Text";
             this.comboBoxEx_比特率.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_比特率.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_比特率.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_比特率.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_比特率.FormattingEnabled = true;
             this.comboBoxEx_比特率.ItemHeight = 18;
             this.comboBoxEx_比特率.Location = new System.Drawing.Point(69, 118);
@@ -729,7 +737,8 @@
             // 
             this.comboBoxEx_采样频率.DisplayMember = "Text";
             this.comboBoxEx_采样频率.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_采样频率.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_采样频率.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_采样频率.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_采样频率.FormattingEnabled = true;
             this.comboBoxEx_采样频率.ItemHeight = 18;
             this.comboBoxEx_采样频率.Location = new System.Drawing.Point(69, 86);
@@ -743,7 +752,8 @@
             // 
             this.comboBoxEx_采样格式.DisplayMember = "Text";
             this.comboBoxEx_采样格式.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_采样格式.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_采样格式.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_采样格式.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_采样格式.FormattingEnabled = true;
             this.comboBoxEx_采样格式.ItemHeight = 18;
             this.comboBoxEx_采样格式.Location = new System.Drawing.Point(69, 54);
@@ -757,7 +767,8 @@
             // 
             this.comboBoxEx_AudioFileType.DisplayMember = "Text";
             this.comboBoxEx_AudioFileType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_AudioFileType.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_AudioFileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_AudioFileType.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_AudioFileType.FormattingEnabled = true;
             this.comboBoxEx_AudioFileType.ItemHeight = 18;
             this.comboBoxEx_AudioFileType.Location = new System.Drawing.Point(69, 22);
@@ -771,7 +782,8 @@
             // 
             this.comboBoxEx_打包模式.DisplayMember = "Text";
             this.comboBoxEx_打包模式.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx_打包模式.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEx_打包模式.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEx_打包模式.ForeColor = System.Drawing.Color.White;
             this.comboBoxEx_打包模式.FormattingEnabled = true;
             this.comboBoxEx_打包模式.ItemHeight = 18;
             this.comboBoxEx_打包模式.Location = new System.Drawing.Point(87, 598);
@@ -783,12 +795,12 @@
             // 
             // labelX_打包模式
             // 
-            this.labelX_打包模式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_打包模式.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_打包模式.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_打包模式.ForeColor = System.Drawing.Color.Black;
+            this.labelX_打包模式.ForeColor = System.Drawing.Color.White;
             this.labelX_打包模式.Location = new System.Drawing.Point(18, 599);
             this.labelX_打包模式.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_打包模式.Name = "labelX_打包模式";
@@ -798,14 +810,14 @@
             // 
             // labelX_EntrePoint
             // 
-            this.labelX_EntrePoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_EntrePoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_EntrePoint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_EntrePoint.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX_EntrePoint.FontBold = true;
-            this.labelX_EntrePoint.ForeColor = System.Drawing.Color.Black;
+            this.labelX_EntrePoint.ForeColor = System.Drawing.Color.White;
             this.labelX_EntrePoint.Location = new System.Drawing.Point(18, 630);
             this.labelX_EntrePoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_EntrePoint.Name = "labelX_EntrePoint";
@@ -816,14 +828,14 @@
             // 
             // labelX_ExitPoint
             // 
-            this.labelX_ExitPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_ExitPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_ExitPoint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX_ExitPoint.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.labelX_ExitPoint.FontBold = true;
-            this.labelX_ExitPoint.ForeColor = System.Drawing.Color.Black;
+            this.labelX_ExitPoint.ForeColor = System.Drawing.Color.White;
             this.labelX_ExitPoint.Location = new System.Drawing.Point(306, 630);
             this.labelX_ExitPoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_ExitPoint.Name = "labelX_ExitPoint";
@@ -834,12 +846,12 @@
             // 
             // labelX_进度
             // 
-            this.labelX_进度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.labelX_进度.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.labelX_进度.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX_进度.ForeColor = System.Drawing.Color.Black;
+            this.labelX_进度.ForeColor = System.Drawing.Color.White;
             this.labelX_进度.Location = new System.Drawing.Point(18, 661);
             this.labelX_进度.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelX_进度.Name = "labelX_进度";
@@ -849,13 +861,13 @@
             // 
             // progressBarX_Pack
             // 
-            this.progressBarX_Pack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242)))));
+            this.progressBarX_Pack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             // 
             // 
             // 
             this.progressBarX_Pack.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.progressBarX_Pack.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.progressBarX_Pack.ForeColor = System.Drawing.Color.Black;
+            this.progressBarX_Pack.ForeColor = System.Drawing.Color.White;
             this.progressBarX_Pack.Location = new System.Drawing.Point(90, 661);
             this.progressBarX_Pack.Name = "progressBarX_Pack";
             this.progressBarX_Pack.Size = new System.Drawing.Size(296, 23);
@@ -867,7 +879,7 @@
             // 
             // listView_Files
             // 
-            this.listView_Files.BackColor = System.Drawing.Color.White;
+            this.listView_Files.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
@@ -885,7 +897,7 @@
             this.columnHeader9});
             this.listView_Files.DisabledBackColor = System.Drawing.Color.Empty;
             this.listView_Files.Font = new System.Drawing.Font("Segoe UI", 8.75F);
-            this.listView_Files.ForeColor = System.Drawing.Color.Black;
+            this.listView_Files.ForeColor = System.Drawing.Color.White;
             this.listView_Files.FullRowSelect = true;
             this.listView_Files.Location = new System.Drawing.Point(392, 1);
             this.listView_Files.Name = "listView_Files";
