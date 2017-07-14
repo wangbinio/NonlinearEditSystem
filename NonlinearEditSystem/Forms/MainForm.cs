@@ -24,6 +24,9 @@ namespace NonLinearEditSystem.Forms
 
         #region 成员变量
 
+        // 浮点数比较精度
+        public static readonly double EPSON = 0.001;
+
         // 背景颜色
         public static Color bkgColor = Color.FromArgb(69, 69, 69);
 
@@ -75,6 +78,30 @@ namespace NonLinearEditSystem.Forms
 
         // 音频轨道面板12
         private List<PanelEx> _audioTrackPanels;
+
+        // 所有视频的开始/结束时间
+        private List<double> sortedVedioTimes;
+
+        // 垫片路径
+        public static string BlackVedio = @"D:\视频素材\BlackVedio.mp4";
+
+        // 打包素材基本信息
+        public struct PackageClips
+        {
+            public string strClipFileName;
+            public Int64 rtPos;
+            public Int64 rtEndPos;
+
+            public PackageClips(string name, Int64 beginPos, Int64 endPos)
+            {
+                strClipFileName = name;
+                rtPos = beginPos;
+                rtEndPos = endPos;
+            }
+        }
+
+        // 打包素材列表
+        public List<PackageClips> packageClipsList;
 
         #endregion 成员变量
 
@@ -186,7 +213,7 @@ namespace NonLinearEditSystem.Forms
                     _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
                     _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
                     _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
-                    _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SkyBlue;
+                    _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
                     _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
                     _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
@@ -195,7 +222,7 @@ namespace NonLinearEditSystem.Forms
                     _vedioFilesPanel[i].Style.GradientAngle = 90;
                     _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
                     _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.SkyBlue;
+                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
                     _vedioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
                     _vedioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
                     _vedioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
@@ -249,13 +276,13 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-               //_iClipPlayControlCSharp = new ClipPlayControlCSharp();
+                _iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
-               //_mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
-               //
-               //_h264CodecIOCSharp = new H264CodecIOCSharp();
-               //
-               //_mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
+                _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+
+                _h264CodecIOCSharp = new H264CodecIOCSharp();
+
+                _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
             }
             catch (Exception ex)
             {
@@ -430,9 +457,10 @@ namespace NonLinearEditSystem.Forms
                 // 5.更新所有轨道面板的长度
                 UpdateTrackWidthWhenAddFile(length);
 
-                //((PanelEx) sender).Invalidate();
-                // 6.更新需要显示的帧
-                UpdateShowFrame();
+                // 6.找到所需显示的视频
+                FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+
+                // 7.更新需要显示的帧TODO:
             }
             catch (Exception ex)
             {
@@ -968,9 +996,11 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timeLineControl_MainTL_Click(object sender, EventArgs e)
         {
+            // 更新label时间
             UpdateLabelTime();
 
-            UpdateShowFrame();
+            // 找到所需显示的视频,并更新显示的帧
+            FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
         }
 
         /// <summary>
@@ -980,12 +1010,20 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timeLineControl_MainTL_MouseMove(object sender, MouseEventArgs e)
         {
+            // 更新label时间
             UpdateLabelTime();
 
             if (timeLineControl_MainTL._chooseThumb)
             {
-                UpdateShowFrame();
+                // 找到所需显示的视频,并更新显示的帧
+                FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
             }
+        }
+
+
+        private void UpdateNeedShowFrame()
+        {
+
         }
 
         #endregion 主时间线操作
@@ -1034,7 +1072,8 @@ namespace NonLinearEditSystem.Forms
 
                     panelExSelected.Invalidate();
 
-                    UpdateShowFrame();
+                    // 找到所需显示的视频,并更新显示的帧
+                    FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
                 }
             }
             catch (Exception ex)
@@ -1124,6 +1163,90 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
+        /// <summary>
+        /// 更新所有视频文件的开始/结束时间,按顺序存储
+        /// </summary>
+        private void UpdateVedioTrackFilesTimes()
+        {
+            try
+            {
+                // 1.首先清空列表
+                sortedVedioTimes = new List<double>();
+                sortedVedioTimes.Clear();
+
+                // 2.将所有的开始/结束时间 按顺序存储到列表中
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    string objStr = panel.Tag as string;
+                    if (objStr == "") continue;
+                    string[] startAndEndTime = objStr.Split('-');
+                    if (startAndEndTime.Length < 2) continue;
+                    double dStartTime = double.Parse(startAndEndTime[0]);
+                    double dEndTime = double.Parse(startAndEndTime[1]);
+
+                    sortedVedioTimes.Add(dStartTime);
+                    sortedVedioTimes.Add(dEndTime);
+                }
+
+                if (sortedVedioTimes.Count > 0)
+                {
+                    // 3.如果有加入到列表中的时间,则添加0,并排序
+                    sortedVedioTimes.Add(0);
+                    sortedVedioTimes.Sort();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 更新打包素材列表
+        /// </summary>
+        private void UpdatePackageClips()
+        {
+            try
+            {
+                // 1.初始化打包素材列表
+                packageClipsList = new List<PackageClips>();
+                packageClipsList.Clear();
+
+                for (int i = 0; i < sortedVedioTimes.Count-1; i++)
+                {
+                    // 2.如果后一个时间和前一个时间相等,那么不需要处理
+                    double dBeginTime = sortedVedioTimes[i];
+                    double dEndTime = sortedVedioTimes[i + 1];
+                    if (dEndTime - dBeginTime < EPSON) continue;
+
+                    // 3.获取中间时间
+                    double dMidTime = (dBeginTime + dEndTime) / 2;
+
+                    // 4.查找此时间的视频
+                    PanelEx thePanel = FindNeedShowVedioByTime(dMidTime);
+
+                    if (thePanel == null)
+                    {
+                        // 5.如果没找到,说明是空,需要用垫片
+                        PackageClips theClips = new PackageClips(BlackVedio, (Int64)dBeginTime, (Int64)dEndTime);
+                        packageClipsList.Add(theClips);
+                    }
+                    else
+                    {
+                        // 6.如果找到,则这一段时间就将此视频添加到打包素材列表中
+                        PackageClips theClips = new PackageClips(thePanel.Name, (Int64)dBeginTime, (Int64)dEndTime);
+                        packageClipsList.Add(theClips);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+
+        }
+
 
         #endregion 视频轨道操作
 
@@ -1375,10 +1498,10 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 更新序列监视面板需要显示的帧
         /// </summary>
-        private void UpdateShowFrame()
+        private PanelEx FindNeedShowVedioByTime(double dTime)
         {
             //TODO:更新需要显示的帧的处理不能这样
-            return;
+            //return;
             try
             {
                 foreach (PanelEx vedioTrackPanel in _vedioTrackPanels)
@@ -1388,21 +1511,27 @@ namespace NonLinearEditSystem.Forms
                         PanelEx panel = control as PanelEx;
                         if (panel == null) continue;
 
-                        if (IsNeededShowPanel(panel))
+                        if (IsNeededShowPanel(panel, dTime))
                         {
-                            return;
+                            return panel;
                         }
                     }
                 }
+                return null;
             }
             catch (Exception ex)
             {
                 ExceptionHandle.ExceptionHdl(ex);
+                return null;
             }
         }
 
-
-        private bool IsNeededShowPanel(PanelEx panel)
+        /// <summary>
+        /// 是否是需要显示的视频
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <returns></returns>
+        private bool IsNeededShowPanel(PanelEx panel, double dTime)
         {
             try
             {
@@ -1413,11 +1542,11 @@ namespace NonLinearEditSystem.Forms
                 if (startAndEndTime.Length < 2) return false;
 
                 // 如果时间线的游标时间处于两者之间,则说明此panel是处于可显示状态
-                if (timeLineControl_MainTL.ThumbValue > double.Parse(startAndEndTime[0])
-                    && timeLineControl_MainTL.ThumbValue < double.Parse(startAndEndTime[1]))
+                if (dTime > double.Parse(startAndEndTime[0])
+                    && dTime < double.Parse(startAndEndTime[1]))
                 {
-                    double playTime = timeLineControl_MainTL.ThumbValue - double.Parse(startAndEndTime[0]);
-                    ShowThisPanelFrame(panel.Name, (long)(playTime * GeneralConversions.SecToNanoSec));
+                    //double playTime = timeLineControl_MainTL.ThumbValue - double.Parse(startAndEndTime[0]);
+                    //ShowThisPanelFrame(panel.Name, (long)(playTime * GeneralConversions.SecToNanoSec));
                     return true;
                 }
             }
@@ -1429,6 +1558,11 @@ namespace NonLinearEditSystem.Forms
             return false;
         }
 
+        /// <summary>
+        /// 显示这一帧
+        /// </summary>
+        /// <param name="panelName"></param>
+        /// <param name="playTime"></param>
         private void ShowThisPanelFrame(string panelName, long playTime)
         {
             try
@@ -1844,14 +1978,16 @@ namespace NonLinearEditSystem.Forms
         {
             _trackBlankMenu = new ContextMenuStrip
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_trackBlankMenu",
                 Size = _menuSize
             };
 
             _trackBlank删除空隙 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_删除空隙MenuItem",
                 Size = _menuItemSize,
                 Text = "删除空隙"
@@ -1860,7 +1996,8 @@ namespace NonLinearEditSystem.Forms
 
             _trackBlank粘贴空隙 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_粘贴空隙MenuItem",
                 Size = _menuItemSize,
                 Text = "粘贴空隙"
@@ -1868,7 +2005,8 @@ namespace NonLinearEditSystem.Forms
 
             _trackBlank粘贴 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_粘贴MenuItem",
                 Size = _menuItemSize,
                 Text = "粘贴"
@@ -1876,14 +2014,16 @@ namespace NonLinearEditSystem.Forms
 
             _trackBlankSeparator1 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_trackBlankSeparator1",
                 Size = _seperatorSize,
             };
 
             _trackBlank当前轨道中插入工作区 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_当前轨道中插入工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "当前轨道中插入工作区"
@@ -1891,7 +2031,8 @@ namespace NonLinearEditSystem.Forms
 
             _trackBlank删除当前轨道工作区 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_删除当前轨道工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "删除当前轨道工作区"
@@ -1899,7 +2040,8 @@ namespace NonLinearEditSystem.Forms
 
             _trackBlank清除当前轨道工作区 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_清除当前轨道工作区MenuItem",
                 Size = _menuItemSize,
                 Text = "清除当前轨道工作区"
@@ -1935,56 +2077,64 @@ namespace NonLinearEditSystem.Forms
         {
             _vedioTrackFileMenu = new ContextMenuStrip
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFileMenu",
                 Size = _menuSize
             };
 
             _vedioTrackFile打开片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile打开片段",
                 Size = _menuItemSize,
                 Text = "打开片段"
             };
             _vedioTrackFile剪切 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile剪切",
                 Size = _menuItemSize,
                 Text = "剪切"
             };
             _vedioTrackFile复制 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile复制",
                 Size = _menuItemSize,
                 Text = "复制"
             };
             _vedioTrackFile删除 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile删除",
                 Size = _menuItemSize,
                 Text = "删除"
             };
             _vedioTrackFile独立删除 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile独立删除",
                 Size = _menuItemSize,
                 Text = "独立删除"
             };
             _vedioTrackFile涟漪删除 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile涟漪删除",
                 Size = _menuItemSize,
                 Text = "涟漪删除"
             };
             _vedioTrackFile片段静音 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile片段静音",
                 Size = _menuItemSize,
                 Text = "片段静音",
@@ -1993,126 +2143,144 @@ namespace NonLinearEditSystem.Forms
             };
             _vedioTrackFileSeparator1 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFileSeparator1",
                 Size = _seperatorSize,
             };
 
             _vedioTrackFile在片段监视器上加载原始片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile在片段监视器上加载原始片段",
                 Size = _menuItemSize,
                 Text = "在片段监视器上加载原始片段"
             };
             _vedioTrackFile在工程浏览器中查找片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile在工程浏览器中查找片段",
                 Size = _menuItemSize,
                 Text = "在工程浏览器中查找片段"
             };
             _vedioTrackFile保存模版 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile保存模版",
                 Size = _menuItemSize,
                 Text = "保存模版"
             };
             _vedioTrackFile复制特技 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile复制特技",
                 Size = _menuItemSize,
                 Text = "复制特技"
             };
             _vedioTrackFile复制属性特技 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile复制属性特技",
                 Size = _menuItemSize,
                 Text = "复制属性特技"
             };
             _vedioTrackFile粘贴特技 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile粘贴特技",
                 Size = _menuItemSize,
                 Text = "粘贴特技"
             };
             _vedioTrackFile删除特技 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile删除特技",
                 Size = _menuItemSize,
                 Text = "删除特技"
             };
             _vedioTrackFileSeparator2 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFileSeparator2",
                 Size = _seperatorSize,
             };
 
             _vedioTrackFile轨道内移动 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile轨道内移动",
                 Size = _menuItemSize,
                 Text = "轨道内移动"
             };
             _vedioTrackFile向左平移一帧 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向左平移一帧",
                 Size = _menuItemSize,
                 Text = "向左平移一帧"
             };
             _vedioTrackFile向左平移五帧 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向左平移五帧",
                 Size = _menuItemSize,
                 Text = "向左平移五帧"
             };
             _vedioTrackFile向右平移一帧 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向右平移一帧",
                 Size = _menuItemSize,
                 Text = "向右平移一帧"
             };
             _vedioTrackFile向右平移五帧 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向右平移五帧",
                 Size = _menuItemSize,
                 Text = "向右平移五帧"
             };
             _vedioTrackFile向左平移指定时间长度 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向左平移指定时间长度",
                 Size = _menuItemSize,
                 Text = "向左平移指定时间长度"
             };
             _vedioTrackFile向右平移指定时间长度 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile向右平移指定时间长度",
                 Size = _menuItemSize,
                 Text = "向右平移指定时间长度"
             };
             _vedioTrackFile平移片段入点至上一个片段出点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段入点至上一个片段出点",
                 Size = _menuItemSize,
                 Text = "平移片段入点至上一个片段出点"
             };
             _vedioTrackFile平移片段出点至上一个片段入点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段出点至上一个片段入点",
                 Size = _menuItemSize,
                 Text = "平移片段出点至上一个片段入点"
@@ -2120,35 +2288,40 @@ namespace NonLinearEditSystem.Forms
 
             _vedioTrackFile移到时码线处 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile移到时码线处",
                 Size = _menuItemSize,
                 Text = "移到时码线处"
             };
             _vedioTrackFile平移片段入点至时码线处 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段入点至时码线处",
                 Size = _menuItemSize,
                 Text = "平移片段入点至时码线处"
             };
             _vedioTrackFile平移片段出点至时码线处 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段出点至时码线处",
                 Size = _menuItemSize,
                 Text = "平移片段出点至时码线处"
             };
             _vedioTrackFile平移片段之后至时码线处 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段之后至时码线处",
                 Size = _menuItemSize,
                 Text = "平移片段之后至时码线处"
             };
             _vedioTrackFile平移片段之前至时码线处 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile平移片段之前至时码线处",
                 Size = _menuItemSize,
                 Text = "平移片段之前至时码线处"
@@ -2156,27 +2329,31 @@ namespace NonLinearEditSystem.Forms
 
             _vedioTrackFileSeparator3 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFileSeparator3",
                 Size = _seperatorSize,
             };
             _vedioTrackFile片段编组 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile片段编组",
                 Size = _menuItemSize,
                 Text = "片段编组"
             };
             _vedioTrackFile解组 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile解组",
                 Size = _menuItemSize,
                 Text = "解组"
             };
             _vedioTrackFile素材互换 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile素材互换",
                 Size = _menuItemSize,
                 Text = "素材互换"
@@ -2184,28 +2361,32 @@ namespace NonLinearEditSystem.Forms
 
             _vedioTrackFile联动控制 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile联动控制",
                 Size = _menuItemSize,
                 Text = "联动控制"
             };
             _vedioTrackFile视音频联动 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile视音频联动",
                 Size = _menuItemSize,
                 Text = "视音频联动"
             };
             _vedioTrackFile音频联动 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile音频联动",
                 Size = _menuItemSize,
                 Text = "音频联动"
             };
             _vedioTrackFile独立 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile独立",
                 Size = _menuItemSize,
                 Text = "独立"
@@ -2213,13 +2394,15 @@ namespace NonLinearEditSystem.Forms
 
             _vedioTrackFileSeparator4 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFileSeparator4",
                 Size = _seperatorSize,
             };
             _vedioTrackFile自动上下变换 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_vedioTrackFile自动上下变换",
                 Size = _menuItemSize,
                 Text = "自动上下变换",
@@ -2305,195 +2488,223 @@ namespace NonLinearEditSystem.Forms
         {
             _mainTimeLineMenu = new ContextMenuStrip
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu",
                 Size = _menuSize
             };
             _mainTimeLineMenu添加标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu添加标记点",
                 Size = _menuItemSize,
                 Text = "添加标记点"
             };
             _mainTimeLineMenu注释标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu注释标记点",
                 Size = _menuItemSize,
                 Text = "注释标记点"
             };
             _mainTimeLineMenu删除标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu删除标记点",
                 Size = _menuItemSize,
                 Text = "删除标记点"
             };
             _mainTimeLineMenu删除所有标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu删除所有标记点",
                 Size = _menuItemSize,
                 Text = "删除所有标记点"
             };
             _mainTimeLineMenu上一个标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu上一个标记点",
                 Size = _menuItemSize,
                 Text = "上一个标记点"
             };
             _mainTimeLineMenu下一个标记点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu下一个标记点",
                 Size = _menuItemSize,
                 Text = "下一个标记点"
             };
             _mainTimeLineMenu标记点管理 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu标记点管理",
                 Size = _menuItemSize,
                 Text = "标记点管理"
             };
             _mainTimeLineMenuSeparator1 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenuSeparator1",
                 Size = _seperatorSize,
             };
 
             _mainTimeLineMenu设置工作区入点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu设置工作区入点",
                 Size = _menuItemSize,
                 Text = "设置工作区入点"
             };
             _mainTimeLineMenu设置工作区出点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu设置工作区出点",
                 Size = _menuItemSize,
                 Text = "设置工作区出点"
             };
             _mainTimeLineMenu移至工作区入点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu移至工作区入点",
                 Size = _menuItemSize,
                 Text = "移至工作区入点"
             };
             _mainTimeLineMenu移至工作区出点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu移至工作区出点",
                 Size = _menuItemSize,
                 Text = "移至工作区出点"
             };
             _mainTimeLineMenuSeparator2 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenuSeparator2",
                 Size = _seperatorSize,
             };
 
             _mainTimeLineMenu设置序列入出点 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu设置序列入出点",
                 Size = _menuItemSize,
                 Text = "设置序列入出点"
             };
             _mainTimeLineMenu加入批打包列表 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu加入批打包列表",
                 Size = _menuItemSize,
                 Text = "加入批打包列表"
             };
             _mainTimeLineMenu查看批打包列表 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu查看批打包列表",
                 Size = _menuItemSize,
                 Text = "查看批打包列表"
             };
             _mainTimeLineMenu清除批打包列表 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu清除批打包列表",
                 Size = _menuItemSize,
                 Text = "清除批打包列表"
             };
             _mainTimeLineMenu时间标尺精度 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu时间标尺精度",
                 Size = _menuItemSize,
                 Text = "时间标尺精度"
             };
             _mainTimeLineMenuSeparator3 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenuSeparator3",
                 Size = _seperatorSize,
             };
 
             _mainTimeLineMenu所有轨道插入工作区 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu所有轨道插入工作区",
                 Size = _menuItemSize,
                 Text = "所有轨道插入工作区"
             };
             _mainTimeLineMenu删除工作区中所有片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu删除工作区中所有片段",
                 Size = _menuItemSize,
                 Text = "删除工作区中所有片段"
             };
             _mainTimeLineMenu清除工作区中所有片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu清除工作区中所有片段",
                 Size = _menuItemSize,
                 Text = "清除工作区中所有片段"
             };
             _mainTimeLineMenu复制工作区中片段 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu复制工作区中片段",
                 Size = _menuItemSize,
                 Text = "复制工作区中片段"
             };
             _mainTimeLineMenu粘贴工作区至时码线 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu粘贴工作区至时码线",
                 Size = _menuItemSize,
                 Text = "粘贴工作区至时码线"
             };
             _mainTimeLineMenuSeparator4 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenuSeparator4",
                 Size = _seperatorSize,
             };
 
             _mainTimeLineMenu黑场检测 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu黑场检测",
                 Size = _menuItemSize,
                 Text = "黑场检测"
             };
             _mainTimeLineMenu质量检测 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_mainTimeLineMenu质量检测",
                 Size = _menuItemSize,
                 Text = "质量检测"
@@ -2541,34 +2752,39 @@ namespace NonLinearEditSystem.Forms
         {
             _sequenceMenu = new ContextMenuStrip
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu",
                 Size = _menuSize
             };
             _sequenceMenu显示模式 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu显示模式",
                 Size = _menuItemSize,
                 Text = "显示模式"
             };
             _sequenceMenu帧方式显示 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu帧方式显示",
                 Size = _menuItemSize,
                 Text = "帧方式显示"
             };
             _sequenceMenu显示第一场 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu显示第一场",
                 Size = _menuItemSize,
                 Text = "显示第一场"
             };
             _sequenceMenu显示第二场 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu显示第二场",
                 Size = _menuItemSize,
                 Text = "显示第二场"
@@ -2583,63 +2799,72 @@ namespace NonLinearEditSystem.Forms
 
             _sequenceMenu缩放 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放",
                 Size = _menuItemSize,
                 Text = "缩放"
             };
             _sequenceMenu缩放适配 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放适配",
                 Size = _menuItemSize,
                 Text = "适配"
             };
             _sequenceMenu缩放25 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放25",
                 Size = _menuItemSize,
                 Text = "25%"
             };
             _sequenceMenu缩放50 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放50",
                 Size = _menuItemSize,
                 Text = "50%"
             };
             _sequenceMenu缩放100 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放100",
                 Size = _menuItemSize,
                 Text = "100%"
             };
             _sequenceMenu缩放150 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放150",
                 Size = _menuItemSize,
                 Text = "150%"
             };
             _sequenceMenu缩放200 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩放200",
                 Size = _menuItemSize,
                 Text = "200%"
             };
             _sequenceMenu放大 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu放大",
                 Size = _menuItemSize,
                 Text = "放大"
             };
             _sequenceMenu缩小 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu缩小",
                 Size = _menuItemSize,
                 Text = "缩小"
@@ -2654,70 +2879,80 @@ namespace NonLinearEditSystem.Forms
 
             _sequenceMenu通道 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道",
                 Size = _menuItemSize,
                 Text = "通道"
             };
             _sequenceMenu通道RGBA = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道RGBA",
                 Size = _menuItemSize,
                 Text = "RGBA"
             };
             _sequenceMenu通道RGB = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道RGB",
                 Size = _menuItemSize,
                 Text = "RGB"
             };
             _sequenceMenu通道红色通道 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道红色通道",
                 Size = _menuItemSize,
                 Text = "红色通道"
             };
             _sequenceMenu通道绿色通道 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道绿色通道",
                 Size = _menuItemSize,
                 Text = "绿色通道"
             };
             _sequenceMenu通道蓝色通道 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道蓝色通道",
                 Size = _menuItemSize,
                 Text = "蓝色通道"
             };
             _sequenceMenu通道Alpha通道 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道Alpha通道",
                 Size = _menuItemSize,
                 Text = "Alpha通道"
             };
             _sequenceMenu通道亮度通道709 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道亮度通道709",
                 Size = _menuItemSize,
                 Text = "亮度通道(709)"
             };
             _sequenceMenu通道亮度通道601 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu通道亮度通道601",
                 Size = _menuItemSize,
                 Text = "亮度通道(601)"
             };
             _sequenceMenu输出图像 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu输出图像",
                 Size = _menuItemSize,
                 Text = "输出图像"
@@ -2732,69 +2967,79 @@ namespace NonLinearEditSystem.Forms
 
             _sequenceMenu方形像素显示 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu方形像素显示",
                 Size = _menuItemSize,
                 Text = "方形像素显示"
             };
             _sequenceMenu显示棋盘格 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu显示棋盘格",
                 Size = _menuItemSize,
                 Text = "显示棋盘格"
             };
             _sequenceMenu显示素材信息 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu显示素材信息",
                 Size = _menuItemSize,
                 Text = "显示素材信息"
             };
             _sequenceMenu网格 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu网格",
                 Size = _menuItemSize,
                 Text = "网格"
             };
             _sequenceMenu辅助线 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu辅助线",
                 Size = _menuItemSize,
                 Text = "辅助线"
             };
             _sequenceMenu辅助线显示辅助线 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu辅助线显示辅助线",
                 Size = _menuItemSize,
                 Text = "显示辅助线"
             };
             _sequenceMenu辅助线Separator1 = new ToolStripSeparator
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu辅助线Separator1",
                 Size = _seperatorSize,
             };
             _sequenceMenu标题操作安全区域 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu标题操作安全区域",
                 Size = _menuItemSize,
                 Text = "标题/操作安全区域"
             };
             _sequenceMenu辅助线图像框 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu辅助线图像框",
                 Size = _menuItemSize,
                 Text = "辅助线图像框"
             };
             _sequenceMenu辅助线坐标轴 = new ToolStripMenuItem
             {
-                BackColor = _menuColor, ForeColor = _menufontsColor,
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
                 Name = "_sequenceMenu辅助线坐标轴",
                 Size = _menuItemSize,
                 Text = "辅助线坐标轴"
@@ -3009,6 +3254,92 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                UpdateVedioTrackFilesTimes();
+
+                UpdatePackageClips();
+
+                foreach (PackageClips theClips in packageClipsList)
+                {
+                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, theClips.strClipFileName, (long)(theClips.rtPos * GeneralConversions.SecToNanoSec), (long)(theClips.rtEndPos * GeneralConversions.SecToNanoSec));
+
+                    if (res >= 0)
+                    {
+                        strInH264VideoFileList.Add(strDemuxVideoFile);
+                        strInAacFileList.Add(strDemuxAudioFile);
+                    }
+                    else
+                    {
+                        MessageBox.Show(theClips.strClipFileName + "分离失败");
+                    }
+                }
+
+                if (strInH264VideoFileList.Count == 0)
+                {
+                    MessageBox.Show("未分离出音视频文件, 无法进行编解码");
+                    return;
+                }
+
+                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
+                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
+
+                if (resVedio >= 0 && resAudio >= 0)
+                {
+                    while (true)
+                    {
+                        if (_h264CodecIOCSharp.isFinish())
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Thread.Sleep(1000);
+                        }
+                    }
+                }
+
+                StringList strInH264FileList = new StringList();
+                strInH264FileList.Add(strOutH264FileName);
+                strInH264FileList.Add(strOutAacFileName);
+
+                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
+
+                while (true)
+                {
+                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+
+                if (PackRes >= 0)
+                {
+                    if (MessageBox.Show("打包成功") == DialogResult.OK)
+                    {
+                        Close();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("打包失败");
+                }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        private void 测试ToolStripMenuItem_Click1(object sender, EventArgs e)
+        {
+            try
+            {
 
                 /*
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -3136,39 +3467,39 @@ namespace NonLinearEditSystem.Forms
                 }
 
 
-               
-                    StringList strInH264FileList = new StringList();
-                    strInH264FileList.Add(strOutH264FileName);
-                    strInH264FileList.Add(strOutAacFileName);
+
+                StringList strInH264FileList = new StringList();
+                strInH264FileList.Add(strOutH264FileName);
+                strInH264FileList.Add(strOutAacFileName);
 
                 string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
-                    int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
+                int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
 
-                    while (true)
+                while (true)
+                {
+                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
                     {
-                        if (_mp4FilesMuxIOCSharp.MuxerFinished())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            Thread.Sleep(1000);
-                        }
-                    }
-
-                    if (PackRes >= 0)
-                    {
-                        if (MessageBox.Show("打包成功") == DialogResult.OK)
-                        {
-                            Close();
-                        }
-
+                        break;
                     }
                     else
                     {
-                        MessageBox.Show("打包失败");
+                        Thread.Sleep(1000);
                     }
-                
+                }
+
+                if (PackRes >= 0)
+                {
+                    if (MessageBox.Show("打包成功") == DialogResult.OK)
+                    {
+                        Close();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("打包失败");
+                }
+
             }
             catch (Exception ex)
             {

@@ -1325,6 +1325,7 @@
             this.VideoFile1.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
             this.VideoFile1.TabIndex = 0;
             this.VideoFile1.Text = "视频素材1";
+            this.VideoFile1.Visible = false;
             this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
             this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
             // 
