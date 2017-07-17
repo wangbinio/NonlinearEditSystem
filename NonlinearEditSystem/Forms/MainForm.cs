@@ -1235,7 +1235,11 @@ namespace NonLinearEditSystem.Forms
                     else
                     {
                         // 6.如果找到,则这一段时间就将此视频添加到打包素材列表中
-                        PackageClips theClips = new PackageClips(thePanel.Name, (Int64)dBeginTime, (Int64)dEndTime);
+                        // 这里的入点和出点,应该转为视频时间,而不是时间线上的时间
+                        double dVedioStartTime = 
+                        timeLineControl_MainTL.GetTimeValueByPos(thePanel.Location.X);
+                        
+                        PackageClips theClips = new PackageClips(thePanel.Name, (Int64)(dBeginTime- dVedioStartTime), (Int64)(dEndTime - dVedioStartTime));
                         packageClipsList.Add(theClips);
                     }
                 }
