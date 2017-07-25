@@ -460,7 +460,7 @@
             this.timeLineControl_Sequence.Dock = System.Windows.Forms.DockStyle.Top;
             this.timeLineControl_Sequence.Font = new System.Drawing.Font("Consolas", 8.75F);
             this.timeLineControl_Sequence.ForeColor = System.Drawing.Color.White;
-            this.timeLineControl_Sequence.IndexOfSecEveryTicks = 5;
+            this.timeLineControl_Sequence.IndexOfSecEveryTicks = 2;
             this.timeLineControl_Sequence.Location = new System.Drawing.Point(1, 359);
             this.timeLineControl_Sequence.Name = "timeLineControl_Sequence";
             this.timeLineControl_Sequence.NBigTicksLength = 10;
@@ -1241,7 +1241,7 @@
             this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
             this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.White;
-            this.timeLineControl_MainTL.IndexOfSecEveryTicks = 5;
+            this.timeLineControl_MainTL.IndexOfSecEveryTicks = 2;
             this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
             this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
             this.timeLineControl_MainTL.NBigTicksLength = 10;
@@ -2158,6 +2158,7 @@
             this.Controls.Add(this.tabControl_TimeLine);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.MainmenuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";

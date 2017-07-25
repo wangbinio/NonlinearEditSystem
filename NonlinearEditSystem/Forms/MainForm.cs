@@ -291,6 +291,7 @@ namespace NonLinearEditSystem.Forms
                     _vedioFilesPanel[i].Tag = "";
                     _vedioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                    _vedioFilesPanel[i].MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
 
                     _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
                     _audioFilesPanel[i].ColorSchemeStyle =
@@ -1182,6 +1183,7 @@ namespace NonLinearEditSystem.Forms
         private bool _chooseVedioPanelStart = false;
         private bool _chooseVedioPanelEnd = false;
         private bool _mouseMovedVedioPanel = false;
+        private PanelEx _panelExSelected = new PanelEx();
 
         /// <summary>
         /// 在音视频轨道上拖动文件
@@ -1206,22 +1208,26 @@ namespace NonLinearEditSystem.Forms
                 if (e.X <= (int)fClickDelta)
                 {
                     _chooseVedioPanelStart = true;
+                    Cursor = Cursors.SizeWE;
                 }
                 // 点中终点
                 //else if (Math.Abs((float)e.X - (float)panelExSelected.Location.X - panelExSelected.Width) < fClickDelta)
                 else if (panelExSelected.Width - e.X <= (int)fClickDelta)
                 {
                     _chooseVedioPanelEnd = true;
+                    Cursor = Cursors.SizeWE;
                 }
                 // 点中本身
                 else
                 {
                     _chooseVedioPanelSelf = true;
+                    Cursor = Cursors.Hand;
                 }
 
                 _mousePosDeltaX = e.X - panelExSelected.Location.X;
                 _mousePosDeltaY = e.Y - panelExSelected.Location.Y;
 
+                //_mousePosDeltaX = e.X;
                 // 鼠标按下的时候，还未移动
                 _mouseMovedVedioPanel = false;
             }
@@ -1238,10 +1244,10 @@ namespace NonLinearEditSystem.Forms
             {
                 // 鼠标位置
                 Point mousePoint = e.Location;
-
-                if (e.Location.X < 0) return;
+                //if (e.Location.X < 0) return;
 
                 PanelEx panelExSelected = (PanelEx)sender;
+                _panelExSelected = panelExSelected;
                 int nStartPos = panelExSelected.Location.X;
                 int nEndPos = nStartPos + panelExSelected.Width;
 
@@ -1261,18 +1267,30 @@ namespace NonLinearEditSystem.Forms
                     // 设置鼠标移动为true
                     _mouseMovedVedioPanel = true;
 
+
+
                     // 1.如果是选中面板本身,则移动面板本身
                     if (_chooseVedioPanelSelf)
                     {
-                        panelExSelected.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                        // 这一部分是移动面板本身
+                        //panelExSelected.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                        //
+                        //// 使用tag来存储开始结束位置在时间线的时间
+                        //double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
+                        //double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+                        //
+                        //string objStr = dStartTime + "-" + dEndTime;
+                        //
+                        //panelExSelected.Tag = objStr;
 
-                        // 使用tag来存储开始结束位置在时间线的时间
-                        double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
-                        double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+                        // 这一部分是通过移动新面板,最后同步
+                        operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                        //operatorPanel.Location = new Point(e.X - _mousePosDeltaX + panelExSelected.Location.X, 0);
+                        operatorPanel.Size = panelExSelected.Size;
+                        panelExSelected.Parent.Controls.Add(operatorPanel);
+                        //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
+                        //Cursor = Cursors.NoMoveHoriz;
 
-                        string objStr = dStartTime + "-" + dEndTime;
-
-                        panelExSelected.Tag = objStr;
                     }
                     // 2.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
                     else if (_chooseVedioPanelStart)
@@ -1283,25 +1301,63 @@ namespace NonLinearEditSystem.Forms
                             // 1.获取视频原始长度
                             int originLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name));
 
-                            //if (nEndPos - (e.X - _mousePosDeltaX) < originLength)
+                            // 2.如果拉伸的长度小于原视频长度
+                            if (nEndPos - (e.X - _mousePosDeltaX) < originLength)
                             {
-                                panelExSelected.Width = /*panelExSelected.Width - */(nEndPos - (e.X - _mousePosDeltaX));
+                                // 这一部分是移动面板本身
+                                //panelExSelected.Width = /*panelExSelected.Width - */(nEndPos - (e.X - _mousePosDeltaX));
+                                //panelExSelected.Location = new Point(e.X - _mousePosDeltaX, 0);
 
-                                panelExSelected.Location = new Point(e.X - _mousePosDeltaX, 0);
-
+                                // 这一部分是通过移动新面板,最后同步
+                                operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                                operatorPanel.Height = panelExSelected.Height;
+                                operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width - operatorPanel.Location.X;
+                                if (operatorPanel.Width < 10) operatorPanel.Width = 10;
+                                //operatorPanel.Size = panelExSelected.Size;
+                                panelExSelected.Parent.Controls.Add(operatorPanel);
                             }
-
                         }
                         // 字幕文件最长无限制,最短为1
                         else if (panelExSelected.Name.ToUpper().EndsWith("SERIALIZATION"))
                         {
-
+                            // 这一部分是通过移动新面板,最后同步
+                            operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                            operatorPanel.Height = panelExSelected.Height;
+                            operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width - operatorPanel.Location.X;
+                            if (operatorPanel.Width < 10) operatorPanel.Width = 10;
+                            panelExSelected.Parent.Controls.Add(operatorPanel);
                         }
                     }
                     // 3.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
                     else if (_chooseVedioPanelEnd)
                     {
+                        // 音视频文件最长为视频全长,最短为1
+                        if (panelExSelected.Name.ToUpper().EndsWith("MP4"))
+                        {
+                            // 1.获取视频原始长度
+                            int originLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name));
 
+                            // 2.如果拉伸的长度小于原视频长度
+                            if (e.X < originLength)
+                            {
+                                operatorPanel.Location = panelExSelected.Location;
+                                operatorPanel.Height = panelExSelected.Height;
+                                operatorPanel.Width = e.X;
+                                if (operatorPanel.Width < 10) operatorPanel.Width = 10;
+                                //operatorPanel.Size = panelExSelected.Size;
+                                panelExSelected.Parent.Controls.Add(operatorPanel);
+                            }
+                        }
+                        // 字幕文件最长无限制,最短为1
+                        else if (panelExSelected.Name.ToUpper().EndsWith("SERIALIZATION"))
+                        {
+                            operatorPanel.Location = panelExSelected.Location;
+                            operatorPanel.Height = panelExSelected.Height;
+                            operatorPanel.Width = e.X;
+                            if (operatorPanel.Width < 10) operatorPanel.Width = 10;
+                            //operatorPanel.Size = panelExSelected.Size;
+                            panelExSelected.Parent.Controls.Add(operatorPanel);
+                        }
                     }
                     else
                     {
@@ -1325,6 +1381,22 @@ namespace NonLinearEditSystem.Forms
 
         private void VideoFile_MouseUp(object sender, MouseEventArgs e)
         {
+            if (_chooseVedioPanelSelf)
+            {
+                _panelExSelected.Location = operatorPanel.Location;
+                _panelExSelected.Size = operatorPanel.Size;
+                _panelExSelected.Parent.Controls.Remove(operatorPanel);
+            }
+            else if (_chooseVedioPanelStart || _chooseVedioPanelEnd)
+            {
+                _panelExSelected.Location = operatorPanel.Location;
+                _panelExSelected.Size = operatorPanel.Size;
+                _panelExSelected.Parent.Controls.Remove(operatorPanel);
+            }
+
+
+
+            Cursor = Cursors.Arrow;
             _chooseVedioPanelSelf = false;
             _chooseVedioPanelStart = false;
             _chooseVedioPanelEnd = false;
