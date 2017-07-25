@@ -1379,29 +1379,59 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 轨道鼠标弹起事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VideoFile_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_chooseVedioPanelSelf)
+            try
             {
-                _panelExSelected.Location = operatorPanel.Location;
-                _panelExSelected.Size = operatorPanel.Size;
-                _panelExSelected.Parent.Controls.Remove(operatorPanel);
+                if (e.Button == MouseButtons.Left)
+                {
+                    // 更新拖动或者缩放完的文件位置和大小,并需要改变其存储信息
+                    if (_chooseVedioPanelSelf)
+                    {
+                        _panelExSelected.Location = operatorPanel.Location;
+                        _panelExSelected.Size = operatorPanel.Size;
+                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
+                    }
+                    else if (_chooseVedioPanelStart)
+                    {
+                        _panelExSelected.Location = operatorPanel.Location;
+                        _panelExSelected.Size = operatorPanel.Size;
+                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
+                    }
+                    else if (_chooseVedioPanelEnd)
+                    {
+                        _panelExSelected.Location = operatorPanel.Location;
+                        _panelExSelected.Size = operatorPanel.Size;
+                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
+                    }
+
+                    // 使用tag来存储开始结束位置在时间线的时间
+                    double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(_panelExSelected.Location.X);
+                    double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(_panelExSelected.Location.X + _panelExSelected.Width);
+
+                    string objStr = dStartTime + "-" + dEndTime;
+
+                    _panelExSelected.Tag = objStr;
+                }
             }
-            else if (_chooseVedioPanelStart || _chooseVedioPanelEnd)
+            catch (Exception ex)
             {
-                _panelExSelected.Location = operatorPanel.Location;
-                _panelExSelected.Size = operatorPanel.Size;
-                _panelExSelected.Parent.Controls.Remove(operatorPanel);
+            	ExceptionHandle.ExceptionHdl(ex);
             }
-
-
-
+           
             Cursor = Cursors.Arrow;
             _chooseVedioPanelSelf = false;
             _chooseVedioPanelStart = false;
             _chooseVedioPanelEnd = false;
             _mouseMovedVedioPanel = false;
+            _panelExSelected = new PanelEx();
         }
+
 
         // 视频轨道面板鼠标移动事件
         private void panelEx_VideoTrackConment1_MouseMove(object sender, MouseEventArgs e)
