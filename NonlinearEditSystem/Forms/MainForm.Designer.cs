@@ -1304,6 +1304,7 @@
             // 
             // VideoFile1
             // 
+            this.VideoFile1.AllowDrop = true;
             this.VideoFile1.CanvasColor = System.Drawing.SystemColors.Control;
             this.VideoFile1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.VideoFile1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -1328,6 +1329,7 @@
             this.VideoFile1.Visible = false;
             this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
             this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+            this.VideoFile1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
             // 
             // panelEx_VideoTrackConment3
             // 
@@ -1400,6 +1402,7 @@
             this.panelEx_VideoTrackConment1.Text = "视频轨道内容1";
             this.panelEx_VideoTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
             this.panelEx_VideoTrackConment1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragVideoEnter);
+            this.panelEx_VideoTrackConment1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
             // 
             // panelEx_AudioTrackComent
             // 

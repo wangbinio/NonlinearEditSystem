@@ -48,21 +48,36 @@
     <ClInclude Include="ClipPlayControlCSharp.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CommDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketIO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketIOCSharp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ZimuCreate2CSharp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ZimuCreateIO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="H264CodecIOCSharp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Mp4DemuxIOCSharp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Mp4FilesMuxIOCSharp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ClipPlayControlCSharp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketIOCSharp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ZimuCreate2CSharp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

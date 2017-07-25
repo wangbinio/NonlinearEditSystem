@@ -108,7 +108,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ClipPlayControlDLL.lib;H264CodecDLL.lib;MP4DemuxDLL.lib;MP4FilesMuxDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ClipPlayControlDLL.lib;H264CodecDLL.lib;ZimuCreateDLL.lib;PacketDLL.lib;MP4DemuxDLL.lib;MP4FilesMuxDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,28 +147,33 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseDefine.h" />
     <ClInclude Include="ClipPlayControlIO.h" />
     <ClInclude Include="ClipPlayControlCSharp.h" />
+    <ClInclude Include="CommDef.h" />
     <ClInclude Include="H264CodecIO.h" />
     <ClInclude Include="H264CodecIOCSharp.h" />
     <ClInclude Include="Mp4DemuxIO.h" />
     <ClInclude Include="Mp4DemuxIOCSharp.h" />
     <ClInclude Include="Mp4FilesMuxIO.h" />
     <ClInclude Include="Mp4FilesMuxIOCSharp.h" />
+    <ClInclude Include="PacketIO.h" />
+    <ClInclude Include="PacketIOCSharp.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ZimuCreate2CSharp.h" />
+    <ClInclude Include="ZimuCreateIO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClipPlayControlCSharp.cpp" />
-    <ClCompile Include="H264CodecIOCSharp.cpp" />
-    <ClCompile Include="Mp4DemuxIOCSharp.cpp" />
-    <ClCompile Include="Mp4FilesMuxIOCSharp.cpp" />
+    <ClCompile Include="PacketIOCSharp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ZimuCreate2CSharp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

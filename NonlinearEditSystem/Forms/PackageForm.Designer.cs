@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonX_AddFileName = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_ScanFilePath = new DevComponents.DotNetBar.ButtonX();
             this.textBoxX_FileName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -104,6 +105,7 @@
             this.buttonX_全部复位 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_开始 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX_停止 = new DevComponents.DotNetBar.ButtonX();
+            this.timerPacket = new System.Windows.Forms.Timer(this.components);
             this.groupBox_视频设置.SuspendLayout();
             this.groupBox_音频设置.SuspendLayout();
             this.SuspendLayout();
@@ -164,7 +166,7 @@
             this.textBoxX_FilePath.Size = new System.Drawing.Size(193, 23);
             this.textBoxX_FilePath.TabIndex = 100;
             this.textBoxX_FilePath.TabStop = false;
-            this.textBoxX_FilePath.Text = "D:\\打包输出";
+            this.textBoxX_FilePath.Text = "D:\\视频素材";
             // 
             // labelX_文件名
             // 
@@ -219,6 +221,7 @@
             this.buttonX_StartPack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_StartPack.TabIndex = 16;
             this.buttonX_StartPack.Text = "开始";
+            this.buttonX_StartPack.Click += new System.EventHandler(this.buttonX_StartPack_Click);
             // 
             // buttonX_StopPack
             // 
@@ -873,7 +876,6 @@
             this.progressBarX_Pack.Size = new System.Drawing.Size(296, 23);
             this.progressBarX_Pack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.progressBarX_Pack.TabIndex = 14;
-            this.progressBarX_Pack.Text = "50%";
             this.progressBarX_Pack.TextVisible = true;
             this.progressBarX_Pack.Value = 50;
             // 
@@ -1117,6 +1119,11 @@
             this.buttonX_停止.TabIndex = 5;
             this.buttonX_停止.Text = "停止";
             // 
+            // timerPacket
+            // 
+            this.timerPacket.Interval = 1000;
+            this.timerPacket.Tick += new System.EventHandler(this.timerPacket_Tick);
+            // 
             // PackageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1256,5 +1263,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Timer timerPacket;
     }
 }

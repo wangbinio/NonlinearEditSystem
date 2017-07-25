@@ -63,7 +63,7 @@ namespace TimeLineControl
         public readonly int[] SecondsEveryTicks = new[] { 1, 3, 6, 12, 30, 60, 120};
 
         /// 当前一小格的时间值，SecondsEveryTicks[IndexOfSecEveryTicks]
-        public int IndexOfSecEveryTicks { get; set; } = 5;
+        public int IndexOfSecEveryTicks { get; set; } = 3;
 
         /// 游标中心线的横坐标
         public int ThumbHPos { get; set; }
@@ -777,6 +777,8 @@ namespace TimeLineControl
         {
             return (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
         }
+
+
 
 
     #endregion

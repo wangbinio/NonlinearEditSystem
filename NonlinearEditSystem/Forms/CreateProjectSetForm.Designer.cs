@@ -375,7 +375,7 @@
             // textBoxX_ProjFilePath
             // 
             this.textBoxX_ProjFilePath.AutoSelectAll = true;
-            this.textBoxX_ProjFilePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.textBoxX_ProjFilePath.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
@@ -407,7 +407,7 @@
             // 
             // textBoxX_ProjFileName
             // 
-            this.textBoxX_ProjFileName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.textBoxX_ProjFileName.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 

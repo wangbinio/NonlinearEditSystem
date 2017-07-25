@@ -1,0 +1,2099 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Proj Version="1.2.2.016" SaveTime="2017-07-17 16:40:25" FrameRate="3" ScanMode="1" DeinterMode="0" AOutputType="2" AChannelType="2" ADataType="2" ASamplesPerSec="48000" ABitsPerSample="32" AVBitsPerSample="32" DisplayMode="1">
+  <ProjObj ID="{46D60C17-028E-4232-9711-8AB86A75096D}"/>
+  <FootageList>
+    <ProjFootage FileName="D:\视频素材\BORUTO.MP4" Type="0" TapeName="" TapeIn="18446744073709551615" TapeOut="18446744073709551615" Tape1Name="" Tape1In="18446744073709551615" Tape1Out="18446744073709551615" Tape2Name="" Tape2In="18446744073709551615" Tape2Out="18446744073709551615" TCCoord="0" SeqID="0" GrpID="0" LUTName="" BitDepth="0">
+      <ProjObj ID="{944803D2-B8FD-41AF-9C8E-DF402702249F}"/>
+      <LogFileInfo>
+        <BaseFileInfoList StereoscopyComposeMode="0" LogicFIType="0">
+          <LogicFI ObjectID="{A57BD439-B1A3-4203-8D95-8B1EDA4B0D7D}" Ver="2" PARaX="1" PARaY="1" ScPPola="0" AlphaChannelUsage="1">
+            <LgcMFI VSC="1" ASC="1" SubPSC="0" VFC="142994" ASampleC="252241920" DataRate="832656" FileSize="595328335"/>
+            <VFI SID="1" Format_S="SpecailFormat" Polarity="4" Colorimetry="0" PARatioX="1" PARatioY="1" FRate="2" ScanMode="3" ComBitC="8" Height="720" Width="1280" Pitch="0" FCInGop="230" Center_X="0" Center_Y="0" SpeData="13" IsAligned="0" ProtectFg="0" LenInF="137138" FormatDesc="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <AFIList>
+              <AFI SID="2" Format_S="PCM" FormatDesc="aac" ChannelType="2" DataType="1" BitsPerSmp="16" SamplesPerSec="44100" ValidBitsPerSmp="16" LCode="0" ProFg="0" LenInSmp="252241920"/>
+            </AFIList>
+            <FileDescList>
+              <Desc FileName="D:\视频素材\BORUTO.MP4" DisplayName="D:\视频素材\BORUTO.MP4" MediaID="" HasVS="1" ASC="1"/>
+            </FileDescList>
+          </LogicFI>
+        </BaseFileInfoList>
+      </LogFileInfo>
+    </ProjFootage>
+    <ProjFootage FileName="D:\视频素材\Lamborghini.mp4" Type="0" TapeName="" TapeIn="18446744073709551615" TapeOut="18446744073709551615" Tape1Name="" Tape1In="18446744073709551615" Tape1Out="18446744073709551615" Tape2Name="" Tape2In="18446744073709551615" Tape2Out="18446744073709551615" TCCoord="0" SeqID="0" GrpID="0" LUTName="" BitDepth="0">
+      <ProjObj ID="{412BCBAC-CD65-4158-9B9A-2EC134701E7B}"/>
+      <LogFileInfo>
+        <BaseFileInfoList StereoscopyComposeMode="0" LogicFIType="0">
+          <LogicFI ObjectID="{A57BD439-B1A3-4203-8D95-8B1EDA4B0D7D}" Ver="2" PARaX="1" PARaY="1" ScPPola="0" AlphaChannelUsage="1">
+            <LgcMFI VSC="1" ASC="1" SubPSC="0" VFC="4355" ASampleC="7614464" DataRate="10856837" FileSize="236353991"/>
+            <VFI SID="1" Format_S="SpecailFormat" Polarity="4" Colorimetry="0" PARatioX="1" PARatioY="1" FRate="3" ScanMode="3" ComBitC="8" Height="1080" Width="1920" Pitch="0" FCInGop="214" Center_X="0" Center_Y="0" SpeData="13" IsAligned="0" ProtectFg="0" LenInF="4355" FormatDesc="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <AFIList>
+              <AFI SID="2" Format_S="PCM" FormatDesc="aac" ChannelType="2" DataType="1" BitsPerSmp="16" SamplesPerSec="44100" ValidBitsPerSmp="16" LCode="0" ProFg="0" LenInSmp="7614464"/>
+            </AFIList>
+            <FileDescList>
+              <Desc FileName="D:\视频素材\Lamborghini.mp4" DisplayName="D:\视频素材\Lamborghini.mp4" MediaID="" HasVS="1" ASC="1"/>
+            </FileDescList>
+          </LogicFI>
+        </BaseFileInfoList>
+      </LogFileInfo>
+    </ProjFootage>
+    <ProjFootage FileName="D:\视频素材\The.Limited.mp4" Type="0" TapeName="" TapeIn="18446744073709551615" TapeOut="18446744073709551615" Tape1Name="" Tape1In="18446744073709551615" Tape1Out="18446744073709551615" Tape2Name="" Tape2In="18446744073709551615" Tape2Out="18446744073709551615" TCCoord="0" SeqID="0" GrpID="0" LUTName="" BitDepth="0">
+      <ProjObj ID="{75AB8B95-E9A4-4163-A5EE-3C9EC70ACBB9}"/>
+      <LogFileInfo>
+        <BaseFileInfoList StereoscopyComposeMode="0" LogicFIType="0">
+          <LogicFI ObjectID="{A57BD439-B1A3-4203-8D95-8B1EDA4B0D7D}" Ver="2" PARaX="1" PARaY="1" ScPPola="0" AlphaChannelUsage="1">
+            <LgcMFI VSC="1" ASC="1" SubPSC="0" VFC="939" ASampleC="1586176" DataRate="9683904" FileSize="45470635"/>
+            <VFI SID="1" Format_S="SpecailFormat" Polarity="4" Colorimetry="0" PARatioX="1" PARatioY="1" FRate="2" ScanMode="3" ComBitC="8" Height="1080" Width="1920" Pitch="0" FCInGop="107" Center_X="0" Center_Y="0" SpeData="13" IsAligned="0" ProtectFg="0" LenInF="901" FormatDesc="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <AFIList>
+              <AFI SID="2" Format_S="PCM" FormatDesc="aac" ChannelType="2" DataType="1" BitsPerSmp="16" SamplesPerSec="44100" ValidBitsPerSmp="16" LCode="0" ProFg="0" LenInSmp="1586176"/>
+            </AFIList>
+            <FileDescList>
+              <Desc FileName="D:\视频素材\The.Limited.mp4" DisplayName="D:\视频素材\The.Limited.mp4" MediaID="" HasVS="1" ASC="1"/>
+            </FileDescList>
+          </LogicFI>
+        </BaseFileInfoList>
+      </LogFileInfo>
+    </ProjFootage>
+    <ProjFootage FileName="D:\视频素材\数码相机.mp4" Type="0" TapeName="" TapeIn="18446744073709551615" TapeOut="18446744073709551615" Tape1Name="" Tape1In="18446744073709551615" Tape1Out="18446744073709551615" Tape2Name="" Tape2In="18446744073709551615" Tape2Out="18446744073709551615" TCCoord="0" SeqID="0" GrpID="0" LUTName="" BitDepth="0">
+      <ProjObj ID="{8D0D644E-FE89-4A40-83EA-B50CACF52211}"/>
+      <LogFileInfo>
+        <BaseFileInfoList StereoscopyComposeMode="0" LogicFIType="0">
+          <LogicFI ObjectID="{A57BD439-B1A3-4203-8D95-8B1EDA4B0D7D}" Ver="2" PARaX="1" PARaY="1" ScPPola="0" AlphaChannelUsage="1">
+            <LgcMFI VSC="1" ASC="1" SubPSC="0" VFC="4492" ASampleC="7924736" DataRate="3242609" FileSize="72836434"/>
+            <VFI SID="1" Format_S="SpecailFormat" Polarity="4" Colorimetry="0" PARatioX="1" PARatioY="1" FRate="3" ScanMode="3" ComBitC="8" Height="1080" Width="1920" Pitch="0" FCInGop="50" Center_X="0" Center_Y="0" SpeData="13" IsAligned="0" ProtectFg="0" LenInF="4492" FormatDesc="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <AFIList>
+              <AFI SID="2" Format_S="PCM" FormatDesc="aac" ChannelType="2" DataType="1" BitsPerSmp="16" SamplesPerSec="44100" ValidBitsPerSmp="16" LCode="0" ProFg="0" LenInSmp="7924736"/>
+            </AFIList>
+            <FileDescList>
+              <Desc FileName="D:\视频素材\数码相机.mp4" DisplayName="D:\视频素材\数码相机.mp4" MediaID="" HasVS="1" ASC="1"/>
+            </FileDescList>
+          </LogicFI>
+        </BaseFileInfoList>
+      </LogFileInfo>
+    </ProjFootage>
+  </FootageList>
+  <RootBin>
+    <ProjBin Type="0">
+      <ProjItem ItemName="Root" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+        <ProjObj ID="{649E7DC6-4C50-438D-A33D-16151434D7EE}"/>
+      </ProjItem>
+      <ItemList>
+        <ProjSeq VTrkDispMode="0" ATrkDispMode="4" TrkHgt="1" Overwrite="1" SnapTime="1" Cache="0" Linkage="2" RngIn="0" RngOut="12361" RgnMdf="0" TrimIn="0" TrimOut="12361" TrimOutMdf="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1" PlyPos="9735" StartPos="0" DefLen="10" Divd="0.6" FPP="0.0691289" AOutputType="2" Master="1" Output="1" ResWid="1920" ResHgt="1080" ResBitDph="8" ResPASRX="1" ResPASRY="1" ViewCnt="1" Force32bitSource="0" MulCam="0" AOutVlmSize="0">
+          <ProjItem ItemName="序列 1" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{AB253DB6-CA31-4877-B20F-B3129161806D}"/>
+          </ProjItem>
+          <VTrkList TargetVTrk="{07AC559C-C26F-4E2F-BA56-4F17C385EDAE}">
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{07AC559C-C26F-4E2F-BA56-4F17C385EDAE}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{AE1E2649-EFD2-4AD5-8369-02DE7AAB0A03}"/>
+                <ClipList>
+                  <Clip ID="{310476CA-D71C-4C68-9F6D-E71A46AEEDDE}"/>
+                  <Clip ID="{28851E71-A8B2-4F98-B753-5FB7E703032B}"/>
+                </ClipList>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{EA46D29B-1084-4FF2-9D07-336FA3490C7D}"/>
+                <ClipList>
+                  <Clip ID="{AB9CD54D-E1E6-4EA2-BDB6-B5915FED5ED0}"/>
+                </ClipList>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{462AE6DB-D20B-40C5-BBDF-C98934DECEA6}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{38029B5E-CACA-404E-B1FA-B5A7BF9FF3BB}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{2688EEBC-D63A-4336-B29D-2388F6CC95BB}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{FFB888E7-8897-437B-BC4A-EE5AF56E96B5}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{DE49930D-3ED8-4FDB-AC89-B7EEFC9F30C1}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{185128CA-C750-43D4-8105-46C53CC3B1B0}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{BF1AE18D-C9BA-453C-91B3-25CA967F0C9B}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+            <ProjVidTrack ComMode="0">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{EEE0EA79-97A1-4FCB-8975-E9FCD1BC428D}"/>
+              </ProjTrack>
+            </ProjVidTrack>
+          </VTrkList>
+          <ATrkList TargetATrk="{591D68A7-2501-4110-8A3C-C5E0C5D28327}">
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{591D68A7-2501-4110-8A3C-C5E0C5D28327}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{31B4408F-C421-4BEE-8968-D272D28086D0}"/>
+                <ClipList>
+                  <Clip ID="{61AFA908-2379-4247-AAEB-D67190C732C0}"/>
+                  <Clip ID="{A4F93020-0687-4B56-AE08-75C7942F691A}"/>
+                </ClipList>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{26E3A726-1901-4A9C-89B8-C1AD61D5A2E0}"/>
+                <ClipList>
+                  <Clip ID="{604F08D0-0129-4D4D-BE1E-0CB875E1EC90}"/>
+                  <Clip ID="{0DF3F946-100F-462F-B0EB-F2F8DFDF5EBA}"/>
+                  <Clip ID="{2D169E84-2C08-4272-89F6-6CFA1B2E6204}"/>
+                </ClipList>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{8C924263-0C2A-4F89-9210-C2BA378EB4C1}"/>
+                <ClipList>
+                  <Clip ID="{464D3D64-92F3-4085-B158-FEE9B48085F7}"/>
+                </ClipList>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{512283AB-57AE-4AB0-8284-3498F828F55F}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{273F2940-CA0F-4DB1-BA53-E77CDEF34571}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{8AC31F05-B390-4FFA-A62F-194AB2E3A9DB}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{DA3697D6-0779-46A1-9544-6A0158D7BAFF}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{773C3747-33F7-4817-90CC-DD4677D82CAC}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{8D314D11-29DF-4B2F-9742-64B5C04A1B56}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+            <ProjAudTrack LVol="1" RVol="1" Sw="0" LMap="1" RMap="2">
+              <ProjTrack TrkHeight="37" TrkExpHeight="84" DisplayMode="4" Lock="0" Dub="0" Folded="0" Mute="0" Solo="0" Expand="0" PrmAddr="" ShowAllKF="0" Sel="1">
+                <ProjObj ID="{C68A9D7A-B440-471F-9863-B40232FFD5D5}"/>
+              </ProjTrack>
+            </ProjAudTrack>
+          </ATrkList>
+          <ClipList>
+            <ProjClip SterAsMono="1" FootageID="{75AB8B95-E9A4-4163-A5EE-3C9EC70ACBB9}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+              <ProjItem ItemName="The.Limited.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+                <ProjObj ID="{0532483E-62BE-411C-8AB2-E3B7DA5484B2}"/>
+              </ProjItem>
+              <VClip>
+                <ProjVidClip>
+                  <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="6105" SeqOut="7044" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{28851E71-A8B2-4F98-B753-5FB7E703032B}"/>
+                  </ProjSubClip>
+                  <Motion>
+                    <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Motion" InFrm="6105" OutFrm="7044" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{0C488222-103C-4A3C-B528-862ABAB6111D}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                                <StaList>
+                                  <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                    <PrmStrm>
+                                      <FxPrmStrm ExtraPMode="0">
+                                        <KeyFrame Value=""/>
+                                      </FxPrmStrm>
+                                    </PrmStrm>
+                                  </FxPrmNode>
+                                </StaList>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Motion>
+                </ProjVidClip>
+              </VClip>
+              <AClipList>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+                  <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="6105" SeqOut="7044" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{A4F93020-0687-4B56-AE08-75C7942F691A}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="6105" OutFrm="7044" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{4E352B9F-D4B7-41DA-879C-96DF9B212CC3}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+                  <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="6105" SeqOut="7044" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{0DF3F946-100F-462F-B0EB-F2F8DFDF5EBA}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="6105" OutFrm="7044" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{278866C5-5837-4645-8D12-CC0988E4099D}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+              </AClipList>
+            </ProjClip>
+            <ProjClip SterAsMono="1" FootageID="{8D0D644E-FE89-4A40-83EA-B50CACF52211}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+              <ProjItem ItemName="数码相机.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+                <ProjObj ID="{81115066-D96D-45F9-9C13-09F42E9E406F}"/>
+              </ProjItem>
+              <VClip>
+                <ProjVidClip>
+                  <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="7869" SeqOut="12361" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{AB9CD54D-E1E6-4EA2-BDB6-B5915FED5ED0}"/>
+                  </ProjSubClip>
+                  <Motion>
+                    <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Motion" InFrm="7869" OutFrm="12361" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{DA6BA674-61CB-417E-93C1-6E73B9CB453C}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                                <StaList>
+                                  <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                    <PrmStrm>
+                                      <FxPrmStrm ExtraPMode="0">
+                                        <KeyFrame Value=""/>
+                                      </FxPrmStrm>
+                                    </PrmStrm>
+                                  </FxPrmNode>
+                                </StaList>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Motion>
+                </ProjVidClip>
+              </VClip>
+              <AClipList>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+                  <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="7869" SeqOut="12361" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{2D169E84-2C08-4272-89F6-6CFA1B2E6204}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="7869" OutFrm="12361" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{C8173A27-A21F-48F3-A078-0044B8E1F9FD}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+                  <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="7869" SeqOut="12361" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{464D3D64-92F3-4085-B158-FEE9B48085F7}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="7869" OutFrm="12361" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{5C6EB33D-2A6D-475A-ACDB-27E8F12DEB45}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+              </AClipList>
+            </ProjClip>
+            <ProjClip SterAsMono="1" FootageID="{412BCBAC-CD65-4158-9B9A-2EC134701E7B}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+              <ProjItem ItemName="Lamborghini.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+                <ProjObj ID="{CA206EF5-5C38-4663-A69B-F8DF3329BDA0}"/>
+              </ProjItem>
+              <VClip>
+                <ProjVidClip>
+                  <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="275" SeqOut="4630" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{310476CA-D71C-4C68-9F6D-E71A46AEEDDE}"/>
+                  </ProjSubClip>
+                  <Motion>
+                    <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Motion" InFrm="275" OutFrm="4630" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{06550AC8-C09E-42B4-A283-56556F9E87AD}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                              <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                                <StaList>
+                                  <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                    <PrmStrm>
+                                      <FxPrmStrm ExtraPMode="0">
+                                        <KeyFrame Value=""/>
+                                      </FxPrmStrm>
+                                    </PrmStrm>
+                                  </FxPrmNode>
+                                </StaList>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Motion>
+                </ProjVidClip>
+              </VClip>
+              <AClipList>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+                  <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="275" SeqOut="4630" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{61AFA908-2379-4247-AAEB-D67190C732C0}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="275" OutFrm="4630" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{6448B3ED-29C3-4F43-ABB8-4EDBC3334CF0}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+                <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+                  <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="275" SeqOut="4630" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                    <ProjObj ID="{604F08D0-0129-4D4D-BE1E-0CB875E1EC90}"/>
+                  </ProjSubClip>
+                  <Volume>
+                    <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                      <FxSeq MatchName="Volume" InFrm="275" OutFrm="4630" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                        <ProjObj ID="{357648A7-2FE2-47EA-9769-F725045A62E1}"/>
+                        <RootNode>
+                          <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="2">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                              <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="2">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </RootNode>
+                      </FxSeq>
+                    </ProjFilter>
+                  </Volume>
+                </ProjAudClip>
+              </AClipList>
+            </ProjClip>
+          </ClipList>
+          <ClipLink>
+            <SeqLinkObj>
+              <GroupList/>
+            </SeqLinkObj>
+          </ClipLink>
+        </ProjSeq>
+        <ProjBin Type="1">
+          <ProjItem ItemName="字幕模板库" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{A621D57B-DB45-4818-9A98-5E3913596DF5}"/>
+          </ProjItem>
+        </ProjBin>
+        <ProjBin Type="2">
+          <ProjItem ItemName="流程图库" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{0D2D309C-742E-4F21-97E9-42C23FD55872}"/>
+          </ProjItem>
+        </ProjBin>
+        <ProjBin Type="3">
+          <ProjItem ItemName="隐藏文件夹" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{D58D12BA-0526-4C7F-9916-F975B2A8BCE3}"/>
+          </ProjItem>
+        </ProjBin>
+        <ProjClip SterAsMono="1" FootageID="{412BCBAC-CD65-4158-9B9A-2EC134701E7B}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+          <ProjItem ItemName="Lamborghini.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{40047850-979B-411F-B62B-15777E1AC55B}"/>
+          </ProjItem>
+          <VClip>
+            <ProjVidClip>
+              <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{F8CBDE03-7DAF-4128-ADC9-3F9DF7E64B6C}"/>
+              </ProjSubClip>
+              <Motion>
+                <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Motion" InFrm="0" OutFrm="4355" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{411DC6C4-E6BE-45EA-B090-31BED077887F}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Motion>
+            </ProjVidClip>
+          </VClip>
+          <AClipList>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+              <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{41FD3F2B-EB34-48F9-B860-FC28EA77757A}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="4355" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{55B59EBD-1E06-4725-81C0-82FB294C3E78}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+              <ProjSubClip UIName="Lamborghini.mp4" TrimIn="0" TrimOut="4355" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{8F8707E4-44A6-4921-8AD6-486A72C7D9C8}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="4355" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{6170CB3D-69B5-4BE0-B4FA-A391E5CB51A5}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+          </AClipList>
+        </ProjClip>
+        <ProjClip SterAsMono="1" FootageID="{75AB8B95-E9A4-4163-A5EE-3C9EC70ACBB9}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+          <ProjItem ItemName="The.Limited.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{F42A24CE-FE09-4171-85D5-AD9377C4D266}"/>
+          </ProjItem>
+          <VClip>
+            <ProjVidClip>
+              <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{2812435C-1E29-4585-A59D-66A7D787B8AE}"/>
+              </ProjSubClip>
+              <Motion>
+                <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Motion" InFrm="0" OutFrm="939" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{222CC057-867D-4209-ACB9-335151CE1633}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Motion>
+            </ProjVidClip>
+          </VClip>
+          <AClipList>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+              <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{4A34A8B7-C7EF-46E3-9859-8E83F5059748}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="939" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{BE3A1542-FBFF-404D-AA52-D4C9A1C6986B}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+              <ProjSubClip UIName="The.Limited.mp4" TrimIn="0" TrimOut="939" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{F5CFD6FA-EE40-4E0F-876E-F1BDB32D1C73}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="939" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{F6743DDC-F1EE-4FEC-B00D-BD84398022EC}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+          </AClipList>
+        </ProjClip>
+        <ProjClip SterAsMono="1" FootageID="{8D0D644E-FE89-4A40-83EA-B50CACF52211}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+          <ProjItem ItemName="数码相机.mp4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{3C690DD8-90EA-471B-8945-38D50A2C3E06}"/>
+          </ProjItem>
+          <VClip>
+            <ProjVidClip>
+              <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{EC63B17E-68EB-4A97-A090-E9E6D3E7F16A}"/>
+              </ProjSubClip>
+              <Motion>
+                <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Motion" InFrm="0" OutFrm="4492" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{E4FC0FD7-AF78-4136-8445-C5EF6B37E7E4}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Motion>
+            </ProjVidClip>
+          </VClip>
+          <AClipList>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+              <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{1D20C0A3-A57A-4D1B-A7C1-CE24C2C1B201}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="4492" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{D6FDDBB5-B422-4952-8D5A-42070F5466E4}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+              <ProjSubClip UIName="数码相机.mp4" TrimIn="0" TrimOut="4492" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{0596689D-9235-4D8B-8C55-7F8D93B52699}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="4492" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{8B2CD9E2-66B5-413D-9B85-F18D135E7C1E}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+          </AClipList>
+        </ProjClip>
+        <ProjClip SterAsMono="1" FootageID="{944803D2-B8FD-41AF-9C8E-DF402702249F}" Linkage="0" GetBack="0" EnbVid="1" EnbAudSize="2" EnbAud0="1" EnbAud1="1">
+          <ProjItem ItemName="BORUTO.MP4" Scene="" Shot="" Desc="" Comment="" Log="" Client="" Good="0" PosX="0" PosY="0">
+            <ProjObj ID="{042FD129-632B-4C48-8DE2-8DB586597A5D}"/>
+          </ProjItem>
+          <VClip>
+            <ProjVidClip>
+              <ProjSubClip UIName="BORUTO.MP4" TrimIn="0" TrimOut="142994" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{85391E0C-63B2-4497-8147-609EE8722044}"/>
+              </ProjSubClip>
+              <Motion>
+                <ProjFilter Name="运动" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Motion" InFrm="0" OutFrm="142994" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{713777DD-DB06-48D3-8D38-0DE9044CE9B7}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="500" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="700" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="750" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="760" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="800" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="01000000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="1300" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1400" AuxId="-1" Stat="1" TrkUsg="38" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1500" AuxId="-1" Stat="1" TrkUsg="39" UseTrkOff="0" TrkRefFrm="0" SglPrm="" Show="0"/>
+                          <FxPrmNode PrmId="1600" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="010000000000" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="4900" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                            <StaList>
+                              <FxPrmNode PrmId="5000" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                                <PrmStrm>
+                                  <FxPrmStrm ExtraPMode="0">
+                                    <KeyFrame Value=""/>
+                                  </FxPrmStrm>
+                                </PrmStrm>
+                              </FxPrmNode>
+                            </StaList>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Motion>
+            </ProjVidClip>
+          </VClip>
+          <AClipList>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="0" RightChnlIdx="4294967295" ShowWav="0">
+              <ProjSubClip UIName="BORUTO.MP4" TrimIn="0" TrimOut="142994" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{D968A607-E731-478D-A46D-D08BD688558B}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="142994" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{BB579DBF-C470-4745-84F2-8E2F9FB6A6A1}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+            <ProjAudClip StrmIdx="0" LeftChnlIdx="4294967295" RightChnlIdx="1" ShowWav="0">
+              <ProjSubClip UIName="BORUTO.MP4" TrimIn="0" TrimOut="142994" SeqIn="0" SeqOut="0" InTrans="0" OutTrans="0" KFFxIdx="-2" PrmAddr="" ExpMode="2" Mute="0" RevPly="0" Bld="1" SglFrm="0" SglFrmVal="0" SglFrmPoly="0" CamIdx="0" CanNF="1" AutoResize="0">
+                <ProjObj ID="{0D6C0D9F-3B75-4A76-AE65-DDCBDE169DE0}"/>
+              </ProjSubClip>
+              <Volume>
+                <ProjFilter Name="音量" Enb="1" AuxSize="0" IsGMask="0">
+                  <FxSeq MatchName="Volume" InFrm="0" OutFrm="142994" TrimType="0" SeqDataSize="6" SeqData="020001000000">
+                    <ProjObj ID="{CEEC05BB-E5D1-4F4C-A13B-13057C9073D9}"/>
+                    <RootNode>
+                      <FxPrmNode PrmId="0" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="" Show="0">
+                        <PrmStrm>
+                          <FxPrmStrm ExtraPMode="0">
+                            <KeyFrame Value=""/>
+                          </FxPrmStrm>
+                        </PrmStrm>
+                        <StaList>
+                          <FxPrmNode PrmId="100" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="200" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="250" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="300" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="1" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                          <FxPrmNode PrmId="400" AuxId="-1" Stat="1" TrkUsg="-1" SglPrm="0" Show="0">
+                            <PrmStrm>
+                              <FxPrmStrm ExtraPMode="0">
+                                <KeyFrame Value=""/>
+                              </FxPrmStrm>
+                            </PrmStrm>
+                          </FxPrmNode>
+                        </StaList>
+                      </FxPrmNode>
+                    </RootNode>
+                  </FxSeq>
+                </ProjFilter>
+              </Volume>
+            </ProjAudClip>
+          </AClipList>
+        </ProjClip>
+      </ItemList>
+    </ProjBin>
+  </RootBin>
+</Proj>
+

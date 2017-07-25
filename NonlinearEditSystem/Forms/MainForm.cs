@@ -44,13 +44,16 @@ namespace NonLinearEditSystem.Forms
         private ClipPlayControlCSharp _iClipPlayControlCSharp;
 
         // 音视频分离类
-        private Mp4DemuxIOCSharp _mp4DemuxIOCSharp;
+        //private Mp4DemuxIOCSharp _mp4DemuxIOCSharp;
 
         // 编解码类
-        private H264CodecIOCSharp _h264CodecIOCSharp;
+        //private H264CodecIOCSharp _h264CodecIOCSharp;
 
         // 打包类
-        private Mp4FilesMuxIOCSharp _mp4FilesMuxIOCSharp;
+        //private Mp4FilesMuxIOCSharp _mp4FilesMuxIOCSharp;
+
+        // 打包综合类
+        public PacketIOCSharp packetIOCSharp;
 
         // 文件列表中选择的目录
         private string[] _choosedDirFullPath;
@@ -68,7 +71,8 @@ namespace NonLinearEditSystem.Forms
         private int _maxFilesPannel = 10;
 
         // 鼠标拖动音/视频文件panel时保存位置差
-        private int _mousePosDelta = 0;
+        private int _mousePosDeltaX = 0;
+        private int _mousePosDeltaY = 0;
 
         // 音视频文件在轨道上的面板高度
         public static int trackHeight = 34;
@@ -80,7 +84,7 @@ namespace NonLinearEditSystem.Forms
         private List<PanelEx> _audioTrackPanels;
 
         // 所有视频的开始/结束时间
-        private List<double> sortedVedioTimes;
+        public List<double> sortedVedioTimes;
 
         // 垫片路径
         public static string BlackVedio = @"D:\视频素材\BlackVedio.mp4";
@@ -101,7 +105,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         // 打包素材列表
-        public List<PackageClips> packageClipsList;
+        public DemuxClipInfoList packageClipsList;
 
         #endregion 成员变量
 
@@ -122,12 +126,23 @@ namespace NonLinearEditSystem.Forms
         #endregion
 
 
+        #region 给子界面使用的变量
+        // 打包进度
+        public double dPacketProcess = 0;
+
+        // 打包是否完成
+        public bool bPakcetFinish = false;
+
+        #endregion
+
+
         #region 初始化工作
 
         public MainForm()
         {
             InitializeComponent();
 
+            VideoFile1.Enabled = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -139,6 +154,8 @@ namespace NonLinearEditSystem.Forms
             InitAllChildForm();
 
             InitVedioAndAudioTrackPanels();
+
+            CreateOperatorPanel();
 
             InitVedioAndAudioFilePanels();
 
@@ -188,6 +205,48 @@ namespace NonLinearEditSystem.Forms
             _audioTrackPanels = new List<PanelEx>(2);
             _audioTrackPanels.Add(panelEx_AudioTrackConment1);
             _audioTrackPanels.Add(panelEx_AudioTrackConment2);
+
+            foreach (var panel in _vedioTrackPanels)
+            {
+                panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
+            }
+
+
+        }
+
+        private PanelEx operatorPanel;
+
+        /// <summary>
+        /// 创建操作辅助面板,用于轨道上的文件操作
+        /// </summary>
+        private void CreateOperatorPanel()
+        {
+            operatorPanel = new PanelEx();
+
+            operatorPanel.CanvasColor = System.Drawing.SystemColors.Control;
+            operatorPanel.ColorSchemeStyle =
+                DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            operatorPanel.DisabledBackColor = System.Drawing.Color.Empty;
+            operatorPanel.Location = new System.Drawing.Point(0, 0);
+            operatorPanel.Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
+            operatorPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
+            operatorPanel.Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
+            operatorPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            operatorPanel.Style.BorderColor.ColorSchemePart =
+                DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            operatorPanel.Style.ForeColor.ColorSchemePart =
+                DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            operatorPanel.Style.GradientAngle = 90;
+            operatorPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+            operatorPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+            operatorPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
+            operatorPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+            operatorPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+            operatorPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+            operatorPanel.TabIndex = 0;
+            operatorPanel.Name = "operatorPanel";
+            operatorPanel.Text = "";
+            operatorPanel.Tag = "";
         }
 
         /// <summary>
@@ -259,6 +318,7 @@ namespace NonLinearEditSystem.Forms
                     _audioFilesPanel[i].Tag = "";
                     _audioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     _audioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                    _audioFilesPanel[i].MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
                 }
 
                 UpdateTrackWidthWhenAddFile(0);
@@ -278,11 +338,13 @@ namespace NonLinearEditSystem.Forms
             {
                 _iClipPlayControlCSharp = new ClipPlayControlCSharp();
 
-                _mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+                //_mp4DemuxIOCSharp = new Mp4DemuxIOCSharp();
+                //
+                //_h264CodecIOCSharp = new H264CodecIOCSharp();
+                //
+                //_mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
 
-                _h264CodecIOCSharp = new H264CodecIOCSharp();
-
-                _mp4FilesMuxIOCSharp = new Mp4FilesMuxIOCSharp();
+                packetIOCSharp = new PacketIOCSharp();
             }
             catch (Exception ex)
             {
@@ -357,6 +419,24 @@ namespace NonLinearEditSystem.Forms
             });
         }
 
+        /// <summary>
+        /// 获取一个视频的时间,单位s
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public double GetVedioDuiration(string fileName)
+        {
+            tagClipInfoCLR ctagClipInfoCLR = new tagClipInfoCLR();
+            int res = packetIOCSharp.GetClipInfo(fileName, ref ctagClipInfoCLR);
+            if (res < 0)
+            {
+                return 0;
+            }
+
+            return ctagClipInfoCLR.Vduration;
+
+        }
+
 
         #endregion 辅助函数
 
@@ -422,6 +502,16 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
+        /// 通过持续时间获取视频在时间线上的长度
+        /// </summary>
+        /// <param name="duirationTime"></param>
+        /// <returns></returns>
+        private int GetLengthByDuiration(double duirationTime)
+        {
+            return (int)(duirationTime / timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks] * timeLineControl_MainTL.NDistanceOfTicks);
+        }
+
+        /// <summary>
         /// 将视频文件拖到视频轨道上
         /// </summary>
         /// <param name="sender"></param>
@@ -434,13 +524,26 @@ namespace NonLinearEditSystem.Forms
                 string fileName = e.Data.GetData(DataFormats.FileDrop, true) as string;
 
                 // 2.读取此文件的信息
-                _iClipPlayControlCSharp.SetClip(fileName, PanelEx_Sequence.Handle);
-                double duirationTime = _iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec;
+                int length = 100;
+                double duirationTime = 0;
+                if (fileName.ToUpper().EndsWith("MP4"))
+                {
+                    //_iClipPlayControlCSharp.SetClip(fileName, PanelEx_Sequence.Handle);
+                    //duirationTime = _iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec;
 
-                int length =
-                    (int)(duirationTime /
-                    timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks] *
-                    timeLineControl_MainTL.NDistanceOfTicks);
+                    duirationTime = GetVedioDuiration(fileName);
+
+                    length = GetLengthByDuiration(duirationTime);
+
+                }
+                else if (fileName.ToUpper().EndsWith(zimuFileEnd))
+                {
+                    length = 100;
+                }
+                else
+                {
+                    length = 50;
+                }
 
 
                 // 3.0.计算位置信息
@@ -537,7 +640,8 @@ namespace NonLinearEditSystem.Forms
 
                             // 使用tag来存储开始结束位置在时间线的时间
                             double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(pos);
-                            double dEndTime = dStartTime + duriation;
+                            //double dEndTime = dStartTime + duriation;
+                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(pos+length);
 
                             string objStr = dStartTime + "-" + dEndTime;
 
@@ -650,6 +754,9 @@ namespace NonLinearEditSystem.Forms
         public ImportSxSForm importSxSForm;
         public ImportE2Form importE2Form;
         public ImportPPTForm importPPTForm;
+        public PackageForm packageForm;
+
+
 
         private void InitAllChildForm()
         {
@@ -663,6 +770,8 @@ namespace NonLinearEditSystem.Forms
             importSxSForm = new ImportSxSForm();
             importE2Form = new ImportE2Form();
             importPPTForm = new ImportPPTForm();
+            packageForm = new PackageForm();
+            packageForm.Owner = this;
         }
 
 
@@ -901,7 +1010,6 @@ namespace NonLinearEditSystem.Forms
 
         private void 打包输出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PackageForm packageForm = new PackageForm();
             packageForm.ShowDialog();
         }
 
@@ -1029,7 +1137,51 @@ namespace NonLinearEditSystem.Forms
         #endregion 主时间线操作
 
 
+        #region 轨道字幕处理
+        public static string zimuFileEnd = "SERIALIZATION";
+        private ZimuMixInfoList ZimuList = new ZimuMixInfoList();
+
+        /// <summary>
+        /// 获取字幕轨道上的字幕文件列表
+        /// </summary>
+        private void GetZimuList()
+        {
+            ZimuList.Clear();
+            int nLevel = 0;
+            foreach (PanelEx panel in _vedioFilesPanel)
+            {
+                // 只遍历字幕文件,视频另外处理
+                if (panel.Name.ToUpper().EndsWith(zimuFileEnd))
+                {
+                    string objStr = panel.Tag as string;
+                    if (objStr == "") continue;
+                    string[] startAndEndTime = objStr.Split('-');
+                    if (startAndEndTime.Length < 2) continue;
+                    double dStartTime = double.Parse(startAndEndTime[0]);
+                    double dEndTime = double.Parse(startAndEndTime[1]);
+
+                    tagZimuMixInfoCLR ctagZimuMixInfoCLR = new tagZimuMixInfoCLR();
+                    ctagZimuMixInfoCLR.szZimuFile = panel.Name;
+                    ctagZimuMixInfoCLR.rtStartPos = (long)(dStartTime * 1000);
+                    ctagZimuMixInfoCLR.rtStopPos = (long)(dEndTime * 1000);
+                    ctagZimuMixInfoCLR.Type = 0;
+                    ctagZimuMixInfoCLR.Level = nLevel++;
+
+                    ZimuList.Add(ctagZimuMixInfoCLR);
+                }
+            }
+        }
+
+
+        #endregion
+
+
         #region 视频轨道操作
+        private float fClickDelta = 10.0f;
+        private bool _chooseVedioPanelSelf = false;
+        private bool _chooseVedioPanelStart = false;
+        private bool _chooseVedioPanelEnd = false;
+        private bool _mouseMovedVedioPanel = false;
 
         /// <summary>
         /// 在音视频轨道上拖动文件
@@ -1038,12 +1190,40 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void VideoFile_MouseDown(object sender, MouseEventArgs e)
         {
+            //base.OnMouseDown(e);
+
+            // 鼠标按下的时候让控件获取焦点
+            //bool bFocused = Focus();
+
             PanelEx panelExSelected = (PanelEx)sender;
 
             if (e.Button == MouseButtons.Left)
             {
                 panelExSelected.Capture = true;
-                _mousePosDelta = e.X - panelExSelected.Location.X;
+
+                // 点中起点
+                //if (Math.Abs((float)e.X - (float)panelExSelected.Location.X) < fClickDelta)
+                if (e.X <= (int)fClickDelta)
+                {
+                    _chooseVedioPanelStart = true;
+                }
+                // 点中终点
+                //else if (Math.Abs((float)e.X - (float)panelExSelected.Location.X - panelExSelected.Width) < fClickDelta)
+                else if (panelExSelected.Width - e.X <= (int)fClickDelta)
+                {
+                    _chooseVedioPanelEnd = true;
+                }
+                // 点中本身
+                else
+                {
+                    _chooseVedioPanelSelf = true;
+                }
+
+                _mousePosDeltaX = e.X - panelExSelected.Location.X;
+                _mousePosDeltaY = e.Y - panelExSelected.Location.Y;
+
+                // 鼠标按下的时候，还未移动
+                _mouseMovedVedioPanel = false;
             }
         }
 
@@ -1056,29 +1236,116 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 鼠标位置
+                Point mousePoint = e.Location;
+
+                if (e.Location.X < 0) return;
+
                 PanelEx panelExSelected = (PanelEx)sender;
+                int nStartPos = panelExSelected.Location.X;
+                int nEndPos = nStartPos + panelExSelected.Width;
 
                 if (panelExSelected.Capture && e.Button == MouseButtons.Left)
                 {
-                    panelExSelected.Location = new Point(e.X - _mousePosDelta > 0 ? e.X - _mousePosDelta : 0, 0);
+                    /*
+                    if (_mousePosDeltaY > panelExSelected.Height/2)
+                    {
+                        panelExSelected.Parent = panelEx_VideoTrackConment1;
+                    }
+                    else if (_mousePosDeltaY<0 && Math.Abs(_mousePosDeltaY)  > panelExSelected.Height / 2)
+                    {
+                        panelExSelected.Parent = panelEx_VideoTrackConment4;
+                    }
+                    */
 
-                    // 使用tag来存储开始结束位置在时间线的时间
-                    double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
-                    double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+                    // 设置鼠标移动为true
+                    _mouseMovedVedioPanel = true;
 
-                    string objStr = dStartTime + "-" + dEndTime;
+                    // 1.如果是选中面板本身,则移动面板本身
+                    if (_chooseVedioPanelSelf)
+                    {
+                        panelExSelected.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
 
-                    panelExSelected.Tag = objStr;
+                        // 使用tag来存储开始结束位置在时间线的时间
+                        double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X);
+                        double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(panelExSelected.Location.X + panelExSelected.Width);
+
+                        string objStr = dStartTime + "-" + dEndTime;
+
+                        panelExSelected.Tag = objStr;
+                    }
+                    // 2.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
+                    else if (_chooseVedioPanelStart)
+                    {
+                        // 音视频文件最长为视频全长,最短为1
+                        if (panelExSelected.Name.ToUpper().EndsWith("MP4"))
+                        {
+                            // 1.获取视频原始长度
+                            int originLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name));
+
+                            //if (nEndPos - (e.X - _mousePosDeltaX) < originLength)
+                            {
+                                panelExSelected.Width = /*panelExSelected.Width - */(nEndPos - (e.X - _mousePosDeltaX));
+
+                                panelExSelected.Location = new Point(e.X - _mousePosDeltaX, 0);
+
+                            }
+
+                        }
+                        // 字幕文件最长无限制,最短为1
+                        else if (panelExSelected.Name.ToUpper().EndsWith("SERIALIZATION"))
+                        {
+
+                        }
+                    }
+                    // 3.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
+                    else if (_chooseVedioPanelEnd)
+                    {
+
+                    }
+                    else
+                    {
+                        _mouseMovedVedioPanel = false;
+                    }
+
 
                     panelExSelected.Invalidate();
 
                     // 找到所需显示的视频,并更新显示的帧
-                    FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+                    //FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+
+                    //base.OnMouseMove(e);
                 }
             }
             catch (Exception ex)
             {
                 ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void VideoFile_MouseUp(object sender, MouseEventArgs e)
+        {
+            _chooseVedioPanelSelf = false;
+            _chooseVedioPanelStart = false;
+            _chooseVedioPanelEnd = false;
+            _mouseMovedVedioPanel = false;
+        }
+
+        // 视频轨道面板鼠标移动事件
+        private void panelEx_VideoTrackConment1_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                PanelEx panelTrack = sender as PanelEx;
+
+                //foreach (PanelEx panel in panelTrack.Controls)
+                //{
+                //    VideoFile_MouseMove(panel, e);
+                //}
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -1167,7 +1434,7 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 更新所有视频文件的开始/结束时间,按顺序存储
         /// </summary>
-        private void UpdateVedioTrackFilesTimes()
+        public void UpdateVedioTrackFilesTimes()
         {
             try
             {
@@ -1178,15 +1445,20 @@ namespace NonLinearEditSystem.Forms
                 // 2.将所有的开始/结束时间 按顺序存储到列表中
                 foreach (PanelEx panel in _vedioFilesPanel)
                 {
-                    string objStr = panel.Tag as string;
-                    if (objStr == "") continue;
-                    string[] startAndEndTime = objStr.Split('-');
-                    if (startAndEndTime.Length < 2) continue;
-                    double dStartTime = double.Parse(startAndEndTime[0]);
-                    double dEndTime = double.Parse(startAndEndTime[1]);
+                    // 只遍历视频文件,字幕另外处理
+                    if (panel.Name.ToUpper().EndsWith("MP4"))
+                    {
+                        string objStr = panel.Tag as string;
+                        if (objStr == "") continue;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 2) continue;
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
 
-                    sortedVedioTimes.Add(dStartTime);
-                    sortedVedioTimes.Add(dEndTime);
+                        sortedVedioTimes.Add(dStartTime);
+                        sortedVedioTimes.Add(dEndTime);
+                    }
+
                 }
 
                 if (sortedVedioTimes.Count > 0)
@@ -1205,15 +1477,15 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 更新打包素材列表
         /// </summary>
-        private void UpdatePackageClips()
+        public void UpdatePackageClips()
         {
             try
             {
                 // 1.初始化打包素材列表
-                packageClipsList = new List<PackageClips>();
+                packageClipsList = new DemuxClipInfoList();
                 packageClipsList.Clear();
 
-                for (int i = 0; i < sortedVedioTimes.Count-1; i++)
+                for (int i = 0; i < sortedVedioTimes.Count - 1; i++)
                 {
                     // 2.如果后一个时间和前一个时间相等,那么不需要处理
                     double dBeginTime = sortedVedioTimes[i];
@@ -1228,18 +1500,22 @@ namespace NonLinearEditSystem.Forms
 
                     if (thePanel == null)
                     {
+                        // 测试 空不处理
                         // 5.如果没找到,说明是空,需要用垫片
-                        PackageClips theClips = new PackageClips(BlackVedio, (Int64)dBeginTime, (Int64)dEndTime);
+                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(BlackVedio, 0, (Int64)((dEndTime - dBeginTime) * 1000));
                         packageClipsList.Add(theClips);
                     }
                     else
                     {
                         // 6.如果找到,则这一段时间就将此视频添加到打包素材列表中
                         // 这里的入点和出点,应该转为视频时间,而不是时间线上的时间
-                        double dVedioStartTime = 
+                        double dVedioStartTime =
                         timeLineControl_MainTL.GetTimeValueByPos(thePanel.Location.X);
+
                         
-                        PackageClips theClips = new PackageClips(thePanel.Name, (Int64)(dBeginTime- dVedioStartTime), (Int64)(dEndTime - dVedioStartTime));
+                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, (Int64)((dBeginTime - dVedioStartTime) * 1000), (Int64)((dEndTime - dVedioStartTime) * 1000));
+                        
+                        //tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, 0, 0);
                         packageClipsList.Add(theClips);
                     }
                 }
@@ -1873,6 +2149,18 @@ namespace NonLinearEditSystem.Forms
         private ToolStripMenuItem _sequenceMenu辅助线图像框;
         private ToolStripMenuItem _sequenceMenu辅助线坐标轴;
 
+        // 文件列表右键菜单
+        private ContextMenuStrip _fileListMenu;
+        private ToolStripMenuItem _fileListMenu粘贴;
+        private ToolStripMenuItem _fileListMenu新建文件夹;
+        private ToolStripMenuItem _fileListMenu新建项;
+        private ToolStripMenuItem _fileListMenu创建字幕;
+        private ToolStripMenuItem _fileListMenu导入;
+        private ToolStripMenuItem _fileListMenu导入双目影像文件;
+        private ToolStripMenuItem _fileListMenu查找;
+        private ToolStripMenuItem _fileListMenu隐藏字幕模板文件夹;
+        private ToolStripMenuItem _fileListMenu隐藏流程图库;
+        private ToolStripSeparator _fileListMenuSeparator1;
 
 
 
@@ -1973,6 +2261,8 @@ namespace NonLinearEditSystem.Forms
             CreateTimelineMenu();
 
             CreatesequenceMenu();
+
+            CreateFileListMenu();
         }
 
         /// <summary>
@@ -3108,6 +3398,128 @@ namespace NonLinearEditSystem.Forms
             PanelEx_Sequence.ContextMenuStrip = _sequenceMenu;
         }
 
+
+        private void CreateFileListMenu()
+        {
+            _fileListMenu = new ContextMenuStrip
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu",
+                Size = _menuSize
+            };
+
+            _fileListMenu粘贴 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "粘贴",
+                Size = _menuItemSize,
+                Text = "粘贴"
+            };
+
+            _fileListMenu新建文件夹 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu新建文件夹",
+                Size = _menuItemSize,
+                Text = "新建文件夹"
+            };
+
+            _fileListMenu新建项 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu新建项",
+                Size = _menuItemSize,
+                Text = "新建项"
+            };
+
+            _fileListMenu创建字幕 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu创建字幕",
+                Size = _menuItemSize,
+                Text = "创建字幕"
+            };
+
+            _fileListMenu导入 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu导入",
+                Size = _menuItemSize,
+                Text = "导入"
+            };
+
+            _fileListMenu导入双目影像文件 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu导入双目影像文件",
+                Size = _menuItemSize,
+                Text = "导入双目影像文件"
+            };
+
+            _fileListMenu查找 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu查找",
+                Size = _menuItemSize,
+                Text = "查找"
+            };
+
+            _fileListMenu隐藏字幕模板文件夹 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu隐藏字幕模板文件夹",
+                Size = _menuItemSize,
+                Text = "隐藏字幕模板文件夹",
+
+                CheckOnClick = true
+            };
+
+            _fileListMenu隐藏流程图库 = new ToolStripMenuItem
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenu隐藏流程图库",
+                Size = _menuItemSize,
+                Text = "隐藏流程图库",
+
+                CheckOnClick = true
+            };
+
+            _fileListMenuSeparator1 = new ToolStripSeparator
+            {
+                BackColor = _menuColor,
+                ForeColor = _menufontsColor,
+                Name = "_fileListMenuSeparator1",
+                Size = _seperatorSize,
+            };
+
+            _fileListMenu.Items.AddRange(new ToolStripItem[]
+            {
+                _fileListMenu粘贴,
+                _fileListMenu新建文件夹,
+                _fileListMenu新建项,
+                _fileListMenu创建字幕,
+                _fileListMenu导入,
+                _fileListMenu导入双目影像文件,
+                _fileListMenu查找,
+                _fileListMenuSeparator1,
+                _fileListMenu隐藏字幕模板文件夹,
+                _fileListMenu隐藏流程图库
+            });
+
+            listView_Files.ContextMenuStrip = _fileListMenu;
+
+        }
+
         #endregion
 
 
@@ -3126,416 +3538,96 @@ namespace NonLinearEditSystem.Forms
 
         #region TestCode
 
-        string strDemuxVideoFile = string.Empty;
-        string strDemuxAudioFile = string.Empty;
-
-        string strOutH264FileName = string.Empty;
-        string strOutAacFileName = string.Empty;
-
-        StringList strInH264VideoFileList = new StringList();
-        StringList strInAacFileList = new StringList();
-
-        private bool bDeEncodeFinish = false;
-
         private void 分离ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.InitialDirectory = @"D:\视频素材";
-                openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4| All Files (*.*)|*.*";
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filename = openFileDialog.FileName;
-
-                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
-
-                    if (res >= 0)
-                    {
-                        MessageBox.Show("分离成功");
-                    }
-                    else
-                    {
-                        MessageBox.Show("分离失败");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
         }
 
         private void 编解码ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //int Start(System::Collections::Generic::List < String ^> strInH264VideoFileList, String ^ strOutH264FileName);
-                //int StartAACDecEncoder(System::Collections::Generic::List < String ^> strInAacFileList, String ^ strOutAacFileName);
-
-                //List<String> strInH264VideoFileList = new List<String>(10);
-                //List<String> strInAacFileList = new List<String>(10);
-
-                strInH264VideoFileList.Add(strDemuxVideoFile);
-                strInAacFileList.Add(strDemuxAudioFile);
-
-                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
-                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
-
-                while (true)
-                {
-                    if (_h264CodecIOCSharp.isFinish())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1000);
-                    }
-                }
-
-                if (resVedio >= 0 && resAudio >= 0)
-                {
-                    MessageBox.Show("编解码成功");
-                }
-                else
-                {
-                    MessageBox.Show("编解码失败");
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
-
         }
 
         private void 打包ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // int StartMuxer(StringList ^ strInH264FileList, String ^% stroutput_filename);
-
-                StringList strInH264FileList = new StringList();
-                strInH264FileList.Add(strOutH264FileName);
-                strInH264FileList.Add(strOutAacFileName);
-                //strInH264FileList.Add(strDemuxVideoFile);
-                //strInH264FileList.Add(strDemuxAudioFile);
-
-                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
-                int res = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
-
-                while (true)
-                {
-                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1000);
-                    }
-                }
-
-                if (res >= 0)
-                {
-                    MessageBox.Show("打包成功");
-                }
-                else
-                {
-                    MessageBox.Show("打包失败");
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
         }
 
         private void 测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        public void StartPacket()
+        {
+            Thread threadPacket = new Thread(PacketThread);
+            threadPacket.Start();
+        }
+
+        public void PacketThread()
+        {
             try
             {
-                UpdateVedioTrackFilesTimes();
+                // UpdateVedioTrackFilesTimes();
 
-                UpdatePackageClips();
+                // UpdatePackageClips();
 
-                foreach (PackageClips theClips in packageClipsList)
+                // 1.音视频分离
+                int res = packetIOCSharp.DemuxClips(packageClipsList);
+                if (res < 0)
                 {
-                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, theClips.strClipFileName, (long)(theClips.rtPos * GeneralConversions.SecToNanoSec), (long)(theClips.rtEndPos * GeneralConversions.SecToNanoSec));
-
-                    if (res >= 0)
-                    {
-                        strInH264VideoFileList.Add(strDemuxVideoFile);
-                        strInAacFileList.Add(strDemuxAudioFile);
-                    }
-                    else
-                    {
-                        MessageBox.Show(theClips.strClipFileName + "分离失败");
-                    }
+                    MessageBox.Show("分离失败!");
                 }
 
-                if (strInH264VideoFileList.Count == 0)
+                // 2.初始化打包
+                res = packetIOCSharp.PacketingInitial();
+                if (res < 0)
                 {
-                    MessageBox.Show("未分离出音视频文件, 无法进行编解码");
-                    return;
+                    MessageBox.Show("打包初始化失败!");
                 }
 
-                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
-                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
-
-                if (resVedio >= 0 && resAudio >= 0)
+                // 3.开始打包
+                res = packetIOCSharp.PacketStart();
+                if (res < 0)
                 {
-                    while (true)
-                    {
-                        if (_h264CodecIOCSharp.isFinish())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            Thread.Sleep(1000);
-                        }
-                    }
+                    MessageBox.Show("打包失败!");
                 }
 
-                StringList strInH264FileList = new StringList();
-                strInH264FileList.Add(strOutH264FileName);
-                strInH264FileList.Add(strOutAacFileName);
+                // 4.等待打包结束
+                while (!packetIOCSharp.PacketIsFinish())
+                {
+                    Thread.Sleep(1000);
 
+                    dPacketProcess = packetIOCSharp.GetProgress();
+                }
+
+                // 5.混合
                 string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
-                int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
-
-                while (true)
+                res = packetIOCSharp.MuxerStart(strPackedFile);
+                if (res < 0)
                 {
-                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1000);
-                    }
+                    MessageBox.Show("混合失败!");
                 }
 
-                if (PackRes >= 0)
+                //5 waiting muxed finished
+                while (!packetIOCSharp.MuxerIsFinish())
                 {
-                    if (MessageBox.Show("打包成功") == DialogResult.OK)
-                    {
-                        Close();
-                    }
+                    Thread.Sleep(1000);
+                }
 
-                }
-                else
+                // 6.叠加字幕
+                GetZimuList();
+                res = packetIOCSharp.MixZimu(ZimuList);
+                if (res < 0)
                 {
-                    MessageBox.Show("打包失败");
+                    MessageBox.Show("字幕叠加失败!");
                 }
+
+                bPakcetFinish = true;
             }
             catch (Exception ex)
             {
             	ExceptionHandle.ExceptionHdl(ex);
             }
+            
         }
-
-
-        private void 测试ToolStripMenuItem_Click1(object sender, EventArgs e)
-        {
-            try
-            {
-
-                /*
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.InitialDirectory = @"D:\视频素材";
-                openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4| All Files (*.*)|*.*";
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filename = openFileDialog.FileName;
-
-                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
-
-                    if (res >= 0)
-                    {
-                        StringList strInH264VideoFileList = new StringList();
-                        StringList strInAacFileList = new StringList(); ;
-
-                        strInH264VideoFileList.Add(strDemuxVideoFile);
-                        strInAacFileList.Add(strDemuxAudioFile);
-
-                        int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
-                        int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
-
-                        while (true)
-                        {
-                            if (_h264CodecIOCSharp.isFinish())
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                Thread.Sleep(1000);
-                            }
-                        }
-
-                        if (resVedio >= 0 && resAudio >= 0)
-                        {
-                            StringList strInH264FileList = new StringList();
-                            strInH264FileList.Add(strOutH264FileName);
-                            strInH264FileList.Add(strOutAacFileName);
-                            //strInH264FileList.Add(strDemuxVideoFile);
-                            //strInH264FileList.Add(strDemuxAudioFile);
-
-                            string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
-                            int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
-
-                            while (true)
-                            {
-                                if (_mp4FilesMuxIOCSharp.MuxerFinished())
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Thread.Sleep(1000);
-                                }
-                            }
-
-                            if (PackRes >= 0)
-                            {
-                                if (MessageBox.Show("打包成功") == DialogResult.OK)
-                                {
-                                    Close();
-                                }
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("打包失败");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("编解码失败");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("分离失败");
-                    }
-                }*/
-
-                SortVedioClips();
-
-                foreach (var vedioClip in listVedioClips)
-                {
-                    string filename = vedioClip.Name;
-
-                    int res = _mp4DemuxIOCSharp.AddClip(ref strDemuxVideoFile, ref strDemuxAudioFile, filename, 0, 0);
-
-                    if (res >= 0)
-                    {
-                        strInH264VideoFileList.Add(strDemuxVideoFile);
-                        strInAacFileList.Add(strDemuxAudioFile);
-                    }
-                    else
-                    {
-                        MessageBox.Show(filename + "分离失败");
-                    }
-                }
-
-                if (strInH264VideoFileList.Count == 0)
-                {
-                    MessageBox.Show("未分离出音视频文件, 无法进行编解码");
-                    return;
-                }
-
-                int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
-                int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
-
-                if (resVedio >= 0 && resAudio >= 0)
-                {
-                    while (true)
-                    {
-                        if (_h264CodecIOCSharp.isFinish())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            Thread.Sleep(1000);
-                        }
-                    }
-                }
-
-
-
-                StringList strInH264FileList = new StringList();
-                strInH264FileList.Add(strOutH264FileName);
-                strInH264FileList.Add(strOutAacFileName);
-
-                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
-                int PackRes = _mp4FilesMuxIOCSharp.StartMuxer(strInH264FileList, strPackedFile);
-
-                while (true)
-                {
-                    if (_mp4FilesMuxIOCSharp.MuxerFinished())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1000);
-                    }
-                }
-
-                if (PackRes >= 0)
-                {
-                    if (MessageBox.Show("打包成功") == DialogResult.OK)
-                    {
-                        Close();
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("打包失败");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandle.ExceptionHdl(ex);
-            }
-        }
-
-
-        public void DecEncoder()
-        {
-            int resVedio = _h264CodecIOCSharp.Start(strInH264VideoFileList, ref strOutH264FileName);
-            int resAudio = _h264CodecIOCSharp.StartAACDecEncoder(strInAacFileList, ref strOutAacFileName);
-
-            if (resVedio >= 0 && resAudio >= 0)
-            {
-                while (true)
-                {
-                    if (_h264CodecIOCSharp.isFinish())
-                    {
-                        bDeEncodeFinish = true;
-                        return;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1000);
-                    }
-                }
-            }
-        }
-
-
-
 
 
 

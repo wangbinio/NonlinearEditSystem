@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorSlider", "ColorSlider\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrDataTypeChange", "ClrDataTypeChange\ClrDataTypeChange.csproj", "{37C9CBD0-4AF9-4889-930A-628A61B791A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clrZiMuModel", "clrZiMuModel\clrZiMuModel.csproj", "{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,18 @@ Global
 		{37C9CBD0-4AF9-4889-930A-628A61B791A4}.Release|x64.Build.0 = Release|Any CPU
 		{37C9CBD0-4AF9-4889-930A-628A61B791A4}.Release|x86.ActiveCfg = Release|Any CPU
 		{37C9CBD0-4AF9-4889-930A-628A61B791A4}.Release|x86.Build.0 = Release|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|x64.ActiveCfg = Debug|x64
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|x64.Build.0 = Debug|x64
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Debug|x86.Build.0 = Debug|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|x64.ActiveCfg = Release|x64
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|x64.Build.0 = Release|x64
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|x86.ActiveCfg = Release|Any CPU
+		{18F5DA8B-9A1B-446F-A465-6DC8C0F1E021}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,9 @@
-﻿namespace NonLinearEditSystem.Forms
+﻿
+using System.Windows.Forms;
+using NonLinearEditSystem;
+using NonLinearEditSystem.Forms;
+
+namespace NonLinearEditSystem.Forms
 {
     public partial class PackageForm : DevComponents.DotNetBar.Metro.MetroForm
     {
@@ -41,6 +46,9 @@
         // 打包模式
         public static readonly object[] PackModes = { "全部", "区间" };
 
+        // 主窗口
+        public MainForm theMainForm;
+
 
         public PackageForm()
         {
@@ -51,6 +59,20 @@
         {
             InitComboBox();
             InitColor();
+
+            progressBarX_Pack.Value = 0;
+
+            theMainForm = Owner as MainForm;
+
+            if (theMainForm != null)
+            {
+                theMainForm.UpdateVedioTrackFilesTimes();
+
+                theMainForm.UpdatePackageClips();
+                if (theMainForm.sortedVedioTimes.Count > 1)
+                    labelX_ExitPoint.Text = 
+                    TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)theMainForm.sortedVedioTimes[theMainForm.sortedVedioTimes.Count - 1]);
+            }
         }
 
         private void InitColor()
@@ -102,7 +124,33 @@
 
         }
 
+        // 开始打包
+        private void buttonX_StartPack_Click(object sender, System.EventArgs e)
+        {
+            theMainForm.StartPacket();
+            timerPacket.Start();
+        }
 
+        private void timerPacket_Tick(object sender, System.EventArgs e)
+        {
+            double dProcess = theMainForm.dPacketProcess;
+
+            progressBarX_Pack.Value = (int)(dProcess * 100);
+
+            progressBarX_Pack.Text = progressBarX_Pack.Value.ToString() + "%";
+
+            if (theMainForm.bPakcetFinish)
+            {
+                progressBarX_Pack.Value = 100;
+
+                progressBarX_Pack.Text ="100%";
+
+                timerPacket.Stop();
+
+                MessageBox.Show("打包完成!");
+            }
+
+        }
 
     }
 
