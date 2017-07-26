@@ -435,7 +435,6 @@ namespace NonLinearEditSystem.Forms
             }
 
             return ctagClipInfoCLR.Vduration;
-
         }
 
 
@@ -513,6 +512,16 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
+        /// 通过长度获取持续时间
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private double GetDuirationBylength(int length)
+        {
+            return length / timeLineControl_MainTL.NDistanceOfTicks * timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks];
+        }
+
+        /// <summary>
         /// 将视频文件拖到视频轨道上
         /// </summary>
         /// <param name="sender"></param>
@@ -525,7 +534,7 @@ namespace NonLinearEditSystem.Forms
                 string fileName = e.Data.GetData(DataFormats.FileDrop, true) as string;
 
                 // 2.读取此文件的信息
-                int length = 100;
+                int length = 0;
                 double duirationTime = 0;
                 if (fileName.ToUpper().EndsWith("MP4"))
                 {
@@ -533,18 +542,19 @@ namespace NonLinearEditSystem.Forms
                     //duirationTime = _iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec;
 
                     duirationTime = GetVedioDuiration(fileName);
-
-                    length = GetLengthByDuiration(duirationTime);
-
                 }
                 else if (fileName.ToUpper().EndsWith(zimuFileEnd))
                 {
-                    length = 100;
+                    // 字幕默认持续时间5min, 300s
+                    duirationTime = 300;
                 }
                 else
                 {
-                    length = 50;
+                    // 其他默认2min 
+                    duirationTime = 120;
                 }
+
+                length = GetLengthByDuiration(duirationTime);
 
 
                 // 3.0.计算位置信息
@@ -639,12 +649,12 @@ namespace NonLinearEditSystem.Forms
                             _vedioFilesPanel[i].Height = trackHeight;
                             _vedioFilesPanel[i].Location = new System.Drawing.Point(pos, 0);
 
-                            // 使用tag来存储开始结束位置在时间线的时间
+                            // 使用tag来存储开始结束位置在时间线的时间,追加存储入点和出点时间
                             double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(pos);
-                            //double dEndTime = dStartTime + duriation;
-                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(pos+length);
+                            double dEndTime = dStartTime + duriation;
+                            //double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(pos+length);
 
-                            string objStr = dStartTime + "-" + dEndTime;
+                            string objStr = dStartTime + "-" + dEndTime + "-" + 0 + "-" + duriation;
 
                             _vedioFilesPanel[i].Tag = objStr;
 
@@ -676,7 +686,7 @@ namespace NonLinearEditSystem.Forms
                             double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(pos);
                             double dEndTime = dStartTime + duriation;
 
-                            string objStr = dStartTime + "-" + dEndTime;
+                            string objStr = dStartTime + "-" + dEndTime + "-" + 0 + "-" + duriation;
 
                             _audioFilesPanel[i].Tag = objStr;
 
@@ -1302,6 +1312,7 @@ namespace NonLinearEditSystem.Forms
                             int originLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name));
 
                             // 2.如果拉伸的长度小于原视频长度
+                            // 2.左拉的距离不能超过tag中入点到0的距离,右拉不能让面板小于10(暂时定为10)
                             if (nEndPos - (e.X - _mousePosDeltaX) < originLength)
                             {
                                 // 这一部分是移动面板本身
@@ -1309,7 +1320,30 @@ namespace NonLinearEditSystem.Forms
                                 //panelExSelected.Location = new Point(e.X - _mousePosDeltaX, 0);
 
                                 // 这一部分是通过移动新面板,最后同步
-                                operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
+                                // 1.计算最远能左拉多少
+                                // 2.首先解析tag获取信息
+                                //string objStr = panelExSelected.Tag as string;
+                                //if (objStr == null) return;
+                                //string[] startAndEndTime = objStr.Split('-');
+                                //if (startAndEndTime.Length < 4) return;
+                                //
+                                //// 3.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                                //double dOldStartTime = double.Parse(startAndEndTime[0]);
+                                //double dOldEndTime = double.Parse(startAndEndTime[1]);
+                                //double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                                //double dOldExitTime = double.Parse(startAndEndTime[3]);
+
+                                // 4.左拉最远距离
+                                //int maxLength = GetLengthByDuiration(dOldEntreTime - 0);
+
+                                // 5.根据限制处理辅助面板位置
+                                int movedPosX = e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0;
+                                //if (movedPosX < panelExSelected.Location.X - maxLength)
+                                //{
+                                //    movedPosX = panelExSelected.Location.X - maxLength;
+                                //}
+
+                                operatorPanel.Location = new Point(movedPosX, 0);
                                 operatorPanel.Height = panelExSelected.Height;
                                 operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width - operatorPanel.Location.X;
                                 if (operatorPanel.Width < 10) operatorPanel.Width = 10;
@@ -1337,9 +1371,35 @@ namespace NonLinearEditSystem.Forms
                             // 1.获取视频原始长度
                             int originLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name));
 
-                            // 2.如果拉伸的长度小于原视频长度
+                            // 2.右拉的距离不能超过视频最大长度-出点
                             if (e.X < originLength)
                             {
+                                // 1.计算最远能右拉多少
+                                // 2.首先解析tag获取信息
+                                //string objStr = panelExSelected.Tag as string;
+                                //if (objStr == null) return;
+                                //string[] startAndEndTime = objStr.Split('-');
+                                //if (startAndEndTime.Length < 4) return;
+                                //
+                                //// 3.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                                //double dOldStartTime = double.Parse(startAndEndTime[0]);
+                                //double dOldEndTime = double.Parse(startAndEndTime[1]);
+                                //double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                                //double dOldExitTime = double.Parse(startAndEndTime[3]);
+                                //
+                                //// 4.右拉最远距离
+                                //int maxLength = GetLengthByDuiration(GetVedioDuiration(panelExSelected.Name) - dOldExitTime);
+                                //
+                                //int movePosX = e.X - panelExSelected.Width;
+                                //if (movePosX > maxLength)
+                                //{
+                                //    operatorPanel.Width = panelExSelected.Width + maxLength;
+                                //}
+                                //else
+                                //{
+                                //    operatorPanel.Width = e.X;
+                                //}
+
                                 operatorPanel.Location = panelExSelected.Location;
                                 operatorPanel.Height = panelExSelected.Height;
                                 operatorPanel.Width = e.X;
@@ -1390,33 +1450,129 @@ namespace NonLinearEditSystem.Forms
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    // 更新拖动或者缩放完的文件位置和大小,并需要改变其存储信息
+                    // 1.如果是选择文件本身,就是拖动
                     if (_chooseVedioPanelSelf)
                     {
+                        // 1.改变文件位置及大小
                         _panelExSelected.Location = operatorPanel.Location;
                         _panelExSelected.Size = operatorPanel.Size;
                         _panelExSelected.Parent.Controls.Remove(operatorPanel);
+
+                        // 2.首先解析tag获取信息
+                        string objStr = _panelExSelected.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 3.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dOldStartTime = double.Parse(startAndEndTime[0]);
+                        double dOldEndTime = double.Parse(startAndEndTime[1]);
+                        double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                        double dOldExitTime = double.Parse(startAndEndTime[3]);
+
+                        // 4.如果只是拖动文件,只需要改时间线上的起始/终点时间,本身的出点/入点时间不需要修改
+                        double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(_panelExSelected.Location.X);
+                        double dEndTime = dStartTime + dOldEndTime - dOldStartTime;
+
+                        objStr = dStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dOldExitTime;
+                        _panelExSelected.Tag = objStr;
+
+                        // 5.更新panel的显示文字
+
                     }
+                    // 2.如果是选中起点,就是拖拉起点
                     else if (_chooseVedioPanelStart)
                     {
+                        // 2.首先解析tag获取信息
+                        string objStr = _panelExSelected.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 3.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dOldStartTime = double.Parse(startAndEndTime[0]);
+                        double dOldEndTime = double.Parse(startAndEndTime[1]);
+                        double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                        double dOldExitTime = double.Parse(startAndEndTime[3]);
+
+                        // 4.如果是拖拉了起点,那么在时间线的起点和本身入点需要更新,终点和出点保持不变
+                        // 判断入点不能小于0,入点不能小于0则代表,新的X和旧的X的差不能大于入点到0的长度
+                        int maxLength = GetLengthByDuiration(dOldEntreTime);
+                        if (_panelExSelected.Location.X - operatorPanel.Location.X > maxLength)
+                        {
+                            operatorPanel.Location = new Point(_panelExSelected.Location.X - maxLength, 0);
+                        }
+                        double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X);
+                        double dEntreTime = dOldExitTime - (dOldEndTime - dStartTime);
+                        if (Math.Abs(dEntreTime) < 2)
+                        {
+                            dEntreTime = 0;
+                        }
+                        objStr = dStartTime + "-" + dOldEndTime + "-" + dEntreTime + "-" + dOldExitTime;
+                        _panelExSelected.Tag = objStr;
+
+                        // 5.更新panel的显示文字
+                        string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dOldExitTime - dEntreTime));
+
+                        string oldText = _panelExSelected.Text;
+                        string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                        _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                        // 1.改变文件位置及大小
                         _panelExSelected.Location = operatorPanel.Location;
-                        _panelExSelected.Size = operatorPanel.Size;
+                        _panelExSelected.Height = operatorPanel.Height;
+                        _panelExSelected.Width = GetLengthByDuiration(dOldExitTime - dEntreTime);
                         _panelExSelected.Parent.Controls.Remove(operatorPanel);
                     }
+                    // 2.如果是选中终点,就是拖拉终点
                     else if (_chooseVedioPanelEnd)
                     {
+
+                        // 2.首先解析tag获取信息
+                        string objStr = _panelExSelected.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 3.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dOldStartTime = double.Parse(startAndEndTime[0]);
+                        double dOldEndTime = double.Parse(startAndEndTime[1]);
+                        double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                        double dOldExitTime = double.Parse(startAndEndTime[3]);
+
+                        // 4.如果是拖拉终点,那么时间线的终点和出点需要更新,起点和入点保持不变
+                        // 判断出点不能大于视频总时间.代表,新的width和旧的width之差不能大于视频总时间-出点长度
+                        double dDuiration = GetVedioDuiration(_panelExSelected.Name);
+                        int maxLength = GetLengthByDuiration(dDuiration - dOldExitTime);
+                        if (operatorPanel.Width - _panelExSelected.Width > maxLength)
+                        {
+                            operatorPanel.Width = _panelExSelected.Width + maxLength;
+                        }
+                        double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
+                        double dExitTime = dOldEntreTime + dEndTime - dOldStartTime;
+                        if (Math.Abs(dExitTime - dDuiration) < 2)
+                        {
+                            dExitTime = dDuiration;
+                        }
+
+                        objStr = dOldStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dExitTime;
+                        _panelExSelected.Tag = objStr;
+
+                        // 5.更新panel的显示文字
+                        string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime - dOldEntreTime));
+
+                        string oldText = _panelExSelected.Text;
+                        string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                        _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                        // 1.改变文件位置及大小
                         _panelExSelected.Location = operatorPanel.Location;
-                        _panelExSelected.Size = operatorPanel.Size;
+                        _panelExSelected.Height = operatorPanel.Height;
+                        _panelExSelected.Width = GetLengthByDuiration(dExitTime - dOldEntreTime);
                         _panelExSelected.Parent.Controls.Remove(operatorPanel);
                     }
-
-                    // 使用tag来存储开始结束位置在时间线的时间
-                    double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(_panelExSelected.Location.X);
-                    double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(_panelExSelected.Location.X + _panelExSelected.Width);
-
-                    string objStr = dStartTime + "-" + dEndTime;
-
-                    _panelExSelected.Tag = objStr;
                 }
             }
             catch (Exception ex)
