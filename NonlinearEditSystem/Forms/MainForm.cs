@@ -1767,11 +1767,19 @@ namespace NonLinearEditSystem.Forms
                     {
                         // 6.如果找到,则这一段时间就将此视频添加到打包素材列表中
                         // 这里的入点和出点,应该转为视频时间,而不是时间线上的时间
-                        double dVedioStartTime =
-                        timeLineControl_MainTL.GetTimeValueByPos(thePanel.Location.X);
+                        // 解析tag获取信息
+                        string objStr = _panelExSelected.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
 
-                        
-                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, (Int64)((dBeginTime - dVedioStartTime) * 1000), (Int64)((dEndTime - dVedioStartTime) * 1000));
+                        // 得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dOldStartTime = double.Parse(startAndEndTime[0]);
+                        double dOldEndTime = double.Parse(startAndEndTime[1]);
+                        double dOldEntreTime = double.Parse(startAndEndTime[2]);
+                        double dOldExitTime = double.Parse(startAndEndTime[3]);
+
+                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, (Int64)((dBeginTime - dOldStartTime + dOldEntreTime) * 1000), (Int64)((dEndTime - dOldStartTime + dOldEntreTime) * 1000));
                         
                         //tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, 0, 0);
                         packageClipsList.Add(theClips);
