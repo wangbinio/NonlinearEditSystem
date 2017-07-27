@@ -1277,8 +1277,6 @@ namespace NonLinearEditSystem.Forms
                     // 设置鼠标移动为true
                     _mouseMovedVedioPanel = true;
 
-
-
                     // 1.如果是选中面板本身,则移动面板本身
                     if (_chooseVedioPanelSelf)
                     {
@@ -1297,10 +1295,57 @@ namespace NonLinearEditSystem.Forms
                         operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
                         //operatorPanel.Location = new Point(e.X - _mousePosDeltaX + panelExSelected.Location.X, 0);
                         operatorPanel.Size = panelExSelected.Size;
-                        panelExSelected.Parent.Controls.Add(operatorPanel);
+
+                        // 用于上下移动面板
+                        PanelEx trackPanel = panelExSelected.Parent as PanelEx;
+                        int index = _vedioTrackPanels.IndexOf(trackPanel);
+
+                        // 拖动一个轨道
+                        //if (e.Y >= panelExSelected.Height && index < _vedioTrackPanels.Count-1)
+                        //{
+                        //    // 1.往下拖动
+                        //    _vedioTrackPanels[++index].Controls.Add(operatorPanel);
+                        //}
+                        //else if (e.Y <= -panelExSelected.Height && index > 0)
+                        //{
+                        //    // 2.往上拖动
+                        //    _vedioTrackPanels[--index].Controls.Add(operatorPanel);
+                        //}
+                        //else
+                        //{
+                        //    panelExSelected.Parent.Controls.Add(operatorPanel);
+                        //}
+
+                        // 拖动多个轨道
+                        if (e.Y >= panelExSelected.Height)
+                        {
+                            // 1.往下拖动
+                            int nums = e.Y / panelExSelected.Height;
+                            if (nums + index > _vedioTrackPanels.Count)
+                            {
+                                nums = _vedioTrackPanels.Count - index;
+                            }
+
+                            _vedioTrackPanels[nums].Controls.Add(operatorPanel);
+                        }
+                        else if (e.Y <= -panelExSelected.Height)
+                        {
+                            // 2.往上拖动
+                            int nums = -e.Y / panelExSelected.Height;
+                            if (nums > index)
+                            {
+                                nums = index;
+                            }
+
+                            _vedioTrackPanels[index - nums].Controls.Add(operatorPanel);
+                        }
+                        else
+                        {
+                            panelExSelected.Parent.Controls.Add(operatorPanel);
+                        }
+
                         //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
                         //Cursor = Cursors.NoMoveHoriz;
-
                     }
                     // 2.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
                     else if (_chooseVedioPanelStart)
@@ -1456,7 +1501,9 @@ namespace NonLinearEditSystem.Forms
                         // 1.改变文件位置及大小
                         _panelExSelected.Location = operatorPanel.Location;
                         _panelExSelected.Size = operatorPanel.Size;
-                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
+
+                        _panelExSelected.Parent = operatorPanel.Parent;
+                        operatorPanel.Parent.Controls.Remove(operatorPanel);
 
                         // 2.首先解析tag获取信息
                         string objStr = _panelExSelected.Tag as string;
