@@ -2675,6 +2675,8 @@ namespace NonLinearEditSystem.Forms
                 Size = _menuItemSize,
                 Text = "删除"
             };
+            _vedioTrackFile删除.Click += _vedioTrackFile删除_Click;
+
             _vedioTrackFile独立删除 = new ToolStripMenuItem
             {
                 BackColor = _menuColor,
@@ -3040,6 +3042,8 @@ namespace NonLinearEditSystem.Forms
                 panelEx.ContextMenuStrip = _vedioTrackFileMenu;
             }
         }
+
+
 
         /// <summary>
         /// 创建时间线右键菜单
@@ -3664,7 +3668,9 @@ namespace NonLinearEditSystem.Forms
             PanelEx_Sequence.ContextMenuStrip = _sequenceMenu;
         }
 
-
+        /// <summary>
+        /// 创建文件列表右键菜单
+        /// </summary>
         private void CreateFileListMenu()
         {
             _fileListMenu = new ContextMenuStrip
@@ -3791,13 +3797,50 @@ namespace NonLinearEditSystem.Forms
 
         #region 右键菜单事件处理
 
+        /// <summary>
+        /// 删除视频轨道空隙
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 删除空隙ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("删除空隙");
         }
 
+        /// <summary>
+        /// 删除轨道上的音视频或者字幕文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _vedioTrackFile删除_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1.首先得到是哪一个panel
+                ToolStripMenuItem item = sender as ToolStripMenuItem;
+                ContextMenuStrip menu = item.GetCurrentParent() as ContextMenuStrip;
+                PanelEx panel = menu.SourceControl as PanelEx;
 
-        #endregion
+                // 2.删除此panel
+                DeleteTrackFilePanel(panel);
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 删除一个文件面板
+        /// </summary>
+        /// <param name="panel"></param>
+        private void DeleteTrackFilePanel(PanelEx panel)
+        {
+            panel.Tag = "";
+            panel.Parent.Controls.Remove(panel);
+        }
+
+        #endregion 右键菜单事件处理
 
 
 
