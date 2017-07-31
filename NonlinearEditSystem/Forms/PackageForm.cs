@@ -53,14 +53,17 @@ namespace NonLinearEditSystem.Forms
         public PackageForm()
         {
             InitializeComponent();
+
+            InitComboBox();
+            InitColor();
         }
 
         private void PackageForm_Load(object sender, System.EventArgs e)
         {
-            InitComboBox();
-            InitColor();
+
 
             progressBarX_Pack.Value = 0;
+            progressBarX_Pack.Text = "0%";
 
             theMainForm = Owner as MainForm;
 
@@ -148,6 +151,9 @@ namespace NonLinearEditSystem.Forms
                 timerPacket.Stop();
 
                 MessageBox.Show("打包完成!");
+
+                // 打包一次完成之后要将标记置为否
+                theMainForm.bPakcetFinish = false;
             }
 
         }

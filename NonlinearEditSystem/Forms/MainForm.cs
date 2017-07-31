@@ -247,6 +247,22 @@ namespace NonLinearEditSystem.Forms
             operatorPanel.Name = "operatorPanel";
             operatorPanel.Text = "";
             operatorPanel.Tag = "";
+
+            operatorPanel.Style.BackColor1.Alpha = 0;
+            operatorPanel.Style.BackColor1.Color = Color.Transparent;
+            operatorPanel.Style.BackColor2.Alpha = 0;
+            operatorPanel.Style.BackColor2.Color = Color.Transparent;
+            operatorPanel.Style.BackgroundImage = Resource._0140230_50;
+            operatorPanel.StyleMouseDown.BackColor1.Alpha = 0;
+            operatorPanel.StyleMouseDown.BackColor1.Color = Color.Transparent;
+            operatorPanel.StyleMouseDown.BackColor2.Alpha = 0;
+            operatorPanel.StyleMouseDown.BackColor2.Color = Color.Transparent;
+            operatorPanel.StyleMouseDown.BackgroundImage = Resource._0140230_50;
+            operatorPanel.StyleMouseOver.BackColor1.Alpha = 0;
+            operatorPanel.StyleMouseOver.BackColor1.Color = Color.Transparent;
+            operatorPanel.StyleMouseOver.BackColor2.Alpha = 0;
+            operatorPanel.StyleMouseOver.BackColor2.Color = Color.Transparent;
+            operatorPanel.StyleMouseOver.BackgroundImage = Resource._0140230_50;
         }
 
         /// <summary>
@@ -1341,7 +1357,17 @@ namespace NonLinearEditSystem.Forms
                         }
                         else
                         {
-                            panelExSelected.Parent.Controls.Add(operatorPanel);
+ 
+
+                            if (!panelExSelected.Parent.Controls.Contains(operatorPanel))
+                            {
+                                operatorPanel.Text = "111111111111";
+
+                                panelExSelected.Parent.Controls.Add(operatorPanel);
+
+                                panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
+                                panelExSelected.Parent.Controls.SetChildIndex(panelExSelected, 1);
+                            }
                         }
 
                         //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
