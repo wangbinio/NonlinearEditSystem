@@ -66,7 +66,7 @@ namespace TimeLineControl
         public int IndexOfSecEveryTicks { get; set; } = 3;
 
         /// 游标中心线的横坐标
-        public int ThumbHPos { get; set; }
+        public int ThumbHPos { get; set; } = 500;
 
         /// 游标所在的矩形区域
         public Rectangle ThumbRectangle { get; set; }
@@ -79,7 +79,7 @@ namespace TimeLineControl
 
         // 入点和出点横坐标
         public int enterPos = 100;
-        public int exitPos = 150;
+        public int exitPos = 900;
 
         // 出点和入点的时间
         public double enterValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)enterPos / (double)NDistanceOfTicks);
@@ -645,6 +645,7 @@ namespace TimeLineControl
             if (otherTimelineControl != null)
             {
                 RelativeTimeLineControl = otherTimelineControl;
+                RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
                 RelativeTimeLineControl.SetPosByValue(enterValue, TimeLinePos.Pos_Enter);
                 RelativeTimeLineControl.SetPosByValue(exitValue, TimeLinePos.Pos_Exit);
                 RelativeTimeLineControl.SetPosByValue(ThumbValue, TimeLinePos.Pos_Thumb);
@@ -745,7 +746,10 @@ namespace TimeLineControl
             if (RelativeTimeLineControl != null)
             {
                 if (IndexOfSecEveryTicks >= SecondsEveryTicks.Length / 2 && IndexOfSecEveryTicks <= SecondsEveryTicks.Length - 2)
-                   RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks + 1;
+                {
+                    RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks + 1;
+                }
+                RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
                 RelativeTimeLineControl.SetPosByValue(tempEnter, TimeLinePos.Pos_Enter);
                 RelativeTimeLineControl.SetPosByValue(tempExit, TimeLinePos.Pos_Exit);
                 RelativeTimeLineControl.SetPosByValue(tempThumb, TimeLinePos.Pos_Thumb);

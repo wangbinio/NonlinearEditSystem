@@ -39,7 +39,7 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 新建工程的时候 工程文件
         /// </summary>
-        public ProjectInfo projectInfo;
+        public ProjectInfo projectInfo = new ProjectInfo();
 
         public CreateProjectSetForm()
         {
@@ -59,7 +59,6 @@ namespace NonLinearEditSystem.Forms
         private void CreateProjectSetForm_Load(object sender, EventArgs e)
         {
             InitComboBox();
-            projectInfo = new ProjectInfo();
         }
 
         /// <summary>
@@ -122,7 +121,7 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                projectInfo.ProjectVersion = Application.ProductVersion;
+                // projectInfo.ProjectVersion = Application.ProductVersion;
                 projectInfo.ProjectPath = textBoxX_ProjFilePath.Text;
                 projectInfo.ProjectName = textBoxX_ProjFileName.Text;
                 string projectFullPath = projectInfo.ProjectPath + @"\" + projectInfo.ProjectName;
@@ -144,7 +143,7 @@ namespace NonLinearEditSystem.Forms
 
                 projectInfo.Save();
 
-                Close();
+                ;
             }
             catch (Exception ex)
             {

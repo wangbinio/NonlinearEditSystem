@@ -174,6 +174,7 @@
             // 
             this.buttonX_CreateProjCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_CreateProjCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CreateProjCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonX_CreateProjCancel.Location = new System.Drawing.Point(498, 317);
             this.buttonX_CreateProjCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonX_CreateProjCancel.Name = "buttonX_CreateProjCancel";
@@ -187,6 +188,7 @@
             // 
             this.buttonX_CreateProjOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_CreateProjOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX_CreateProjOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonX_CreateProjOK.Location = new System.Drawing.Point(410, 317);
             this.buttonX_CreateProjOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonX_CreateProjOK.Name = "buttonX_CreateProjOK";
@@ -420,7 +422,7 @@
             this.textBoxX_ProjFileName.PreventEnterBeep = true;
             this.textBoxX_ProjFileName.Size = new System.Drawing.Size(486, 23);
             this.textBoxX_ProjFileName.TabIndex = 1;
-            this.textBoxX_ProjFileName.Text = "Untitled Project.Non";
+            this.textBoxX_ProjFileName.Text = "New Project.Non";
             // 
             // CreateProjectSetForm
             // 

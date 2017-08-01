@@ -28,6 +28,8 @@ namespace NonLinearEditSystem
     /// 日期：2017-04-10
     /// 作者：szwb
     /// 修改：2017-04-11 szwb 添加版本控制
+    /// 修改：2017-06-27 szwb 自己序列化保存与打开
+    /// 修改：2017-08-01 szwb 修改工程保存的信息
     /// </summary>
     [Serializable]
     public class ProjectInfo
@@ -37,21 +39,17 @@ namespace NonLinearEditSystem
 
         }
 
-        public ProjectInfo(string version, string name, string path, long len, string updater, DateTime time,
-            VideoInfoStruct videoInfo, AudioInfoStruct audioInfo, string remarks)
+        public ProjectInfo(string version, string name, string path, string updater, DateTime time,
+           TimeLineInfoStruct theTimeLineInfo, string remarks)
         {
             ProjectVersion = version;
             ProjectName = name;
             ProjectPath = path;
-            Length = len;
             UpdateUser = updater;
             UpdateTime = time;
-            VideoInfo = videoInfo;
-            AudioInfo = audioInfo;
+            timeLineInfo = theTimeLineInfo;
             Remarks = remarks;
         }
-
-
 
         /// <summary>
         /// 工程版本
@@ -71,7 +69,7 @@ namespace NonLinearEditSystem
         /// <summary>
         /// 长度
         /// </summary>
-        public long Length { get; set; }
+        //public long Length { get; set; }
 
         /// <summary>
         /// 更新人
@@ -86,12 +84,18 @@ namespace NonLinearEditSystem
         /// <summary>
         /// 视频信息
         /// </summary>
-        public VideoInfoStruct VideoInfo;
+        //public VideoInfoStruct VideoInfo;
 
         /// <summary>
         /// 音频信息
         /// </summary>
-        public AudioInfoStruct AudioInfo;
+        //public AudioInfoStruct AudioInfo;
+
+        // 时间线信息
+        public TimeLineInfoStruct timeLineInfo = new TimeLineInfoStruct();
+
+        // 文件面板信息
+        public List<FilePanelStruct> filePanels = new List<FilePanelStruct>(10);
 
         /// <summary>
         /// 备注
@@ -116,11 +120,10 @@ namespace NonLinearEditSystem
                     ProjectVersion = projectInfo.ProjectVersion;
                     ProjectName = projectInfo.ProjectName;
                     ProjectPath = projectInfo.ProjectPath;
-                    Length = projectInfo.Length;
                     UpdateUser = projectInfo.UpdateUser;
                     UpdateTime = projectInfo.UpdateTime;
-                    VideoInfo = projectInfo.VideoInfo;
-                    AudioInfo = projectInfo.AudioInfo;
+                    timeLineInfo = projectInfo.timeLineInfo;
+                    filePanels = projectInfo.filePanels;
                     Remarks = projectInfo.Remarks;
                 }
 
@@ -140,6 +143,8 @@ namespace NonLinearEditSystem
             try
             {
                 XmlSerializer xs = new XmlSerializer(typeof(ProjectInfo));
+                ProjectVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                UpdateUser = Environment.UserName;
                 UpdateTime = DateTime.Now;
                 Stream stream = new FileStream(ProjectPath + @"\" + ProjectName, FileMode.Create, FileAccess.Write, FileShare.Read);
                 xs.Serialize(stream, this);
@@ -151,6 +156,81 @@ namespace NonLinearEditSystem
             }
         }
 
+    }
+
+    /// <summary>
+    /// 用于保存时间线信息
+    /// </summary>
+    [Serializable]
+    public class TimeLineInfoStruct
+    {
+        /// 当前一小格的时间值
+        public int indexOfSecEveryTicks;
+
+        /// 入点位置
+        public int enterPos;
+
+        /// 出点位置
+        public int exitPos;
+
+        /// 游标位置
+        public int thumbHPos;
+
+        public TimeLineInfoStruct()
+        {
+            indexOfSecEveryTicks = 3;
+            enterPos = 100;
+            exitPos = 300;
+            thumbHPos = 200;
+        }
+
+        public TimeLineInfoStruct(int index, int enter, int exit, int thumb)
+        {
+            indexOfSecEveryTicks = index;
+            enterPos = enter;
+            exitPos = exit;
+            thumbHPos = thumb;
+        }
+    }
+
+    /// <summary>
+    /// 用于保存文件面板信息
+    /// </summary>
+    [Serializable]
+    public class FilePanelStruct
+    {
+        // 面板名称
+        public string name;
+
+        // 横坐标
+        public int x;
+
+        // 宽度
+        public int width;
+
+        // tag
+        public string tag;
+
+        // parentindex
+        public int parentIndex;
+
+        public FilePanelStruct()
+        {
+            name = string.Empty;
+            x = 0;
+            width = 0;
+            tag = string.Empty;
+            parentIndex = 0;
+        }
+
+        public FilePanelStruct(string theName, int theX, int theWidth, string theTag, int theParentIndex)
+        {
+            name = theName;
+            x = theX;
+            width = theWidth;
+            tag = theTag;
+            parentIndex = theParentIndex;
+        }
     }
 
     /// <summary>

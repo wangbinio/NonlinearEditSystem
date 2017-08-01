@@ -35,7 +35,9 @@ namespace NonLinearEditSystem.Forms
         //public static Color fontsColor = Color.FromArgb(1, 1, 1);
 
         // 工程文件信息
-        private ProjectInfo projectInfo;
+
+        // 工程信息
+        private ProjectInfo projectInfo = new ProjectInfo();
 
         // 数据库连接字符串
         private String _connectionString = "server=localhost;database=NonLinearEditSystem;uid=sa;pwd=123456;";
@@ -62,10 +64,10 @@ namespace NonLinearEditSystem.Forms
         private string[] _choosedFileFullPath;
 
         // 视频轨道上的视频文件
-        private PanelEx[] _vedioFilesPanel;
+        private List<PanelEx> _vedioFilesPanel;
 
         // 音频轨道上的音频文件
-        private PanelEx[] _audioFilesPanel;
+        private List<PanelEx> _audioFilesPanel;
 
         // 轨道上文件个数
         private int _maxFilesPannel = 10;
@@ -86,8 +88,11 @@ namespace NonLinearEditSystem.Forms
         // 所有视频的开始/结束时间
         public List<double> sortedVedioTimes;
 
+        // 素材路径
+        public string theClipsPath = @"D:\视频素材";
+
         // 垫片路径
-        public static string BlackVedio = @"D:\视频素材\BlackVedio.mp4";
+        public static string BlackVedio =  @"D:\视频素材\BlackVedio.mp4";
 
         // 打包素材基本信息
         public struct PackageClips
@@ -167,7 +172,7 @@ namespace NonLinearEditSystem.Forms
             //ShowClipsInFileBox();
 
             // 测试版本显示本地文件夹的内容
-            ShowDirInFileBox(@"D:\视频素材");
+            ShowDirInFileBox(theClipsPath);
 
 
             // 创建所有右键菜单
@@ -213,7 +218,6 @@ namespace NonLinearEditSystem.Forms
             {
                 panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
             }
-
 
         }
 
@@ -276,69 +280,74 @@ namespace NonLinearEditSystem.Forms
             try
             {
                 // 初始化音视频文件panel
-                _vedioFilesPanel = new PanelEx[_maxFilesPannel];
-                _audioFilesPanel = new PanelEx[_maxFilesPannel];
+                //_vedioFilesPanel.Clear();
+                //_audioFilesPanel.Clear();
+                _vedioFilesPanel = new List<PanelEx>(_maxFilesPannel);
+                _audioFilesPanel = new List<PanelEx>(_maxFilesPannel); ;
 
                 for (int i = 0; i < _maxFilesPannel; i++)
                 {
-                    _vedioFilesPanel[i] = new PanelEx();
-                    _audioFilesPanel[i] = new PanelEx();
+                    PanelEx tempVedioPanel = new PanelEx();
+                    PanelEx tempAudioPanel = new PanelEx();
 
-                    _vedioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                    _vedioFilesPanel[i].ColorSchemeStyle =
+                    tempVedioPanel.CanvasColor = System.Drawing.SystemColors.Control;
+                    tempVedioPanel.ColorSchemeStyle =
                         DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-                    _vedioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
-                    _vedioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
-                    _vedioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
-                    _vedioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
-                    _vedioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
-                    _vedioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                    _vedioFilesPanel[i].Style.BorderColor.ColorSchemePart =
+                    tempVedioPanel.DisabledBackColor = System.Drawing.Color.Empty;
+                    tempVedioPanel.Location = new System.Drawing.Point(0, 0);
+                    tempVedioPanel.Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
+                    tempVedioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
+                    tempVedioPanel.Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                    tempVedioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                    tempVedioPanel.Style.BorderColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                    _vedioFilesPanel[i].Style.ForeColor.ColorSchemePart =
+                    tempVedioPanel.Style.ForeColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelText;
-                    _vedioFilesPanel[i].Style.GradientAngle = 90;
-                    _vedioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                    _vedioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
-                    _vedioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                    _vedioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                    _vedioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
-                    _vedioFilesPanel[i].TabIndex = 0;
-                    _vedioFilesPanel[i].Name = "VideoFile" + i;
-                    _vedioFilesPanel[i].Text = "VideoFile" + i;
-                    _vedioFilesPanel[i].Tag = "";
-                    _vedioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
-                    _vedioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
-                    _vedioFilesPanel[i].MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    tempVedioPanel.Style.GradientAngle = 90;
+                    tempVedioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    tempVedioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    tempVedioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                    tempVedioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    tempVedioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    tempVedioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                    tempVedioPanel.TabIndex = 0;
+                    tempVedioPanel.Name = "VideoFile" + i;
+                    tempVedioPanel.Text = "VideoFile" + i;
+                    tempVedioPanel.Tag = "";
+                    tempVedioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                    tempVedioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                    tempVedioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
 
-                    _audioFilesPanel[i].CanvasColor = System.Drawing.SystemColors.Control;
-                    _audioFilesPanel[i].ColorSchemeStyle =
+                    tempAudioPanel.CanvasColor = System.Drawing.SystemColors.Control;
+                    tempAudioPanel.ColorSchemeStyle =
                         DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-                    _audioFilesPanel[i].DisabledBackColor = System.Drawing.Color.Empty;
-                    _audioFilesPanel[i].Location = new System.Drawing.Point(0, 0);
-                    _audioFilesPanel[i].Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
-                    _audioFilesPanel[i].Style.Alignment = System.Drawing.StringAlignment.Center;
-                    _audioFilesPanel[i].Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                    _audioFilesPanel[i].Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-                    _audioFilesPanel[i].Style.BorderColor.ColorSchemePart =
+                    tempAudioPanel.DisabledBackColor = System.Drawing.Color.Empty;
+                    tempAudioPanel.Location = new System.Drawing.Point(0, 0);
+                    tempAudioPanel.Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
+                    tempAudioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
+                    tempAudioPanel.Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    tempAudioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+                    tempAudioPanel.Style.BorderColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-                    _audioFilesPanel[i].Style.ForeColor.ColorSchemePart =
+                    tempAudioPanel.Style.ForeColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelText;
-                    _audioFilesPanel[i].Style.GradientAngle = 90;
-                    _audioFilesPanel[i].StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                    _audioFilesPanel[i].StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                    _audioFilesPanel[i].StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                    _audioFilesPanel[i].StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                    _audioFilesPanel[i].StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                    _audioFilesPanel[i].StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                    _audioFilesPanel[i].TabIndex = 0;
-                    _audioFilesPanel[i].Name = "AudioFile" + i;
-                    _audioFilesPanel[i].Text = "AudioFile" + i;
-                    _audioFilesPanel[i].Tag = "";
-                    _audioFilesPanel[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
-                    _audioFilesPanel[i].MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
-                    _audioFilesPanel[i].MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    tempAudioPanel.Style.GradientAngle = 90;
+                    tempAudioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    tempAudioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    tempAudioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    tempAudioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    tempAudioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    tempAudioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    tempAudioPanel.TabIndex = 0;
+                    tempAudioPanel.Name = "AudioFile" + i;
+                    tempAudioPanel.Text = "AudioFile" + i;
+                    tempAudioPanel.Tag = "";
+                    tempAudioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
+                    tempAudioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
+                    tempAudioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+
+                    _vedioFilesPanel.Add(tempVedioPanel);
+                    _audioFilesPanel.Add(tempAudioPanel);
                 }
 
                 UpdateTrackWidthWhenAddFile(0);
@@ -651,7 +660,7 @@ namespace NonLinearEditSystem.Forms
                 if (bVedio)
                 {
                     // 找到_VediPFilesPanel中尚未初始化的一个panel
-                    for (int i = 0; i < _vedioFilesPanel.Length; i++)
+                    for (int i = 0; i < _vedioFilesPanel.Count; i++)
                     {
                         if ((string)_vedioFilesPanel[i].Tag == "")
                         {
@@ -684,7 +693,7 @@ namespace NonLinearEditSystem.Forms
                 else
                 {
                     // 找到_AudioFilesPanel中尚未初始化的一个panel
-                    for (int i = 0; i < _audioFilesPanel.Length; i++)
+                    for (int i = 0; i < _audioFilesPanel.Count; i++)
                     {
                         if ((string)_audioFilesPanel[i].Tag == "")
                         {
@@ -787,7 +796,6 @@ namespace NonLinearEditSystem.Forms
         public PackageForm packageForm;
 
 
-
         private void InitAllChildForm()
         {
             createProjectSetForm = new CreateProjectSetForm();
@@ -804,14 +812,56 @@ namespace NonLinearEditSystem.Forms
             packageForm.Owner = this;
         }
 
-
-
-
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = createProjectSetForm.ShowDialog();
+            //DialogResult result = createProjectSetForm.ShowDialog();
+            
+            // 1.创建新的工程文件
+            if (createProjectSetForm.ShowDialog() == DialogResult.OK)
+            {
+                projectInfo = createProjectSetForm.projectInfo;
+            }
 
-            projectInfo = createProjectSetForm.projectInfo;
+            // 2.在文件列表显示素材库文件
+            ShowDirInFileBox(theClipsPath);
+
+            // 3.重置时间线
+            ResetTimeLineControl();
+
+            // 4.删除轨道上所有面板
+            DeleteAllTrackFiles();
+
+            // 5.初始化轨道文件
+            InitVedioAndAudioFilePanels();
+        }
+
+        /// <summary>
+        /// 重置时间线
+        /// </summary>
+        private void ResetTimeLineControl()
+        {
+            timeLineControl_MainTL.IndexOfSecEveryTicks = 3;
+            timeLineControl_MainTL.ThumbHPos = 500;
+            timeLineControl_MainTL.enterPos = 100;
+            timeLineControl_MainTL.exitPos = 900;
+
+            InitTimeLineControl();
+        }
+
+        /// <summary>
+        /// 删除轨道上所有面板
+        /// </summary>
+        private void DeleteAllTrackFiles()
+        {
+            foreach (PanelEx panel in _vedioTrackPanels)
+            {
+                panel.Controls.Clear();
+            }
+
+            foreach (PanelEx panel in _audioTrackPanels)
+            {
+                panel.Controls.Clear();
+            }
         }
 
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1066,7 +1116,8 @@ namespace NonLinearEditSystem.Forms
                     //////////////////////////////////////////////////////////////////////////
 
                     // 这是显示本地文件夹
-                    ShowDirInFileBox(dialog.SelectedPath);
+                    theClipsPath = dialog.SelectedPath;
+                    ShowDirInFileBox(theClipsPath);
                 }
             }
             catch (Exception ex)
@@ -1347,7 +1398,7 @@ namespace NonLinearEditSystem.Forms
                                 nums = _vedioTrackPanels.Count - index;
                             }
 
-                            _vedioTrackPanels[nums].Controls.Add(operatorPanel);
+                            _vedioTrackPanels[nums + index].Controls.Add(operatorPanel);
                         }
                         else if (e.Y <= -panelExSelected.Height)
                         {
@@ -1527,6 +1578,10 @@ namespace NonLinearEditSystem.Forms
                     if (_chooseVedioPanelSelf && _mouseMovedVedioPanel)
                     {
                         // 1.改变文件位置及大小
+                        if (operatorPanel.Parent == null)
+                        {
+                            return;
+                        }
                         _panelExSelected.Location = operatorPanel.Location;
                         _panelExSelected.Size = operatorPanel.Size;
 
@@ -4046,7 +4101,7 @@ namespace NonLinearEditSystem.Forms
                 }
 
                 // 5.混合
-                string strPackedFile = @"D:\视频素材\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                string strPackedFile = theClipsPath +  @"\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
                 res = packetIOCSharp.MuxerStart(strPackedFile);
                 if (res < 0)
                 {

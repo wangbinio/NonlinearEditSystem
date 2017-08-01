@@ -1351,8 +1351,8 @@
             this.timeLineControl_MainTL.NNumOfBigTicks = 24;
             this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
             this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 222;
-            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(215, 0, 15, 15);
+            this.timeLineControl_MainTL.ThumbHPos = 500;
+            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(193, 0, 15, 15);
             this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
             // 
