@@ -177,7 +177,10 @@ namespace NonLinearEditSystem.Forms
             initControlsColor();
         }
 
-        private void ExecuteBat()
+        /// <summary>
+        /// 执行脚本删除打包过程中残留文件
+        /// </summary>
+        public void ExecuteBat()
         {
             try
             {
@@ -1040,9 +1043,6 @@ namespace NonLinearEditSystem.Forms
             packageForm.ShowDialog();
         }
 
-
-
-
         /// <summary>
         /// 更新素材库
         /// </summary>
@@ -1058,10 +1058,15 @@ namespace NonLinearEditSystem.Forms
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    UploadClipsInFolder(dialog.SelectedPath);
+                    /////////////////这是数据库处理方式/////////////////////////////////////////
+                    //UploadClipsInFolder(dialog.SelectedPath);
+                    //
+                    //// 2.刷新文件列表
+                    //ShowClipsInFileBox();
+                    //////////////////////////////////////////////////////////////////////////
 
-                    // 2.刷新文件列表
-                    ShowClipsInFileBox();
+                    // 这是显示本地文件夹
+                    ShowDirInFileBox(dialog.SelectedPath);
                 }
             }
             catch (Exception ex)
@@ -1165,7 +1170,7 @@ namespace NonLinearEditSystem.Forms
 
 
         #region 轨道字幕处理
-        public static string zimuFileEnd = "SERIALIZATION";
+        public static string zimuFileEnd = "ZIMU";
         private ZimuMixInfoList ZimuList = new ZimuMixInfoList();
 
         /// <summary>
@@ -1357,16 +1362,13 @@ namespace NonLinearEditSystem.Forms
                         }
                         else
                         {
- 
-
                             if (!panelExSelected.Parent.Controls.Contains(operatorPanel))
                             {
-                                operatorPanel.Text = "111111111111";
 
                                 panelExSelected.Parent.Controls.Add(operatorPanel);
 
-                                panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
-                                panelExSelected.Parent.Controls.SetChildIndex(panelExSelected, 1);
+                                //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
+                               // panelExSelected.Parent.Controls.SetChildIndex(panelExSelected, 1);
                             }
                         }
 
@@ -1522,7 +1524,7 @@ namespace NonLinearEditSystem.Forms
                 if (e.Button == MouseButtons.Left)
                 {
                     // 1.如果是选择文件本身,就是拖动
-                    if (_chooseVedioPanelSelf)
+                    if (_chooseVedioPanelSelf && _mouseMovedVedioPanel)
                     {
                         // 1.改变文件位置及大小
                         _panelExSelected.Location = operatorPanel.Location;
@@ -1554,7 +1556,7 @@ namespace NonLinearEditSystem.Forms
 
                     }
                     // 2.如果是选中起点,就是拖拉起点
-                    else if (_chooseVedioPanelStart)
+                    else if (_chooseVedioPanelStart && _mouseMovedVedioPanel)
                     {
                         // 2.首先解析tag获取信息
                         string objStr = _panelExSelected.Tag as string;
@@ -1599,7 +1601,7 @@ namespace NonLinearEditSystem.Forms
                         _panelExSelected.Parent.Controls.Remove(operatorPanel);
                     }
                     // 2.如果是选中终点,就是拖拉终点
-                    else if (_chooseVedioPanelEnd)
+                    else if (_chooseVedioPanelEnd && _mouseMovedVedioPanel)
                     {
 
                         // 2.首先解析tag获取信息
@@ -1650,9 +1652,9 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
-           
+
             Cursor = Cursors.Arrow;
             _chooseVedioPanelSelf = false;
             _chooseVedioPanelStart = false;
@@ -1676,7 +1678,7 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -1762,10 +1764,12 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
         /// <summary>
         /// 更新所有视频文件的开始/结束时间,按顺序存储
         /// </summary>
-        public void UpdateVedioTrackFilesTimes()
+        /// <param name="bInterval">是否是选择区间</param>
+        public void UpdateVedioTrackFilesTimes(bool bInterval)
         {
             try
             {
@@ -1796,6 +1800,33 @@ namespace NonLinearEditSystem.Forms
                 {
                     // 3.如果有加入到列表中的时间,则添加0,并排序
                     sortedVedioTimes.Add(0);
+
+                    // 4.果是区间, 那么要去头去尾
+                    if (bInterval)
+                    {
+                        // 5.获取入点/出点的时间
+                        double dEnterValue = timeLineControl_MainTL.enterValue;
+                        double dExitValue = timeLineControl_MainTL.exitValue;
+
+                        List<double> needRemoveItems = new List<double>(10);
+
+                        foreach (double dItem in sortedVedioTimes)
+                        {
+                            if (dItem <= dEnterValue || dItem >= dExitValue)
+                            {
+                                needRemoveItems.Add(dItem);
+                            }
+                        }
+
+                        foreach (double dItem in needRemoveItems)
+                        {
+                            sortedVedioTimes.Remove(dItem);
+                        }
+
+                        sortedVedioTimes.Add(dEnterValue);
+                        sortedVedioTimes.Add(dExitValue);
+                    }
+
                     sortedVedioTimes.Sort();
                 }
             }
@@ -1805,13 +1836,18 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
         /// <summary>
         /// 更新打包素材列表
         /// </summary>
-        public void UpdatePackageClips()
+        /// <param name="bInterval">是否是选择区间</param>
+        public void UpdatePackageClips(bool bInterval)
         {
             try
             {
+                // 0.更新所有视频文件的开始/结束时间,按顺序存储
+                //UpdateVedioTrackFilesTimes(bInterval);
+
                 // 1.初始化打包素材列表
                 packageClipsList = new DemuxClipInfoList();
                 packageClipsList.Clear();
@@ -1853,7 +1889,7 @@ namespace NonLinearEditSystem.Forms
                         double dOldExitTime = double.Parse(startAndEndTime[3]);
 
                         tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, (Int64)((dBeginTime - dOldStartTime + dOldEntreTime) * 1000), (Int64)((dEndTime - dOldStartTime + dOldEntreTime) * 1000));
-                        
+
                         //tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, 0, 0);
                         packageClipsList.Add(theClips);
                     }
@@ -1958,7 +1994,6 @@ namespace NonLinearEditSystem.Forms
                     listView_Files.Items.Add(itemUp);
                 }
 
-
                 // 3.将文件夹显示到文件列表中
                 for (var i = 0; i < dirsNames.Length; i++)
                 {
@@ -1969,21 +2004,51 @@ namespace NonLinearEditSystem.Forms
                     listView_Files.Items.Add(item);
                 }
 
-                // 4.将文件显示到文件列表中
+                // 4.将MP4文件显示到文件列表中
                 for (var i = 0; i < filesNames.Length; i++)
                 {
                     var item = new ListViewItem(filesNames[i]);
                     item.ImageIndex = 1;
                     var sSepStrs = filesNames[i].Split('.');
                     var sFileType = sSepStrs[sSepStrs.Length - 1];
-                    item.SubItems.Add(sFileType);
-                    item.SubItems.Add(_choosedFileFullPath[i]);
-                    listView_Files.Items.Add(item);
+                    if (sFileType.ToUpper() == "MP4")
+                    {
+                        item.SubItems.Add(sFileType.ToUpper());
+                        item.SubItems.Add(_choosedFileFullPath[i]);
+                        item.SubItems.Add("");
+
+                        item.SubItems.Add(sFileType.ToUpper());
+                        double dDuriation = GetVedioDuiration(_choosedFileFullPath[i]);
+                        string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)dDuriation);
+                        item.SubItems.Add(duriationStr);
+                        listView_Files.Items.Add(item);
+                    }
+                }
+
+                // 5.将字幕文件显示到文件列表中
+                for (var i = 0; i < filesNames.Length; i++)
+                {
+                    var item = new ListViewItem(filesNames[i]);
+                    item.ImageIndex = 1;
+                    var sSepStrs = filesNames[i].Split('.');
+                    var sFileType = sSepStrs[sSepStrs.Length - 1];
+                    if (sFileType.ToUpper() == zimuFileEnd)
+                    {
+                        item.SubItems.Add("字幕");
+                        item.SubItems.Add(_choosedFileFullPath[i]);
+                        item.SubItems.Add("");
+
+                        //item.SubItems.Add(sFileType.ToUpper());
+                        //double dDuriation = GetVedioDuiration(_choosedFileFullPath[i]);
+                        //string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)dDuriation);
+                        //item.SubItems.Add(duriationStr);
+                        listView_Files.Items.Add(item);
+                    }
                 }
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
@@ -3899,7 +3964,7 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -4006,9 +4071,9 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
-            
+
         }
 
 

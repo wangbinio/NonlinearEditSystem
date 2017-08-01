@@ -234,6 +234,7 @@
             this.buttonX_StopPack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_StopPack.TabIndex = 17;
             this.buttonX_StopPack.Text = "停止";
+            this.buttonX_StopPack.Click += new System.EventHandler(this.buttonX_StopPack_Click);
             // 
             // buttonX_DelPack
             // 
@@ -246,6 +247,7 @@
             this.buttonX_DelPack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX_DelPack.TabIndex = 18;
             this.buttonX_DelPack.Text = "丢弃";
+            this.buttonX_DelPack.Click += new System.EventHandler(this.buttonX_DelPack_Click);
             // 
             // labelX_打包到
             // 
@@ -795,6 +797,7 @@
             this.comboBoxEx_打包模式.Size = new System.Drawing.Size(299, 24);
             this.comboBoxEx_打包模式.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx_打包模式.TabIndex = 0;
+            this.comboBoxEx_打包模式.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx_打包模式_SelectedIndexChanged);
             // 
             // labelX_打包模式
             // 
