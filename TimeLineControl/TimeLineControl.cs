@@ -335,6 +335,7 @@ namespace TimeLineControl
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
+            bool bFocused = Focus();
             _mouseInRegion = true;
             //Invalidate();
         }

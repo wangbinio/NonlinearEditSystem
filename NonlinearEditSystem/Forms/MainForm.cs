@@ -92,7 +92,7 @@ namespace NonLinearEditSystem.Forms
         public string theClipsPath = @"D:\视频素材";
 
         // 垫片路径
-        public static string BlackVedio =  @"D:\视频素材\BlackVedio.mp4";
+        public static string BlackVedio = @"D:\视频素材\BlackVedio.mp4";
 
         // 打包素材基本信息
         public struct PackageClips
@@ -172,7 +172,8 @@ namespace NonLinearEditSystem.Forms
             //ShowClipsInFileBox();
 
             // 测试版本显示本地文件夹的内容
-            ShowDirInFileBox(theClipsPath);
+            //ShowDirInFileBox(theClipsPath);
+            label_FileInfo.Text = string.Empty;
 
 
             // 创建所有右键菜单
@@ -217,8 +218,16 @@ namespace NonLinearEditSystem.Forms
             foreach (var panel in _vedioTrackPanels)
             {
                 panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
+                panel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
             }
 
+        }
+
+
+
+        private void Panel_MouseEnter(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private PanelEx operatorPanel;
@@ -798,7 +807,9 @@ namespace NonLinearEditSystem.Forms
         // 当前是否已经打开了一个工程
         public bool bOpenedProject = false;
 
-
+        /// <summary>
+        /// 初始化所有子界面
+        /// </summary>
         private void InitAllChildForm()
         {
             createProjectSetForm = new CreateProjectSetForm();
@@ -815,6 +826,11 @@ namespace NonLinearEditSystem.Forms
             packageForm.Owner = this;
         }
 
+        /// <summary>
+        /// 新建工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -826,23 +842,24 @@ namespace NonLinearEditSystem.Forms
                 {
                     return;
                 }
-                    
-                 // 新建一个工程等于打开一个工程
-                 bOpenedProject = true;
 
-                 projectInfo = createProjectSetForm.projectInfo;
+                // 新建一个工程等于打开一个工程
+                bOpenedProject = true;
 
-                 // 2.在文件列表显示素材库文件
-                 ShowDirInFileBox(theClipsPath);
+                projectInfo = createProjectSetForm.projectInfo;
 
-                 // 3.重置时间线
-                 ResetTimeLineControl();
+                // 2.在文件列表显示素材库文件
+                ShowDirInFileBox(theClipsPath);
+                label_FileInfo.Text = string.Empty;
 
-                 // 4.删除轨道上所有面板
-                 DeleteAllTrackFiles();
+                // 3.重置时间线
+                ResetTimeLineControl();
 
-                 // 5.初始化轨道文件
-                 InitVedioAndAudioFilePanels();
+                // 4.删除轨道上所有面板
+                DeleteAllTrackFiles();
+
+                // 5.初始化轨道文件
+                InitVedioAndAudioFilePanels();
             }
             catch (Exception ex)
             {
@@ -912,7 +929,45 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 1.和新建工程一样重置主界面状态
+                // 1.1.删除轨道上所有面板
+                DeleteAllTrackFiles();
+
+                // 1.2.初始化轨道文件
+                InitVedioAndAudioFilePanels();
+
+                // 2.从文件中加载工程
                 projectInfo.Load(fileName);
+
+                // 3.将信息显示到主界面上
+                // 3.1.FileList
+                ShowDirInFileBox(projectInfo.FileListPath);
+                label_FileInfo.Text = string.Empty;
+
+                // 3.2.恢复时间线
+                timeLineControl_MainTL.IndexOfSecEveryTicks = projectInfo.timeLineInfo.indexOfSecEveryTicks;
+                timeLineControl_MainTL.ThumbHPos = projectInfo.timeLineInfo.thumbHPos;
+                timeLineControl_MainTL.enterPos = projectInfo.timeLineInfo.enterPos;
+                timeLineControl_MainTL.exitPos = projectInfo.timeLineInfo.exitPos;
+                InitTimeLineControl();
+
+                // 3.3.恢复文件面板信息 // _vedioTrackPanels // _vedioFilesPanel
+                for (int i = 0; i < projectInfo.filePanels.Count; i++)
+                {
+                    FilePanelStruct panelInfo = projectInfo.filePanels[i];
+
+                    _vedioFilesPanel[i].Name = panelInfo.name;
+                    _vedioFilesPanel[i].Text = panelInfo.text;
+                    _vedioFilesPanel[i].Location = new Point(panelInfo.x, 0);
+                    _vedioFilesPanel[i].Width = panelInfo.width;
+                    _vedioFilesPanel[i].Tag = panelInfo.tag;
+                    _vedioFilesPanel[i].Parent = _vedioTrackPanels[panelInfo.parentIndex];
+                }
+
+                // 设置打开工程为true
+                bOpenedProject = true;
+
+                Invalidate();
             }
             catch (Exception ex)
             {
@@ -982,11 +1037,16 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
 
         }
 
+        /// <summary>
+        /// 工程另存为
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1017,6 +1077,31 @@ namespace NonLinearEditSystem.Forms
 
         private void 关闭ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // 关闭一个工程
+                bOpenedProject = false;
+
+                projectInfo = new ProjectInfo();
+
+                // 2.在文件列表显示素材库文件
+                //ShowDirInFileBox(theClipsPath);
+                listView_Files.Items.Clear();
+                label_FileInfo.Text = string.Empty;
+
+                // 3.重置时间线
+                ResetTimeLineControl();
+
+                // 4.删除轨道上所有面板
+                DeleteAllTrackFiles();
+
+                // 5.初始化轨道文件
+                InitVedioAndAudioFilePanels();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
 
         }
 
@@ -1493,7 +1578,7 @@ namespace NonLinearEditSystem.Forms
                                 panelExSelected.Parent.Controls.Add(operatorPanel);
 
                                 //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
-                               // panelExSelected.Parent.Controls.SetChildIndex(panelExSelected, 1);
+                                // panelExSelected.Parent.Controls.SetChildIndex(panelExSelected, 1);
                             }
                         }
 
@@ -1793,12 +1878,26 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-        // 视频轨道面板鼠标移动事件
+        /// <summary>
+        /// 鼠标进入获取焦点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panelEx_VideoTrackConment1_MouseEnter(object sender, EventArgs e)
+        {
+            bool bFocused = (sender as PanelEx).Focus();
+        }
+  
+        /// <summary>
+        /// 视频轨道面板鼠标移动事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panelEx_VideoTrackConment1_MouseMove(object sender, MouseEventArgs e)
         {
             try
             {
-                PanelEx panelTrack = sender as PanelEx;
+                //PanelEx panelTrack = sender as PanelEx;
 
                 //foreach (PanelEx panel in panelTrack.Controls)
                 //{
@@ -4175,7 +4274,7 @@ namespace NonLinearEditSystem.Forms
                 }
 
                 // 5.混合
-                string strPackedFile = theClipsPath +  @"\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
+                string strPackedFile = theClipsPath + @"\C#生成_" + DateTime.Now.ToString("yyyy.M.d_hh-mm-ss") + ".mp4";
                 res = packetIOCSharp.MuxerStart(strPackedFile);
                 if (res < 0)
                 {

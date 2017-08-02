@@ -98,7 +98,7 @@ namespace NonLinearEditSystem
         public TimeLineInfoStruct timeLineInfo = new TimeLineInfoStruct();
 
         // 文件面板信息
-        public List<FilePanelStruct> filePanels = new List<FilePanelStruct>(10);
+        public List<FilePanelStruct> filePanels = new List<FilePanelStruct>();
 
         /// <summary>
         /// 备注
