@@ -39,14 +39,14 @@ namespace NonLinearEditSystem
 
         }
 
-        public ProjectInfo(string version, string name, string path, string updater, DateTime time,
-           TimeLineInfoStruct theTimeLineInfo, string remarks)
+        public ProjectInfo(string version, string name, string path, string updater, DateTime time, string fileList,           TimeLineInfoStruct theTimeLineInfo, string remarks)
         {
             ProjectVersion = version;
             ProjectName = name;
             ProjectPath = path;
             UpdateUser = updater;
             UpdateTime = time;
+            FileListPath = fileList;
             timeLineInfo = theTimeLineInfo;
             Remarks = remarks;
         }
@@ -91,6 +91,9 @@ namespace NonLinearEditSystem
         /// </summary>
         //public AudioInfoStruct AudioInfo;
 
+        // FileListView文件夹
+        public string FileListPath { get; set; }
+
         // 时间线信息
         public TimeLineInfoStruct timeLineInfo = new TimeLineInfoStruct();
 
@@ -122,6 +125,7 @@ namespace NonLinearEditSystem
                     ProjectPath = projectInfo.ProjectPath;
                     UpdateUser = projectInfo.UpdateUser;
                     UpdateTime = projectInfo.UpdateTime;
+                    FileListPath = projectInfo.FileListPath;
                     timeLineInfo = projectInfo.timeLineInfo;
                     filePanels = projectInfo.filePanels;
                     Remarks = projectInfo.Remarks;
@@ -202,6 +206,9 @@ namespace NonLinearEditSystem
         // 面板名称
         public string name;
 
+        // 面板Text
+        public string text;
+
         // 横坐标
         public int x;
 
@@ -223,9 +230,10 @@ namespace NonLinearEditSystem
             parentIndex = 0;
         }
 
-        public FilePanelStruct(string theName, int theX, int theWidth, string theTag, int theParentIndex)
+        public FilePanelStruct(string theName, string theText, int theX, int theWidth, string theTag, int theParentIndex)
         {
             name = theName;
+            text = theText;
             x = theX;
             width = theWidth;
             tag = theTag;

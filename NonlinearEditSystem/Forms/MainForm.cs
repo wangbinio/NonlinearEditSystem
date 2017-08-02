@@ -795,6 +795,9 @@ namespace NonLinearEditSystem.Forms
         public ImportPPTForm importPPTForm;
         public PackageForm packageForm;
 
+        // 当前是否已经打开了一个工程
+        public bool bOpenedProject = false;
+
 
         private void InitAllChildForm()
         {
@@ -814,25 +817,37 @@ namespace NonLinearEditSystem.Forms
 
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //DialogResult result = createProjectSetForm.ShowDialog();
-            
-            // 1.创建新的工程文件
-            if (createProjectSetForm.ShowDialog() == DialogResult.OK)
+            try
             {
-                projectInfo = createProjectSetForm.projectInfo;
+                DialogResult result = createProjectSetForm.ShowDialog();
+
+                // 1.创建新的工程文件
+                if (createProjectSetForm.projectInfo.ProjectName == string.Empty)
+                {
+                    return;
+                }
+                    
+                 // 新建一个工程等于打开一个工程
+                 bOpenedProject = true;
+
+                 projectInfo = createProjectSetForm.projectInfo;
+
+                 // 2.在文件列表显示素材库文件
+                 ShowDirInFileBox(theClipsPath);
+
+                 // 3.重置时间线
+                 ResetTimeLineControl();
+
+                 // 4.删除轨道上所有面板
+                 DeleteAllTrackFiles();
+
+                 // 5.初始化轨道文件
+                 InitVedioAndAudioFilePanels();
             }
-
-            // 2.在文件列表显示素材库文件
-            ShowDirInFileBox(theClipsPath);
-
-            // 3.重置时间线
-            ResetTimeLineControl();
-
-            // 4.删除轨道上所有面板
-            DeleteAllTrackFiles();
-
-            // 5.初始化轨道文件
-            InitVedioAndAudioFilePanels();
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
         /// <summary>
@@ -864,6 +879,11 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 打开工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -886,7 +906,7 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
-        /// 打开选中的工程
+        /// 打开选中的工程文件
         /// </summary>
         private void OpenNewProject(string fileName)
         {
@@ -900,6 +920,11 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 保存工程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveProject();
@@ -910,7 +935,56 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void SaveProject()
         {
-            projectInfo.Save();
+            try
+            {
+                // 1.如果当前没有打开工程,则直接返回
+                if (!bOpenedProject)
+                {
+                    return;
+                }
+
+                // 2.保存文件列表当前目录
+                projectInfo.FileListPath = theClipsPath;
+
+                // 3.保存时间线信息
+                TimeLineInfoStruct cTimeLineInfoStruct = new TimeLineInfoStruct();
+                cTimeLineInfoStruct.indexOfSecEveryTicks = timeLineControl_MainTL.IndexOfSecEveryTicks;
+                cTimeLineInfoStruct.thumbHPos = timeLineControl_MainTL.ThumbHPos;
+                cTimeLineInfoStruct.enterPos = timeLineControl_MainTL.enterPos;
+                cTimeLineInfoStruct.exitPos = timeLineControl_MainTL.exitPos;
+
+                projectInfo.timeLineInfo = cTimeLineInfoStruct;
+
+                // 4.保存轨道文件信息 // _vedioTrackPanels // _vedioFilesPanel
+
+                projectInfo.filePanels.Clear();
+
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 如果panel的tag为空,说明不在轨道上
+                    if (panel.Tag as string == "")
+                    {
+                        continue;
+                    }
+
+                    FilePanelStruct cFilePanelStruct = new FilePanelStruct();
+                    cFilePanelStruct.name = panel.Name;
+                    cFilePanelStruct.text = panel.Text;
+                    cFilePanelStruct.x = panel.Location.X;
+                    cFilePanelStruct.width = panel.Width;
+                    cFilePanelStruct.tag = panel.Tag as string;
+                    cFilePanelStruct.parentIndex = _vedioTrackPanels.IndexOf(panel.Parent as PanelEx);
+
+                    projectInfo.filePanels.Add(cFilePanelStruct);
+                }
+
+                projectInfo.Save();
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+
         }
 
         private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)

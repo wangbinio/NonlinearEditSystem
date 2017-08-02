@@ -129,6 +129,7 @@ namespace NonLinearEditSystem.Forms
                 if (!Directory.Exists(projectInfo.ProjectPath))
                 {
                     MessageBox.Show("工程文件路径不存在请重新选择!");
+                    projectInfo.ProjectName = string.Empty;
                     return;
                 }
 
@@ -136,14 +137,13 @@ namespace NonLinearEditSystem.Forms
                 {
                     if (MessageBox.Show("同名工程已存在，是否覆盖？", "确认覆盖文件", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                     {
+                        projectInfo.ProjectName = string.Empty;
                         return;
                     }
                 }
 
-
                 projectInfo.Save();
-
-                ;
+                Close();
             }
             catch (Exception ex)
             {
