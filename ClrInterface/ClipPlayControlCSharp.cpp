@@ -28,7 +28,14 @@ int ClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 
 	TCHAR *szFileName = (TCHAR*)(Marshal::StringToHGlobalUni(strFileName)).ToPointer();
 
+	_strFileName = strFileName;
 	return m_IClipPlayControl->SetClip(szFileName, iHwnd);
+}
+
+
+String^ ClipPlayControlCSharp::GetClip()
+{
+	return _strFileName;
 }
 
 

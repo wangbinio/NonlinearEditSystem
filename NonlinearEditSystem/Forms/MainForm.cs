@@ -218,18 +218,14 @@ namespace NonLinearEditSystem.Forms
             foreach (var panel in _vedioTrackPanels)
             {
                 panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
-                panel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
+                //panel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
             }
 
+            // 创建右键菜单
+            CreateTrackBlankMenu();
         }
 
-
-
-        private void Panel_MouseEnter(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         private PanelEx operatorPanel;
 
         /// <summary>
@@ -326,6 +322,8 @@ namespace NonLinearEditSystem.Forms
                     tempVedioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     tempVedioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
                     tempVedioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    //tempVedioPanel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
+
 
                     tempAudioPanel.CanvasColor = System.Drawing.SystemColors.Control;
                     tempAudioPanel.ColorSchemeStyle =
@@ -354,10 +352,14 @@ namespace NonLinearEditSystem.Forms
                     tempAudioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     tempAudioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
                     tempAudioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    //tempAudioPanel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
 
                     _vedioFilesPanel.Add(tempVedioPanel);
                     _audioFilesPanel.Add(tempAudioPanel);
                 }
+
+                // 每次初始化都应该创建右键菜单
+                CreateTrackFileMenu();
 
                 UpdateTrackWidthWhenAddFile(0);
             }
@@ -1103,6 +1105,11 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
 
+        }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2130,6 +2137,47 @@ namespace NonLinearEditSystem.Forms
 
         }
 
+        /// <summary>
+        /// 获取轨道上的文件的最终时间
+        /// </summary>
+        public double  GetTrackFilesEndTime(bool bInterval)
+        {
+            try
+            {
+                if (bInterval)
+                {
+                    return timeLineControl_MainTL.exitValue;
+                }
+
+                double dMin = 0;
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 只遍历视频文件
+                    if (panel.Name.ToUpper().EndsWith("MP4"))
+                    {
+                        string objStr = panel.Tag as string;
+                        if (objStr == "") continue;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 2) continue;
+                        //double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
+
+                        if (dEndTime > dMin)
+                        {
+                            dMin = dEndTime;
+                        }
+                    }
+                }
+
+                return dMin;
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+                return 0;
+            }
+        }
+
 
         #endregion 视频轨道操作
 
@@ -2309,6 +2357,8 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void listView_Files_DoubleClick(object sender, EventArgs e)
         {
+            // 关闭双击播放视频功能
+            return;
             try
             {
                 if (listView_Files.SelectedItems.Count <= 0) return;
@@ -2360,29 +2410,74 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timer_Sequence_Tick(object sender, EventArgs e)
         {
-            /*
             try
             {
-                // 如果播放到最后一秒，则停止播放
-                if (slider_SeqTime.Value == slider_SeqTime.Maximum)
+                // 0.1.每次移动之后要判断是否到了结尾停止播放
+                // 0.2.找到轨道文件最终时间
+                double dEndTime = GetTrackFilesEndTime((bool)timer_Sequence.Tag);
+                if (timeLineControl_MainTL.ThumbValue >= dEndTime)
                 {
-                    slider_SeqTime.Value = 0;
-                    timer_Sequence.Stop();
+                    // 1.播放停止,定时器停止
                     _iClipPlayControlCSharp.Stop();
+                    timer_Sequence.Stop();
+
+                    // 2.将按钮的symble转换为点击播放
+                    if ((bool)timer_Sequence.Tag)
+                    {
+                        buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+                    } 
+                    else
+                    {
+                        buttonX_PlayAndStop.Symbol = _symbolPlay;
+                    }
+                    return;
+                }
+
+                // 1.游标向前移动1秒
+                timeLineControl_MainTL.MoveForward(1.0);
+
+                // 2.获取当前正在播放的视频
+                string palyFileName = _iClipPlayControlCSharp.GetClip();
+
+                // 3.找到当前游标位置视频
+                PanelEx panel = FindThumbPosVedio();
+
+                if (panel == null)
+                {
+                    _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                    _iClipPlayControlCSharp.Play();
                 }
                 else
                 {
-                    slider_SeqTime.Value++;
-                }
+                    // 4.如果游标位置的视频不是当前播放的视频,则要开始播放游标位置的视频
+                    if (panel.Name != palyFileName)
+                    {
+                        // 3.如果当前有视频,则开始播放当前视频
+                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
 
-                // 更新labelX_SeqTime显示时间
-                labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(slider_SeqTime.Value);
+                        // 4.找到开始播放的位置
+                        // 4.1.首先解析tag获取信息
+                        string objStr = panel.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 4.2.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        //double dEndTime = double.Parse(startAndEndTime[1]);
+                        double dEntreTime = double.Parse(startAndEndTime[2]);
+
+                        double dPlayTime = timeLineControl_MainTL.ThumbValue - dStartTime + dEntreTime;
+
+                        _iClipPlayControlCSharp.SetPosition((long)(dPlayTime * GeneralConversions.SecToNanoSec), 0);
+                        _iClipPlayControlCSharp.Play();
+                    }
+                }
             }
             catch (Exception ex)
             {
                 ExceptionHandle.ExceptionHdl(ex);
             }
-            */
         }
 
         /// <summary>
@@ -2408,7 +2503,27 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
-        /// 更新序列监视面板需要显示的帧
+        /// 找到游标所在位置的视频
+        /// </summary>
+        /// <returns></returns>
+        private PanelEx FindThumbPosVedio()
+        {
+            return FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+        }
+
+        /// <summary>
+        /// 通过位置(坐标)找到当前游标所在位置的视频
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        private PanelEx FindNeedShowVedioByPos(int pos)
+        {
+            double dTime = timeLineControl_MainTL.GetTimeValueByPos(pos);
+            return FindNeedShowVedioByTime(dTime);
+        }
+
+        /// <summary>
+        /// 通过时间找到当前游标所在位置的视频
         /// </summary>
         private PanelEx FindNeedShowVedioByTime(double dTime)
         {
@@ -2421,7 +2536,7 @@ namespace NonLinearEditSystem.Forms
                     foreach (Control control in vedioTrackPanel.Controls)
                     {
                         PanelEx panel = control as PanelEx;
-                        if (panel == null) continue;
+                        if (panel == null || !panel.Name.ToUpper().EndsWith("MP4")) continue;
 
                         if (IsNeededShowPanel(panel, dTime))
                         {
@@ -2531,6 +2646,159 @@ namespace NonLinearEditSystem.Forms
 
         #region 时间线快捷按钮点击事件
 
+        // 播放/暂停图标
+        private static readonly string _symbolPlay = "57401";
+        private static readonly string _symbolStop = "57398";
+        private static readonly string _symbolIntervalPlay = "57408";
+        private static readonly string _symbolIntervalStop = "57396";
+
+        //private bool _onlyPlayInterval = false;
+
+        /// <summary>
+        /// 播放和暂停
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_PlayAndStop_Click(object sender, EventArgs e)
+        {
+            //string strFileName = _iClipPlayControlCSharp.GetClip();
+            //MessageBox.Show(strFileName);
+            try
+            {
+                // 如果当前没有播放视频(或者在播放区间),那么从游标位置开始播放视频
+                if (_iClipPlayControlCSharp.GetCurState() != 0 || (bool)timer_Sequence.Tag == true)
+                {
+                    // 1.找到当前游标位置视频
+                    PanelEx panel = FindThumbPosVedio();
+
+                    if (panel == null)
+                    {
+                        // 2.如果当前位置没有视频,为空白,则设置播放视频为空
+                        _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                    }
+                    else
+                    {
+                        // 3.如果当前有视频,则开始播放当前视频
+                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
+
+                        // 4.找到开始播放的位置
+                        // 4.1.首先解析tag获取信息
+                        string objStr = panel.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 4.2.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
+                        double dEntreTime = double.Parse(startAndEndTime[2]);
+
+                        double dPlayTime = timeLineControl_MainTL.ThumbValue - dStartTime + dEntreTime;
+
+                        _iClipPlayControlCSharp.SetPosition((long)(dPlayTime * GeneralConversions.SecToNanoSec), 0);
+                    }
+
+                    // 5.播放视频,计时器开始,如果播放全部,则计时器tag为false
+                    //_onlyPlayInterval = false;
+                    _iClipPlayControlCSharp.Play();
+                    timer_Sequence.Tag = false;
+                    timer_Sequence.Start();
+
+                    // 6.将自身symble转换为点击暂停
+                    buttonX_PlayAndStop.Symbol = _symbolStop;
+                    buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+                }
+                else
+                {
+                    // 如果当前正在播放视频,则停止播放
+
+                    // 1.播放停止,定时器停止
+                    _iClipPlayControlCSharp.Stop();
+                    timer_Sequence.Stop();
+
+                    // 2.将自身symble转换为点击播放,将另一个置为点击播放
+                    (sender as ButtonX).Symbol = _symbolPlay;
+                }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 播放区间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX_PlayInterval_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 如果当前没有播放视频(或者在播放全部视频),那么从游标位置开始播放视频
+                if (_iClipPlayControlCSharp.GetCurState() != 0 || (bool)timer_Sequence.Tag == false)
+                {
+                    // 0.首先将游标移动到入点位置
+                    buttonX_MoveToEnter_Click(sender, e);
+
+                    // 1.找到当前游标位置视频
+                    PanelEx panel = FindThumbPosVedio();
+
+                    if (panel == null)
+                    {
+                        // 2.如果当前位置没有视频,为空白,则设置播放视频为空
+                        _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                    }
+                    else
+                    {
+                        // 3.如果当前有视频,则开始播放当前视频
+                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
+
+                        // 4.找到开始播放的位置
+                        // 4.1.首先解析tag获取信息
+                        string objStr = panel.Tag as string;
+                        if (objStr == null) return;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 4) return;
+
+                        // 4.2.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
+                        double dEntreTime = double.Parse(startAndEndTime[2]);
+
+                        double dPlayTime = timeLineControl_MainTL.ThumbValue - dStartTime + dEntreTime;
+
+                        _iClipPlayControlCSharp.SetPosition((long)(dPlayTime * GeneralConversions.SecToNanoSec), 0);
+                    }
+
+                    // 5.播放区间,计时器开始,如果播放区间,则计时器tag为true
+                    //_onlyPlayInterval = true;
+                    _iClipPlayControlCSharp.Play();
+                    timer_Sequence.Tag = true;
+                    timer_Sequence.Start();
+
+                    // 6.将自身symble转换为点击暂停,将另一个置为点击播放
+                    buttonX_PlayInterval.Symbol = _symbolIntervalStop;
+                    buttonX_PlayAndStop.Symbol = _symbolPlay;
+                }
+                else
+                {
+                    // 如果当前正在播放视频,则停止播放
+
+                    // 1.播放停止,定时器停止
+                    _iClipPlayControlCSharp.Stop();
+                    timer_Sequence.Stop();
+
+                    // 2.将自身symble转换为点击播放
+                    (sender as ButtonX).Symbol = _symbolIntervalPlay;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
         /// <summary>
         /// 时间线刻度缩小
         /// </summary>
@@ -2546,7 +2814,6 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
-
         /// <summary>
         /// 时间线刻度增加
         /// </summary>
@@ -2561,7 +2828,6 @@ namespace NonLinearEditSystem.Forms
                 UpdateTrackFilesShow(false);
             }
         }
-
 
         /// <summary>
         /// 设置入点,将入点设置到游标位置
@@ -2886,9 +3152,9 @@ namespace NonLinearEditSystem.Forms
         {
             InitMainMenuColor();
 
-            CreateTrackBlankMenu();
+            //CreateTrackBlankMenu();
 
-            CreateTrackFileMenu();
+            //CreateTrackFileMenu();
 
             CreateTimelineMenu();
 
@@ -3408,9 +3674,7 @@ namespace NonLinearEditSystem.Forms
                 panelEx.ContextMenuStrip = _vedioTrackFileMenu;
             }
         }
-
-
-
+       
         /// <summary>
         /// 创建时间线右键菜单
         /// </summary>
@@ -4303,6 +4567,10 @@ namespace NonLinearEditSystem.Forms
             }
 
         }
+
+
+
+
 
 
 

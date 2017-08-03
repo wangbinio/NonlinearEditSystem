@@ -31,6 +31,9 @@ namespace ClrInterfaceDll
 		//注意：只能加载高清MP4或H264音视频素材
 		int SetClip(String^ strFileName, IntPtr hWnd);
 
+		// 返回set的素材
+		String^ GetClip();
+
 		/////////////////////////////////////////////////////
 		//素材播控接口
 		//播放
@@ -75,5 +78,7 @@ namespace ClrInterfaceDll
 
 	private:
 		CClipPlayControlIO* m_IClipPlayControl;
+
+		String^ _strFileName;
 	};
 }

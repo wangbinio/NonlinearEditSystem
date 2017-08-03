@@ -18,6 +18,7 @@ namespace TimeLineControl
     /// 修改：2017-05-19 szwb 时间刻度分类
     /// 修改：2017-06-15 szwb 添加出点入点区域,右键点击生成区域废除
     /// 修改：2017-06-22 szwb 时间线的缩放拖拉基本完成
+    /// TODO:ThumbHPos 内部使用double, 但是画的时候,转为int
     /// </summary>
     [ToolboxBitmap(typeof(TrackBar))]
     [DefaultEvent("Click"), DefaultProperty("nBotmPadding")]
@@ -750,7 +751,7 @@ namespace TimeLineControl
                 {
                     RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks + 1;
                 }
-                RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
+                //RelativeTimeLineControl.IndexOfSecEveryTicks = IndexOfSecEveryTicks;
                 RelativeTimeLineControl.SetPosByValue(tempEnter, TimeLinePos.Pos_Enter);
                 RelativeTimeLineControl.SetPosByValue(tempExit, TimeLinePos.Pos_Exit);
                 RelativeTimeLineControl.SetPosByValue(tempThumb, TimeLinePos.Pos_Thumb);
@@ -780,13 +781,29 @@ namespace TimeLineControl
         /// <returns></returns>
         public int GetPosByTimeValue(double dValue)
         {
-            return (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+            double dres = (dValue * NDistanceOfTicks / SecondsEveryTicks[IndexOfSecEveryTicks] );
+            return (int)(dres+0.5);
         }
 
 
+        /// <summary>
+        /// 游标向前移动
+        /// </summary>
+        /// <param name="dTime">时间</param>
+        public void MoveForward(double dTime)
+        {
+            int deltaX = GetPosByTimeValue(dTime);
+            ThumbHPos  += deltaX;
 
+            deltaX = RelativeTimeLineControl.GetPosByTimeValue(dTime);
+            RelativeTimeLineControl.ThumbHPos += deltaX;
 
-    #endregion
+            Invalidate();
+            RelativeTimeLineControl.Invalidate();
+        }
+        
+
+        #endregion
 
 
     public TimeLineControl()

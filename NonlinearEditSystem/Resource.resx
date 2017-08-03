@@ -118,31 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lock_closed_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\lock_closed_16px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lock_open_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\lock_open_16px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_0140230_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\0140230-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="透明图片4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\透明图片4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="透明图片7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\透明图片7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="透明图片5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\透明图片5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="透明图片6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\透明图片6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\play.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="透明图片7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\透明图片7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_0140230_50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\0140230-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lock_closed_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\lock_closed_16px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="透明图片4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\透明图片4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="透明图片8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\透明图片8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\pause.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="透明图片6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\透明图片6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lock_open_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\lock_open_16px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="透明图片dian" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\透明图片dian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\play.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

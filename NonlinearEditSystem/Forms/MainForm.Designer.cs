@@ -490,8 +490,10 @@
             this.buttonX_SecondsTicksSub.Name = "buttonX_SecondsTicksSub";
             this.buttonX_SecondsTicksSub.Size = new System.Drawing.Size(23, 23);
             this.buttonX_SecondsTicksSub.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_SecondsTicksSub.Symbol = "";
+            this.buttonX_SecondsTicksSub.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_SecondsTicksSub.SymbolSize = 16F;
             this.buttonX_SecondsTicksSub.TabIndex = 13;
-            this.buttonX_SecondsTicksSub.Text = "-";
             this.buttonX_SecondsTicksSub.Tooltip = "缩小(-)";
             this.buttonX_SecondsTicksSub.Click += new System.EventHandler(this.buttonX_SecondsTicksSub_Click);
             // 
@@ -499,12 +501,14 @@
             // 
             this.buttonX_MoveToExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_MoveToExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_MoveToExit.Location = new System.Drawing.Point(371, 400);
+            this.buttonX_MoveToExit.Location = new System.Drawing.Point(339, 400);
             this.buttonX_MoveToExit.Name = "buttonX_MoveToExit";
             this.buttonX_MoveToExit.Size = new System.Drawing.Size(23, 23);
             this.buttonX_MoveToExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_MoveToExit.Symbol = "57412";
+            this.buttonX_MoveToExit.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_MoveToExit.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_MoveToExit.TabIndex = 13;
-            this.buttonX_MoveToExit.Text = "->]";
             this.buttonX_MoveToExit.Tooltip = "移至出点";
             this.buttonX_MoveToExit.Click += new System.EventHandler(this.buttonX_MoveToExit_Click);
             // 
@@ -516,8 +520,10 @@
             this.buttonX_SetExit.Name = "buttonX_SetExit";
             this.buttonX_SetExit.Size = new System.Drawing.Size(23, 23);
             this.buttonX_SetExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_SetExit.Symbol = "58133";
+            this.buttonX_SetExit.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_SetExit.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_SetExit.TabIndex = 13;
-            this.buttonX_SetExit.Text = "]";
             this.buttonX_SetExit.Tooltip = "设置出点";
             this.buttonX_SetExit.Click += new System.EventHandler(this.buttonX_SetExit_Click);
             // 
@@ -525,12 +531,14 @@
             // 
             this.buttonX_MoveToEnter.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_MoveToEnter.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_MoveToEnter.Location = new System.Drawing.Point(342, 400);
+            this.buttonX_MoveToEnter.Location = new System.Drawing.Point(310, 400);
             this.buttonX_MoveToEnter.Name = "buttonX_MoveToEnter";
             this.buttonX_MoveToEnter.Size = new System.Drawing.Size(23, 23);
             this.buttonX_MoveToEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_MoveToEnter.Symbol = "57413";
+            this.buttonX_MoveToEnter.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_MoveToEnter.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_MoveToEnter.TabIndex = 13;
-            this.buttonX_MoveToEnter.Text = "[<-";
             this.buttonX_MoveToEnter.Tooltip = "移至入点";
             this.buttonX_MoveToEnter.Click += new System.EventHandler(this.buttonX_MoveToEnter_Click);
             // 
@@ -542,8 +550,10 @@
             this.buttonX_SetEnter.Name = "buttonX_SetEnter";
             this.buttonX_SetEnter.Size = new System.Drawing.Size(23, 23);
             this.buttonX_SetEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_SetEnter.Symbol = "58132";
+            this.buttonX_SetEnter.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_SetEnter.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_SetEnter.TabIndex = 13;
-            this.buttonX_SetEnter.Text = "[";
             this.buttonX_SetEnter.Tooltip = "设置入点";
             this.buttonX_SetEnter.Click += new System.EventHandler(this.buttonX_SetEnter_Click);
             // 
@@ -551,25 +561,33 @@
             // 
             this.buttonX_RecylePlay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX_RecylePlay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX_RecylePlay.Location = new System.Drawing.Point(294, 400);
+            this.buttonX_RecylePlay.Location = new System.Drawing.Point(401, 400);
             this.buttonX_RecylePlay.Name = "buttonX_RecylePlay";
             this.buttonX_RecylePlay.Size = new System.Drawing.Size(23, 23);
             this.buttonX_RecylePlay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_RecylePlay.Symbol = "57384";
+            this.buttonX_RecylePlay.SymbolColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonX_RecylePlay.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_RecylePlay.TabIndex = 13;
-            this.buttonX_RecylePlay.Text = "^";
             this.buttonX_RecylePlay.Tooltip = "循环播放控制键";
+            this.buttonX_RecylePlay.Visible = false;
             // 
             // buttonX_PlayAndStop
             // 
             this.buttonX_PlayAndStop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX_PlayAndStop.BackColor = System.Drawing.SystemColors.Control;
             this.buttonX_PlayAndStop.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX_PlayAndStop.Location = new System.Drawing.Point(265, 400);
             this.buttonX_PlayAndStop.Name = "buttonX_PlayAndStop";
             this.buttonX_PlayAndStop.Size = new System.Drawing.Size(23, 23);
             this.buttonX_PlayAndStop.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_PlayAndStop.Symbol = "57401";
+            this.buttonX_PlayAndStop.SymbolColor = System.Drawing.SystemColors.Highlight;
+            this.buttonX_PlayAndStop.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.buttonX_PlayAndStop.SymbolSize = 16F;
             this.buttonX_PlayAndStop.TabIndex = 13;
-            this.buttonX_PlayAndStop.Text = "|>";
             this.buttonX_PlayAndStop.Tooltip = "播放/停止";
+            this.buttonX_PlayAndStop.Click += new System.EventHandler(this.buttonX_PlayAndStop_Click);
             // 
             // buttonX_PlayInterval
             // 
@@ -579,9 +597,12 @@
             this.buttonX_PlayInterval.Name = "buttonX_PlayInterval";
             this.buttonX_PlayInterval.Size = new System.Drawing.Size(23, 23);
             this.buttonX_PlayInterval.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_PlayInterval.Symbol = "57408";
+            this.buttonX_PlayInterval.SymbolColor = System.Drawing.SystemColors.Highlight;
+            this.buttonX_PlayInterval.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonX_PlayInterval.TabIndex = 13;
-            this.buttonX_PlayInterval.Text = "[>]";
             this.buttonX_PlayInterval.Tooltip = "播放入出点间区域";
+            this.buttonX_PlayInterval.Click += new System.EventHandler(this.buttonX_PlayInterval_Click);
             // 
             // buttonX_SecondsTicksAdd
             // 
@@ -591,8 +612,10 @@
             this.buttonX_SecondsTicksAdd.Name = "buttonX_SecondsTicksAdd";
             this.buttonX_SecondsTicksAdd.Size = new System.Drawing.Size(23, 23);
             this.buttonX_SecondsTicksAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX_SecondsTicksAdd.Symbol = "";
+            this.buttonX_SecondsTicksAdd.SymbolColor = System.Drawing.Color.Black;
+            this.buttonX_SecondsTicksAdd.SymbolSize = 16F;
             this.buttonX_SecondsTicksAdd.TabIndex = 13;
-            this.buttonX_SecondsTicksAdd.Text = "+";
             this.buttonX_SecondsTicksAdd.Tooltip = "放大(+)";
             this.buttonX_SecondsTicksAdd.Click += new System.EventHandler(this.buttonX_SecondsTicksAdd_Click);
             // 
@@ -1008,6 +1031,7 @@
             this.退出ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.退出ToolStripMenuItem.Text = "退出(&X)";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // 编辑ToolStripMenuItem
             // 
@@ -1216,7 +1240,7 @@
             this.关于ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.关于ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 分离ToolStripMenuItem
@@ -1224,8 +1248,9 @@
             this.分离ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.分离ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
-            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.分离ToolStripMenuItem.Text = "分离";
+            this.分离ToolStripMenuItem.Visible = false;
             this.分离ToolStripMenuItem.Click += new System.EventHandler(this.分离ToolStripMenuItem_Click);
             // 
             // 编解码ToolStripMenuItem
@@ -1233,8 +1258,9 @@
             this.编解码ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.编解码ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
-            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.编解码ToolStripMenuItem.Text = "编解码";
+            this.编解码ToolStripMenuItem.Visible = false;
             this.编解码ToolStripMenuItem.Click += new System.EventHandler(this.编解码ToolStripMenuItem_Click);
             // 
             // 打包ToolStripMenuItem
@@ -1242,8 +1268,9 @@
             this.打包ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.打包ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
-            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.打包ToolStripMenuItem.Text = "打包";
+            this.打包ToolStripMenuItem.Visible = false;
             this.打包ToolStripMenuItem.Click += new System.EventHandler(this.打包ToolStripMenuItem_Click);
             // 
             // MainmenuStrip
@@ -1268,6 +1295,7 @@
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
             this.测试ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.测试ToolStripMenuItem.Text = "测试";
+            this.测试ToolStripMenuItem.Visible = false;
             this.测试ToolStripMenuItem.Click += new System.EventHandler(this.测试ToolStripMenuItem_Click);
             // 
             // styleManager1
@@ -1352,7 +1380,7 @@
             this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
             this.timeLineControl_MainTL.TabIndex = 11;
             this.timeLineControl_MainTL.ThumbHPos = 500;
-            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(193, 0, 15, 15);
+            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(493, 0, 15, 15);
             this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
             // 
