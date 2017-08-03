@@ -1387,7 +1387,7 @@ namespace NonLinearEditSystem.Forms
 
 
         #region 轨道字幕处理
-        public static string zimuFileEnd = "ZIMU";
+        public static string zimuFileEnd = "ZM";
         private ZimuMixInfoList ZimuList = new ZimuMixInfoList();
 
         /// <summary>
@@ -1413,7 +1413,7 @@ namespace NonLinearEditSystem.Forms
                     ctagZimuMixInfoCLR.szZimuFile = panel.Name;
                     ctagZimuMixInfoCLR.rtStartPos = (long)(dStartTime * 1000);
                     ctagZimuMixInfoCLR.rtStopPos = (long)(dEndTime * 1000);
-                    ctagZimuMixInfoCLR.Type = 0;
+                    //ctagZimuMixInfoCLR.Type = 0;
                     ctagZimuMixInfoCLR.Level = nLevel++;
 
                     ZimuList.Add(ctagZimuMixInfoCLR);
@@ -1642,7 +1642,7 @@ namespace NonLinearEditSystem.Forms
                             }
                         }
                         // 字幕文件最长无限制,最短为1
-                        else if (panelExSelected.Name.ToUpper().EndsWith("SERIALIZATION"))
+                        else if (panelExSelected.Name.ToUpper().EndsWith(zimuFileEnd))
                         {
                             // 这一部分是通过移动新面板,最后同步
                             operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
@@ -1699,7 +1699,7 @@ namespace NonLinearEditSystem.Forms
                             }
                         }
                         // 字幕文件最长无限制,最短为1
-                        else if (panelExSelected.Name.ToUpper().EndsWith("SERIALIZATION"))
+                        else if (panelExSelected.Name.ToUpper().EndsWith(zimuFileEnd))
                         {
                             operatorPanel.Location = panelExSelected.Location;
                             operatorPanel.Height = panelExSelected.Height;
@@ -1793,33 +1793,56 @@ namespace NonLinearEditSystem.Forms
 
                         // 4.如果是拖拉了起点,那么在时间线的起点和本身入点需要更新,终点和出点保持不变
                         // 判断入点不能小于0,入点不能小于0则代表,新的X和旧的X的差不能大于入点到0的长度
-                        int maxLength = GetLengthByDuiration(dOldEntreTime);
-                        if (_panelExSelected.Location.X - operatorPanel.Location.X > maxLength)
+                        if (_panelExSelected.Name.ToUpper().EndsWith("MP4"))
                         {
-                            operatorPanel.Location = new Point(_panelExSelected.Location.X - maxLength, 0);
+                            int maxLength = GetLengthByDuiration(dOldEntreTime);
+                            if (_panelExSelected.Location.X - operatorPanel.Location.X > maxLength)
+                            {
+                                operatorPanel.Location = new Point(_panelExSelected.Location.X - maxLength, 0);
+                            }
+                            double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X);
+                            double dEntreTime = dOldExitTime - (dOldEndTime - dStartTime);
+                            if (Math.Abs(dEntreTime) < 2)
+                            {
+                                dEntreTime = 0;
+                            }
+                            objStr = dStartTime + "-" + dOldEndTime + "-" + dEntreTime + "-" + dOldExitTime;
+                            _panelExSelected.Tag = objStr;
+
+                            // 5.更新panel的显示文字
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dOldExitTime - dEntreTime));
+
+                            string oldText = _panelExSelected.Text;
+                            string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                            _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                            // 改变文件位置及大小
+                            _panelExSelected.Location = operatorPanel.Location;
+                            _panelExSelected.Height = operatorPanel.Height;
+                            _panelExSelected.Width = GetLengthByDuiration(dOldExitTime - dEntreTime);
+                            _panelExSelected.Parent.Controls.Remove(operatorPanel);
                         }
-                        double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X);
-                        double dEntreTime = dOldExitTime - (dOldEndTime - dStartTime);
-                        if (Math.Abs(dEntreTime) < 2)
+                        else if (_panelExSelected.Name.ToUpper().EndsWith(zimuFileEnd))
                         {
-                            dEntreTime = 0;
+                            double dStartTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X);
+                            double dExitTime = dOldEndTime - dStartTime;
+                            objStr = dStartTime + "-" + dOldEndTime + "-" + dOldEntreTime + "-" + dExitTime;
+                            _panelExSelected.Tag = objStr;
+
+                            // 5.更新panel的显示文字
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
+
+                            string oldText = _panelExSelected.Text;
+                            string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                            _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                            _panelExSelected.Location = operatorPanel.Location;
+                            _panelExSelected.Height = operatorPanel.Height;
+                            _panelExSelected.Width = operatorPanel.Width;
+                            _panelExSelected.Parent.Controls.Remove(operatorPanel);
                         }
-                        objStr = dStartTime + "-" + dOldEndTime + "-" + dEntreTime + "-" + dOldExitTime;
-                        _panelExSelected.Tag = objStr;
-
-                        // 5.更新panel的显示文字
-                        string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dOldExitTime - dEntreTime));
-
-                        string oldText = _panelExSelected.Text;
-                        string temString = oldText.Substring(0, oldText.IndexOf("("));
-
-                        _panelExSelected.Text = temString + "(" + duriationStr + ")";
-
-                        // 1.改变文件位置及大小
-                        _panelExSelected.Location = operatorPanel.Location;
-                        _panelExSelected.Height = operatorPanel.Height;
-                        _panelExSelected.Width = GetLengthByDuiration(dOldExitTime - dEntreTime);
-                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
                     }
                     // 2.如果是选中终点,就是拖拉终点
                     else if (_chooseVedioPanelEnd && _mouseMovedVedioPanel)
@@ -1839,35 +1862,58 @@ namespace NonLinearEditSystem.Forms
 
                         // 4.如果是拖拉终点,那么时间线的终点和出点需要更新,起点和入点保持不变
                         // 判断出点不能大于视频总时间.代表,新的width和旧的width之差不能大于视频总时间-出点长度
-                        double dDuiration = GetVedioDuiration(_panelExSelected.Name);
-                        int maxLength = GetLengthByDuiration(dDuiration - dOldExitTime);
-                        if (operatorPanel.Width - _panelExSelected.Width > maxLength)
+                        if (_panelExSelected.Name.ToUpper().EndsWith("MP4"))
                         {
-                            operatorPanel.Width = _panelExSelected.Width + maxLength;
+                            double dDuiration = GetVedioDuiration(_panelExSelected.Name);
+                            int maxLength = GetLengthByDuiration(dDuiration - dOldExitTime);
+                            if (operatorPanel.Width - _panelExSelected.Width > maxLength)
+                            {
+                                operatorPanel.Width = _panelExSelected.Width + maxLength;
+                            }
+                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
+                            double dExitTime = dOldEntreTime + dEndTime - dOldStartTime;
+                            if (Math.Abs(dExitTime - dDuiration) < 2)
+                            {
+                                dExitTime = dDuiration;
+                            }
+
+                            objStr = dOldStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dExitTime;
+                            _panelExSelected.Tag = objStr;
+
+                            // 5.更新panel的显示文字
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime - dOldEntreTime));
+
+                            string oldText = _panelExSelected.Text;
+                            string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                            _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                            // 1.改变文件位置及大小
+                            _panelExSelected.Location = operatorPanel.Location;
+                            _panelExSelected.Height = operatorPanel.Height;
+                            _panelExSelected.Width = GetLengthByDuiration(dExitTime - dOldEntreTime);
+                            _panelExSelected.Parent.Controls.Remove(operatorPanel);
                         }
-                        double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
-                        double dExitTime = dOldEntreTime + dEndTime - dOldStartTime;
-                        if (Math.Abs(dExitTime - dDuiration) < 2)
+                        else if (_panelExSelected.Name.ToUpper().EndsWith(zimuFileEnd))
                         {
-                            dExitTime = dDuiration;
+                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
+                            double dExitTime = dEndTime - dOldStartTime;
+                            objStr = dOldStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dExitTime;
+                            _panelExSelected.Tag = objStr;
+
+                            // 5.更新panel的显示文字
+                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
+
+                            string oldText = _panelExSelected.Text;
+                            string temString = oldText.Substring(0, oldText.IndexOf("("));
+
+                            _panelExSelected.Text = temString + "(" + duriationStr + ")";
+
+                            _panelExSelected.Location = operatorPanel.Location;
+                            _panelExSelected.Height = operatorPanel.Height;
+                            _panelExSelected.Width = operatorPanel.Width;
+                            _panelExSelected.Parent.Controls.Remove(operatorPanel);
                         }
-
-                        objStr = dOldStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dExitTime;
-                        _panelExSelected.Tag = objStr;
-
-                        // 5.更新panel的显示文字
-                        string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime - dOldEntreTime));
-
-                        string oldText = _panelExSelected.Text;
-                        string temString = oldText.Substring(0, oldText.IndexOf("("));
-
-                        _panelExSelected.Text = temString + "(" + duriationStr + ")";
-
-                        // 1.改变文件位置及大小
-                        _panelExSelected.Location = operatorPanel.Location;
-                        _panelExSelected.Height = operatorPanel.Height;
-                        _panelExSelected.Width = GetLengthByDuiration(dExitTime - dOldEntreTime);
-                        _panelExSelected.Parent.Controls.Remove(operatorPanel);
                     }
                 }
             }
@@ -2144,6 +2190,9 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 在此处先判断轨道上是否有文件
+                
+
                 if (bInterval)
                 {
                     return timeLineControl_MainTL.exitValue;
@@ -4475,7 +4524,7 @@ namespace NonLinearEditSystem.Forms
 
 
 
-        #region TestCode
+        #region 打包
 
         private void 分离ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4516,7 +4565,9 @@ namespace NonLinearEditSystem.Forms
                 }
 
                 // 2.初始化打包
-                res = packetIOCSharp.PacketingInitial();
+                // 2.1.获取字幕
+                GetZimuList();
+                res = packetIOCSharp.PacketingInitial(ZimuList);
                 if (res < 0)
                 {
                     MessageBox.Show("打包初始化失败!");
@@ -4552,12 +4603,12 @@ namespace NonLinearEditSystem.Forms
                 }
 
                 // 6.叠加字幕
-                GetZimuList();
-                res = packetIOCSharp.MixZimu(ZimuList);
-                if (res < 0)
-                {
-                    MessageBox.Show("字幕叠加失败!");
-                }
+                //GetZimuList();
+                //res = packetIOCSharp.MixZimu(ZimuList);
+                //if (res < 0)
+                //{
+                //    MessageBox.Show("字幕叠加失败!");
+                //}
 
                 bPakcetFinish = true;
             }
@@ -4576,7 +4627,7 @@ namespace NonLinearEditSystem.Forms
 
 
 
-        #endregion
+        #endregion 打包
 
 
         // end line

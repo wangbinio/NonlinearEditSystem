@@ -57,7 +57,7 @@ namespace ClrInterfaceDll
 
 		///////////////////////////////////////////////////////////////
 		//解码、字幕叠加、编码等打包接口   -- 开始
-		int PacketingInitial();//打包初始化，必须在打包前调用一次，且仅调用一次！
+		int PacketingInitial(ZimuMixInfoList^ ZimuList);//打包初始化，必须在打包前调用一次，且仅调用一次！
 
 							   //打包
 							   //返回值：
@@ -103,7 +103,7 @@ namespace ClrInterfaceDll
 		//1、ZimuList ---- 输入参数，需要叠加的字幕列表
 		//返回值：
 		// >=0 成功 ; <0 失败
-		int MixZimu(ZimuMixInfoList^ ZimuList);
+		// int MixZimu(ZimuMixInfoList^ ZimuList);
 
 		//字幕叠加接口   -- 结束
 		///////////////////////////////////////////////////////////////

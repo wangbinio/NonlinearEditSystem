@@ -69,9 +69,20 @@ void PacketIOCSharp::StopDemux()
 }
 
 
-int PacketIOCSharp::PacketingInitial()
+int PacketIOCSharp::PacketingInitial(ZimuMixInfoList^ ZimuList)
 {
-	return m_CPacketIO->PacketingInitial();
+	vector<ZimuMixInfo> vZimuList;
+
+	int nCount = ZimuList->Count;
+
+	for (int i = 0; i < nCount; i++)
+	{
+		vZimuList.push_back(ConvertToZimuMixInfo(ZimuList[i]));
+	}
+
+	//return m_CPacketIO->MixZimu(vZimuList);
+
+	return m_CPacketIO->PacketingInitial(vZimuList);
 }
 
 
@@ -112,7 +123,7 @@ bool PacketIOCSharp::MuxerIsFinish()
 
 }
 
-
+/*
 int PacketIOCSharp::MixZimu(ZimuMixInfoList^ ZimuList)
 {
 	vector<ZimuMixInfo> vZimuList;
@@ -126,7 +137,7 @@ int PacketIOCSharp::MixZimu(ZimuMixInfoList^ ZimuList)
 
 	return m_CPacketIO->MixZimu(vZimuList);
 }
-
+*/
 
 
 ClipInfo PacketIOCSharp::ConvertToClipInfo(tagClipInfoCLR^ ctagClipInfoCLR)
@@ -186,7 +197,7 @@ ZimuMixInfo PacketIOCSharp::ConvertToZimuMixInfo(tagZimuMixInfoCLR^ ctagZimuMixI
 
 	cZimuMixInfo.rtStartPos = ctagZimuMixInfo->rtStartPos;
 	cZimuMixInfo.rtStopPos = ctagZimuMixInfo->rtStopPos;
-	cZimuMixInfo.Type = ctagZimuMixInfo->Type;
+	//cZimuMixInfo.Type = ctagZimuMixInfo->Type;
 	cZimuMixInfo.Level = ctagZimuMixInfo->Level;
 
 	return cZimuMixInfo;

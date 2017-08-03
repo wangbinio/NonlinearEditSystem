@@ -97,14 +97,14 @@ namespace ClrDataTypeChange
         public long rtStartPos;//开始时间（单位：ms）
         public long rtStopPos;//结束时间（单位：ms）
     
-        public int Type;//字幕类型，0 = 静态字幕；1=左飞；2=上滚
+        // public int Type;//字幕类型，0 = 静态字幕；1=左飞；2=上滚
         public int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二层，以此类推。
         public tagZimuMixInfoCLR()
         {
             szZimuFile = string.Empty;
             rtStartPos = 0;
             rtStopPos = 0;
-            Type = 0;
+            // Type = 0;
             Level = 0;
         }
     }
