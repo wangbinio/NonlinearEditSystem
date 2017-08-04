@@ -2158,10 +2158,10 @@ namespace NonLinearEditSystem.Forms
                         // 6.如果找到,则这一段时间就将此视频添加到打包素材列表中
                         // 这里的入点和出点,应该转为视频时间,而不是时间线上的时间
                         // 解析tag获取信息
-                        string objStr = _panelExSelected.Tag as string;
-                        if (objStr == null) return;
+                        string objStr = thePanel.Tag as string;
+                        if (objStr == null) continue;
                         string[] startAndEndTime = objStr.Split('-');
-                        if (startAndEndTime.Length < 4) return;
+                        if (startAndEndTime.Length < 4) continue;
 
                         // 得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
                         double dOldStartTime = double.Parse(startAndEndTime[0]);

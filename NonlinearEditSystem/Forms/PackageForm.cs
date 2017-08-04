@@ -136,12 +136,16 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                theMainForm.UpdateVedioTrackFilesTimes(bInterval);
-                if (theMainForm.sortedVedioTimes.Count > 1)
+                if (theMainForm != null)
                 {
-                    labelX_EntrePoint.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)theMainForm.sortedVedioTimes[0]);
-                    labelX_ExitPoint.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)theMainForm.sortedVedioTimes[theMainForm.sortedVedioTimes.Count - 1]);
+                    theMainForm.UpdateVedioTrackFilesTimes(bInterval);
+                    if (theMainForm.sortedVedioTimes.Count > 1)
+                    {
+                        labelX_EntrePoint.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)theMainForm.sortedVedioTimes[0]);
+                        labelX_ExitPoint.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)theMainForm.sortedVedioTimes[theMainForm.sortedVedioTimes.Count - 1]);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -160,7 +164,7 @@ namespace NonLinearEditSystem.Forms
             try
             {
                 // 删除打包残留文件
-                theMainForm.ExecuteBat();
+                //theMainForm.ExecuteBat();
 
                 theMainForm.UpdatePackageClips(bChooseInterval);
                 theMainForm.StartPacket();
