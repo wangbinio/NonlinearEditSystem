@@ -840,7 +840,7 @@ namespace NonLinearEditSystem.Forms
                 DialogResult result = createProjectSetForm.ShowDialog();
 
                 // 1.创建新的工程文件
-                if (createProjectSetForm.projectInfo.ProjectName == string.Empty)
+                if (createProjectSetForm.projectInfo.ProjectName == null)
                 {
                     return;
                 }
@@ -1559,9 +1559,9 @@ namespace NonLinearEditSystem.Forms
                         {
                             // 1.往下拖动
                             int nums = e.Y / panelExSelected.Height;
-                            if (nums + index > _vedioTrackPanels.Count)
+                            if (nums + index >= _vedioTrackPanels.Count)
                             {
-                                nums = _vedioTrackPanels.Count - index;
+                                nums = _vedioTrackPanels.Count - index - 1;
                             }
 
                             _vedioTrackPanels[nums + index].Controls.Add(operatorPanel);

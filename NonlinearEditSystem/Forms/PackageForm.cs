@@ -205,6 +205,11 @@ namespace NonLinearEditSystem.Forms
 
                     MessageBox.Show("打包完成!");
 
+                    // 打包完成之后重置进度条
+                    progressBarX_Pack.Value = 0;
+
+                    progressBarX_Pack.Text = "0%";
+
                     // 打包一次完成之后要将标记置为否
                     theMainForm.bPakcetFinish = false;
 
