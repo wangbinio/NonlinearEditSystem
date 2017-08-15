@@ -79,6 +79,9 @@ namespace NonLinearEditSystem.Forms
         // 音视频文件在轨道上的面板高度
         public static int trackHeight = 34;
 
+        // 辅助操作面板
+        private PanelEx operatorPanel;
+
         // 视频轨道面板1234
         private List<PanelEx> _vedioTrackPanels;
 
@@ -112,6 +115,19 @@ namespace NonLinearEditSystem.Forms
         // 打包素材列表
         public DemuxClipInfoList packageClipsList;
 
+        // 图标资源
+        private static Icon _icon_eye_open = Resource.eye_open_16px;
+        private static Icon _icon_eye_closed = Resource.eye_closed_16px;
+        private static Icon _icon_lock_open = Resource.lock_open_16px;
+        private static Icon _icon_lock_closed = Resource.lock_closed_16px;
+        private static Icon _icon_volume_full = Resource.volume_full_16px;
+        private static Icon _icon_volume_muted = Resource.volume_muted_16px;
+        private static Icon _icon_headphone_open = Resource.headphone_open_16px;
+        private static Icon _icon_headphone_closed = Resource.headphone_closed_16px;
+
+
+
+
         #endregion 成员变量
 
 
@@ -132,6 +148,7 @@ namespace NonLinearEditSystem.Forms
 
 
         #region 给子界面使用的变量
+
         // 打包进度
         public double dPacketProcess = 0;
 
@@ -180,7 +197,10 @@ namespace NonLinearEditSystem.Forms
             CreateAllMenu();
 
             // 初始化控件颜色
-            initControlsColor();
+            InitControlsColor();
+
+            // 初始化图标
+            InitIcons();
         }
 
         /// <summary>
@@ -224,9 +244,6 @@ namespace NonLinearEditSystem.Forms
             // 创建右键菜单
             CreateTrackBlankMenu();
         }
-
- 
-        private PanelEx operatorPanel;
 
         /// <summary>
         /// 创建操作辅助面板,用于轨道上的文件操作
@@ -288,7 +305,8 @@ namespace NonLinearEditSystem.Forms
                 //_vedioFilesPanel.Clear();
                 //_audioFilesPanel.Clear();
                 _vedioFilesPanel = new List<PanelEx>(_maxFilesPannel);
-                _audioFilesPanel = new List<PanelEx>(_maxFilesPannel); ;
+                _audioFilesPanel = new List<PanelEx>(_maxFilesPannel);
+                ;
 
                 for (int i = 0; i < _maxFilesPannel; i++)
                 {
@@ -408,9 +426,40 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 初始化控件颜色
         /// </summary>
-        private void initControlsColor()
+        private void InitControlsColor()
         {
             listView_Files.BackColor = bkgColor;
+        }
+
+
+
+        /// <summary>
+        /// 初始化按钮图标
+        /// </summary>
+        private void InitIcons()
+        {
+            // 眼睛按钮图标
+            VideoTrackB1BI_See.Icon = _icon_eye_open;
+            VideoTrackB2BI_See.Icon = _icon_eye_open;
+            VideoTrackB3BI_See.Icon = _icon_eye_open;
+            VideoTrackB4BI_See.Icon = _icon_eye_open;
+
+            // 锁定按钮图标
+            VideoTrackB1BI_Lock.Icon = _icon_lock_open;
+            VideoTrackB2BI_Lock.Icon = _icon_lock_open;
+            VideoTrackB3BI_Lock.Icon = _icon_lock_open;
+            VideoTrackB4BI_Lock.Icon = _icon_lock_open;
+
+            AudioTrackB1BI_Lock.Icon = _icon_lock_open;
+            AudioTrackB2BI_Lock.Icon = _icon_lock_open;
+
+            // 音量按钮图标
+            AudioTrackB1BI_Volume.Icon = _icon_volume_full;
+            AudioTrackB2BI_Volume.Icon = _icon_volume_full;
+
+            // 独奏图标
+            AudioTrackB1BI_Listen.Icon = _icon_headphone_closed;
+            AudioTrackB2BI_Listen.Icon = _icon_headphone_closed;
         }
 
         #endregion 初始化工作
@@ -547,7 +596,10 @@ namespace NonLinearEditSystem.Forms
         /// <returns></returns>
         private int GetLengthByDuiration(double duirationTime)
         {
-            return (int)(duirationTime / timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks] * timeLineControl_MainTL.NDistanceOfTicks);
+            return
+                (int)
+                (duirationTime / timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks] *
+                 timeLineControl_MainTL.NDistanceOfTicks);
         }
 
         /// <summary>
@@ -557,7 +609,8 @@ namespace NonLinearEditSystem.Forms
         /// <returns></returns>
         private double GetDuirationBylength(int length)
         {
-            return length / timeLineControl_MainTL.NDistanceOfTicks * timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks];
+            return length / timeLineControl_MainTL.NDistanceOfTicks *
+                   timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks];
         }
 
         /// <summary>
@@ -664,7 +717,8 @@ namespace NonLinearEditSystem.Forms
         /// <param name="pos"></param>
         /// <param name="bVedio"></param>
         /// <returns></returns>
-        private int CreateVedioOrAudioFilePanel(string fileName, double duriation, int length, int pos, bool bVedio = true)
+        private int CreateVedioOrAudioFilePanel(string fileName, double duriation, int length, int pos,
+            bool bVedio = true)
         {
             try
             {
@@ -678,7 +732,8 @@ namespace NonLinearEditSystem.Forms
                             _vedioFilesPanel[i].Name = fileName;
 
                             // 处理一下fileName,Text只显示文件名和持续时间,不显示路径
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
                             string[] fileStrings = new string[1];
                             fileStrings[0] = fileName;
                             string[] tempStrings = ClearDirAndFilePath(fileStrings);
@@ -711,7 +766,8 @@ namespace NonLinearEditSystem.Forms
                             _audioFilesPanel[i].Name = fileName;
 
                             // 处理一下fileName,Text只显示文件名和持续时间,不显示路径
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)duriation);
                             string[] fileStrings = new string[1];
                             fileStrings[0] = fileName;
                             string[] tempStrings = ClearDirAndFilePath(fileStrings);
@@ -765,7 +821,8 @@ namespace NonLinearEditSystem.Forms
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DragAudioDrop(object sender, DragEventArgs e)
-        {//TODO:将音频拖到轨道上
+        {
+            //TODO:将音频拖到轨道上
             try
             {
                 // 1.得到拖拽文件的文件名（全路径）
@@ -852,7 +909,8 @@ namespace NonLinearEditSystem.Forms
 
                 // 2.在文件列表显示素材库文件
                 ShowDirInFileBox(theClipsPath);
-                label_FileInfo.Text = string.Empty;
+                //label_FileInfo.Text = string.Empty;
+                label_FileInfo.Text = projectInfo.ProjectName;
 
                 // 3.重置时间线
                 ResetTimeLineControl();
@@ -944,7 +1002,8 @@ namespace NonLinearEditSystem.Forms
                 // 3.将信息显示到主界面上
                 // 3.1.FileList
                 ShowDirInFileBox(projectInfo.FileListPath);
-                label_FileInfo.Text = string.Empty;
+                //label_FileInfo.Text = string.Empty;
+                label_FileInfo.Text = projectInfo.ProjectName;
 
                 // 3.2.恢复时间线
                 timeLineControl_MainTL.IndexOfSecEveryTicks = projectInfo.timeLineInfo.indexOfSecEveryTicks;
@@ -1006,7 +1065,7 @@ namespace NonLinearEditSystem.Forms
                 // 3.保存时间线信息
                 TimeLineInfoStruct cTimeLineInfoStruct = new TimeLineInfoStruct();
                 cTimeLineInfoStruct.indexOfSecEveryTicks = timeLineControl_MainTL.IndexOfSecEveryTicks;
-                cTimeLineInfoStruct.thumbHPos = timeLineControl_MainTL.ThumbHPos;
+                cTimeLineInfoStruct.thumbHPos = (int)timeLineControl_MainTL.ThumbHPos;
                 cTimeLineInfoStruct.enterPos = timeLineControl_MainTL.enterPos;
                 cTimeLineInfoStruct.exitPos = timeLineControl_MainTL.exitPos;
 
@@ -1341,7 +1400,8 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void UpdateLabelTime()
         {
-            string strTime = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
+            string strTime =
+                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)timeLineControl_MainTL.ThumbValue);
             labelItem_CurrentTime.Text = strTime;
             labelX_SeqTime.Text = strTime;
         }
@@ -1387,6 +1447,7 @@ namespace NonLinearEditSystem.Forms
 
 
         #region 轨道字幕处理
+
         public static string zimuFileEnd = "ZM";
         private ZimuMixInfoList ZimuList = new ZimuMixInfoList();
 
@@ -1426,6 +1487,7 @@ namespace NonLinearEditSystem.Forms
 
 
         #region 视频轨道操作
+
         private float fClickDelta = 10.0f;
         private bool _chooseVedioPanelSelf = false;
         private bool _chooseVedioPanelStart = false;
@@ -1635,7 +1697,8 @@ namespace NonLinearEditSystem.Forms
 
                                 operatorPanel.Location = new Point(movedPosX, 0);
                                 operatorPanel.Height = panelExSelected.Height;
-                                operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width - operatorPanel.Location.X;
+                                operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width -
+                                                      operatorPanel.Location.X;
                                 if (operatorPanel.Width < 10) operatorPanel.Width = 10;
                                 //operatorPanel.Size = panelExSelected.Size;
                                 panelExSelected.Parent.Controls.Add(operatorPanel);
@@ -1647,7 +1710,8 @@ namespace NonLinearEditSystem.Forms
                             // 这一部分是通过移动新面板,最后同步
                             operatorPanel.Location = new Point(e.X - _mousePosDeltaX > 0 ? e.X - _mousePosDeltaX : 0, 0);
                             operatorPanel.Height = panelExSelected.Height;
-                            operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width - operatorPanel.Location.X;
+                            operatorPanel.Width = panelExSelected.Location.X + panelExSelected.Width -
+                                                  operatorPanel.Location.X;
                             if (operatorPanel.Width < 10) operatorPanel.Width = 10;
                             panelExSelected.Parent.Controls.Add(operatorPanel);
                         }
@@ -1810,7 +1874,9 @@ namespace NonLinearEditSystem.Forms
                             _panelExSelected.Tag = objStr;
 
                             // 5.更新panel的显示文字
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dOldExitTime - dEntreTime));
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString(
+                                    (int)(dOldExitTime - dEntreTime));
 
                             string oldText = _panelExSelected.Text;
                             string temString = oldText.Substring(0, oldText.IndexOf("("));
@@ -1831,7 +1897,8 @@ namespace NonLinearEditSystem.Forms
                             _panelExSelected.Tag = objStr;
 
                             // 5.更新panel的显示文字
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
 
                             string oldText = _panelExSelected.Text;
                             string temString = oldText.Substring(0, oldText.IndexOf("("));
@@ -1870,7 +1937,8 @@ namespace NonLinearEditSystem.Forms
                             {
                                 operatorPanel.Width = _panelExSelected.Width + maxLength;
                             }
-                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
+                            double dEndTime =
+                                timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
                             double dExitTime = dOldEntreTime + dEndTime - dOldStartTime;
                             if (Math.Abs(dExitTime - dDuiration) < 2)
                             {
@@ -1881,7 +1949,9 @@ namespace NonLinearEditSystem.Forms
                             _panelExSelected.Tag = objStr;
 
                             // 5.更新panel的显示文字
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime - dOldEntreTime));
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString(
+                                    (int)(dExitTime - dOldEntreTime));
 
                             string oldText = _panelExSelected.Text;
                             string temString = oldText.Substring(0, oldText.IndexOf("("));
@@ -1896,13 +1966,15 @@ namespace NonLinearEditSystem.Forms
                         }
                         else if (_panelExSelected.Name.ToUpper().EndsWith(zimuFileEnd))
                         {
-                            double dEndTime = timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
+                            double dEndTime =
+                                timeLineControl_MainTL.GetTimeValueByPos(operatorPanel.Location.X + operatorPanel.Width);
                             double dExitTime = dEndTime - dOldStartTime;
                             objStr = dOldStartTime + "-" + dEndTime + "-" + dOldEntreTime + "-" + dExitTime;
                             _panelExSelected.Tag = objStr;
 
                             // 5.更新panel的显示文字
-                            string duriationStr = TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
+                            string duriationStr =
+                                TimeLineControl.TimeLineControl.ChangeTimeValueToString((int)(dExitTime));
 
                             string oldText = _panelExSelected.Text;
                             string temString = oldText.Substring(0, oldText.IndexOf("("));
@@ -1940,7 +2012,7 @@ namespace NonLinearEditSystem.Forms
         {
             bool bFocused = (sender as PanelEx).Focus();
         }
-  
+
         /// <summary>
         /// 视频轨道面板鼠标移动事件
         /// </summary>
@@ -1977,13 +2049,17 @@ namespace NonLinearEditSystem.Forms
                 if (bAdd)
                 {
                     // 1.先求放大的比例
-                    ratio = (double)timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks + 1] /
+                    ratio =
+                        (double)
+                        timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks + 1] /
                         timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks];
                 }
-                else// 如果是缩小
+                else // 如果是缩小
                 {
                     // 1.先求缩小的比例
-                    ratio = (double)timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks - 1] /
+                    ratio =
+                        (double)
+                        timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks - 1] /
                         timeLineControl_MainTL.SecondsEveryTicks[timeLineControl_MainTL.IndexOfSecEveryTicks];
                 }
 
@@ -2011,8 +2087,8 @@ namespace NonLinearEditSystem.Forms
                     string[] startAndEndTime = objStr.Split('-');
                     if (startAndEndTime.Length < 2) return;
 
-                    int startX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[0]));
-                    int endX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[1]));
+                    int startX = (int)timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[0]));
+                    int endX = (int)timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[1]));
                     panel.Location = new Point(startX, 0);
                     panel.Width = endX - startX;
                 }
@@ -2031,8 +2107,8 @@ namespace NonLinearEditSystem.Forms
                     string[] startAndEndTime = objStr.Split('-');
 
 
-                    int startX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[0]));
-                    int endX = timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[1]));
+                    int startX = (int)timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[0]));
+                    int endX = (int)timeLineControl_MainTL.GetPosByTimeValue(double.Parse(startAndEndTime[1]));
                     panel.Location = new Point(startX, 0);
                     panel.Width = endX - startX;
                 }
@@ -2150,7 +2226,8 @@ namespace NonLinearEditSystem.Forms
                     {
                         // 测试 空不处理
                         // 5.如果没找到,说明是空,需要用垫片
-                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(BlackVedio, 0, (Int64)((dEndTime - dBeginTime) * 1000));
+                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(BlackVedio, 0,
+                            (Int64)((dEndTime - dBeginTime) * 1000));
                         packageClipsList.Add(theClips);
                     }
                     else
@@ -2169,7 +2246,9 @@ namespace NonLinearEditSystem.Forms
                         double dOldEntreTime = double.Parse(startAndEndTime[2]);
                         double dOldExitTime = double.Parse(startAndEndTime[3]);
 
-                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, (Int64)((dBeginTime - dOldStartTime + dOldEntreTime) * 1000), (Int64)((dEndTime - dOldStartTime + dOldEntreTime) * 1000));
+                        tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name,
+                            (Int64)((dBeginTime - dOldStartTime + dOldEntreTime) * 1000),
+                            (Int64)((dEndTime - dOldStartTime + dOldEntreTime) * 1000));
 
                         //tagDemuxClipInfoCLR theClips = new tagDemuxClipInfoCLR(thePanel.Name, 0, 0);
                         packageClipsList.Add(theClips);
@@ -2186,12 +2265,12 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 获取轨道上的文件的最终时间
         /// </summary>
-        public double  GetTrackFilesEndTime(bool bInterval)
+        public double GetTrackFilesEndTime(bool bInterval)
         {
             try
             {
                 // 在此处先判断轨道上是否有文件
-                
+
 
                 if (bInterval)
                 {
@@ -2222,7 +2301,7 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
                 return 0;
             }
         }
@@ -2390,7 +2469,7 @@ namespace NonLinearEditSystem.Forms
                 if (listView_Files.SelectedItems.Count > 0)
                 {
                     var sItemString = listView_Files.SelectedItems[0].Text;
-                    label_FileInfo.Text = sItemString;
+                    label_FileInfo.Text = projectInfo.ProjectName + "\n" + sItemString;
                 }
             }
             catch (Exception ex)
@@ -2474,7 +2553,7 @@ namespace NonLinearEditSystem.Forms
                     if ((bool)timer_Sequence.Tag)
                     {
                         buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
-                    } 
+                    }
                     else
                     {
                         buttonX_PlayAndStop.Symbol = _symbolPlay;
@@ -2675,15 +2754,123 @@ namespace NonLinearEditSystem.Forms
 
         #region 视频轨道名称面板操作
 
-        private void TrackName_BtnMouseHover(object sender, EventArgs e)
+
+        /// <summary>
+        /// 眼睛按钮点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoTrackB4BI_See_Click(object sender, EventArgs e)
         {
-            ((ButtonItem)sender).Icon = Resources.lock_closed_16px;
+            try
+            {
+                ButtonItem item = sender as ButtonItem;
+
+                if (item.Icon == _icon_eye_open)
+                {
+                    item.Icon = _icon_eye_closed;
+                }
+                else
+                {
+                    item.Icon = _icon_eye_open;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
-        private void TrackName_BtnMouseLeave(object sender, EventArgs e)
+        /// <summary>
+        /// 锁定按钮点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoTrackB4BI_Lock_Click(object sender, EventArgs e)
         {
-            ((ButtonItem)sender).Icon = Resources.lock_open_16px;
+            try
+            {
+                ButtonItem item = sender as ButtonItem;
+
+                if (item.Icon == _icon_lock_open)
+                {
+                    item.Icon = _icon_lock_closed;
+                }
+                else
+                {
+                    item.Icon = _icon_lock_open;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
         }
+
+        /// <summary>
+        /// 音量按钮点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AudioTrackB1BI_Volume_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ButtonItem item = sender as ButtonItem;
+
+                if (item.Icon == _icon_volume_full)
+                {
+                    item.Icon = _icon_volume_muted;
+                }
+                else
+                {
+                    item.Icon = _icon_volume_full;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 独奏按钮点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AudioTrackB1BI_Listen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ButtonItem item = sender as ButtonItem;
+
+                if (item.Icon == _icon_headphone_open)
+                {
+                    item.Icon = _icon_headphone_closed;
+                }
+                else
+                {
+                    item.Icon = _icon_headphone_open;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+
+        // private void TrackName_BtnMouseHover(object sender, EventArgs e)
+        // {
+        //     ((ButtonItem)sender).Icon = Resources.lock_closed_16px;
+        // }
+        // 
+        // private void TrackName_BtnMouseLeave(object sender, EventArgs e)
+        // {
+        //     ((ButtonItem)sender).Icon = Resources.lock_open_16px;
+        // }
 
         #endregion 视频轨道名称面板操作
 
@@ -2771,7 +2958,7 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -2889,8 +3076,8 @@ namespace NonLinearEditSystem.Forms
             if (timeLineControl_MainTL.ThumbHPos <= timeLineControl_MainTL.exitPos - timeLineControl_MainTL.NDistanceOfTicks
                 && timeLineControl_MainTL.enterPos != timeLineControl_MainTL.ThumbHPos)
             {
-                timeLineControl_MainTL.enterPos = timeLineControl_MainTL.ThumbHPos;
-                timeLineControl_Sequence.enterPos = timeLineControl_Sequence.ThumbHPos;
+                timeLineControl_MainTL.enterPos = (int)timeLineControl_MainTL.ThumbHPos;
+                timeLineControl_Sequence.enterPos = (int)timeLineControl_Sequence.ThumbHPos;
 
                 timeLineControl_MainTL.Invalidate();
                 timeLineControl_Sequence.Invalidate();
@@ -2908,8 +3095,8 @@ namespace NonLinearEditSystem.Forms
             if (timeLineControl_MainTL.ThumbHPos >= timeLineControl_MainTL.enterPos + timeLineControl_MainTL.NDistanceOfTicks
                 && timeLineControl_MainTL.exitPos != timeLineControl_MainTL.ThumbHPos)
             {
-                timeLineControl_MainTL.exitPos = timeLineControl_MainTL.ThumbHPos;
-                timeLineControl_Sequence.exitPos = timeLineControl_Sequence.ThumbHPos;
+                timeLineControl_MainTL.exitPos = (int)timeLineControl_MainTL.ThumbHPos;
+                timeLineControl_Sequence.exitPos = (int)timeLineControl_Sequence.ThumbHPos;
 
                 timeLineControl_MainTL.Invalidate();
                 timeLineControl_Sequence.Invalidate();
@@ -3723,7 +3910,7 @@ namespace NonLinearEditSystem.Forms
                 panelEx.ContextMenuStrip = _vedioTrackFileMenu;
             }
         }
-       
+
         /// <summary>
         /// 创建时间线右键菜单
         /// </summary>
@@ -4618,6 +4805,14 @@ namespace NonLinearEditSystem.Forms
             }
 
         }
+
+
+
+
+
+
+
+
 
 
 

@@ -67,7 +67,7 @@ namespace TimeLineControl
         public int IndexOfSecEveryTicks { get; set; } = 3;
 
         /// 游标中心线的横坐标
-        public int ThumbHPos { get; set; } = 500;
+        public double ThumbHPos { get; set; } = 500;
 
         /// 游标所在的矩形区域
         public Rectangle ThumbRectangle { get; set; }
@@ -85,6 +85,8 @@ namespace TimeLineControl
         // 出点和入点的时间
         public double enterValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)enterPos / (double)NDistanceOfTicks);
         public double exitValue => (SecondsEveryTicks[IndexOfSecEveryTicks] * (double)exitPos / (double)NDistanceOfTicks);
+
+        
 
         // 关联时间线控件,当自身改变的时候,关联的也做相应改变
         public TimeLineControl RelativeTimeLineControl;
@@ -629,7 +631,7 @@ namespace TimeLineControl
                     exitPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
                     break;
                 case TimeLinePos.Pos_Thumb:
-                    ThumbHPos = (int)(dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
+                    ThumbHPos = (dValue / SecondsEveryTicks[IndexOfSecEveryTicks] * NDistanceOfTicks);
                     break;
                 default:
                     break;
@@ -779,10 +781,12 @@ namespace TimeLineControl
         /// </summary>
         /// <param name="dValue"></param>
         /// <returns></returns>
-        public int GetPosByTimeValue(double dValue)
+        //public int GetPosByTimeValue(double dValue)
+        public double GetPosByTimeValue(double dValue)
         {
             double dres = (dValue * NDistanceOfTicks / SecondsEveryTicks[IndexOfSecEveryTicks] );
-            return (int)(dres+0.5);
+            //return (int)(dres+0.5);
+            return dres;
         }
 
 
@@ -792,7 +796,7 @@ namespace TimeLineControl
         /// <param name="dTime">时间</param>
         public void MoveForward(double dTime)
         {
-            int deltaX = GetPosByTimeValue(dTime);
+            double deltaX = GetPosByTimeValue(dTime);
             ThumbHPos  += deltaX;
 
             deltaX = RelativeTimeLineControl.GetPosByTimeValue(dTime);

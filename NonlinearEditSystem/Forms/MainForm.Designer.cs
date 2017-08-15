@@ -270,7 +270,7 @@
             // 
             this.listView_Files.AllowColumnReorder = true;
             this.listView_Files.AllowDrop = true;
-            this.listView_Files.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.listView_Files.BackColor = System.Drawing.Color.Black;
             // 
             // 
             // 
@@ -477,7 +477,7 @@
             this.timeLineControl_Sequence.NNumOfBigTicks = 24;
             this.timeLineControl_Sequence.Size = new System.Drawing.Size(817, 35);
             this.timeLineControl_Sequence.TabIndex = 6;
-            this.timeLineControl_Sequence.ThumbHPos = 333;
+            this.timeLineControl_Sequence.ThumbHPos = 333D;
             this.timeLineControl_Sequence.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
             this.timeLineControl_Sequence.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_Sequence.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
@@ -707,7 +707,7 @@
             this.timeLineControl_Segment.NNumOfBigTicks = 24;
             this.timeLineControl_Segment.Size = new System.Drawing.Size(817, 35);
             this.timeLineControl_Segment.TabIndex = 30;
-            this.timeLineControl_Segment.ThumbHPos = 333;
+            this.timeLineControl_Segment.ThumbHPos = 333D;
             this.timeLineControl_Segment.ThumbRectangle = new System.Drawing.Rectangle(326, 0, 15, 15);
             // 
             // buttonX1
@@ -1240,7 +1240,7 @@
             this.关于ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.关于ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 分离ToolStripMenuItem
@@ -1248,7 +1248,7 @@
             this.分离ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.分离ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
-            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.分离ToolStripMenuItem.Text = "分离";
             this.分离ToolStripMenuItem.Visible = false;
             this.分离ToolStripMenuItem.Click += new System.EventHandler(this.分离ToolStripMenuItem_Click);
@@ -1258,7 +1258,7 @@
             this.编解码ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.编解码ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
-            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.编解码ToolStripMenuItem.Text = "编解码";
             this.编解码ToolStripMenuItem.Visible = false;
             this.编解码ToolStripMenuItem.Click += new System.EventHandler(this.编解码ToolStripMenuItem_Click);
@@ -1268,7 +1268,7 @@
             this.打包ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.打包ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
-            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.打包ToolStripMenuItem.Text = "打包";
             this.打包ToolStripMenuItem.Visible = false;
             this.打包ToolStripMenuItem.Click += new System.EventHandler(this.打包ToolStripMenuItem_Click);
@@ -1379,13 +1379,14 @@
             this.timeLineControl_MainTL.NNumOfBigTicks = 24;
             this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
             this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 500;
+            this.timeLineControl_MainTL.ThumbHPos = 500D;
             this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(493, 0, 15, 15);
             this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
             // 
             // panelEx_VedioTrackComent
             // 
+            this.panelEx_VedioTrackComent.AutoScroll = true;
             this.panelEx_VedioTrackComent.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx_VedioTrackComent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx_VedioTrackComent.Controls.Add(this.panelEx_VideoTrackConment2);
@@ -1623,9 +1624,9 @@
             this.panelEx_VideoName.Controls.Add(this.panelEx_VideoTrackName1);
             this.panelEx_VideoName.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_VideoName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx_VideoName.Location = new System.Drawing.Point(0, 34);
+            this.panelEx_VideoName.Location = new System.Drawing.Point(0, 36);
             this.panelEx_VideoName.Name = "panelEx_VideoName";
-            this.panelEx_VideoName.Size = new System.Drawing.Size(248, 177);
+            this.panelEx_VideoName.Size = new System.Drawing.Size(248, 175);
             this.panelEx_VideoName.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx_VideoName.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
             this.panelEx_VideoName.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -1641,7 +1642,7 @@
             this.panelEx_VideoTrackName4.Controls.Add(this.bar2);
             this.panelEx_VideoTrackName4.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_VideoTrackName4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx_VideoTrackName4.Location = new System.Drawing.Point(0, 17);
+            this.panelEx_VideoTrackName4.Location = new System.Drawing.Point(0, 15);
             this.panelEx_VideoTrackName4.Name = "panelEx_VideoTrackName4";
             this.panelEx_VideoTrackName4.Size = new System.Drawing.Size(248, 40);
             this.panelEx_VideoTrackName4.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1680,7 +1681,10 @@
             this.VideoTrackB4BI_See.Icon = ((System.Drawing.Icon)(resources.GetObject("VideoTrackB4BI_See.Icon")));
             this.VideoTrackB4BI_See.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB4BI_See.Name = "VideoTrackB4BI_See";
+            this.VideoTrackB4BI_See.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.VideoTrackB4BI_See.Text = "观看";
+            this.VideoTrackB4BI_See.Tooltip = "可见/不可见轨道";
+            this.VideoTrackB4BI_See.Click += new System.EventHandler(this.VideoTrackB4BI_See_Click);
             // 
             // VideoTrackB4BI_Lock
             // 
@@ -1688,8 +1692,8 @@
             this.VideoTrackB4BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB4BI_Lock.Name = "VideoTrackB4BI_Lock";
             this.VideoTrackB4BI_Lock.Text = "锁定";
-            this.VideoTrackB4BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.VideoTrackB4BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.VideoTrackB4BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.VideoTrackB4BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // VideoTrackB4BI_Play
             // 
@@ -1697,6 +1701,7 @@
             this.VideoTrackB4BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB4BI_Play.Name = "VideoTrackB4BI_Play";
             this.VideoTrackB4BI_Play.Text = "播放";
+            this.VideoTrackB4BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // VideoTrackB4BI_MoveDown
             // 
@@ -1704,6 +1709,7 @@
             this.VideoTrackB4BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB4BI_MoveDown.Name = "VideoTrackB4BI_MoveDown";
             this.VideoTrackB4BI_MoveDown.Text = "下移";
+            this.VideoTrackB4BI_MoveDown.Tooltip = "轨道状态";
             // 
             // VideoTrackB4BI_TrackNickName
             // 
@@ -1714,6 +1720,7 @@
             this.VideoTrackB4BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB4BI_TrackNickName.Name = "VideoTrackB4BI_TrackNickName";
             this.VideoTrackB4BI_TrackNickName.Text = "V4";
+            this.VideoTrackB4BI_TrackNickName.Tooltip = "视频轨";
             // 
             // panelEx_VideoTrackName3
             // 
@@ -1722,7 +1729,7 @@
             this.panelEx_VideoTrackName3.Controls.Add(this.bar1);
             this.panelEx_VideoTrackName3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_VideoTrackName3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx_VideoTrackName3.Location = new System.Drawing.Point(0, 57);
+            this.panelEx_VideoTrackName3.Location = new System.Drawing.Point(0, 55);
             this.panelEx_VideoTrackName3.Name = "panelEx_VideoTrackName3";
             this.panelEx_VideoTrackName3.Size = new System.Drawing.Size(248, 40);
             this.panelEx_VideoTrackName3.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1762,6 +1769,8 @@
             this.VideoTrackB3BI_See.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB3BI_See.Name = "VideoTrackB3BI_See";
             this.VideoTrackB3BI_See.Text = "观看";
+            this.VideoTrackB3BI_See.Tooltip = "可见/不可见轨道";
+            this.VideoTrackB3BI_See.Click += new System.EventHandler(this.VideoTrackB4BI_See_Click);
             // 
             // VideoTrackB3BI_Lock
             // 
@@ -1769,8 +1778,8 @@
             this.VideoTrackB3BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB3BI_Lock.Name = "VideoTrackB3BI_Lock";
             this.VideoTrackB3BI_Lock.Text = "锁定";
-            this.VideoTrackB3BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.VideoTrackB3BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.VideoTrackB3BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.VideoTrackB3BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // VideoTrackB3BI_Play
             // 
@@ -1778,6 +1787,7 @@
             this.VideoTrackB3BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB3BI_Play.Name = "VideoTrackB3BI_Play";
             this.VideoTrackB3BI_Play.Text = "播放";
+            this.VideoTrackB3BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // VideoTrackB3BI_MoveDown
             // 
@@ -1785,6 +1795,7 @@
             this.VideoTrackB3BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB3BI_MoveDown.Name = "VideoTrackB3BI_MoveDown";
             this.VideoTrackB3BI_MoveDown.Text = "下移";
+            this.VideoTrackB3BI_MoveDown.Tooltip = "轨道状态";
             // 
             // VideoTrackB3BI_TrackNickName
             // 
@@ -1795,6 +1806,7 @@
             this.VideoTrackB3BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB3BI_TrackNickName.Name = "VideoTrackB3BI_TrackNickName";
             this.VideoTrackB3BI_TrackNickName.Text = "V3";
+            this.VideoTrackB3BI_TrackNickName.Tooltip = "视频轨";
             // 
             // panelEx_VideoTrackName2
             // 
@@ -1803,7 +1815,7 @@
             this.panelEx_VideoTrackName2.Controls.Add(this.bar_VideoTrackButtonBar2);
             this.panelEx_VideoTrackName2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_VideoTrackName2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx_VideoTrackName2.Location = new System.Drawing.Point(0, 97);
+            this.panelEx_VideoTrackName2.Location = new System.Drawing.Point(0, 95);
             this.panelEx_VideoTrackName2.Name = "panelEx_VideoTrackName2";
             this.panelEx_VideoTrackName2.Size = new System.Drawing.Size(248, 40);
             this.panelEx_VideoTrackName2.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1843,6 +1855,8 @@
             this.VideoTrackB2BI_See.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB2BI_See.Name = "VideoTrackB2BI_See";
             this.VideoTrackB2BI_See.Text = "观看";
+            this.VideoTrackB2BI_See.Tooltip = "可见/不可见轨道";
+            this.VideoTrackB2BI_See.Click += new System.EventHandler(this.VideoTrackB4BI_See_Click);
             // 
             // VideoTrackB2BI_Lock
             // 
@@ -1850,8 +1864,8 @@
             this.VideoTrackB2BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB2BI_Lock.Name = "VideoTrackB2BI_Lock";
             this.VideoTrackB2BI_Lock.Text = "锁定";
-            this.VideoTrackB2BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.VideoTrackB2BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.VideoTrackB2BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.VideoTrackB2BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // VideoTrackB2BI_Play
             // 
@@ -1859,6 +1873,7 @@
             this.VideoTrackB2BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB2BI_Play.Name = "VideoTrackB2BI_Play";
             this.VideoTrackB2BI_Play.Text = "播放";
+            this.VideoTrackB2BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // VideoTrackB2BI_MoveDown
             // 
@@ -1866,6 +1881,7 @@
             this.VideoTrackB2BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB2BI_MoveDown.Name = "VideoTrackB2BI_MoveDown";
             this.VideoTrackB2BI_MoveDown.Text = "下移";
+            this.VideoTrackB2BI_MoveDown.Tooltip = "轨道状态";
             // 
             // VideoTrackB2BI_TrackNickName
             // 
@@ -1876,6 +1892,7 @@
             this.VideoTrackB2BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB2BI_TrackNickName.Name = "VideoTrackB2BI_TrackNickName";
             this.VideoTrackB2BI_TrackNickName.Text = "V2";
+            this.VideoTrackB2BI_TrackNickName.Tooltip = "视频轨";
             // 
             // panelEx_VideoTrackName1
             // 
@@ -1884,7 +1901,7 @@
             this.panelEx_VideoTrackName1.Controls.Add(this.bar_VideoTrackButtonBar1);
             this.panelEx_VideoTrackName1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx_VideoTrackName1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx_VideoTrackName1.Location = new System.Drawing.Point(0, 137);
+            this.panelEx_VideoTrackName1.Location = new System.Drawing.Point(0, 135);
             this.panelEx_VideoTrackName1.Name = "panelEx_VideoTrackName1";
             this.panelEx_VideoTrackName1.Size = new System.Drawing.Size(248, 40);
             this.panelEx_VideoTrackName1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1924,6 +1941,8 @@
             this.VideoTrackB1BI_See.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB1BI_See.Name = "VideoTrackB1BI_See";
             this.VideoTrackB1BI_See.Text = "观看";
+            this.VideoTrackB1BI_See.Tooltip = "可见/不可见轨道";
+            this.VideoTrackB1BI_See.Click += new System.EventHandler(this.VideoTrackB4BI_See_Click);
             // 
             // VideoTrackB1BI_Lock
             // 
@@ -1931,8 +1950,8 @@
             this.VideoTrackB1BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB1BI_Lock.Name = "VideoTrackB1BI_Lock";
             this.VideoTrackB1BI_Lock.Text = "锁定";
-            this.VideoTrackB1BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.VideoTrackB1BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.VideoTrackB1BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.VideoTrackB1BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // VideoTrackB1BI_Play
             // 
@@ -1940,6 +1959,7 @@
             this.VideoTrackB1BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB1BI_Play.Name = "VideoTrackB1BI_Play";
             this.VideoTrackB1BI_Play.Text = "播放";
+            this.VideoTrackB1BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // VideoTrackB1BI_MoveDown
             // 
@@ -1947,6 +1967,7 @@
             this.VideoTrackB1BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB1BI_MoveDown.Name = "VideoTrackB1BI_MoveDown";
             this.VideoTrackB1BI_MoveDown.Text = "下移";
+            this.VideoTrackB1BI_MoveDown.Tooltip = "轨道状态";
             // 
             // VideoTrackB1BI_TrackNickName
             // 
@@ -1957,6 +1978,7 @@
             this.VideoTrackB1BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.VideoTrackB1BI_TrackNickName.Name = "VideoTrackB1BI_TrackNickName";
             this.VideoTrackB1BI_TrackNickName.Text = "V1";
+            this.VideoTrackB1BI_TrackNickName.Tooltip = "视频轨";
             // 
             // panelEx_AudioName
             // 
@@ -2025,6 +2047,8 @@
             this.AudioTrackB1BI_Listen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_Listen.Name = "AudioTrackB1BI_Listen";
             this.AudioTrackB1BI_Listen.Text = "试听";
+            this.AudioTrackB1BI_Listen.Tooltip = "独奏/取消独奏轨道";
+            this.AudioTrackB1BI_Listen.Click += new System.EventHandler(this.AudioTrackB1BI_Listen_Click);
             // 
             // AudioTrackB1BI_Volume
             // 
@@ -2032,6 +2056,8 @@
             this.AudioTrackB1BI_Volume.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_Volume.Name = "AudioTrackB1BI_Volume";
             this.AudioTrackB1BI_Volume.Text = "音量";
+            this.AudioTrackB1BI_Volume.Tooltip = "禁用/解除禁用轨道";
+            this.AudioTrackB1BI_Volume.Click += new System.EventHandler(this.AudioTrackB1BI_Volume_Click);
             // 
             // AudioTrackB1BI_Lock
             // 
@@ -2039,8 +2065,8 @@
             this.AudioTrackB1BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_Lock.Name = "AudioTrackB1BI_Lock";
             this.AudioTrackB1BI_Lock.Text = "锁定";
-            this.AudioTrackB1BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.AudioTrackB1BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.AudioTrackB1BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.AudioTrackB1BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // AudioTrackB1BI_Play
             // 
@@ -2048,6 +2074,7 @@
             this.AudioTrackB1BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_Play.Name = "AudioTrackB1BI_Play";
             this.AudioTrackB1BI_Play.Text = "播放";
+            this.AudioTrackB1BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // AudioTrackB1BI_MoveDown
             // 
@@ -2055,6 +2082,7 @@
             this.AudioTrackB1BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_MoveDown.Name = "AudioTrackB1BI_MoveDown";
             this.AudioTrackB1BI_MoveDown.Text = "下移";
+            this.AudioTrackB1BI_MoveDown.Tooltip = "轨道状态";
             // 
             // AudioTrackB1BI_TrackNickName
             // 
@@ -2065,6 +2093,7 @@
             this.AudioTrackB1BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB1BI_TrackNickName.Name = "AudioTrackB1BI_TrackNickName";
             this.AudioTrackB1BI_TrackNickName.Text = "A1";
+            this.AudioTrackB1BI_TrackNickName.Tooltip = "音频轨";
             // 
             // panelEx_AudioTrackName2
             // 
@@ -2117,6 +2146,8 @@
             this.AudioTrackB2BI_Listen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_Listen.Name = "AudioTrackB2BI_Listen";
             this.AudioTrackB2BI_Listen.Text = "试听";
+            this.AudioTrackB2BI_Listen.Tooltip = "独奏/取消独奏轨道";
+            this.AudioTrackB2BI_Listen.Click += new System.EventHandler(this.AudioTrackB1BI_Listen_Click);
             // 
             // AudioTrackB2BI_Volume
             // 
@@ -2124,6 +2155,8 @@
             this.AudioTrackB2BI_Volume.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_Volume.Name = "AudioTrackB2BI_Volume";
             this.AudioTrackB2BI_Volume.Text = "音量";
+            this.AudioTrackB2BI_Volume.Tooltip = "禁用/解除禁用轨道";
+            this.AudioTrackB2BI_Volume.Click += new System.EventHandler(this.AudioTrackB1BI_Volume_Click);
             // 
             // AudioTrackB2BI_Lock
             // 
@@ -2131,8 +2164,8 @@
             this.AudioTrackB2BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_Lock.Name = "AudioTrackB2BI_Lock";
             this.AudioTrackB2BI_Lock.Text = "锁定";
-            this.AudioTrackB2BI_Lock.MouseLeave += new System.EventHandler(this.TrackName_BtnMouseLeave);
-            this.AudioTrackB2BI_Lock.MouseHover += new System.EventHandler(this.TrackName_BtnMouseHover);
+            this.AudioTrackB2BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.AudioTrackB2BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
             // 
             // AudioTrackB2BI_Play
             // 
@@ -2140,6 +2173,7 @@
             this.AudioTrackB2BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_Play.Name = "AudioTrackB2BI_Play";
             this.AudioTrackB2BI_Play.Text = "播放";
+            this.AudioTrackB2BI_Play.Tooltip = "展开/收起关键帧曲线区域";
             // 
             // AudioTrackB2BI_MoveDown
             // 
@@ -2147,6 +2181,7 @@
             this.AudioTrackB2BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_MoveDown.Name = "AudioTrackB2BI_MoveDown";
             this.AudioTrackB2BI_MoveDown.Text = "下移";
+            this.AudioTrackB2BI_MoveDown.Tooltip = "轨道状态";
             // 
             // AudioTrackB2BI_TrackNickName
             // 
@@ -2157,6 +2192,7 @@
             this.AudioTrackB2BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
             this.AudioTrackB2BI_TrackNickName.Name = "AudioTrackB2BI_TrackNickName";
             this.AudioTrackB2BI_TrackNickName.Text = "A2";
+            this.AudioTrackB2BI_TrackNickName.Tooltip = "音频轨";
             // 
             // panelEx_FillBlock
             // 
@@ -2190,7 +2226,7 @@
             this.labelItem_CurrentTime});
             this.bar_TrackNameToolBar.Location = new System.Drawing.Point(0, 0);
             this.bar_TrackNameToolBar.Name = "bar_TrackNameToolBar";
-            this.bar_TrackNameToolBar.Size = new System.Drawing.Size(248, 34);
+            this.bar_TrackNameToolBar.Size = new System.Drawing.Size(248, 36);
             this.bar_TrackNameToolBar.Stretch = true;
             this.bar_TrackNameToolBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar_TrackNameToolBar.TabIndex = 7;
@@ -2201,22 +2237,28 @@
             // 
             this.buttonItem_DeleteTrack.ImagePaddingHorizontal = 6;
             this.buttonItem_DeleteTrack.Name = "buttonItem_DeleteTrack";
-            this.buttonItem_DeleteTrack.Symbol = "";
+            this.buttonItem_DeleteTrack.Symbol = "58049";
+            this.buttonItem_DeleteTrack.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonItem_DeleteTrack.Text = "删除";
+            this.buttonItem_DeleteTrack.Tooltip = "取消缓存";
             // 
             // buttonItem_StoreTrack
             // 
             this.buttonItem_StoreTrack.ImagePaddingHorizontal = 6;
             this.buttonItem_StoreTrack.Name = "buttonItem_StoreTrack";
-            this.buttonItem_StoreTrack.Symbol = "";
+            this.buttonItem_StoreTrack.Symbol = "57391";
+            this.buttonItem_StoreTrack.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonItem_StoreTrack.Text = "存储";
+            this.buttonItem_StoreTrack.Tooltip = "覆盖模式";
             // 
             // buttonItem_TwoToOne
             // 
             this.buttonItem_TwoToOne.ImagePaddingHorizontal = 6;
             this.buttonItem_TwoToOne.Name = "buttonItem_TwoToOne";
-            this.buttonItem_TwoToOne.Symbol = "";
+            this.buttonItem_TwoToOne.Symbol = "57945";
+            this.buttonItem_TwoToOne.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.buttonItem_TwoToOne.Text = "合并";
+            this.buttonItem_TwoToOne.Tooltip = "自动吸附";
             // 
             // labelItem_CurrentTime
             // 

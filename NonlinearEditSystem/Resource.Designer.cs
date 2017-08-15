@@ -73,6 +73,46 @@ namespace NonLinearEditSystem {
         /// <summary>
         ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Icon eye_closed_16px {
+            get {
+                object obj = ResourceManager.GetObject("eye_closed_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon eye_open_16px {
+            get {
+                object obj = ResourceManager.GetObject("eye_open_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon headphone_closed_16px {
+            get {
+                object obj = ResourceManager.GetObject("headphone_closed_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon headphone_open_16px {
+            get {
+                object obj = ResourceManager.GetObject("headphone_open_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Icon lock_closed_16px {
             get {
                 object obj = ResourceManager.GetObject("lock_closed_16px", resourceCulture);
@@ -107,6 +147,26 @@ namespace NonLinearEditSystem {
             get {
                 object obj = ResourceManager.GetObject("play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon volume_full_16px {
+            get {
+                object obj = ResourceManager.GetObject("volume_full_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon volume_muted_16px {
+            get {
+                object obj = ResourceManager.GetObject("volume_muted_16px", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

@@ -91,7 +91,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Video_128px_1163314_easyicon.net.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Video_128px_1163314_easyicon.net.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common">
@@ -361,9 +361,18 @@
     <None Include="Resources\透明图片4.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\volume_muted_16px.ico" />
+    <None Include="Resources\volume_full_16px.ico" />
+    <None Include="Resources\eye_closed_16px.ico" />
+    <None Include="Resources\eye_open_16px.ico" />
+    <None Include="Resources\headphone_enable_16px.ico" />
+    <None Include="Resources\headphone_disable_16px.ico" />
+    <None Include="Resources\headphone_close_16px.ico" />
+    <None Include="Resources\headphone_open_16px.ico" />
+    <None Include="Resources\headphone_closed_16px.ico" />
     <Content Include="Resources\pause.ico" />
     <Content Include="Resources\play.ico" />
-    <Content Include="Video_128px_1163314_easyicon.net.ico" />
+    <Content Include="Resources\Video_128px_1163314_easyicon.net.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
