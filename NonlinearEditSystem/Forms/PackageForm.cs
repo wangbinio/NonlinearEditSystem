@@ -9,6 +9,9 @@ namespace NonLinearEditSystem.Forms
 {
     public partial class PackageForm : DevComponents.DotNetBar.Metro.MetroForm
     {
+
+        #region 成员变量
+
         // 打包到位置
         public static readonly object[] PackToPos = { "硬盘", "浏览器" };
 
@@ -55,6 +58,8 @@ namespace NonLinearEditSystem.Forms
         public bool bChooseInterval = false;
 
 
+        #endregion
+
         public PackageForm()
         {
             InitializeComponent();
@@ -66,6 +71,7 @@ namespace NonLinearEditSystem.Forms
         private void PackageForm_Load(object sender, System.EventArgs e)
         {
             progressBarX_Pack.Value = 0;
+
             progressBarX_Pack.Text = "0%";
 
             theMainForm = Owner as MainForm;
@@ -74,6 +80,19 @@ namespace NonLinearEditSystem.Forms
             {
                 GetPackageClips(bChooseInterval);
             }
+        }
+
+        /// <summary>
+        /// 初始化进度条
+        /// </summary>
+        private void InitProgress()
+        {
+            // 打包进度置0
+            theMainForm.dPacketProcess = 0;
+
+            progressBarX_Pack.Value = 0;
+
+            progressBarX_Pack.Text = "0%";
         }
 
         private void InitColor()
@@ -166,6 +185,9 @@ namespace NonLinearEditSystem.Forms
                 // 删除打包残留文件
                 //theMainForm.ExecuteBat();
 
+                // 打包进度置0
+                InitProgress();
+
                 theMainForm.UpdatePackageClips(bChooseInterval);
                 theMainForm.StartPacket();
                 timerPacket.Start();
@@ -189,6 +211,9 @@ namespace NonLinearEditSystem.Forms
                 // 让开始按钮不能再次点击
                 buttonX_StartPack.Enabled = false;
 
+                // 打包模式不能切换
+                comboBoxEx_打包模式.Enabled = false;
+
                 double dProcess = theMainForm.dPacketProcess;
 
                 progressBarX_Pack.Value = (int)(dProcess * 100);
@@ -203,12 +228,8 @@ namespace NonLinearEditSystem.Forms
 
                     timerPacket.Stop();
 
-                    MessageBox.Show("打包完成!");
-
                     // 打包完成之后重置进度条
-                    progressBarX_Pack.Value = 0;
-
-                    progressBarX_Pack.Text = "0%";
+                    InitProgress();
 
                     // 打包一次完成之后要将标记置为否
                     theMainForm.bPakcetFinish = false;
@@ -216,8 +237,13 @@ namespace NonLinearEditSystem.Forms
                     // 让开始按钮能再次点击
                     buttonX_StartPack.Enabled = true;
 
+                    // 打包模式不能切换
+                    comboBoxEx_打包模式.Enabled = true;
+
                     // 删除打包残留文件
                     theMainForm.ExecuteBat();
+
+                    MessageBox.Show("打包完成!");
                 }
             }
             catch (Exception ex)
@@ -270,9 +296,12 @@ namespace NonLinearEditSystem.Forms
                 theMainForm.packetIOCSharp.PacketStop();
                 theMainForm.packetIOCSharp.MuxerStop();
 
-                theMainForm.ExecuteBat();
 
                 buttonX_StartPack.Enabled = true;
+
+                InitProgress();
+
+                theMainForm.ExecuteBat();
             }
             catch (Exception ex)
             {
@@ -293,9 +322,12 @@ namespace NonLinearEditSystem.Forms
                 theMainForm.packetIOCSharp.PacketStop();
                 theMainForm.packetIOCSharp.MuxerStop();
 
-                theMainForm.ExecuteBat();
 
                 buttonX_StartPack.Enabled = true;
+
+                InitProgress();
+
+                theMainForm.ExecuteBat();
             }
             catch (Exception ex)
             {

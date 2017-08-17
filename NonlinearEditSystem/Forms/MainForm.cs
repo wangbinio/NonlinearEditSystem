@@ -337,7 +337,7 @@ namespace NonLinearEditSystem.Forms
                         DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
                     tempVedioPanel.DisabledBackColor = System.Drawing.Color.Empty;
                     tempVedioPanel.Location = new System.Drawing.Point(0, 0);
-                    tempVedioPanel.Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
+                    tempVedioPanel.Size = new System.Drawing.Size(200, trackHeight);
                     tempVedioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
                     tempVedioPanel.Style.BackColor1.Color = _colorVedioFilePanel;
                     tempVedioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -368,7 +368,7 @@ namespace NonLinearEditSystem.Forms
                         DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
                     tempAudioPanel.DisabledBackColor = System.Drawing.Color.Empty;
                     tempAudioPanel.Location = new System.Drawing.Point(0, 0);
-                    tempAudioPanel.Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
+                    tempAudioPanel.Size = new System.Drawing.Size(200, trackHeight);
                     tempAudioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
                     tempAudioPanel.Style.BackColor1.Color = _colorAudioFilePanel;
                     tempAudioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -4817,6 +4817,9 @@ namespace NonLinearEditSystem.Forms
                 // UpdateVedioTrackFilesTimes();
 
                 // UpdatePackageClips();
+
+                // 打包进度置0
+                dPacketProcess = 0;
 
                 // 1.音视频分离
                 int res = packetIOCSharp.DemuxClips(packageClipsList);
