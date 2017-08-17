@@ -123,13 +123,13 @@
             this.tabControl_TimeLine = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel_TimeLine = new DevComponents.DotNetBar.TabControlPanel();
             this.panelEx_TrackContent = new DevComponents.DotNetBar.PanelEx();
-            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
             this.panelEx_VedioTrackComent = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment2 = new DevComponents.DotNetBar.PanelEx();
             this.VideoFile1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment3 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment4 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_VideoTrackConment1 = new DevComponents.DotNetBar.PanelEx();
+            this.timeLineControl_MainTL = new TimeLineControl.TimeLineControl();
             this.panelEx_AudioTrackComent = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx_AudioTrackConment2 = new DevComponents.DotNetBar.PanelEx();
@@ -164,14 +164,6 @@
             this.VideoTrackB1BI_MoveDown = new DevComponents.DotNetBar.ButtonItem();
             this.VideoTrackB1BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx_AudioName = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx_AudioTrackName1 = new DevComponents.DotNetBar.PanelEx();
-            this.bar_AudioTrackButtonBar1 = new DevComponents.DotNetBar.Bar();
-            this.AudioTrackB1BI_Listen = new DevComponents.DotNetBar.ButtonItem();
-            this.AudioTrackB1BI_Volume = new DevComponents.DotNetBar.ButtonItem();
-            this.AudioTrackB1BI_Lock = new DevComponents.DotNetBar.ButtonItem();
-            this.AudioTrackB1BI_Play = new DevComponents.DotNetBar.ButtonItem();
-            this.AudioTrackB1BI_MoveDown = new DevComponents.DotNetBar.ButtonItem();
-            this.AudioTrackB1BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx_AudioTrackName2 = new DevComponents.DotNetBar.PanelEx();
             this.bar_AudioTrackButtonBar2 = new DevComponents.DotNetBar.Bar();
             this.AudioTrackB2BI_Listen = new DevComponents.DotNetBar.ButtonItem();
@@ -180,6 +172,14 @@
             this.AudioTrackB2BI_Play = new DevComponents.DotNetBar.ButtonItem();
             this.AudioTrackB2BI_MoveDown = new DevComponents.DotNetBar.ButtonItem();
             this.AudioTrackB2BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
+            this.panelEx_AudioTrackName1 = new DevComponents.DotNetBar.PanelEx();
+            this.bar_AudioTrackButtonBar1 = new DevComponents.DotNetBar.Bar();
+            this.AudioTrackB1BI_Listen = new DevComponents.DotNetBar.ButtonItem();
+            this.AudioTrackB1BI_Volume = new DevComponents.DotNetBar.ButtonItem();
+            this.AudioTrackB1BI_Lock = new DevComponents.DotNetBar.ButtonItem();
+            this.AudioTrackB1BI_Play = new DevComponents.DotNetBar.ButtonItem();
+            this.AudioTrackB1BI_MoveDown = new DevComponents.DotNetBar.ButtonItem();
+            this.AudioTrackB1BI_TrackNickName = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx_FillBlock = new DevComponents.DotNetBar.PanelEx();
             this.bar_TrackNameToolBar = new DevComponents.DotNetBar.Bar();
             this.buttonItem_DeleteTrack = new DevComponents.DotNetBar.ButtonItem();
@@ -216,10 +216,10 @@
             this.panelEx_VideoTrackName1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar_VideoTrackButtonBar1)).BeginInit();
             this.panelEx_AudioName.SuspendLayout();
-            this.panelEx_AudioTrackName1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar1)).BeginInit();
             this.panelEx_AudioTrackName2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar2)).BeginInit();
+            this.panelEx_AudioTrackName1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar_TrackNameToolBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1295,7 +1295,6 @@
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
             this.测试ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.测试ToolStripMenuItem.Text = "测试";
-            this.测试ToolStripMenuItem.Visible = false;
             this.测试ToolStripMenuItem.Click += new System.EventHandler(this.测试ToolStripMenuItem_Click);
             // 
             // styleManager1
@@ -1363,26 +1362,6 @@
             this.panelEx_TrackContent.Style.GradientAngle = 90;
             this.panelEx_TrackContent.TabIndex = 4;
             this.panelEx_TrackContent.Text = "轨道内容面板";
-            // 
-            // timeLineControl_MainTL
-            // 
-            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
-            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
-            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.White;
-            this.timeLineControl_MainTL.IndexOfSecEveryTicks = 2;
-            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
-            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
-            this.timeLineControl_MainTL.NBigTicksLength = 10;
-            this.timeLineControl_MainTL.NBotmPadding = 3;
-            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
-            this.timeLineControl_MainTL.NNeedShowSeconds = 7200;
-            this.timeLineControl_MainTL.NNumOfBigTicks = 24;
-            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
-            this.timeLineControl_MainTL.TabIndex = 11;
-            this.timeLineControl_MainTL.ThumbHPos = 500D;
-            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(493, 0, 15, 15);
-            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
-            this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
             // 
             // panelEx_VedioTrackComent
             // 
@@ -1527,6 +1506,26 @@
             this.panelEx_VideoTrackConment1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragVideoDrop);
             this.panelEx_VideoTrackConment1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragVideoEnter);
             this.panelEx_VideoTrackConment1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
+            // 
+            // timeLineControl_MainTL
+            // 
+            this.timeLineControl_MainTL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.timeLineControl_MainTL.Font = new System.Drawing.Font("Consolas", 8.75F);
+            this.timeLineControl_MainTL.ForeColor = System.Drawing.Color.White;
+            this.timeLineControl_MainTL.IndexOfSecEveryTicks = 2;
+            this.timeLineControl_MainTL.Location = new System.Drawing.Point(0, 0);
+            this.timeLineControl_MainTL.Name = "timeLineControl_MainTL";
+            this.timeLineControl_MainTL.NBigTicksLength = 10;
+            this.timeLineControl_MainTL.NBotmPadding = 3;
+            this.timeLineControl_MainTL.NDistanceOfTicks = 15;
+            this.timeLineControl_MainTL.NNeedShowSeconds = 7200;
+            this.timeLineControl_MainTL.NNumOfBigTicks = 24;
+            this.timeLineControl_MainTL.Size = new System.Drawing.Size(1600, 34);
+            this.timeLineControl_MainTL.TabIndex = 11;
+            this.timeLineControl_MainTL.ThumbHPos = 500D;
+            this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(493, 0, 15, 15);
+            this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
+            this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
             // 
             // panelEx_AudioTrackComent
             // 
@@ -1997,102 +1996,6 @@
             this.panelEx_AudioName.Style.GradientAngle = 90;
             this.panelEx_AudioName.TabIndex = 0;
             // 
-            // panelEx_AudioTrackName1
-            // 
-            this.panelEx_AudioTrackName1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx_AudioTrackName1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx_AudioTrackName1.Controls.Add(this.bar_AudioTrackButtonBar1);
-            this.panelEx_AudioTrackName1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx_AudioTrackName1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx_AudioTrackName1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx_AudioTrackName1.Name = "panelEx_AudioTrackName1";
-            this.panelEx_AudioTrackName1.Size = new System.Drawing.Size(248, 40);
-            this.panelEx_AudioTrackName1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx_AudioTrackName1.Style.BackColor1.Color = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelEx_AudioTrackName1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx_AudioTrackName1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx_AudioTrackName1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx_AudioTrackName1.Style.GradientAngle = 90;
-            this.panelEx_AudioTrackName1.TabIndex = 0;
-            // 
-            // bar_AudioTrackButtonBar1
-            // 
-            this.bar_AudioTrackButtonBar1.AntiAlias = true;
-            this.bar_AudioTrackButtonBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
-            this.bar_AudioTrackButtonBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bar_AudioTrackButtonBar1.DockSide = DevComponents.DotNetBar.eDockSide.Top;
-            this.bar_AudioTrackButtonBar1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bar_AudioTrackButtonBar1.IsMaximized = false;
-            this.bar_AudioTrackButtonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.AudioTrackB1BI_Listen,
-            this.AudioTrackB1BI_Volume,
-            this.AudioTrackB1BI_Lock,
-            this.AudioTrackB1BI_Play,
-            this.AudioTrackB1BI_MoveDown,
-            this.AudioTrackB1BI_TrackNickName});
-            this.bar_AudioTrackButtonBar1.Location = new System.Drawing.Point(0, 0);
-            this.bar_AudioTrackButtonBar1.Name = "bar_AudioTrackButtonBar1";
-            this.bar_AudioTrackButtonBar1.Size = new System.Drawing.Size(248, 30);
-            this.bar_AudioTrackButtonBar1.Stretch = true;
-            this.bar_AudioTrackButtonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.bar_AudioTrackButtonBar1.TabIndex = 0;
-            this.bar_AudioTrackButtonBar1.TabStop = false;
-            this.bar_AudioTrackButtonBar1.Text = "AudioTrackButtonBar1";
-            // 
-            // AudioTrackB1BI_Listen
-            // 
-            this.AudioTrackB1BI_Listen.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Listen.Icon")));
-            this.AudioTrackB1BI_Listen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_Listen.Name = "AudioTrackB1BI_Listen";
-            this.AudioTrackB1BI_Listen.Text = "试听";
-            this.AudioTrackB1BI_Listen.Tooltip = "独奏/取消独奏轨道";
-            this.AudioTrackB1BI_Listen.Click += new System.EventHandler(this.AudioTrackB1BI_Listen_Click);
-            // 
-            // AudioTrackB1BI_Volume
-            // 
-            this.AudioTrackB1BI_Volume.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Volume.Icon")));
-            this.AudioTrackB1BI_Volume.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_Volume.Name = "AudioTrackB1BI_Volume";
-            this.AudioTrackB1BI_Volume.Text = "音量";
-            this.AudioTrackB1BI_Volume.Tooltip = "禁用/解除禁用轨道";
-            this.AudioTrackB1BI_Volume.Click += new System.EventHandler(this.AudioTrackB1BI_Volume_Click);
-            // 
-            // AudioTrackB1BI_Lock
-            // 
-            this.AudioTrackB1BI_Lock.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Lock.Icon")));
-            this.AudioTrackB1BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_Lock.Name = "AudioTrackB1BI_Lock";
-            this.AudioTrackB1BI_Lock.Text = "锁定";
-            this.AudioTrackB1BI_Lock.Tooltip = "锁定/解锁轨道";
-            this.AudioTrackB1BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
-            // 
-            // AudioTrackB1BI_Play
-            // 
-            this.AudioTrackB1BI_Play.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Play.Icon")));
-            this.AudioTrackB1BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_Play.Name = "AudioTrackB1BI_Play";
-            this.AudioTrackB1BI_Play.Text = "播放";
-            this.AudioTrackB1BI_Play.Tooltip = "展开/收起关键帧曲线区域";
-            // 
-            // AudioTrackB1BI_MoveDown
-            // 
-            this.AudioTrackB1BI_MoveDown.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_MoveDown.Icon")));
-            this.AudioTrackB1BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_MoveDown.Name = "AudioTrackB1BI_MoveDown";
-            this.AudioTrackB1BI_MoveDown.Text = "下移";
-            this.AudioTrackB1BI_MoveDown.Tooltip = "轨道状态";
-            // 
-            // AudioTrackB1BI_TrackNickName
-            // 
-            this.AudioTrackB1BI_TrackNickName.FontBold = true;
-            this.AudioTrackB1BI_TrackNickName.HotFontBold = true;
-            this.AudioTrackB1BI_TrackNickName.HotFontUnderline = true;
-            this.AudioTrackB1BI_TrackNickName.HotForeColor = System.Drawing.SystemColors.HotTrack;
-            this.AudioTrackB1BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.AudioTrackB1BI_TrackNickName.Name = "AudioTrackB1BI_TrackNickName";
-            this.AudioTrackB1BI_TrackNickName.Text = "A1";
-            this.AudioTrackB1BI_TrackNickName.Tooltip = "音频轨";
-            // 
             // panelEx_AudioTrackName2
             // 
             this.panelEx_AudioTrackName2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -2191,6 +2094,102 @@
             this.AudioTrackB2BI_TrackNickName.Name = "AudioTrackB2BI_TrackNickName";
             this.AudioTrackB2BI_TrackNickName.Text = "A2";
             this.AudioTrackB2BI_TrackNickName.Tooltip = "音频轨";
+            // 
+            // panelEx_AudioTrackName1
+            // 
+            this.panelEx_AudioTrackName1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx_AudioTrackName1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx_AudioTrackName1.Controls.Add(this.bar_AudioTrackButtonBar1);
+            this.panelEx_AudioTrackName1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx_AudioTrackName1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEx_AudioTrackName1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx_AudioTrackName1.Name = "panelEx_AudioTrackName1";
+            this.panelEx_AudioTrackName1.Size = new System.Drawing.Size(248, 40);
+            this.panelEx_AudioTrackName1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx_AudioTrackName1.Style.BackColor1.Color = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelEx_AudioTrackName1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx_AudioTrackName1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx_AudioTrackName1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx_AudioTrackName1.Style.GradientAngle = 90;
+            this.panelEx_AudioTrackName1.TabIndex = 0;
+            // 
+            // bar_AudioTrackButtonBar1
+            // 
+            this.bar_AudioTrackButtonBar1.AntiAlias = true;
+            this.bar_AudioTrackButtonBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.bar_AudioTrackButtonBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bar_AudioTrackButtonBar1.DockSide = DevComponents.DotNetBar.eDockSide.Top;
+            this.bar_AudioTrackButtonBar1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bar_AudioTrackButtonBar1.IsMaximized = false;
+            this.bar_AudioTrackButtonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.AudioTrackB1BI_Listen,
+            this.AudioTrackB1BI_Volume,
+            this.AudioTrackB1BI_Lock,
+            this.AudioTrackB1BI_Play,
+            this.AudioTrackB1BI_MoveDown,
+            this.AudioTrackB1BI_TrackNickName});
+            this.bar_AudioTrackButtonBar1.Location = new System.Drawing.Point(0, 0);
+            this.bar_AudioTrackButtonBar1.Name = "bar_AudioTrackButtonBar1";
+            this.bar_AudioTrackButtonBar1.Size = new System.Drawing.Size(248, 30);
+            this.bar_AudioTrackButtonBar1.Stretch = true;
+            this.bar_AudioTrackButtonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bar_AudioTrackButtonBar1.TabIndex = 0;
+            this.bar_AudioTrackButtonBar1.TabStop = false;
+            this.bar_AudioTrackButtonBar1.Text = "AudioTrackButtonBar1";
+            // 
+            // AudioTrackB1BI_Listen
+            // 
+            this.AudioTrackB1BI_Listen.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Listen.Icon")));
+            this.AudioTrackB1BI_Listen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_Listen.Name = "AudioTrackB1BI_Listen";
+            this.AudioTrackB1BI_Listen.Text = "试听";
+            this.AudioTrackB1BI_Listen.Tooltip = "独奏/取消独奏轨道";
+            this.AudioTrackB1BI_Listen.Click += new System.EventHandler(this.AudioTrackB1BI_Listen_Click);
+            // 
+            // AudioTrackB1BI_Volume
+            // 
+            this.AudioTrackB1BI_Volume.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Volume.Icon")));
+            this.AudioTrackB1BI_Volume.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_Volume.Name = "AudioTrackB1BI_Volume";
+            this.AudioTrackB1BI_Volume.Text = "音量";
+            this.AudioTrackB1BI_Volume.Tooltip = "禁用/解除禁用轨道";
+            this.AudioTrackB1BI_Volume.Click += new System.EventHandler(this.AudioTrackB1BI_Volume_Click);
+            // 
+            // AudioTrackB1BI_Lock
+            // 
+            this.AudioTrackB1BI_Lock.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Lock.Icon")));
+            this.AudioTrackB1BI_Lock.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_Lock.Name = "AudioTrackB1BI_Lock";
+            this.AudioTrackB1BI_Lock.Text = "锁定";
+            this.AudioTrackB1BI_Lock.Tooltip = "锁定/解锁轨道";
+            this.AudioTrackB1BI_Lock.Click += new System.EventHandler(this.VideoTrackB4BI_Lock_Click);
+            // 
+            // AudioTrackB1BI_Play
+            // 
+            this.AudioTrackB1BI_Play.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_Play.Icon")));
+            this.AudioTrackB1BI_Play.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_Play.Name = "AudioTrackB1BI_Play";
+            this.AudioTrackB1BI_Play.Text = "播放";
+            this.AudioTrackB1BI_Play.Tooltip = "展开/收起关键帧曲线区域";
+            // 
+            // AudioTrackB1BI_MoveDown
+            // 
+            this.AudioTrackB1BI_MoveDown.Icon = ((System.Drawing.Icon)(resources.GetObject("AudioTrackB1BI_MoveDown.Icon")));
+            this.AudioTrackB1BI_MoveDown.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_MoveDown.Name = "AudioTrackB1BI_MoveDown";
+            this.AudioTrackB1BI_MoveDown.Text = "下移";
+            this.AudioTrackB1BI_MoveDown.Tooltip = "轨道状态";
+            // 
+            // AudioTrackB1BI_TrackNickName
+            // 
+            this.AudioTrackB1BI_TrackNickName.FontBold = true;
+            this.AudioTrackB1BI_TrackNickName.HotFontBold = true;
+            this.AudioTrackB1BI_TrackNickName.HotFontUnderline = true;
+            this.AudioTrackB1BI_TrackNickName.HotForeColor = System.Drawing.SystemColors.HotTrack;
+            this.AudioTrackB1BI_TrackNickName.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.AudioTrackB1BI_TrackNickName.Name = "AudioTrackB1BI_TrackNickName";
+            this.AudioTrackB1BI_TrackNickName.Text = "A1";
+            this.AudioTrackB1BI_TrackNickName.Tooltip = "音频轨";
             // 
             // panelEx_FillBlock
             // 
@@ -2349,10 +2348,10 @@
             this.panelEx_VideoTrackName1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar_VideoTrackButtonBar1)).EndInit();
             this.panelEx_AudioName.ResumeLayout(false);
-            this.panelEx_AudioTrackName1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar1)).EndInit();
             this.panelEx_AudioTrackName2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar2)).EndInit();
+            this.panelEx_AudioTrackName1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bar_AudioTrackButtonBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar_TrackNameToolBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

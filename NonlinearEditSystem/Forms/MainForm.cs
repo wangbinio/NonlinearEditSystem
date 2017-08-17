@@ -115,6 +115,9 @@ namespace NonLinearEditSystem.Forms
         // 打包素材列表
         public DemuxClipInfoList packageClipsList;
 
+        // 轨道上的字幕预览列表
+        public ZimuPreviewInfoList zimuPreviewList;
+
         // 图标资源
         private static Icon _icon_eye_open = Resource.eye_open_16px;
         private static Icon _icon_eye_closed = Resource.eye_closed_16px;
@@ -306,7 +309,7 @@ namespace NonLinearEditSystem.Forms
         /// 视频文件面板背景色
         /// </summary>
         private static Color _colorVedioFilePanel = Color.SteelBlue;
-        private static Color _colorVedioFilePanelClick = Color.FromArgb(91,61,61);
+        private static Color _colorVedioFilePanelClick = Color.FromArgb(91, 61, 61);
 
         /// <summary>
         /// 音频文件面板背景色
@@ -1432,11 +1435,30 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timeLineControl_MainTL_Click(object sender, EventArgs e)
         {
-            // 更新label时间
-            UpdateLabelTime();
+            try
+            {
+                // 只要点击时间线，立即停止播放视频
+                // 1.播放停止,定时器停止
+                _iClipPlayControlCSharp.Stop();
+                timer_Sequence.Stop();
 
-            // 找到所需显示的视频,并更新显示的帧
-            FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+                // 2.将2个播放按钮的图标symble转换为点击播放
+                buttonX_PlayAndStop.Symbol = _symbolPlay;
+                buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+
+                // 更新label时间
+                UpdateLabelTime();
+
+                // 找到所需显示的视频,并更新显示的帧
+                //FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+                UpdateNeedShowFrame();
+
+
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
         }
 
         /// <summary>
@@ -1446,20 +1468,65 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void timeLineControl_MainTL_MouseMove(object sender, MouseEventArgs e)
         {
-            // 更新label时间
-            UpdateLabelTime();
-
             if (timeLineControl_MainTL._chooseThumb)
             {
+                // 只要点击时间线，立即停止播放视频
+                // 1.播放停止,定时器停止
+                _iClipPlayControlCSharp.Stop();
+                timer_Sequence.Stop();
+
+                // 2.将2个播放按钮的图标symble转换为点击播放
+                buttonX_PlayAndStop.Symbol = _symbolPlay;
+                buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+
+                // 更新label时间
+                UpdateLabelTime();
+
                 // 找到所需显示的视频,并更新显示的帧
-                FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+                //FindNeedShowVedioByTime(timeLineControl_MainTL.ThumbValue);
+                UpdateNeedShowFrame();
             }
         }
 
-
+        /// <summary>
+        /// 更新需要显示的帧
+        /// </summary>
         private void UpdateNeedShowFrame()
         {
+            PanelEx vedioPanel = FindThumbPosVedio();
+            List<PanelEx> zimuPanels = FindThumbPosZimu();
 
+            if (vedioPanel == null)
+            {
+                // 2.如果当前位置没有视频,为空白,则设置播放视频为空
+                ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                _iClipPlayControlCSharp.SetClip("", cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
+            }
+            else
+            {
+                // 3.如果当前有视频,则开始播放当前视频
+                ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                _iClipPlayControlCSharp.SetClip(vedioPanel.Name, cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
+
+                // 4.找到开始播放的位置
+                // 4.1.首先解析tag获取信息
+                string objStr = vedioPanel.Tag as string;
+                if (objStr == null) return;
+                string[] startAndEndTime = objStr.Split('-');
+                if (startAndEndTime.Length < 4) return;
+
+                // 4.2.得到原文件在时间线上的起始/终点时间,和自己的入点/出点时间
+                double dStartTime = double.Parse(startAndEndTime[0]);
+                double dEndTime = double.Parse(startAndEndTime[1]);
+                double dEntreTime = double.Parse(startAndEndTime[2]);
+
+                double dPlayTime = timeLineControl_MainTL.ThumbValue - dStartTime + dEntreTime;
+
+                int res = _iClipPlayControlCSharp.SetGivenPosition((long)(dPlayTime * GeneralConversions.SecToNanoSec));
+                //_iClipPlayControlCSharp.SetGivenPosition(100000000);
+                //_iClipPlayControlCSharp.SetPosition((long)(dPlayTime * GeneralConversions.SecToNanoSec), 0);
+                //_iClipPlayControlCSharp.Play();
+            }
         }
 
         #endregion 主时间线操作
@@ -1538,10 +1605,10 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
         }
-        
+
 
         /// <summary>
         /// 在音视频轨道上拖动文件
@@ -1602,9 +1669,9 @@ namespace NonLinearEditSystem.Forms
             }
             catch (Exception ex)
             {
-            	ExceptionHandle.ExceptionHdl(ex);
+                ExceptionHandle.ExceptionHdl(ex);
             }
-            
+
         }
 
         /// <summary>
@@ -2381,6 +2448,16 @@ namespace NonLinearEditSystem.Forms
         }
 
 
+        /// <summary>
+        /// 视频内容轨道滚动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panelEx_VedioTrackComent_Scroll(object sender, ScrollEventArgs e)
+        {
+            //MessageBox.Show("scroll");
+        }
+
         #endregion 视频轨道操作
 
 
@@ -2580,7 +2657,7 @@ namespace NonLinearEditSystem.Forms
                 if (sFileType.ToUpper() != "MP4") return;
 
                 IntPtr rendWnd = PanelEx_Sequence.Handle;
-                int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
+                //int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
                 _iClipPlayControlCSharp.Play();
                 timer_Sequence.Stop();
                 timer_Sequence.Start();
@@ -2646,7 +2723,8 @@ namespace NonLinearEditSystem.Forms
 
                 if (panel == null)
                 {
-                    _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                    ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                    _iClipPlayControlCSharp.SetClip("", cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
                     _iClipPlayControlCSharp.Play();
                 }
                 else
@@ -2655,7 +2733,8 @@ namespace NonLinearEditSystem.Forms
                     if (panel.Name != palyFileName)
                     {
                         // 3.如果当前有视频,则开始播放当前视频
-                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
+                        ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -2714,6 +2793,15 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
+        /// 找到游标位置的所有字幕
+        /// </summary>
+        /// <returns></returns>
+        private List<PanelEx> FindThumbPosZimu()
+        {
+            return FindNeedShowZiMuByTime(timeLineControl_MainTL.ThumbValue);
+        }
+
+        /// <summary>
         /// 通过位置(坐标)找到当前游标所在位置的视频
         /// </summary>
         /// <param name="pos"></param>
@@ -2751,8 +2839,43 @@ namespace NonLinearEditSystem.Forms
             catch (Exception ex)
             {
                 ExceptionHandle.ExceptionHdl(ex);
-                return null;
             }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 通过时间找到当前所有的字幕
+        /// </summary>
+        /// <param name="dTime"></param>
+        /// <returns></returns>
+        private List<PanelEx> FindNeedShowZiMuByTime(double dTime)
+        {
+            try
+            {
+                List<PanelEx> zimuPanelList = new List<PanelEx>();
+
+                // 直接遍历所有_vedioFilesPanel
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 如果不是字幕面板，则跳过
+                    if (panel == null || !panel.Name.ToUpper().EndsWith(zimuFileEnd)) continue;
+
+                    // 判断是否是在时间点上的字幕
+                    if (!IsNeededShowPanel(panel, dTime)) continue;
+
+                    // 如果是，则加入列表
+                    zimuPanelList.Add(panel);
+                }
+
+                return zimuPanelList;
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -2796,10 +2919,10 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
-                IntPtr rendWnd = PanelEx_Sequence.Handle;
-                int ires = _iClipPlayControlCSharp.SetClip(panelName, rendWnd);
-                _iClipPlayControlCSharp.SetPosition(playTime, 0);
-                _iClipPlayControlCSharp.Play();
+                //IntPtr rendWnd = PanelEx_Sequence.Handle;
+                //int ires = _iClipPlayControlCSharp.SetClip(panelName, rendWnd);
+                //_iClipPlayControlCSharp.SetPosition(playTime, 0);
+                //_iClipPlayControlCSharp.Play();
                 //_iClipPlayControlCSharp.Pause();
             }
             catch (Exception ex)
@@ -2984,12 +3107,14 @@ namespace NonLinearEditSystem.Forms
                     if (panel == null)
                     {
                         // 2.如果当前位置没有视频,为空白,则设置播放视频为空
-                        _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                        ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                        _iClipPlayControlCSharp.SetClip("", cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
                     }
                     else
                     {
                         // 3.如果当前有视频,则开始播放当前视频
-                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
+                        ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -3057,12 +3182,14 @@ namespace NonLinearEditSystem.Forms
                     if (panel == null)
                     {
                         // 2.如果当前位置没有视频,为空白,则设置播放视频为空
-                        _iClipPlayControlCSharp.SetClip("", (IntPtr)PanelEx_Sequence.Handle);
+                        ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                        _iClipPlayControlCSharp.SetClip("", cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
                     }
                     else
                     {
                         // 3.如果当前有视频,则开始播放当前视频
-                        _iClipPlayControlCSharp.SetClip(panel.Name, (IntPtr)PanelEx_Sequence.Handle);
+                        ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -4801,6 +4928,14 @@ namespace NonLinearEditSystem.Forms
 
         private void 测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //UpdateNeedShowFrame();
+
+            ZimuPreviewInfoList cZimuPreviewInfoList = new ZimuPreviewInfoList();
+            int res = 
+                _iClipPlayControlCSharp.SetClip(BlackVedio, cZimuPreviewInfoList, (IntPtr)PanelEx_Sequence.Handle);
+            res = _iClipPlayControlCSharp.SetGivenPosition(100000000);
+
+            //_iClipPlayControlCSharp.Play();
 
         }
 
@@ -4882,21 +5017,6 @@ namespace NonLinearEditSystem.Forms
             }
 
         }
-
-        private void panelEx_VedioTrackComent_Scroll(object sender, ScrollEventArgs e)
-        {
-            MessageBox.Show("scroll");
-        }
-
-
-
-
-
-
-
-
-
-
 
 
 

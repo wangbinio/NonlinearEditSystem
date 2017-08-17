@@ -109,12 +109,40 @@ namespace ClrDataTypeChange
         }
     }
 
+    public class tagZimuPreviewInfoCLR
+    {
+        public string szZimuFile;//字幕文件名
+        public long rtStartPos;//在预览素材中的开始时间（单位：ms）
+        public long rtStopPos;//在预览素材中的结束时间（单位：ms）
+
+        public long duration;//字幕总播出时长（单位：ms）
+        public long start;//字幕在预览素材中的开始时刻（单位：ms）
+
+        public int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二层，以此类推。
+
+        public tagZimuPreviewInfoCLR()
+        {
+            szZimuFile = string.Empty;
+            rtStartPos = 0;
+            rtStopPos = 0;
+            duration = 0;
+            start = 0;
+            Level = 0;
+        }
+    }
+
+
     public class DemuxClipInfoList : BindingList<tagDemuxClipInfoCLR>
     {
 
     }
 
     public class ZimuMixInfoList : BindingList<tagZimuMixInfoCLR>
+    {
+
+    }
+
+    public class ZimuPreviewInfoList : BindingList<tagZimuPreviewInfoCLR>
     {
 
     }

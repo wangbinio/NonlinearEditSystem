@@ -3,7 +3,10 @@
 #include "ClipPlayControlIO.h"
 #include <vcclr.h>
 
+#using "ClrDataTypeChange.dll"
+
 using namespace System;
+using namespace ClrDataTypeChange;
 
 //#define _MAGICODE_CLIPPLAYCONTROL_
 
@@ -29,7 +32,10 @@ namespace ClrInterfaceDll
 		//返回值：
 		// S_OK ----- 加载成功；否则加载失败
 		//注意：只能加载高清MP4或H264音视频素材
-		int SetClip(String^ strFileName, IntPtr hWnd);
+		//int SetClip(String^ strFileName, IntPtr hWnd);
+
+		int SetClip(String^ szClipFileName, ZimuPreviewInfoList^ ZimuList, IntPtr hWnd);
+
 
 		// 返回set的素材
 		String^ GetClip();
@@ -51,6 +57,11 @@ namespace ClrInterfaceDll
 		//停止
 		//返回值：S_OK = 成功；否则 失败
 		int Stop();
+
+		//拖动素材到指定位置
+		//参数：
+		//  rtPos ---- 输入参数，指定位置的时间，单位：100ns
+		int SetGivenPosition(long long rtPos);
 		/////////////////////////////////////////////////////
 
 		//获取当前播放状态
@@ -75,6 +86,18 @@ namespace ClrInterfaceDll
 		//  rtEndPos --- 出点，如果出点为素材末尾，则不用设置，直接使用缺省值0，单位：100ns
 		//返回值：S_OK = 成功；否则 失败
 		int SetPosition(long long rtPos, long long rtEndPos);
+
+
+		//保存指定帧图像为BMP文件
+		//参数：
+		//1、szBmpFileName ---- 输入参数，Bmp图像文件全名（包括路径和文件名）
+		//2、rtPos ---- 输入参数，待保存的帧图像所在时刻，单位：100ns
+		//说明：保存的图片为24位1920*1080大小的BMP图
+		void SaveGivenFrameToBmp(String^ szBmpFileName, long long rtPos);
+
+
+		ZimuPreviewInfo ConvertToZimuPreviewInfo(tagZimuPreviewInfoCLR^ ctagZimuPreviewInfoCLR);
+
 
 	private:
 		CClipPlayControlIO* m_IClipPlayControl;

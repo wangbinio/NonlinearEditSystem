@@ -18,6 +18,7 @@ ClipPlayControlCSharp::ClipPlayControlCSharp()
 //	return m_IClipPlayControl->Release();
 //}
 
+/*
 int ClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 {
 	//void * phWnd = hWnd->ToPointer();
@@ -29,8 +30,31 @@ int ClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 	TCHAR *szFileName = (TCHAR*)(Marshal::StringToHGlobalUni(strFileName)).ToPointer();
 
 	_strFileName = strFileName;
+
 	return m_IClipPlayControl->SetClip(szFileName, iHwnd);
 }
+*/
+
+int ClipPlayControlCSharp::SetClip(String^ szClipFileName, ZimuPreviewInfoList^ ZimuList, IntPtr hWnd)
+{
+	HWND iHwnd = (HWND)hWnd.ToPointer();
+
+	TCHAR *szFileName = (TCHAR*)(Marshal::StringToHGlobalUni(szClipFileName)).ToPointer();
+
+	_strFileName = szClipFileName;
+
+	vector<ZimuPreviewInfo> vZimuList;
+	
+	int nCount = ZimuList->Count;
+
+	for (int i = 0; i < nCount; i++)
+	{
+		vZimuList.push_back(ConvertToZimuPreviewInfo(ZimuList[i]));
+	}
+
+	return m_IClipPlayControl->SetClip(szFileName, vZimuList, iHwnd);
+}
+
 
 
 String^ ClipPlayControlCSharp::GetClip()
@@ -63,6 +87,12 @@ int ClipPlayControlCSharp::Stop()
 }
 
 
+int ClipPlayControlCSharp::SetGivenPosition(long long rtPos)
+{
+	return m_IClipPlayControl->SetGivenPosition(rtPos);
+}
+
+
 int ClipPlayControlCSharp::GetCurState()
 {
 	return m_IClipPlayControl->GetCurState();
@@ -84,4 +114,32 @@ long long ClipPlayControlCSharp::GetPosition()
 int ClipPlayControlCSharp::SetPosition(long long rtPos, long long rtEndPos)
 {
 	return m_IClipPlayControl->SetPosition(rtPos, rtEndPos);
+}
+
+
+void ClipPlayControlCSharp::SaveGivenFrameToBmp(String^ szBmpFileName, long long rtPos)
+{
+	TCHAR *szFileName = (TCHAR*)(Marshal::StringToHGlobalUni(szBmpFileName)).ToPointer();
+
+	return m_IClipPlayControl->SaveGivenFrameToBmp(szFileName, rtPos);
+}
+
+
+
+ZimuPreviewInfo ClipPlayControlCSharp::ConvertToZimuPreviewInfo(tagZimuPreviewInfoCLR^ ctagZimuPreviewInfoCLR)
+{
+	ZimuPreviewInfo cZimuPreviewInfo;
+	ZeroMemory(&cZimuPreviewInfo, sizeof(cZimuPreviewInfo));
+
+	TCHAR *szZimuFile = (TCHAR*)(Marshal::StringToHGlobalUni(ctagZimuPreviewInfoCLR->szZimuFile)).ToPointer();
+
+	memcpy(cZimuPreviewInfo.szZimuFile, szZimuFile, sizeof(cZimuPreviewInfo.szZimuFile));
+
+	cZimuPreviewInfo.rtStartPos	= ctagZimuPreviewInfoCLR->rtStartPos;
+	cZimuPreviewInfo.rtStopPos	= ctagZimuPreviewInfoCLR->rtStopPos	;
+	cZimuPreviewInfo.start		= ctagZimuPreviewInfoCLR->start		;
+	cZimuPreviewInfo.duration	= ctagZimuPreviewInfoCLR->duration	;
+	cZimuPreviewInfo.Level		= ctagZimuPreviewInfoCLR->Level		;
+
+	return cZimuPreviewInfo;
 }
