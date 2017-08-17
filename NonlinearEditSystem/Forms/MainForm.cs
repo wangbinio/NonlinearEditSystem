@@ -222,6 +222,9 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 初始化音视频轨道面板
+        /// </summary>
         private void InitVedioAndAudioTrackPanels()
         {
             // 初始化音视频轨道panel
@@ -237,13 +240,18 @@ namespace NonLinearEditSystem.Forms
 
             foreach (var panel in _vedioTrackPanels)
             {
+                // 添加鼠标移动事件
                 panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelEx_VideoTrackConment1_MouseMove);
                 //panel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
+
+                // 添加鼠标点击事件
+                panel.MouseClick += panelEx_VideoTrackConment1_MouseClick;
             }
 
             // 创建右键菜单
             CreateTrackBlankMenu();
         }
+
 
         /// <summary>
         /// 创建操作辅助面板,用于轨道上的文件操作
@@ -295,6 +303,18 @@ namespace NonLinearEditSystem.Forms
         }
 
         /// <summary>
+        /// 视频文件面板背景色
+        /// </summary>
+        private static Color _colorVedioFilePanel = Color.SteelBlue;
+        private static Color _colorVedioFilePanelClick = Color.FromArgb(91,61,61);
+
+        /// <summary>
+        /// 音频文件面板背景色
+        /// </summary>
+        private static Color _colorAudioFilePanel = Color.MediumAquamarine;
+        private static Color _colorAudioFilePanelClick = Color.MediumAquamarine;
+
+        /// <summary>
         /// 初始化音视频轨道文件panel
         /// </summary>
         private void InitVedioAndAudioFilePanels()
@@ -306,7 +326,6 @@ namespace NonLinearEditSystem.Forms
                 //_audioFilesPanel.Clear();
                 _vedioFilesPanel = new List<PanelEx>(_maxFilesPannel);
                 _audioFilesPanel = new List<PanelEx>(_maxFilesPannel);
-                ;
 
                 for (int i = 0; i < _maxFilesPannel; i++)
                 {
@@ -320,19 +339,19 @@ namespace NonLinearEditSystem.Forms
                     tempVedioPanel.Location = new System.Drawing.Point(0, 0);
                     tempVedioPanel.Size = new System.Drawing.Size(200, panelEx_VideoTrackConment1.Height);
                     tempVedioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
-                    tempVedioPanel.Style.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                    tempVedioPanel.Style.BackColor1.Color = _colorVedioFilePanel;
                     tempVedioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
                     tempVedioPanel.Style.BorderColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
                     tempVedioPanel.Style.ForeColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelText;
                     tempVedioPanel.Style.GradientAngle = 90;
-                    tempVedioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                    tempVedioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                    tempVedioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
-                    tempVedioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                    tempVedioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                    tempVedioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
+                    //tempVedioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    //tempVedioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    //tempVedioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.SteelBlue;
+                    //tempVedioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    //tempVedioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    //tempVedioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.DodgerBlue;
                     tempVedioPanel.TabIndex = 0;
                     tempVedioPanel.Name = "VideoFile" + i;
                     tempVedioPanel.Text = "VideoFile" + i;
@@ -340,6 +359,7 @@ namespace NonLinearEditSystem.Forms
                     tempVedioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     tempVedioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
                     tempVedioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    tempVedioPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseClick);
                     //tempVedioPanel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
 
 
@@ -350,19 +370,19 @@ namespace NonLinearEditSystem.Forms
                     tempAudioPanel.Location = new System.Drawing.Point(0, 0);
                     tempAudioPanel.Size = new System.Drawing.Size(200, panelEx_AudioTrackConment1.Height);
                     tempAudioPanel.Style.Alignment = System.Drawing.StringAlignment.Center;
-                    tempAudioPanel.Style.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    tempAudioPanel.Style.BackColor1.Color = _colorAudioFilePanel;
                     tempAudioPanel.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
                     tempAudioPanel.Style.BorderColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
                     tempAudioPanel.Style.ForeColor.ColorSchemePart =
                         DevComponents.DotNetBar.eColorSchemePart.PanelText;
                     tempAudioPanel.Style.GradientAngle = 90;
-                    tempAudioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-                    tempAudioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
-                    tempAudioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
-                    tempAudioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-                    tempAudioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
-                    tempAudioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    //tempAudioPanel.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+                    //tempAudioPanel.StyleMouseDown.BackColor1.Alpha = ((byte)(128));
+                    //tempAudioPanel.StyleMouseDown.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
+                    //tempAudioPanel.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+                    //tempAudioPanel.StyleMouseOver.BackColor1.Alpha = ((byte)(128));
+                    //tempAudioPanel.StyleMouseOver.BackColor1.Color = System.Drawing.Color.MediumAquamarine;
                     tempAudioPanel.TabIndex = 0;
                     tempAudioPanel.Name = "AudioFile" + i;
                     tempAudioPanel.Text = "AudioFile" + i;
@@ -370,6 +390,7 @@ namespace NonLinearEditSystem.Forms
                     tempAudioPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
                     tempAudioPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
                     tempAudioPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+                    tempAudioPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseClick);
                     //tempAudioPanel.MouseEnter += panelEx_VideoTrackConment1_MouseEnter;
 
                     _vedioFilesPanel.Add(tempVedioPanel);
@@ -430,8 +451,6 @@ namespace NonLinearEditSystem.Forms
         {
             listView_Files.BackColor = bkgColor;
         }
-
-
 
         /// <summary>
         /// 初始化按钮图标
@@ -1495,6 +1514,35 @@ namespace NonLinearEditSystem.Forms
         private bool _mouseMovedVedioPanel = false;
         private PanelEx _panelExSelected = new PanelEx();
 
+
+        /// <summary>
+        /// 视频文件点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoFile_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                PanelEx panelExClicked = (PanelEx)sender;
+
+                // 将点击的面板置为高亮，其他面板恢复原色
+
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    panel.Style.BackColor1.Color = _colorVedioFilePanel;
+                }
+
+                panelExClicked.Style.BackColor1.Color = _colorVedioFilePanelClick;
+
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+        
+
         /// <summary>
         /// 在音视频轨道上拖动文件
         /// </summary>
@@ -1502,45 +1550,61 @@ namespace NonLinearEditSystem.Forms
         /// <param name="e"></param>
         private void VideoFile_MouseDown(object sender, MouseEventArgs e)
         {
-            //base.OnMouseDown(e);
-
-            // 鼠标按下的时候让控件获取焦点
-            //bool bFocused = Focus();
-
-            PanelEx panelExSelected = (PanelEx)sender;
-
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                panelExSelected.Capture = true;
+                //base.OnMouseDown(e);
 
-                // 点中起点
-                //if (Math.Abs((float)e.X - (float)panelExSelected.Location.X) < fClickDelta)
-                if (e.X <= (int)fClickDelta)
+                // 鼠标按下的时候让控件获取焦点
+                //bool bFocused = Focus();
+
+                PanelEx panelExSelected = (PanelEx)sender;
+
+                // 设置选中高亮
+                foreach (PanelEx panel in _vedioFilesPanel)
                 {
-                    _chooseVedioPanelStart = true;
-                    Cursor = Cursors.SizeWE;
-                }
-                // 点中终点
-                //else if (Math.Abs((float)e.X - (float)panelExSelected.Location.X - panelExSelected.Width) < fClickDelta)
-                else if (panelExSelected.Width - e.X <= (int)fClickDelta)
-                {
-                    _chooseVedioPanelEnd = true;
-                    Cursor = Cursors.SizeWE;
-                }
-                // 点中本身
-                else
-                {
-                    _chooseVedioPanelSelf = true;
-                    Cursor = Cursors.Hand;
+                    panel.Style.BackColor1.Color = _colorVedioFilePanel;
                 }
 
-                _mousePosDeltaX = e.X - panelExSelected.Location.X;
-                _mousePosDeltaY = e.Y - panelExSelected.Location.Y;
+                panelExSelected.Style.BackColor1.Color = _colorVedioFilePanelClick;
 
-                //_mousePosDeltaX = e.X;
-                // 鼠标按下的时候，还未移动
-                _mouseMovedVedioPanel = false;
+                if (e.Button == MouseButtons.Left)
+                {
+                    panelExSelected.Capture = true;
+
+                    // 点中起点
+                    //if (Math.Abs((float)e.X - (float)panelExSelected.Location.X) < fClickDelta)
+                    if (e.X <= (int)fClickDelta)
+                    {
+                        _chooseVedioPanelStart = true;
+                        Cursor = Cursors.SizeWE;
+                    }
+                    // 点中终点
+                    //else if (Math.Abs((float)e.X - (float)panelExSelected.Location.X - panelExSelected.Width) < fClickDelta)
+                    else if (panelExSelected.Width - e.X <= (int)fClickDelta)
+                    {
+                        _chooseVedioPanelEnd = true;
+                        Cursor = Cursors.SizeWE;
+                    }
+                    // 点中本身
+                    else
+                    {
+                        _chooseVedioPanelSelf = true;
+                        Cursor = Cursors.Hand;
+                    }
+
+                    _mousePosDeltaX = e.X - panelExSelected.Location.X;
+                    _mousePosDeltaY = e.Y - panelExSelected.Location.Y;
+
+                    //_mousePosDeltaX = e.X;
+                    // 鼠标按下的时候，还未移动
+                    _mouseMovedVedioPanel = false;
+                }
             }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+            
         }
 
         /// <summary>
@@ -2033,6 +2097,16 @@ namespace NonLinearEditSystem.Forms
             {
                 ExceptionHandle.ExceptionHdl(ex);
             }
+        }
+
+        /// <summary>
+        /// 视频轨道鼠标点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panelEx_VideoTrackConment1_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
 
         /// <summary>
@@ -4804,6 +4878,11 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
 
+        }
+
+        private void panelEx_VedioTrackComent_Scroll(object sender, ScrollEventArgs e)
+        {
+            MessageBox.Show("scroll");
         }
 
 
