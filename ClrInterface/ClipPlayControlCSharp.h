@@ -34,7 +34,7 @@ namespace ClrInterfaceDll
 		//注意：只能加载高清MP4或H264音视频素材
 		//int SetClip(String^ strFileName, IntPtr hWnd);
 
-		int SetClip(String^ szClipFileName, ZimuPreviewInfoList^ ZimuList, IntPtr hWnd);
+		int SetClip(String^ szClipFileName, ZimuMixInfoList^ ZimuList, IntPtr hWnd);
 
 
 		// 返回set的素材
@@ -96,7 +96,7 @@ namespace ClrInterfaceDll
 		void SaveGivenFrameToBmp(String^ szBmpFileName, long long rtPos);
 
 
-		ZimuPreviewInfo ConvertToZimuPreviewInfo(tagZimuPreviewInfoCLR^ ctagZimuPreviewInfoCLR);
+		ZimuMixInfo ConvertToZimuPreviewInfo(tagZimuMixInfoCLR^ ctagZimuPreviewInfoCLR);
 
 
 	private:

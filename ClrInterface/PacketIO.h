@@ -63,6 +63,11 @@ public:
 	// >=0 成功 ; <0 失败
 	int PacketingInitial(IN vector<ZimuMixInfo> &ZimuList);
 
+	//设置打包音视频参数，必须在打包开始前调用该接口（即调用PacketStart接口前调用）！如果不需设置参数，直接以参数指针NULL传入即可
+	//参数：pVp ---- 视频参数指针，输入参数
+	//      pAp ---- 音频参数指针，输入参数 
+	void SetVideoAudioParameters(VideoParameters *pVp = NULL, AudioParameters *pAp = NULL);
+
 	//打包
 	//返回值：
 	// >=0 成功 ; <0 失败

@@ -960,6 +960,7 @@
             this.导入工程ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.导入工程ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.导入工程ToolStripMenuItem.Name = "导入工程ToolStripMenuItem";
+            this.导入工程ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.导入工程ToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.导入工程ToolStripMenuItem.Text = "导入工程";
             this.导入工程ToolStripMenuItem.Click += new System.EventHandler(this.导入工程ToolStripMenuItem_Click);
@@ -1250,7 +1251,6 @@
             this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
             this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.分离ToolStripMenuItem.Text = "分离";
-            this.分离ToolStripMenuItem.Visible = false;
             this.分离ToolStripMenuItem.Click += new System.EventHandler(this.分离ToolStripMenuItem_Click);
             // 
             // 编解码ToolStripMenuItem
@@ -1260,7 +1260,6 @@
             this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
             this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.编解码ToolStripMenuItem.Text = "编解码";
-            this.编解码ToolStripMenuItem.Visible = false;
             this.编解码ToolStripMenuItem.Click += new System.EventHandler(this.编解码ToolStripMenuItem_Click);
             // 
             // 打包ToolStripMenuItem
@@ -1270,7 +1269,6 @@
             this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
             this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.打包ToolStripMenuItem.Text = "打包";
-            this.打包ToolStripMenuItem.Visible = false;
             this.打包ToolStripMenuItem.Click += new System.EventHandler(this.打包ToolStripMenuItem_Click);
             // 
             // MainmenuStrip
@@ -1436,6 +1434,7 @@
             this.VideoFile1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseDown);
             this.VideoFile1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseMove);
             this.VideoFile1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VideoFile_MouseUp);
+            this.VideoFile1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.VideoFile1_PreviewKeyDown);
             // 
             // panelEx_VideoTrackConment3
             // 
@@ -1526,6 +1525,7 @@
             this.timeLineControl_MainTL.ThumbRectangle = new System.Drawing.Rectangle(493, 0, 15, 15);
             this.timeLineControl_MainTL.Click += new System.EventHandler(this.timeLineControl_MainTL_Click);
             this.timeLineControl_MainTL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseMove);
+            this.timeLineControl_MainTL.MouseUp += new System.Windows.Forms.MouseEventHandler(this.timeLineControl_MainTL_MouseUp);
             // 
             // panelEx_AudioTrackComent
             // 
@@ -1718,6 +1718,7 @@
             this.VideoTrackB4BI_TrackNickName.Name = "VideoTrackB4BI_TrackNickName";
             this.VideoTrackB4BI_TrackNickName.Text = "V4";
             this.VideoTrackB4BI_TrackNickName.Tooltip = "视频轨";
+            this.VideoTrackB4BI_TrackNickName.Click += new System.EventHandler(this.VideoTrackB4BI_TrackNickName_Click);
             // 
             // panelEx_VideoTrackName3
             // 
@@ -1804,6 +1805,7 @@
             this.VideoTrackB3BI_TrackNickName.Name = "VideoTrackB3BI_TrackNickName";
             this.VideoTrackB3BI_TrackNickName.Text = "V3";
             this.VideoTrackB3BI_TrackNickName.Tooltip = "视频轨";
+            this.VideoTrackB3BI_TrackNickName.Click += new System.EventHandler(this.VideoTrackB4BI_TrackNickName_Click);
             // 
             // panelEx_VideoTrackName2
             // 
@@ -1890,6 +1892,7 @@
             this.VideoTrackB2BI_TrackNickName.Name = "VideoTrackB2BI_TrackNickName";
             this.VideoTrackB2BI_TrackNickName.Text = "V2";
             this.VideoTrackB2BI_TrackNickName.Tooltip = "视频轨";
+            this.VideoTrackB2BI_TrackNickName.Click += new System.EventHandler(this.VideoTrackB4BI_TrackNickName_Click);
             // 
             // panelEx_VideoTrackName1
             // 
@@ -1976,6 +1979,7 @@
             this.VideoTrackB1BI_TrackNickName.Name = "VideoTrackB1BI_TrackNickName";
             this.VideoTrackB1BI_TrackNickName.Text = "V1";
             this.VideoTrackB1BI_TrackNickName.Tooltip = "视频轨";
+            this.VideoTrackB1BI_TrackNickName.Click += new System.EventHandler(this.VideoTrackB4BI_TrackNickName_Click);
             // 
             // panelEx_AudioName
             // 
@@ -2094,6 +2098,7 @@
             this.AudioTrackB2BI_TrackNickName.Name = "AudioTrackB2BI_TrackNickName";
             this.AudioTrackB2BI_TrackNickName.Text = "A2";
             this.AudioTrackB2BI_TrackNickName.Tooltip = "音频轨";
+            this.AudioTrackB2BI_TrackNickName.Click += new System.EventHandler(this.AudioTrackB1BI_TrackNickName_Click);
             // 
             // panelEx_AudioTrackName1
             // 
@@ -2190,6 +2195,7 @@
             this.AudioTrackB1BI_TrackNickName.Name = "AudioTrackB1BI_TrackNickName";
             this.AudioTrackB1BI_TrackNickName.Text = "A1";
             this.AudioTrackB1BI_TrackNickName.Tooltip = "音频轨";
+            this.AudioTrackB1BI_TrackNickName.Click += new System.EventHandler(this.AudioTrackB1BI_TrackNickName_Click);
             // 
             // panelEx_FillBlock
             // 
@@ -2314,6 +2320,7 @@
             this.Controls.Add(this.tabControl_TimeLine);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.75F);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MainmenuStrip;
             this.MaximizeBox = false;

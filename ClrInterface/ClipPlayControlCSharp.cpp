@@ -35,7 +35,7 @@ int ClipPlayControlCSharp::SetClip(String^ strFileName, IntPtr hWnd)
 }
 */
 
-int ClipPlayControlCSharp::SetClip(String^ szClipFileName, ZimuPreviewInfoList^ ZimuList, IntPtr hWnd)
+int ClipPlayControlCSharp::SetClip(String^ szClipFileName, ZimuMixInfoList^ ZimuList, IntPtr hWnd)
 {
 	HWND iHwnd = (HWND)hWnd.ToPointer();
 
@@ -43,7 +43,7 @@ int ClipPlayControlCSharp::SetClip(String^ szClipFileName, ZimuPreviewInfoList^ 
 
 	_strFileName = szClipFileName;
 
-	vector<ZimuPreviewInfo> vZimuList;
+	vector<ZimuMixInfo> vZimuList;
 	
 	int nCount = ZimuList->Count;
 
@@ -52,7 +52,8 @@ int ClipPlayControlCSharp::SetClip(String^ szClipFileName, ZimuPreviewInfoList^ 
 		vZimuList.push_back(ConvertToZimuPreviewInfo(ZimuList[i]));
 	}
 
-	return m_IClipPlayControl->SetClip(szFileName, vZimuList, iHwnd);
+	int res = m_IClipPlayControl->SetClip(szFileName, vZimuList, iHwnd);
+	return res;
 }
 
 
@@ -126,9 +127,9 @@ void ClipPlayControlCSharp::SaveGivenFrameToBmp(String^ szBmpFileName, long long
 
 
 
-ZimuPreviewInfo ClipPlayControlCSharp::ConvertToZimuPreviewInfo(tagZimuPreviewInfoCLR^ ctagZimuPreviewInfoCLR)
+ZimuMixInfo ClipPlayControlCSharp::ConvertToZimuPreviewInfo(tagZimuMixInfoCLR^ ctagZimuPreviewInfoCLR)
 {
-	ZimuPreviewInfo cZimuPreviewInfo;
+	ZimuMixInfo cZimuPreviewInfo;
 	ZeroMemory(&cZimuPreviewInfo, sizeof(cZimuPreviewInfo));
 
 	TCHAR *szZimuFile = (TCHAR*)(Marshal::StringToHGlobalUni(ctagZimuPreviewInfoCLR->szZimuFile)).ToPointer();
@@ -137,8 +138,8 @@ ZimuPreviewInfo ClipPlayControlCSharp::ConvertToZimuPreviewInfo(tagZimuPreviewIn
 
 	cZimuPreviewInfo.rtStartPos	= ctagZimuPreviewInfoCLR->rtStartPos;
 	cZimuPreviewInfo.rtStopPos	= ctagZimuPreviewInfoCLR->rtStopPos	;
-	cZimuPreviewInfo.start		= ctagZimuPreviewInfoCLR->start		;
-	cZimuPreviewInfo.duration	= ctagZimuPreviewInfoCLR->duration	;
+	//cZimuPreviewInfo.start		= ctagZimuPreviewInfoCLR->start		;
+	//cZimuPreviewInfo.duration	= ctagZimuPreviewInfoCLR->duration	;
 	cZimuPreviewInfo.Level		= ctagZimuPreviewInfoCLR->Level		;
 
 	return cZimuPreviewInfo;

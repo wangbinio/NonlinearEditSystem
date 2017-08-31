@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+//#include "BaseDefine.h"
 using namespace std;
 
 //预览字幕信息结构定义  --- 开始
@@ -9,20 +10,30 @@ using namespace std;
 //字段说明：
 //1、rtStartPos和rtStopPos是字幕在本预览素材中的开始和结束时间，它们的参考时间为：本预览素材入点时间为0！需要根据播出需要正确设置其值，保证：rtStopPos >= rtStartPos >= 0；  
 //2、duration是字幕总播出时长，start是字幕在本预览素材中的开始时刻，start必须是duration范围内某个时间。这两个字段是延续字幕叠加播出需要的字段。
-typedef struct tagZimuPreviewInfo
+//typedef struct tagZimuPreviewInfo
+//{
+//	TCHAR       szZimuFile[MAX_PATH];//字幕文件名
+//
+//
+//	LONGLONG    rtStartPos;//在预览素材中的开始时间（单位：ms）
+//	LONGLONG    rtStopPos;//在预览素材中的结束时间（单位：ms）
+//
+//	LONGLONG    duration;//字幕总播出时长（单位：ms）
+//	LONGLONG    start;//字幕在预览素材中的开始时刻（单位：ms）
+//
+//	unsigned int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二//层，以此类推。
+//}ZimuPreviewInfo;
+//预览字幕信息结构定义  --- 结束
+
+typedef struct tagZimuMixInfo
 {
 	TCHAR       szZimuFile[MAX_PATH];//字幕文件名
+	LONGLONG    rtStartPos;//开始时间（单位：ms）
+	LONGLONG    rtStopPos;//结束时间（单位：ms）
 
-
-	LONGLONG    rtStartPos;//在预览素材中的开始时间（单位：ms）
-	LONGLONG    rtStopPos;//在预览素材中的结束时间（单位：ms）
-
-	LONGLONG    duration;//字幕总播出时长（单位：ms）
-	LONGLONG    start;//字幕在预览素材中的开始时刻（单位：ms）
-
+						  //unsigned int Type;//字幕类型，0 = 静态字幕；1=左飞；2=上滚
 	unsigned int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二层，以此类推。
-}ZimuPreviewInfo;
-//预览字幕信息结构定义  --- 结束
+}ZimuMixInfo;
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //说明：类CClipPlayControlIO是播控插件导出类，提供了所有播控接口。为了避免DLL调用程序包含无关头文件，把所有Graph的操作封装在CGraphOper类中。
@@ -54,7 +65,7 @@ public:
 	//注意：
 	//1、只能加载高清MP4或H264音视频素材
 	//2、CClipPlayControlIO提供的其它所有接口都是在SetClip成功返回后才有效的！
-	HRESULT SetClip(IN TCHAR *szClipFileName, vector<ZimuPreviewInfo> &ZimuList, IN HWND hWnd);
+	HRESULT SetClip(IN TCHAR *szClipFileName, vector<ZimuMixInfo> &ZimuList, IN HWND hWnd);
 
 
 	/////////////////////////////////////////////////////

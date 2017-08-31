@@ -1,0 +1,1 @@
+del /F /S /Q *.a *.v *.avc *.aac *.enca *.encv

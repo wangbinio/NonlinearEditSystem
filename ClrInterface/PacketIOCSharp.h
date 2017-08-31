@@ -59,9 +59,15 @@ namespace ClrInterfaceDll
 		//解码、字幕叠加、编码等打包接口   -- 开始
 		int PacketingInitial(ZimuMixInfoList^ ZimuList);//打包初始化，必须在打包前调用一次，且仅调用一次！
 
-							   //打包
-							   //返回值：
-							   // >=0 成功 ; <0 失败
+		//设置打包音视频参数，必须在打包开始前调用该接口（即调用PacketStart接口前调用）！如果不需设置参数，直接以参数指针NULL传入即可
+		//参数：pVp ---- 视频参数指针，输入参数
+		//      pAp ---- 音频参数指针，输入参数 
+		void SetVideoAudioParameters(tagVideoParametersCLR^ pVp, tagAudioParametersCLR^ pAp);
+
+
+		//打包
+		//返回值：
+		// >=0 成功 ; <0 失败
 		int PacketStart();
 
 		//停止打包
@@ -115,6 +121,11 @@ namespace ClrInterfaceDll
 		DemuxClipInfo ConvertToDemuxClipInfo(tagDemuxClipInfoCLR^ ctagDemuxClipInfoCLR);
 
 		ZimuMixInfo ConvertToZimuMixInfo(tagZimuMixInfoCLR^ ctagZimuMixInfo);
+
+		VideoParameters ConvertToVideoParameters(tagVideoParametersCLR^ ctagVideoParametersCLR);
+
+		AudioParameters ConvertToAudioParameters(tagAudioParametersCLR^ ctagAudioParametersCLR);
+
 
 
 	private:

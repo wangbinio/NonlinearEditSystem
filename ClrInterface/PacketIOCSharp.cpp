@@ -86,6 +86,16 @@ int PacketIOCSharp::PacketingInitial(ZimuMixInfoList^ ZimuList)
 }
 
 
+void PacketIOCSharp::SetVideoAudioParameters(tagVideoParametersCLR^ pVp, tagAudioParametersCLR^ pAp)
+{
+	VideoParameters cVideoParameters = ConvertToVideoParameters(pVp);
+	AudioParameters cAudioParameters = ConvertToAudioParameters(pAp);
+
+	return m_CPacketIO->SetVideoAudioParameters(&cVideoParameters, &cAudioParameters);
+}
+
+
+
 int PacketIOCSharp::PacketStart()
 {
 	return m_CPacketIO->PacketStart();
@@ -120,7 +130,6 @@ void PacketIOCSharp::MuxerStop()
 bool PacketIOCSharp::MuxerIsFinish()
 {
 	return m_CPacketIO->MuxerIsFinish();
-
 }
 
 /*
@@ -202,3 +211,26 @@ ZimuMixInfo PacketIOCSharp::ConvertToZimuMixInfo(tagZimuMixInfoCLR^ ctagZimuMixI
 
 	return cZimuMixInfo;
 };
+
+
+VideoParameters PacketIOCSharp::ConvertToVideoParameters(tagVideoParametersCLR^ ctagVideoParametersCLR)
+{
+	VideoParameters cVideoParameters;
+	ZeroMemory(&cVideoParameters, sizeof(cVideoParameters));
+
+	cVideoParameters.bit_rate = ctagVideoParametersCLR->bit_rate;
+
+	return cVideoParameters;
+}
+
+
+AudioParameters PacketIOCSharp::ConvertToAudioParameters(tagAudioParametersCLR^ ctagAudioParametersCLR)
+{
+	AudioParameters cAudioParameters;
+	ZeroMemory(&cAudioParameters, sizeof(cAudioParameters));
+
+	cAudioParameters.bit_rate = ctagAudioParametersCLR->bit_rate;
+	cAudioParameters.sample_rate = ctagAudioParametersCLR->sample_rate;
+
+	return cAudioParameters;
+}

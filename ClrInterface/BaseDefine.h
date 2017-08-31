@@ -48,4 +48,20 @@ typedef struct tagZimuMixInfo
 	unsigned int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二层，以此类推。
 }ZimuMixInfo;
 
+
+//打包视频参数  --- 指可由用户设置的视频参数
+typedef struct tagVideoParameters
+{
+	int     bit_rate;//比特率，单位：kbits/sec；缺省值：6000 (kbits/sec)
+}VideoParameters;
+
+
+//打包音频参数 --- 指可由用户设置的音频参数
+typedef struct tagAudioParameters
+{
+	double    sample_rate;//音频采样频率，单位：kHz；常用音频采样频率有8kHz、11.025kHz、22.05kHz、16kHz、37.8kHz、44.1kHz、48kHz等，缺省值：44.1(kHz)
+
+	int       bit_rate;//码率，单位：kbits/sec；可选的值有：0, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384, 448, 512, 640, 768, 896, 1024等，缺省值：160(kbits/sec)
+}AudioParameters;
+
 #endif

@@ -57,6 +57,49 @@ namespace NonLinearEditSystem.Forms
         // 选择了区间还是全部
         public bool bChooseInterval = false;
 
+        // 视频比特率
+        public int vedio_bit_rate { get; set; } = 6000;
+
+        // 音频采样频率
+        public double audio_sample_rate
+        {
+            get
+            {
+                switch (comboBoxEx_采样频率.SelectedIndex)
+                {
+                    case 0:
+                        return 48.00;
+                    case 1:
+                        return 44.1;
+                    case 2:
+                        return 32;
+                    default:
+                        return 44.1;
+                }
+            }
+
+        }
+        
+        // 音频采样率
+        public int  audio_bit_rate
+        {
+            get
+            {
+                switch (comboBoxEx_比特率.SelectedIndex)
+                {
+                    case 0:
+                        return 128;
+                    case 1:
+                        return 192;
+                    case 2:
+                        return 256;
+                    case 3:
+                        return 320;
+                    default:
+                        return 160;
+                }
+            }
+        }
 
         #endregion
 
@@ -93,6 +136,9 @@ namespace NonLinearEditSystem.Forms
             progressBarX_Pack.Value = 0;
 
             progressBarX_Pack.Text = "0%";
+
+            // 无论何种情况，停止计时器
+            timerPacket.Start();
         }
 
         private void InitColor()
