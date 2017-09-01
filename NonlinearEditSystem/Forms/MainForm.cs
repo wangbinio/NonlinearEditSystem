@@ -1533,7 +1533,7 @@ namespace NonLinearEditSystem.Forms
         /// <summary>
         /// 设置预览时间间隔
         /// </summary>
-        private double _dLastPreviewTime = 0;
+        private long _dLastPreviewTime = 0;
 
         /// <summary>
         /// 更新需要显示的帧
@@ -1544,8 +1544,8 @@ namespace NonLinearEditSystem.Forms
             {
                 // 防止短时间内多次调用导致卡住
                 // 这里要记录上次调用的时间
-                double dMillisecond = DateTime.Now.Millisecond;
-                if (dMillisecond - _dLastPreviewTime > 1.0)
+                long dMillisecond = DateTime.Now.Ticks;
+                if (dMillisecond - _dLastPreviewTime > 0.5 * GeneralConversions.SecToNanoSec)
                 {
                     _dLastPreviewTime = dMillisecond;
                 }
@@ -2887,7 +2887,7 @@ namespace NonLinearEditSystem.Forms
         private void listView_Files_DoubleClick(object sender, EventArgs e)
         {
             // 关闭双击播放视频功能
-            return;
+            //return;
             try
             {
                 if (listView_Files.SelectedItems.Count <= 0) return;
@@ -2907,15 +2907,18 @@ namespace NonLinearEditSystem.Forms
                 if (sFileType.ToUpper() != "MP4") return;
 
                 IntPtr rendWnd = PanelEx_Sequence.Handle;
-                //int ires = _iClipPlayControlCSharp.SetClip(sFilePath, rendWnd);
+                ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
+                _iClipPlayControlCSharp.SetClip(sFilePath, cZimuMixInfoListNull, rendWnd);
                 _iClipPlayControlCSharp.Play();
-                timer_Sequence.Stop();
-                timer_Sequence.Start();
+
+
+                //timer_Sequence.Stop();
+                //timer_Sequence.Start();
 
                 // 获取视频时间长度（秒），并将其显示到labelX_SeqTime上
-                int clipDuration = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec);
+                //int clipDuration = (int)(_iClipPlayControlCSharp.GetDuration() * GeneralConversions.NanoSecToSec);
                 //labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(clipDuration);
-                labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(0);
+                //labelX_SeqTime.Text = TimeLineControl.TimeLineControl.ChangeTimeValueToString(0);
 
                 // slider_SeqTime用来控制视频播放时间
                 //slider_SeqTime.Maximum = clipDuration + 1;
@@ -3012,8 +3015,8 @@ namespace NonLinearEditSystem.Forms
                     ctagZimuMixInfoCLR.szZimuFile = panelZimu.Name;
                     ctagZimuMixInfoCLR.rtStartPos = (long)(dZimuStartTime * 1000);
                     ctagZimuMixInfoCLR.rtStopPos = (long)(dZimuEndTime * 1000);
-                    ctagZimuMixInfoCLR.rtStartPos = 0;
-                    ctagZimuMixInfoCLR.rtStopPos = 180000;
+                    ctagZimuMixInfoCLR.rtStartPos = 1000;
+                    ctagZimuMixInfoCLR.rtStopPos  = 100000;
                     ctagZimuMixInfoCLR.Level = level;
 
                     cZimuMixInfoList.Add(ctagZimuMixInfoCLR);

@@ -654,7 +654,6 @@
             this.PanelEx_Sequence.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.PanelEx_Sequence.Style.GradientAngle = 90;
             this.PanelEx_Sequence.TabIndex = 2;
-            this.PanelEx_Sequence.Text = "序列监视器面板";
             // 
             // tabItem_Sequence
             // 
@@ -853,7 +852,6 @@
             this.panelEx_Segment.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx_Segment.Style.GradientAngle = 90;
             this.panelEx_Segment.TabIndex = 6;
-            this.panelEx_Segment.Text = "片段监视器面板";
             // 
             // tabItem_Segment
             // 
@@ -1241,34 +1239,40 @@
             this.关于ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
             this.关于ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 分离ToolStripMenuItem
             // 
             this.分离ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.分离ToolStripMenuItem.Enabled = false;
             this.分离ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.分离ToolStripMenuItem.Name = "分离ToolStripMenuItem";
-            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.分离ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.分离ToolStripMenuItem.Text = "分离";
+            this.分离ToolStripMenuItem.Visible = false;
             this.分离ToolStripMenuItem.Click += new System.EventHandler(this.分离ToolStripMenuItem_Click);
             // 
             // 编解码ToolStripMenuItem
             // 
             this.编解码ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.编解码ToolStripMenuItem.Enabled = false;
             this.编解码ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编解码ToolStripMenuItem.Name = "编解码ToolStripMenuItem";
-            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.编解码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.编解码ToolStripMenuItem.Text = "编解码";
+            this.编解码ToolStripMenuItem.Visible = false;
             this.编解码ToolStripMenuItem.Click += new System.EventHandler(this.编解码ToolStripMenuItem_Click);
             // 
             // 打包ToolStripMenuItem
             // 
             this.打包ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(69)))));
+            this.打包ToolStripMenuItem.Enabled = false;
             this.打包ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.打包ToolStripMenuItem.Name = "打包ToolStripMenuItem";
-            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.打包ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.打包ToolStripMenuItem.Text = "打包";
+            this.打包ToolStripMenuItem.Visible = false;
             this.打包ToolStripMenuItem.Click += new System.EventHandler(this.打包ToolStripMenuItem_Click);
             // 
             // MainmenuStrip
@@ -1290,9 +1294,11 @@
             // 
             // 测试ToolStripMenuItem
             // 
+            this.测试ToolStripMenuItem.Enabled = false;
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
             this.测试ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.测试ToolStripMenuItem.Text = "测试";
+            this.测试ToolStripMenuItem.Visible = false;
             this.测试ToolStripMenuItem.Click += new System.EventHandler(this.测试ToolStripMenuItem_Click);
             // 
             // styleManager1
