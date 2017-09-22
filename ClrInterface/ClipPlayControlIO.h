@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-//#include "BaseDefine.h"
+#include "BaseDefine.h"
 using namespace std;
 
 //预览字幕信息结构定义  --- 开始
@@ -25,6 +25,7 @@ using namespace std;
 //}ZimuPreviewInfo;
 //预览字幕信息结构定义  --- 结束
 
+/*
 typedef struct tagZimuMixInfo
 {
 	TCHAR       szZimuFile[MAX_PATH];//字幕文件名
@@ -34,6 +35,7 @@ typedef struct tagZimuMixInfo
 						  //unsigned int Type;//字幕类型，0 = 静态字幕；1=左飞；2=上滚
 	unsigned int Level;//字幕层次，当多层字幕时，上一层字幕将遮挡下一层字幕；数字越小表示层次越高，即0表示最顶层；1表示第二层，以此类推。
 }ZimuMixInfo;
+*/
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //说明：类CClipPlayControlIO是播控插件导出类，提供了所有播控接口。为了避免DLL调用程序包含无关头文件，把所有Graph的操作封装在CGraphOper类中。
@@ -54,6 +56,45 @@ public:
 	~CClipPlayControlIO();
 
 public:	
+	/////////////////////////////////////////////////////
+	//字幕编辑操作接口  --- begin
+
+	//功能：添加一个字幕，即把字幕文件拖到轨道上
+	//参数：
+	//szZimuFile ---- 输入参数，添加的字幕文件全名称
+	//返回值：
+	// >=0 成功 ; <0 失败
+	//说明：该接口需要打开字幕文件读取字幕帧数据，如果是第一次打开可能需要一段时间，调用者必须等待该函数返回才能进行下一步处理
+	int AddZimuIO(IN TCHAR *szZimuFile);
+
+	//功能：删除一个字幕，即把轨道上的字幕删除
+	//参数：
+	//szZimuFile ---- 输入参数，待删除的字幕文件全名称
+	//返回值：
+	// >=0 成功 ; <0 失败
+	int DeleteZimuIO(IN TCHAR *szZimuFile);
+
+	//功能：修改一个字幕，即把轨道上一个字幕的位置、播放时间等进行修改
+	//参数：
+	//szZimuFile ---- 输入参数，待修改的字幕文件全名称
+	//返回值：
+	// >=0 成功 ; <0 失败
+	int ModifyZimuIO(IN TCHAR *szZimuFile);
+
+	//字幕编辑操作接口  --- end
+	/////////////////////////////////////////////////////
+
+	//加载多个音视频素材
+	//参数：
+	//1、AVClipList ---- 输入参数，音视频素材列表，列表中的音视频按前后顺序连续播放
+	//2、ZimuList ---- 输入参数，需要叠加的字幕列表
+	//3、hWnd ---- 输入参数，素材预览窗口句柄
+	//返回值：
+	// S_OK ----- 加载成功；否则加载失败
+	//注意：
+	//1、只能加载高清MP4或H264音视频素材
+	//2、CClipPlayControlIO提供的其它所有接口都是在SetMultiClips成功返回后才有效的！
+	HRESULT SetMultiClipsIO(IN vector<AVClipInfo> &AVClipList, vector<ZimuMixInfo> &ZimuList, IN HWND hWnd);
 	
 	//加载播控素材
 	//参数：
@@ -65,7 +106,7 @@ public:
 	//注意：
 	//1、只能加载高清MP4或H264音视频素材
 	//2、CClipPlayControlIO提供的其它所有接口都是在SetClip成功返回后才有效的！
-	HRESULT SetClip(IN TCHAR *szClipFileName, vector<ZimuMixInfo> &ZimuList, IN HWND hWnd);
+	//HRESULT SetClip(IN TCHAR *szClipFileName, vector<ZimuMixInfo> &ZimuList, IN HWND hWnd);
 
 
 	/////////////////////////////////////////////////////

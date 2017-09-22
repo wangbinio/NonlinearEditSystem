@@ -56,6 +56,7 @@ namespace ClrDataTypeChange
         }
     }
 
+
     //音视频分离原始素材信息结构
     public class tagDemuxClipInfoCLR
     {
@@ -90,6 +91,7 @@ namespace ClrDataTypeChange
         }
     }
 
+
     //字幕轨字幕信息结构
     public class tagZimuMixInfoCLR
     {
@@ -109,6 +111,24 @@ namespace ClrDataTypeChange
         }
     }
 
+
+    // 音视频素材信息结构
+    public class tagAVClipInfoCLR
+    {
+        public string  szFile;//音视频素材文件名
+        public long rtInputPos;//入点（单位：ms）
+        public long rtOutputPos;//出点（单位：ms）
+
+        public tagAVClipInfoCLR()
+        {
+            szFile = string.Empty;
+            rtInputPos = 0;
+            rtOutputPos = 0;
+        }
+    }
+
+
+    // 字幕预览
     public class tagZimuPreviewInfoCLR
     {
         public string szZimuFile;//字幕文件名
@@ -130,6 +150,7 @@ namespace ClrDataTypeChange
             Level = 0;
         }
     }
+
 
     //打包视频参数  --- 指可由用户设置的视频参数
     public class tagVideoParametersCLR
@@ -158,17 +179,29 @@ namespace ClrDataTypeChange
     }
 
 
+    //音视频分离原始素材信息
     public class DemuxClipInfoList : BindingList<tagDemuxClipInfoCLR>
     {
 
     }
 
+
+    // 字幕打包列表
     public class ZimuMixInfoList : BindingList<tagZimuMixInfoCLR>
     {
 
     }
 
+
+    // 字幕预览列表
     public class ZimuPreviewInfoList : BindingList<tagZimuPreviewInfoCLR>
+    {
+
+    }
+
+
+    // 音视频文件列表
+    public class AVClipInfoList: BindingList<tagAVClipInfoCLR>
     {
 
     }

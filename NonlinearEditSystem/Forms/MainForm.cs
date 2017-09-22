@@ -16,6 +16,7 @@ using XNetUtilities;
 using ClrDataTypeChange;
 using System.Diagnostics;
 using NonLinearEditSystem;
+using System.Linq;
 
 namespace NonLinearEditSystem.Forms
 {
@@ -75,6 +76,9 @@ namespace NonLinearEditSystem.Forms
         // 鼠标拖动音/视频文件panel时保存位置差
         private int _mousePosDeltaX = 0;
         private int _mousePosDeltaY = 0;
+
+        // 吸附距离
+        private int _xifuDelta = 10;
 
         // 音视频文件在轨道上的面板高度
         public static int trackHeight = 34;
@@ -691,6 +695,15 @@ namespace NonLinearEditSystem.Forms
                 int vedioFilePanelIndex = CreateVedioOrAudioFilePanel(fileName, duirationTime, length, mousePoint.X);
                 if (vedioFilePanelIndex == -1) return;
 
+                // 3.1.添加字幕的时候，需要调用接口
+                if (fileName.ToUpper().EndsWith(zimuFileEnd))
+                {
+                    // 0.设置鼠标为等待
+                    Cursor = Cursors.WaitCursor;
+                    _iClipPlayControlCSharp.AddZimuIO(fileName);
+                    Cursor = Cursors.Default;
+                }
+
                 // 4.将此panel添加到sender上
                 ((PanelEx)sender).Controls.Add(_vedioFilesPanel[vedioFilePanelIndex]);
                 listVedioClips.Add(_vedioFilesPanel[vedioFilePanelIndex]);
@@ -1025,6 +1038,10 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 0.设置鼠标为等待
+                Cursor = Cursors.WaitCursor;
+
+
                 // 1.和新建工程一样重置主界面状态
                 // 1.1.删除轨道上所有面板
                 DeleteAllTrackFiles();
@@ -1049,11 +1066,18 @@ namespace NonLinearEditSystem.Forms
                 InitTimeLineControl();
 
                 // 3.3.恢复文件面板信息 // _vedioTrackPanels // _vedioFilesPanel
+                // 如果是字幕，需要重新调用接口加载
                 for (int i = 0; i < projectInfo.filePanels.Count; i++)
                 {
                     FilePanelStruct panelInfo = projectInfo.filePanels[i];
 
                     _vedioFilesPanel[i].Name = panelInfo.name;
+
+                    if (panelInfo.name.ToUpper().EndsWith(zimuFileEnd))
+                    {
+                        int addRes = _iClipPlayControlCSharp.AddZimuIO(panelInfo.name);
+                    }
+
                     _vedioFilesPanel[i].Text = panelInfo.text;
                     _vedioFilesPanel[i].Location = new Point(panelInfo.x, 0);
                     _vedioFilesPanel[i].Width = panelInfo.width;
@@ -1063,6 +1087,9 @@ namespace NonLinearEditSystem.Forms
 
                 // 设置打开工程为true
                 bOpenedProject = true;
+
+                Cursor = Cursors.Default;
+
 
                 Invalidate();
             }
@@ -1172,6 +1199,11 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+        /// <summary>
+        /// 关闭ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 关闭ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1202,21 +1234,41 @@ namespace NonLinearEditSystem.Forms
 
         }
 
+        /// <summary>
+        /// 退出ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// 偏好设置ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 偏好设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             preferenceSetForm.ShowDialog();
         }
 
+        /// <summary>
+        /// 工程设置ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 工程设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             projectSetForm.ShowDialog();
         }
 
+        /// <summary>
+        /// 导入工程ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 导入工程ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1476,7 +1528,6 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -1542,6 +1593,44 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 1.防止短时间内多次调用导致卡住
+                // 这里要记录上次调用的时间
+                long dMillisecond = DateTime.Now.Ticks;
+                if (dMillisecond - _dLastPreviewTime > 0.5 * GeneralConversions.SecToNanoSec)
+                {
+                    _dLastPreviewTime = dMillisecond;
+                }
+                else
+                {
+                    return;
+                }
+
+                // 2.获取视频和字幕列表
+                AVClipInfoList cAVClipInfoList = GetPlayClipsList(0);
+                ZimuMixInfoList cZimuMixInfoList = GetPlayZimuList(0);
+
+                // 3.设置素材列表
+                _iClipPlayControlCSharp.SetMultiClipsIO(cAVClipInfoList, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+
+               _iClipPlayControlCSharp.SetGivenPosition((long)(timeLineControl_MainTL.ThumbValue * GeneralConversions.SecToNanoSec));
+
+                //////////////////////////////////////////////////////////////////////////
+                // _iClipPlayControlCSharp.SetPosition((long)(timeLineControl_MainTL.ThumbValue * // GeneralConversions.SecToNanoSec), 0);
+                // _iClipPlayControlCSharp.Play();
+                // _iClipPlayControlCSharp.Stop();
+                //////////////////////////////////////////////////////////////////////////
+
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void UpdateNeedShowFrame2()
+        {
+            try
+            {
                 // 防止短时间内多次调用导致卡住
                 // 这里要记录上次调用的时间
                 long dMillisecond = DateTime.Now.Ticks;
@@ -1604,7 +1693,7 @@ namespace NonLinearEditSystem.Forms
                 {
                     // 2.如果当前位置没有视频,为空白,则设置播放视频为空
                     ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
-                    int res = _iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
+                    //int res = _iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
                 }
                 else
                 {
@@ -1612,7 +1701,7 @@ namespace NonLinearEditSystem.Forms
                     // ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
                     ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
                     int res = -1;
-                    res = _iClipPlayControlCSharp.SetClip(vedioPanel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+                    //res = _iClipPlayControlCSharp.SetClip(vedioPanel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                     if (res < 0)
                     {
@@ -1661,29 +1750,38 @@ namespace NonLinearEditSystem.Forms
         /// </summary>
         private void GetZimuList()
         {
-            ZimuList.Clear();
-            int nLevel = 0;
-            foreach (PanelEx panel in _vedioFilesPanel)
+            try
             {
-                // 只遍历字幕文件,视频另外处理
-                if (panel.Name.ToUpper().EndsWith(zimuFileEnd))
+                ZimuMixInfoList ZimuList = new ZimuMixInfoList();
+                ZimuList.Clear();
+
+                int nLevel = 0;
+                foreach (PanelEx panel in _vedioFilesPanel)
                 {
-                    string objStr = panel.Tag as string;
-                    if (objStr == "") continue;
-                    string[] startAndEndTime = objStr.Split('-');
-                    if (startAndEndTime.Length < 2) continue;
-                    double dStartTime = double.Parse(startAndEndTime[0]);
-                    double dEndTime = double.Parse(startAndEndTime[1]);
+                    // 只遍历字幕文件,视频另外处理
+                    if (panel.Name.ToUpper().EndsWith(zimuFileEnd))
+                    {
+                        string objStr = panel.Tag as string;
+                        if (objStr == "") continue;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 2) continue;
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
 
-                    tagZimuMixInfoCLR ctagZimuMixInfoCLR = new tagZimuMixInfoCLR();
-                    ctagZimuMixInfoCLR.szZimuFile = panel.Name;
-                    ctagZimuMixInfoCLR.rtStartPos = (long)(dStartTime * 1000);
-                    ctagZimuMixInfoCLR.rtStopPos = (long)(dEndTime * 1000);
-                    //ctagZimuMixInfoCLR.Type = 0;
-                    ctagZimuMixInfoCLR.Level = nLevel++;
+                        tagZimuMixInfoCLR ctagZimuMixInfoCLR = new tagZimuMixInfoCLR();
+                        ctagZimuMixInfoCLR.szZimuFile = panel.Name;
+                        ctagZimuMixInfoCLR.rtStartPos = (long)(dStartTime * 1000);
+                        ctagZimuMixInfoCLR.rtStopPos = (long)(dEndTime * 1000);
+                        //ctagZimuMixInfoCLR.Type = 0;
+                        ctagZimuMixInfoCLR.Level = nLevel++;
 
-                    ZimuList.Add(ctagZimuMixInfoCLR);
+                        ZimuList.Add(ctagZimuMixInfoCLR);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
             }
         }
 
@@ -1698,8 +1796,71 @@ namespace NonLinearEditSystem.Forms
         private bool _chooseVedioPanelStart = false;
         private bool _chooseVedioPanelEnd = false;
         private bool _mouseMovedVedioPanel = false;
+        private bool _bNeedXiFu = false;
+
         private PanelEx _panelExSelected = new PanelEx();
 
+
+        /// <summary>
+        /// 获取所有视频的起始位置
+        /// </summary>
+        /// <returns></returns>
+        private List<int> GetAllVedioFilesBeginEndPos()
+        {
+            try
+            {
+                List<int> beginAndEndPos = new List<int>();
+
+                // 
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 
+                    if (panel.Name.ToUpper().EndsWith("MP4") || panel.Name.ToUpper().EndsWith(zimuFileEnd))
+                    {
+                        beginAndEndPos.Add(panel.Location.X);
+                        beginAndEndPos.Add(panel.Location.X + panel.Width);
+                    }
+                }
+
+                return beginAndEndPos;
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获取所有视频的起始位置，除去特定视频
+        /// </summary>
+        /// <param name="expentPanel">不需要记录的视频</param>
+        /// <returns></returns>
+        private List<int> GetAllVedioFilesBeginEndPos(PanelEx expentPanel)
+        {
+            try
+            {
+                List<int> beginAndEndPos = new List<int>();
+
+                // 
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 
+                    if ((panel.Name.ToUpper().EndsWith("MP4") || panel.Name.ToUpper().EndsWith(zimuFileEnd)) && panel != expentPanel)
+                    {
+                        beginAndEndPos.Add(panel.Location.X);
+                        beginAndEndPos.Add(panel.Location.X + panel.Width);
+                    }
+                }
+
+                return beginAndEndPos;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandle.ExceptionHdl(ex);
+                return null;
+            }
+        }
 
         /// <summary>
         /// 视频文件点击事件
@@ -1730,6 +1891,7 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
         /// <summary>
         /// 在音视频轨道上拖动文件
         /// </summary>
@@ -1739,6 +1901,10 @@ namespace NonLinearEditSystem.Forms
         {
             try
             {
+                // 鼠标一按下，则暂停播放时间
+                StopPlay();
+
+
                 //base.OnMouseDown(e);
 
                 // 鼠标按下的时候让控件获取焦点
@@ -1796,6 +1962,7 @@ namespace NonLinearEditSystem.Forms
 
         }
 
+
         /// <summary>
         /// 在音视频轨道上拖动文件
         /// </summary>
@@ -1826,6 +1993,8 @@ namespace NonLinearEditSystem.Forms
                         panelExSelected.Parent = panelEx_VideoTrackConment4;
                     }
                     */
+
+                    List<int> beginAndEndPos = GetAllVedioFilesBeginEndPos(panelExSelected);
 
                     // 设置鼠标移动为true
                     _mouseMovedVedioPanel = true;
@@ -1906,6 +2075,8 @@ namespace NonLinearEditSystem.Forms
 
                         //panelExSelected.Parent.Controls.SetChildIndex(operatorPanel, 0);
                         //Cursor = Cursors.NoMoveHoriz;
+
+
                     }
                     // 2.如果是选中面板起始点,则移动起始点位置,字幕文件和音视频文件处理不同
                     else if (_chooseVedioPanelStart)
@@ -2032,6 +2203,72 @@ namespace NonLinearEditSystem.Forms
                     }
 
 
+                    // 吸附功能添加
+                    _bNeedXiFu = false;
+                    foreach (int iPos in beginAndEndPos)
+                    {
+                        if (Math.Abs(iPos - operatorPanel.Location.X) < _xifuDelta)
+                        {
+                            _bNeedXiFu = true;
+
+                            operatorPanel.Location = new Point(iPos, operatorPanel.Location.Y);
+
+                            break;
+                        }
+                        else if (Math.Abs(iPos - operatorPanel.Location.X - operatorPanel.Width) < _xifuDelta)
+                        {
+                            _bNeedXiFu = true;
+
+                            operatorPanel.Location = new Point(iPos - operatorPanel.Width, operatorPanel.Location.Y);
+
+                            break;
+                        }
+
+
+                        // if (Math.Abs(iPos - operatorPanel.Location.X) < _xifuDelta
+                        //     || Math.Abs(iPos - operatorPanel.Location.X - operatorPanel.Width) < _xifuDelta)
+                        // {
+                        //     _bNeedXiFu = true;
+                        // }
+                    }
+
+                    // 如果需要吸附，则变色处理提示
+                    if (_bNeedXiFu)
+                    {
+                        operatorPanel.Style.BackColor1.Alpha = 128;
+                        operatorPanel.Style.BackColor2.Alpha = 128;
+                        operatorPanel.StyleMouseDown.BackColor1.Alpha = 128;
+                        operatorPanel.StyleMouseDown.BackColor2.Alpha = 128;
+                        operatorPanel.StyleMouseOver.BackColor1.Alpha = 128;
+                        operatorPanel.StyleMouseOver.BackColor2.Alpha = 128;
+                        operatorPanel.Style.BackColor1.Color = _colorVedioFilePanelClick;//Color.SkyBlue;
+                        operatorPanel.Style.BackColor1.Color = Color.SkyBlue;//Color.SkyBlue;
+                        operatorPanel.Style.BackColor2.Color = Color.SkyBlue;//Color.SkyBlue;
+                        operatorPanel.StyleMouseDown.BackColor1.Color = Color.SkyBlue;
+                        operatorPanel.StyleMouseDown.BackColor2.Color = Color.SkyBlue;
+                        operatorPanel.StyleMouseOver.BackColor1.Color = Color.SkyBlue;
+                        operatorPanel.StyleMouseOver.BackColor2.Color = Color.SkyBlue;
+                    }
+                    // 如果不需要吸附，则变回原来的颜色
+                    else
+                    {
+                        operatorPanel.Style.BackColor1.Alpha = 0;
+                        operatorPanel.Style.BackColor1.Color = Color.Transparent;
+                        operatorPanel.Style.BackColor2.Alpha = 0;
+                        operatorPanel.Style.BackColor2.Color = Color.Transparent;
+                        operatorPanel.Style.BackgroundImage = Resource._0140230_50;
+                        operatorPanel.StyleMouseDown.BackColor1.Alpha = 0;
+                        operatorPanel.StyleMouseDown.BackColor1.Color = Color.Transparent;
+                        operatorPanel.StyleMouseDown.BackColor2.Alpha = 0;
+                        operatorPanel.StyleMouseDown.BackColor2.Color = Color.Transparent;
+                        operatorPanel.StyleMouseDown.BackgroundImage = Resource._0140230_50;
+                        operatorPanel.StyleMouseOver.BackColor1.Alpha = 0;
+                        operatorPanel.StyleMouseOver.BackColor1.Color = Color.Transparent;
+                        operatorPanel.StyleMouseOver.BackColor2.Alpha = 0;
+                        operatorPanel.StyleMouseOver.BackColor2.Color = Color.Transparent;
+                        operatorPanel.StyleMouseOver.BackgroundImage = Resource._0140230_50;
+                    }
+
                     panelExSelected.Invalidate();
 
                     // 找到所需显示的视频,并更新显示的帧
@@ -2045,6 +2282,7 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
 
         /// <summary>
         /// 轨道鼠标弹起事件
@@ -2266,6 +2504,7 @@ namespace NonLinearEditSystem.Forms
             bool bFocused = (sender as PanelEx).Focus();
         }
 
+
         /// <summary>
         /// 视频轨道面板鼠标移动事件
         /// </summary>
@@ -2287,6 +2526,7 @@ namespace NonLinearEditSystem.Forms
                 ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
 
         /// <summary>
         /// 视频轨道鼠标点击事件
@@ -2310,6 +2550,7 @@ namespace NonLinearEditSystem.Forms
             	ExceptionHandle.ExceptionHdl(ex);
             }
         }
+
 
         /// <summary>
         /// 视频轨道鼠标按下事件
@@ -2562,6 +2803,7 @@ namespace NonLinearEditSystem.Forms
 
         }
 
+
         /// <summary>
         /// 获取轨道上的文件的最终时间
         /// </summary>
@@ -2618,7 +2860,9 @@ namespace NonLinearEditSystem.Forms
         }
 
 
-
+        /// <summary>
+        /// 快捷键辅助面板
+        /// </summary>
         private PanelEx _panelExCopy = new PanelEx();
 
 
@@ -2908,8 +3152,17 @@ namespace NonLinearEditSystem.Forms
 
                 IntPtr rendWnd = PanelEx_Sequence.Handle;
                 ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
-                _iClipPlayControlCSharp.SetClip(sFilePath, cZimuMixInfoListNull, rendWnd);
-                _iClipPlayControlCSharp.Play();
+                tagZimuMixInfoCLR ctagZimuMixInfoCLR1 = new tagZimuMixInfoCLR();
+
+                ctagZimuMixInfoCLR1.szZimuFile = "D:\\左飞字幕.zm";
+                ctagZimuMixInfoCLR1.rtStartPos = 10000;
+                ctagZimuMixInfoCLR1.rtStopPos = 500000;
+
+                //cZimuMixInfoListNull.Add(ctagZimuMixInfoCLR1);
+
+                //_iClipPlayControlCSharp.SetClip(sFilePath, cZimuMixInfoListNull, rendWnd);
+                //_iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, rendWnd);
+                //_iClipPlayControlCSharp.Play();
 
 
                 //timer_Sequence.Stop();
@@ -2941,6 +3194,47 @@ namespace NonLinearEditSystem.Forms
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void timer_Sequence_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                // 0.1.每次移动之后要判断是否到了结尾停止播放
+                // 0.2.找到轨道文件最终时间
+                double dEndTime = GetTrackFilesEndTime((bool)timer_Sequence.Tag);
+                if (timeLineControl_MainTL.ThumbValue >= dEndTime)
+                {
+                    // 1.播放停止,定时器停止
+
+                    StopPlay();
+
+                    // _iClipPlayControlCSharp.Stop();
+                    // timer_Sequence.Stop();
+                    // 
+                    // // 2.将按钮的symble转换为点击播放
+                    // if ((bool)timer_Sequence.Tag)
+                    // {
+                    //     buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+                    // }
+                    // else
+                    // {
+                    //     buttonX_PlayAndStop.Symbol = _symbolPlay;
+                    // }
+
+                    return;
+                }
+
+                // 1.游标向前移动1秒
+                timeLineControl_MainTL.MoveForward(1.0);
+
+                // 更新显示时间
+                UpdateLabelTime();
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void timer_Sequence_Tick2(object sender, EventArgs e)
         {
             try
             {
@@ -3025,7 +3319,7 @@ namespace NonLinearEditSystem.Forms
                 if (panel == null)
                 {
                     ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
-                    _iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
+                    //_iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
                     _iClipPlayControlCSharp.Play();
                 }
                 else
@@ -3035,7 +3329,7 @@ namespace NonLinearEditSystem.Forms
                     {
                         // 3.如果当前有视频,则开始播放当前视频
                         //ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
-                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+                        //_iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -3432,7 +3726,149 @@ namespace NonLinearEditSystem.Forms
         private static readonly string _symbolIntervalPlay = "57408";
         private static readonly string _symbolIntervalStop = "57396";
 
-        //private bool _onlyPlayInterval = false;
+
+
+        /// <summary>
+        /// 停止播放轨道上的视频
+        /// </summary>
+        private void StopPlay()
+        {
+            _iClipPlayControlCSharp.Stop();
+            timer_Sequence.Stop();
+
+            buttonX_PlayAndStop.Symbol = _symbolPlay;
+            buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+        }
+
+
+        /// <summary>
+        /// 获取时间线上需要播放的视频列表
+        /// </summary>
+        /// <param name="dPlayTime">开始播放时间点</param>
+        /// <returns></returns>
+        private AVClipInfoList GetPlayClipsList(double dPlayTime)
+        {
+            try
+            {
+                // 1.首先清空列表
+                sortedVedioTimes = new List<double>();
+                sortedVedioTimes.Clear();
+
+                // 2.将所有的开始/结束时间 按顺序存储到列表中
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 只遍历视频文件,字幕另外处理
+                    if (panel.Name.ToUpper().EndsWith("MP4"))
+                    {
+                        string objStr = panel.Tag as string;
+                        if (objStr == "") continue;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 2) continue;
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
+
+                        sortedVedioTimes.Add(dStartTime);
+                        sortedVedioTimes.Add(dEndTime);
+                    }
+                }
+
+                // 如果没有视频信息直接返回
+                if (sortedVedioTimes.Count == 0) return null;
+
+                // 3.去掉dPlayTime位置之前的时间
+                var needDeleteList = 
+                    sortedVedioTimes.Where(
+                        s => s <= dPlayTime/* || Math.Abs(s - timeLineControl_MainTL.ThumbValue) < EPSON*/).ToList();
+                sortedVedioTimes = sortedVedioTimes.Except(needDeleteList).ToList();
+
+                // 4.将dPlayTime位置时间设置为起始时间
+                sortedVedioTimes.Add(dPlayTime);
+
+                // 5.进行按时间排序
+                sortedVedioTimes.Sort();
+
+                // 6.调用已有接口间接获取需要播放视频列表
+                UpdatePackageClips(false);
+
+                // 7.进行转换，提取视频列表
+                AVClipInfoList cAVClipInfoList = new AVClipInfoList();
+                cAVClipInfoList.Clear();
+
+                foreach (var item in packageClipsList)
+                {
+                    tagAVClipInfoCLR ctagAVClipInfoCLR = new tagAVClipInfoCLR();
+                    ctagAVClipInfoCLR.szFile = item.szClipFile;
+                    ctagAVClipInfoCLR.rtInputPos = item.rtPos;
+                    ctagAVClipInfoCLR.rtOutputPos = item.rtEndPos;
+
+                    cAVClipInfoList.Add(ctagAVClipInfoCLR);
+                }
+
+                return cAVClipInfoList;
+
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// 获取时间线上需要播放的字幕列表
+        /// </summary>
+        /// <param name="dPlayTime">开始播放时间点</param>
+        /// <returns></returns>
+        private ZimuMixInfoList GetPlayZimuList(double dPlayTime)
+        {
+            try
+            {
+                ZimuMixInfoList PlayZimuList = new ZimuMixInfoList();
+                PlayZimuList.Clear();
+
+                int nLevel = 0;
+                foreach (PanelEx panel in _vedioFilesPanel)
+                {
+                    // 只遍历字幕文件,视频另外处理
+                    if (panel.Name.ToUpper().EndsWith(zimuFileEnd))
+                    {
+                        string objStr = panel.Tag as string;
+                        if (objStr == "") continue;
+                        string[] startAndEndTime = objStr.Split('-');
+                        if (startAndEndTime.Length < 2) continue;
+                        double dStartTime = double.Parse(startAndEndTime[0]);
+                        double dEndTime = double.Parse(startAndEndTime[1]);
+
+                        // 过滤处于dPlayTime位置之前的字幕文件
+                        if (dEndTime <= dPlayTime) continue;
+
+                        tagZimuMixInfoCLR ctagZimuMixInfoCLR = new tagZimuMixInfoCLR();
+                        ctagZimuMixInfoCLR.szZimuFile = panel.Name;
+
+                        //ctagZimuMixInfoCLR.rtStartPos = (long)(dStartTime * 1000) ;
+                        //ctagZimuMixInfoCLR.rtStopPos = (long)(dEndTime * 1000);
+
+                        // 字幕播出的起始时间，有可能小于0
+                        double dRtStartPos = dStartTime - dPlayTime;
+                        ctagZimuMixInfoCLR.rtStartPos = (long)(dRtStartPos > 0 ? dRtStartPos * 1000 : 0);
+                        ctagZimuMixInfoCLR.rtStopPos = (long)((dEndTime - dPlayTime) * 1000);
+
+                        ctagZimuMixInfoCLR.Level = nLevel++;
+
+                        PlayZimuList.Add(ctagZimuMixInfoCLR);
+                    }
+                }
+
+                return PlayZimuList;
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// 播放和暂停
@@ -3440,6 +3876,48 @@ namespace NonLinearEditSystem.Forms
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonX_PlayAndStop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1.如果当前没有播放视频(或者在播放区间),那么从游标位置开始播放视频
+                if (_iClipPlayControlCSharp.GetCurState() != 0 || (bool)timer_Sequence.Tag == true)
+                {
+                    // 2.获取视频和字幕列表
+                    AVClipInfoList cAVClipInfoList = GetPlayClipsList(timeLineControl_MainTL.ThumbValue);
+                    ZimuMixInfoList cZimuMixInfoList = GetPlayZimuList(timeLineControl_MainTL.ThumbValue);
+
+                    // 3.设置素材列表
+                    _iClipPlayControlCSharp.SetMultiClipsIO(cAVClipInfoList, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+
+                    // 4.开始播放视频,计时器开始,如果播放全部,则计时器tag为false
+                    _iClipPlayControlCSharp.Play();
+                    timer_Sequence.Tag = false;
+                    timer_Sequence.Start();
+
+                    // 5.将自身symble转换为点击暂停, 将另一个设置为点击播放
+                    buttonX_PlayAndStop.Symbol = _symbolStop;
+                    buttonX_PlayInterval.Symbol = _symbolIntervalPlay;
+                }
+                else
+                {
+                    // 如果当前正在播放视频,则停止播放
+                    StopPlay();
+
+                    // 1.播放停止,定时器停止
+                    // _iClipPlayControlCSharp.Stop();
+                    // timer_Sequence.Stop();
+
+                    // 2.将自身symble转换为点击播放,将另一个置为点击播放
+                    // (sender as ButtonX).Symbol = _symbolPlay;
+                }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void buttonX_PlayAndStop_Click2(object sender, EventArgs e)
         {
             //string strFileName = _iClipPlayControlCSharp.GetClip();
             //MessageBox.Show(strFileName);
@@ -3498,13 +3976,13 @@ namespace NonLinearEditSystem.Forms
                     {
                         // 2.如果当前位置没有视频,为空白,则设置播放视频为空
                         ZimuMixInfoList cZimuMixInfoListNull = new ZimuMixInfoList();
-                        _iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
+                        //_iClipPlayControlCSharp.SetClip("", cZimuMixInfoListNull, (IntPtr)PanelEx_Sequence.Handle);
                     }
                     else
                     {
                         // 3.如果当前有视频,则开始播放当前视频
                         //ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
-                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+                        //_iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -3551,12 +4029,50 @@ namespace NonLinearEditSystem.Forms
             }
         }
 
+
         /// <summary>
         /// 播放区间
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonX_PlayInterval_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 如果当前没有播放视频(或者在播放全部视频),那么从入点位置开始播放视频
+                if (_iClipPlayControlCSharp.GetCurState() != 0 || (bool)timer_Sequence.Tag == false)
+                {
+                    // 0.首先将游标移动到入点位置
+                    buttonX_MoveToEnter_Click(sender, e);
+
+                    // 2.获取视频和字幕列表
+                    AVClipInfoList cAVClipInfoList = GetPlayClipsList(timeLineControl_MainTL.ThumbValue);
+                    ZimuMixInfoList cZimuMixInfoList = GetPlayZimuList(timeLineControl_MainTL.ThumbValue);
+
+                    // 3.设置素材列表
+                    _iClipPlayControlCSharp.SetMultiClipsIO(cAVClipInfoList, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+
+                    // 4.开始播放视频,计时器开始,如果播放全部,则计时器tag为false
+                    _iClipPlayControlCSharp.Play();
+                    timer_Sequence.Tag = true;
+                    timer_Sequence.Start();
+
+                    // 5.将自身symble转换为点击暂停, 将另一个设置为点击播放
+                    buttonX_PlayAndStop.Symbol = _symbolPlay;
+                    buttonX_PlayInterval.Symbol = _symbolIntervalStop;
+                }
+                else
+                {
+                    StopPlay();
+                }
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        private void buttonX_PlayInterval_Click2(object sender, EventArgs e)
         {
             try
             {
@@ -3573,13 +4089,13 @@ namespace NonLinearEditSystem.Forms
                     {
                         // 2.如果当前位置没有视频,为空白,则设置播放视频为空
                         ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
-                        _iClipPlayControlCSharp.SetClip("", cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+                        //_iClipPlayControlCSharp.SetClip("", cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
                     }
                     else
                     {
                         // 3.如果当前有视频,则开始播放当前视频
                         ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
-                        _iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+                        //_iClipPlayControlCSharp.SetClip(panel.Name, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
 
                         // 4.找到开始播放的位置
                         // 4.1.首先解析tag获取信息
@@ -3732,6 +4248,49 @@ namespace NonLinearEditSystem.Forms
                 UpdateLabelTime();
             }
         }
+
+
+        /// <summary>
+        /// 微调工具调整
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void slider_tuning_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // 如果是还原，不需要处理
+                if (slider_tuning.Value == 50)
+                    return;
+
+                // 要判断向左还是向右移动
+                if (slider_tuning.Value > 50)
+                {
+                    timeLineControl_MainTL.MoveForward(0.1);
+                }
+                else if (slider_tuning.Value < 50)
+                {
+                    timeLineControl_MainTL.MoveBack(0.1);
+                }
+
+                UpdateNeedShowFrame();
+            }
+            catch (Exception ex)
+            {
+            	ExceptionHandle.ExceptionHdl(ex);
+            }
+        }
+
+        /// <summary>
+        /// 微调工具鼠标弹起还原
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void slider_tuning_MouseUp(object sender, MouseEventArgs e)
+        {
+            slider_tuning.Value = 50;
+        }
+
 
         #endregion
 
@@ -5368,7 +5927,12 @@ namespace NonLinearEditSystem.Forms
         /// <param name="panel"></param>
         private void DeleteTrackFilePanel(PanelEx panel)
         {
+            if (panel.Name.ToUpper().EndsWith(zimuFileEnd))
+            {
+                int addRes = _iClipPlayControlCSharp.DeleteZimuIO(panel.Name);
+            }
             panel.Tag = "";
+            panel.Name = "";
             panel.Parent.Controls.Remove(panel);
         }
 
@@ -5396,9 +5960,9 @@ namespace NonLinearEditSystem.Forms
             //UpdateNeedShowFrame();
 
             ZimuMixInfoList cZimuMixInfoList = new ZimuMixInfoList();
-            int res = 
-                _iClipPlayControlCSharp.SetClip(BlackVedio, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
-            res = _iClipPlayControlCSharp.SetGivenPosition(100000000);
+            //int res = 
+               // _iClipPlayControlCSharp.SetClip(BlackVedio, cZimuMixInfoList, (IntPtr)PanelEx_Sequence.Handle);
+            //res = _iClipPlayControlCSharp.SetGivenPosition(100000000);
 
             _iClipPlayControlCSharp.SetPosition(100000000, 0);
             _iClipPlayControlCSharp.Play();
@@ -5495,17 +6059,6 @@ namespace NonLinearEditSystem.Forms
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -805,12 +805,28 @@ namespace TimeLineControl
             Invalidate();
             RelativeTimeLineControl.Invalidate();
         }
-        
+
+        /// <summary>
+        /// 游标向后移动
+        /// </summary>
+        /// <param name="dTime">时间</param>
+        public void MoveBack(double dTime)
+        {
+            double deltaX = GetPosByTimeValue(dTime);
+            ThumbHPos -= deltaX;
+
+            deltaX = RelativeTimeLineControl.GetPosByTimeValue(dTime);
+            RelativeTimeLineControl.ThumbHPos -= deltaX;
+
+            Invalidate();
+            RelativeTimeLineControl.Invalidate();
+        }
+
 
         #endregion
 
 
-    public TimeLineControl()
+        public TimeLineControl()
         {
             InitializeComponent();
 
